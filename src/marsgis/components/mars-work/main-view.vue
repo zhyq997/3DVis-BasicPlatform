@@ -47,7 +47,7 @@ const props = withDefaults(
 )
 let configUrls: String[] = []
 
-const configUrl1 = (props.url === "" || !props.url) ? `${process.env.BASE_URL}config/config-anxi.json?time=${new Date().getTime()}` : props.url
+const configUrl1 = (props.url === "" || !props.url) ? `${process.env.BASE_URL}config/config.json?time=${new Date().getTime()}` : props.url
 const configUrl2 = (props.url === "" || !props.url) ? `${process.env.BASE_URL}config/config-anxi-popup.json?time=${new Date().getTime()}` : props.url
 
 configUrls.push(configUrl1)

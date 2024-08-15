@@ -47,7 +47,62 @@ const store: StoreOptions<WidgetState> = {
         component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/location-point/index.vue"))),
         name: "location-point",
         group: "tools"
-      }
+      },
+      {
+        component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/expImage/index.vue"))),
+        name: "expImage",
+        group: "tools"
+      },
+      {
+        component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/analysis/visibility/index.vue"))),
+        name: "visibility",
+        group: "analysis"
+      },
+      {
+        component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/analysis/floodByMaterial/index.vue"))),
+        name: "floodByMaterial",
+        group: "analysis"
+      },
+      {
+        component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/analysis/dynamicRiver/index.vue"))),
+        name: "dynamicRiver",
+        group: "analysis"
+      },
+      {
+        component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/analysis/measure/index.vue"))),
+        name: "measure",
+        group: "analysis"
+      },
+      {
+        component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/analysis/measure-volume/index.vue"))),
+        name: "measure-volume",
+        group: "analysis"
+      },
+      {
+        component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/analysis/sightline-terrain/index.vue"))),
+        name: "sightline-terrain",
+        group: "analysis"
+      },
+      {
+        component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/analysis/sightline/index.vue"))),
+        name: "sightline",
+        group: "analysis"
+      },
+      {
+        component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/analysis/shadows/index.vue"))),
+        name: "shadows",
+        group: "analysis"
+      },
+      {
+        component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/analysis/terrainClip/index.vue"))),
+        name: "terrainClip",
+        group: "analysis"
+      },
+      {
+        component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/analysis/underground/index.vue"))),
+        name: "underground",
+        group: "analysis"
+      },
     ],
     openAtStart: ["query-poi", "toolbar"]
   }

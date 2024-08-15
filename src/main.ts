@@ -63,6 +63,10 @@ async function bootstrap() {
   // https://next.router.vuejs.org/api/#isready
   // await router.isReady();
 
+  // app.config.errorHandler = (err, vm, info) => {
+  //   console.error('Global error handler:', err);
+  // };
+
   app.mount('#app');
 }
 

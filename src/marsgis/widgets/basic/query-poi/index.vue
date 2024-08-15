@@ -2,16 +2,9 @@
   <mars-dialog :draggable="false" customClass="query-poi-pannel" top="10" left="10">
     <div class="query-poi" @mousedown="clickVoid">
       <div class="query-poi__search">
-        <mars-input
-          placeholder="搜索 地点"
-          v-model:value="searchTxt"
-          class="input"
-          data-event="prevent"
-          @blur="startCloseSearch"
-          @focus="showHistoryList"
-          allowClear
-          @input="handleSearch(searchTxt)"
-        ></mars-input>
+        <mars-input placeholder="搜索 地点" v-model:value="searchTxt" class="input" data-event="prevent"
+          @blur="startCloseSearch" @focus="showHistoryList" allowClear @input="handleSearch(searchTxt)"
+          @pressEnter="selectPoint(searchTxt)"></mars-input>
         <mars-button class="button">
           <mars-icon icon="search" width="20" color="#fff" @click="selectPoint(searchTxt)"></mars-icon>
         </mars-button>
@@ -21,26 +14,29 @@
         <li v-for="(item, i) in dataSource" :key="i" class="search-list__item" @click="selectPoint(item.value)">
           {{ item.value }}
         </li>
+        <p v-if="isShowClearHisBtn" class="search-list__clear" @click="clearHistoryList">删除历史</p>
       </ul>
+
       <div class="query-site" v-if="siteListShow">
         <template v-if="siteSource && siteSource.length">
           <ul>
             <li v-for="(item, i) in siteSource" :key="i" class="query-site__item" @click.stop="flyTo(item)">
               <div class="query-site__context">
-                <p class="query-site-text f-toe" :title="item.name">
+                <p class="query-site-text f-toe" :title="item.address">
                   <span class="query-site-text_num">{{ i + 1 }}</span>
-                  {{ item.name }}
+                  {{ item.address }}
                 </p>
-                <p class="query-site-sub f-toe">{{ item.type }}</p>
+                <!-- <p class="query-site-sub f-toe">{{ item.type }}</p> -->
               </div>
-              <a :href="url + item.id" target="_blank" class="query-site__more">
+              <!-- <a :href="url + item.id" target="_blank" class="query-site__more">
                 <mars-icon icon="double-right" width="20"></mars-icon>
-              </a>
+              </a> -->
             </li>
           </ul>
           <div class="query-site__page">
             <p class="query-site-allcount">共{{ allCount }}条结果</p>
-            <a-pagination @change="(page: number) => querySiteList(searchTxt, page)" size="small" :total="allCount" pageSize="6" :simple="true" />
+            <a-pagination @change="(page: number) => querySiteList(searchTxt, page)" size="small" :total="allCount"
+              pageSize="6" :simple="true" v-model:current="current" />
           </div>
         </template>
         <a-empty class="f-push-10-t" v-else />
@@ -56,6 +52,9 @@ import useLifecycle from "@mars/common/uses/use-lifecycle"
 import * as mapWork from "./map"
 import { $message, $alert } from "@mars/components/mars-ui/index"
 import { $hideLoading, $showLoading } from "@mars/components/mars-ui/mars-loading"
+import { defHttp } from '@/utils/http/axios';
+import page from "@/router/routes/modules/demo/page"
+
 
 // 启用map.ts生命周期
 useLifecycle(mapWork)
@@ -67,9 +66,11 @@ const siteListShow = ref(false)
 const searchTxt = ref("")
 const dataSource = ref<any[]>([])
 const searchListShow = ref<boolean>(false)
+const isShowClearHisBtn = ref<boolean>(true) // 删除历史 按钮是否显示
 const siteSource = ref<any[]>([])
 
 const allCount = ref(0)
+let current = ref(1)
 const url = "//www.amap.com/detail/"
 
 let timer
@@ -84,26 +85,30 @@ const startCloseSearch = () => {
 
 // 搜寻输入框数据之前的提示数据 以及搜寻过的历史数据  通过列表展现
 const handleSearch = async (val: string) => {
+
   if (val === "") {
     showHistoryList()
     mapWork.clearLayers()
     return
   }
 
-  if (isLonLat(val)) {
-    mapWork.centerAtLonLat(val)
+  const result = await mapWork.querySiteList(val, 1)
+
+  siteListShow.value = false
+  isShowClearHisBtn.value = false
+
+  // const result = await mapWork.queryData(val)
+
+  const list: { value: string }[] = []
+
+  if (!result) {
     return
   }
 
-  siteListShow.value = false
-
-  const result = await mapWork.queryData(val)
-  const list: { value: string }[] = []
-
   result.list.forEach((item: any) => {
-    if (list.every((l) => l.value !== item.name)) {
+    if (list.every((l) => l.value !== item.address)) {
       list.push({
-        value: item.name
+        value: item.address
       })
     }
   })
@@ -117,19 +122,43 @@ const showHistoryList = () => {
   if (searchTxt.value) {
     return
   }
+
   const historys = JSON.parse(localStorage.getItem(storageName)!)
+
   if (historys) {
     dataSource.value = (historys || []).map((item: any) => ({ value: item }))
     searchListShow.value = true
+    isShowClearHisBtn.value = true
   }
+
   if (timer) {
     clearTimeout(timer)
   }
+
   siteListShow.value = false
+}
+
+const clearHistoryList = () => {
+  localStorage.removeItem(storageName)
+  dataSource.value = []
+  searchListShow.value = false
 }
 
 // 开始查询并加载数据
 const selectPoint = async (value: any) => {
+
+  if (value === "") {
+    showHistoryList()
+    mapWork.clearLayers()
+    return
+  }
+
+  // if (isLonLat(value)) {
+  //   mapWork.centerAtLonLat(value)
+  //   return
+  // }
+
+  current.value = 1
   searchTxt.value = value
 
   $showLoading()
@@ -163,10 +192,11 @@ async function querySiteList(text: string, page: number) {
 
   if (!result || !result.list || result.list.length <= 0) {
     $message("暂无数据")
+    siteSource.value = []
     return
   }
 
-  pagination.total = Number(result.allcount) || 0
+  // pagination.total = Number(result.allcount) || 0
   siteSource.value = result.list || []
   allCount.value = Number(result.allcount) || 0
 
@@ -177,6 +207,7 @@ async function querySiteList(text: string, page: number) {
 
 // 定位至矢量图层
 function flyTo(item: any) {
+
   const graphic = item._graphic
   if (graphic === null) {
     return $alert(item.name + " 无经纬度坐标信息！")
@@ -210,6 +241,7 @@ function addHistory(data: any) {
   padding: 0 !important;
   overflow: visible !important;
 }
+
 .query-poi-pannel .mars-dialog__content {
   padding: 0 !important;
 }
@@ -217,7 +249,12 @@ function addHistory(data: any) {
 <style lang="less" scoped>
 .query-poi {
   padding: 0;
-  color: #fff;
+  color: #000000;
+
+  .mars-base-border_gradient {
+    background: var(--mars-poi-border);
+  }
+
   .query-poi__search {
     display: flex;
     justify-content: flex-start;
@@ -226,6 +263,7 @@ function addHistory(data: any) {
     height: 44px;
     border: 1px solid var(--mars-primary-color);
     background: var(--mars-bg-base);
+
     .input {
       border: none;
       background: none;
@@ -233,11 +271,13 @@ function addHistory(data: any) {
       outline: none;
       padding-left: 10px;
       flex-grow: 1;
+
       :deep(.ant-input) {
         font-size: 16px;
         color: var(--mars-text-color) !important;
       }
     }
+
     .button {
       height: 44px;
       width: 55px;
@@ -245,22 +285,33 @@ function addHistory(data: any) {
     }
   }
 }
+
 .search-list {
-  min-height: 100px;
+  // min-height: 100px;
   width: 100%;
   .mars-drop-bg();
   position: absolute;
+
   .search-list__item {
     height: 36px;
     line-height: 36px;
     padding-left: 10px;
     color: var(--mars-text-color);
     cursor: pointer;
+
     &:hover {
       background-color: var(--mars-select-bg);
     }
   }
+
+  .search-list__clear {
+    color: var(--mars-control-icon);
+    padding: 8px 14px;
+    text-align: right;
+    cursor: pointer;
+  }
 }
+
 .query-site {
   position: absolute;
   border-top: none;
@@ -275,17 +326,25 @@ function addHistory(data: any) {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+
     &:hover {
       background-color: var(--mars-select-bg);
     }
+
     .query-site__context {
       flex-grow: 1;
+
       .query-site-text {
         font-size: 16px;
         width: 200px;
         font-family: Source Han Sans CN;
         font-weight: 400;
         color: var(--mars-text-color);
+        // 文字换行
+        white-space: normal;
+        // overflow-wrap: break-word;
+        word-wrap: break-word;
+
         .query-site-text_num {
           width: 19px;
           height: 25px;
@@ -295,6 +354,7 @@ function addHistory(data: any) {
           background-image: url("@mars/components/mars-ui/assets/images/query-site-text_num.png");
         }
       }
+
       .query-site-sub {
         font-size: 14px;
         width: 200px;
@@ -304,6 +364,7 @@ function addHistory(data: any) {
         color: var(--mars-content-color);
       }
     }
+
     .query-site__more {
       font-size: 14px;
       font-family: Source Han Sans CN;
@@ -311,16 +372,19 @@ function addHistory(data: any) {
       color: var(--mars-content-color);
     }
   }
+
   .query-site__page {
     display: flex;
     justify-content: space-between;
     padding: 10px 20px;
+
     .query-site-allcount {
       font-size: 14px;
       color: var(--mars-text-color);
     }
   }
 }
+
 :deep(.ant-pagination-simple-pager) {
   input {
     width: 50px;

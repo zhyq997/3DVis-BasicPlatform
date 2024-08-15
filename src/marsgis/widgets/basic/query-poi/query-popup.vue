@@ -10,6 +10,8 @@
         <div v-if="props.tel"><label>电话:</label> {{ props.tel }}</div>
         <div v-if="props.address"><label>地址:</label> {{ props.address }}</div>
         <div v-if="props.type"><label>类别:</label> {{ props.type }}</div>
+        <div v-if="props.xzb"><label>经度:</label> {{ props.xzb }}</div>
+        <div v-if="props.xzb"><label>纬度:</label> {{ props.yzb }}</div>
       </div>
     </div>
   </div>
@@ -23,6 +25,8 @@ const props = defineProps<{
   tel?: string
   address?: string
   type?: string
+  yzb?: string,
+  xzb?: string,
 }>()
 
 const closePopup = () => {
@@ -30,12 +34,9 @@ const closePopup = () => {
 }
 </script>
 
-<style lang="less">
+<style>
 .mars3d-template-content {
+  color: black;
   padding-bottom: 20px;
-
-  div {
-    padding-right: 10px;
-  }
 }
 </style>

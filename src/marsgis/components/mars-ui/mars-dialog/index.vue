@@ -3,26 +3,19 @@
     <div class="mars-dialog-thumb" v-show="isFold && show" ref="thumbnailRef" @click="toogleFold(false)">
       <mars-icon :icon="mergeProps.thumbnail.icon" :width="20" color="#FFFFFF"></mars-icon>
     </div>
-    <div
-      class="mars-dialog"
-      :class="[customClass, animationClass]"
+    <div class="mars-dialog" :class="[customClass, animationClass]"
       :style="{ 'padding-top': showHeader ? '44px' : '10px', 'padding-bottom': slots.footer ? '44px' : '10px' }"
-      ref="dialogRef"
-      v-show="visible && !isFold && show"
-    >
-      <div v-if="showHeader" class="mars-dialog__header" :style="{ cursor: mergeProps.draggable ? 'move' : 'auto' }" @mousedown="dragStart">
+      ref="dialogRef" v-show="visible && !isFold && show">
+      <div v-if="showHeader" class="mars-dialog__header" :style="{ cursor: mergeProps.draggable ? 'move' : 'auto' }"
+        @mousedown="dragStart">
         <mars-icon v-if="mergeProps.icon" :icon="mergeProps.icon" :width="18" color="#41A8FF" class="icon"></mars-icon>
         <slot v-if="slots.title" name="title"></slot>
         <span v-else class="title">{{ mergeProps.title }}</span>
-        <mars-icon v-if="mergeProps.closeable && mergeProps.closeButton" icon="close" :width="18" class="close-btn" @click="close"></mars-icon>
+        <mars-icon v-if="mergeProps.closeable && mergeProps.closeButton" icon="close" :width="18" class="close-btn"
+          @click="close"></mars-icon>
       </div>
-      <mars-icon
-        v-else-if="mergeProps.closeable && mergeProps.closeButton"
-        icon="close-one"
-        :width="18"
-        class="close-btn__flot"
-        @click="close"
-      ></mars-icon>
+      <mars-icon v-else-if="mergeProps.closeable && mergeProps.closeButton" icon="close-one" :width="18"
+        class="close-btn__flot" @click="close"></mars-icon>
 
       <div class="mars-dialog__content">
         <slot></slot>
@@ -32,13 +25,8 @@
         <slot name="footer"></slot>
       </div>
 
-      <div
-        v-for="handle in actualHandles"
-        :key="handle"
-        class="mars-dialog__handle"
-        :class="['handle-' + handle]"
-        @mousedown="resizeStart(handle, $event)"
-      ></div>
+      <div v-for="handle in actualHandles" :key="handle" class="mars-dialog__handle" :class="['handle-' + handle]"
+        @mousedown="resizeStart(handle, $event)"></div>
     </div>
   </teleport>
 </template>

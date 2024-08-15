@@ -1,6 +1,7 @@
 <template>
-  <mars-dialog :draggable="true" title="图层" width="300" :min-width="250" top="60" right="10">
-    <mars-tree checkable :tree-data="treeData" v-model:expandedKeys="expandedKeys" v-model:checkedKeys="checkedKeys" @check="checkedChange">
+  <mars-dialog :draggable="true" title="图层" width="340" :min-width="260" top="60" right="10">
+    <mars-tree checkable :tree-data="treeData" v-model:expandedKeys="expandedKeys" v-model:checkedKeys="checkedKeys"
+      @check="checkedChange">
       <template #title="node">
         <mars-dropdown-menu :trigger="['contextmenu']">
           <span @dblclick="flyTo(node)">{{ node.title }}</span>

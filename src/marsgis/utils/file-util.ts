@@ -76,6 +76,6 @@ export function initVue3Popup(comp, para) {
 
   const vNode = createApp(comp, { ...para }) // vue2中可使用extend
   vNode.mount(vNodeDom)
-  return vNode._container
+  return vNode._container.innerHTML || ""
 }
 

@@ -20,7 +20,6 @@ export default {
     // mars3d基础项目
     MarsUIInstall(app)
     app.use(injectState(store), key)
-
     return app
   }
 }

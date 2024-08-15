@@ -1,5 +1,5 @@
 <template>
-  <mars-dialog title="坐标拾取" width="366" top="60"  :min-width="357">
+  <mars-dialog title="坐标拾取" width="366" top="60" :min-width="357">
     <template #icon>
       <mars-icon icon="local" width="18" />
     </template>
@@ -298,6 +298,7 @@ const submitCenter = () => {
   padding-top: 10px;
   margin-right: 5px;
 }
+
 :deep(.mars-input) {
   max-width: 192px;
 }

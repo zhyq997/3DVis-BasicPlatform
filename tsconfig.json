@@ -7,7 +7,8 @@
     "types": ["vite/client"],
     "paths": {
       "@/*": ["src/*"],
-      "#/*": ["types/*"]
+      "#/*": ["types/*"],
+      "@mars/*": ["src/marsgis/*"]
     }
   },
   "include": [

@@ -3,23 +3,16 @@
     <template v-for="(item, i) in renderOptions" :key="i">
       <a-form-item v-if="(item.show as any)(attrForm)" :label="item.label">
         <div :style="getItemStyle(item)">
-          <component
-            :is="getComponent(item.type)"
-            v-model:value="item.value"
+          <component :is="getComponent(item.type)" v-model:value="item.value"
             :min="item.min || item.min === 0 ? item.min : -Infinity"
-            :max="item.max || item.max === 0 ? item.max : Infinity"
-            :step="item.step || 0.1"
-            :range="item.range || false"
-            :options="item.data || []"
-            :units="item.units"
-            @change="itemChange(item)"
-          >
+            :max="item.max || item.max === 0 ? item.max : Infinity" :step="item.step || 0.1"
+            :range="item.range || false" :options="item.data || []" :units="item.units" @change="itemChange(item)">
           </component>
         </div>
         <template v-if="item.extra !== undefined">
           <template v-if="item.extraType === 'string'">{{ item.extra(attrForm) }}</template>
-          <component v-else :is="item.extra(attrForm)"></component
-        ></template>
+          <component v-else :is="item.extra(attrForm)"></component>
+        </template>
       </a-form-item>
     </template>
   </a-form>
@@ -118,14 +111,14 @@ const getItemStyle = ({ extraWidth, extra, label }: GuiItem) => {
   }
   return extra !== undefined
     ? {
-        width: `calc(100% - ${extraWidth || extraWidth === 0 ? extraWidth : 100}px)`,
-        display: "inline-block",
-        marginRight: "10px"
-      }
+      width: `calc(100% - ${extraWidth || extraWidth === 0 ? extraWidth : 100}px)`,
+      display: "inline-block",
+      marginRight: "10px"
+    }
     : {
-        display: "inline-block",
-        width: "100%"
-      }
+      display: "inline-block",
+      width: "100%"
+    }
 }
 
 function getComponent(type: keyof typeof components) {
@@ -183,4 +176,9 @@ export default {
 }
 </script>
 
-<style lang="less"></style>
+<style lang="less" scoped>
+::v-deep .ant-radio-wrapper .ant-radio-checked .ant-radio-inner {
+  border-color: #1677ff;
+  background-color: #1677ff;
+}
+</style>

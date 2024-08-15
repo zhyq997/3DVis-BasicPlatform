@@ -20,7 +20,7 @@
       "fxaa": true,
       "requestRenderMode": true,
       "globe": {
-        "depthTestAgainstTerrain": false,
+        "depthTestAgainstTerrain": true,
         "baseColor": "#546a53",
         "showGroundAtmosphere": true,
         "enableLighting": false

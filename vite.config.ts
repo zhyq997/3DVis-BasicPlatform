@@ -61,6 +61,12 @@ export default defineApplicationConfig({
       }
     },
     plugins: [mars3dPlugin()],
+    build: {
+      commonjsOptions: {
+        //默认内部只处理了node_modules，需要将"packages/"也标识处理
+        include: /node_modules|packages/
+      },
+    }
   },
 });
 
