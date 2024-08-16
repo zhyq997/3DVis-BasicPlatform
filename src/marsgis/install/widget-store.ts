@@ -103,6 +103,26 @@ const store: StoreOptions<WidgetState> = {
         name: "underground",
         group: "analysis"
       },
+      {
+        component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/analysis/slope/index.vue"))),
+        name: "slope",
+        group: "analysis"
+      },
+      {
+        component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/analysis/modelPlanClip/index.vue"))),
+        name: "modelPlanClip",
+        group: "analysis"
+      },
+      {
+        component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/analysis/tilesetFlat/index.vue"))),
+        name: "tilesetFlat",
+        group: "analysis"
+      },
+      {
+        component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/analysis/limitHeight/index.vue"))),
+        name: "limitHeight",
+        group: "analysis"
+      },
     ],
     openAtStart: ["query-poi", "toolbar"]
   }

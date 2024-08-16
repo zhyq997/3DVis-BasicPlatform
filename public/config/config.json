@@ -2,11 +2,11 @@
   "map3d": {
     "scene": {
       "center": {
-        "lat": 31.686288,
-        "lng": 117.229619,
-        "alt": 11333.9,
-        "heading": 359.2,
-        "pitch": -39.5
+        "lat": 24.394019,
+        "lng": 117.992735,
+        "alt": 81427.5,
+        "heading": 353.6,
+        "pitch": -47.2
       },
       "scene3DOnly": false,
       "shadows": false,

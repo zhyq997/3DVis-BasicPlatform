@@ -38,9 +38,7 @@ export function onMounted(mapInstance) {
  * @returns {void} 无
  */
 export function onUnmounted() {
-  debugger
-  graphicLayer.clear()
-  underground.remove()
+  clear()
   map = null
 }
 
@@ -71,29 +69,11 @@ function addLayer() {
   // 创建矢量数据图层
   graphicLayer = new mars3d.layer.GraphicLayer()
   map.addLayer(graphicLayer)
+}
 
-  // 黄色盒子
-  const graphic = new mars3d.graphic.BoxEntity({
-    position: [117.218633, 31.843935, 41.43],
-    style: {
-      dimensions: new Cesium.Cartesian3(40.0, 30.0, 50.0),
-      fill: true,
-      color: "#ffff00",
-      opacity: 1
-    }
-  })
-  graphicLayer.addGraphic(graphic)
-
-  // 创建gltf模型
-  const graphicModel = new mars3d.graphic.ModelEntity({
-    position: [117.214494, 31.844015, 30],
-    style: {
-      url: "//data.mars3d.cn/gltf/mars/firedrill/xiaofangche2.gltf",
-      scale: 7,
-      minimumPixelSize: 50
-    }
-  })
-  graphicLayer.addGraphic(graphicModel)
+function clear() {
+  graphicLayer.clear()
+  underground.remove()
 }
 
 // 俯视视角
