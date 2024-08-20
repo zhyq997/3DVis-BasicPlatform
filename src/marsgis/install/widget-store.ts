@@ -11,6 +11,19 @@ const store: StoreOptions<WidgetState> = {
   state: {
     widgets: [
       {
+        component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/graphic-editor/index.vue"))),
+        name: "graphic-editor"
+        // meta: {
+        //   props: {
+        //     position: {
+        //       left: 50,
+        //       top: 10,
+        //       bottom: 50
+        //     }
+        //   }
+        // }
+      },
+      {
         component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/query-poi/index.vue"))),
         name: "query-poi",
         autoDisable: true
@@ -51,6 +64,21 @@ const store: StoreOptions<WidgetState> = {
       {
         component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/expImage/index.vue"))),
         name: "expImage",
+        group: "tools"
+      },
+      {
+        component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/bookmark/index.vue"))),
+        name: "bookmark",
+        group: "tools"
+      },
+      {
+        component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/draw/index.vue"))),
+        name: "draw",
+        group: "tools"
+      },
+      {
+        component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/mapSplit/index.vue"))),
+        name: "mapSplit",
         group: "tools"
       },
       {
@@ -122,7 +150,7 @@ const store: StoreOptions<WidgetState> = {
         component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/analysis/limitHeight/index.vue"))),
         name: "limitHeight",
         group: "analysis"
-      },
+      }
     ],
     openAtStart: ["query-poi", "toolbar"]
   }

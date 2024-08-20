@@ -15,8 +15,7 @@
           <a-menu @click="clickMenu">
             <a-menu-item v-for="child in item.children" :key="child.widget" :title="child.name">
               <!-- <mars-icon :icon="child.icon" width="18"></mars-icon> -->
-              <icon v-html="child.icon" class="my-icon">
-              </icon>
+              <icon v-html="child.icon" class="my-icon"> </icon>
               <span>{{ child.name }}</span>
             </a-menu-item>
           </a-menu>
@@ -33,7 +32,7 @@
  * @author 火星渣渣灰 2022-01-10
  */
 import { useWidget } from "@mars/common/store/widget"
-import Icon from '@ant-design/icons-vue';
+import Icon from "@ant-design/icons-vue"
 const { activate } = useWidget()
 
 const data = [
@@ -53,6 +52,21 @@ const data = [
         icon: `<svg width="1em" height="1em" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M24 4c-7.73 0-14 6.27-14 14 0 10.5 14 26 14 26s14-15.5 14-26c0-7.73-6.27-14-14-14zm0 19c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/><path d="M0 0h48v48h-48z" fill="none"/></svg>`,
         widget: "expImage"
       },
+      {
+        name: "视角书签",
+        icon: `<svg t="1724032876647" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4542" width="14" height="14"><path d="M169.53 67.6h681.36c23.52 0 42.58 19.07 42.58 42.58v820.87c0.01 7.22-3.64 13.95-9.7 17.88a21.28 21.28 0 0 1-20.28 1.58L510.2 792.81 156.93 950.47a21.295 21.295 0 0 1-29.98-19.42V110.18c0-23.51 19.06-42.58 42.58-42.58z m638.78 765.04V152.77H212.12v679.87l298.09-133.03 298.1 133.03z m-298.1-275.31l-125.15 65.79 23.89-139.34-101.23-98.71 139.94-20.36 62.56-126.77 62.6 126.77 139.89 20.36-101.23 98.71 23.85 139.34-125.12-65.79z m0 0" p-id="4543" fill="#2c2c2c"></path></svg>`,
+        widget: "bookmark"
+      },
+      {
+        name: "图上标绘",
+        icon: `<svg t="1724055110613" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5809" width="14" height="14"><path d="M160 575.616l461.44-461.44a40.768 40.768 0 0 1 57.6 0l230.72 230.72a40.832 40.832 0 0 1 0 57.6l-461.44 461.44-346.112 57.6z m59.712 30.784l-39.552 237.504 237.504-39.552 267.968-268.032-197.888-197.888z m533.824-138.048l94.592-94.592-197.888-197.824-94.592 94.592z" fill="#2c2c2c" p-id="5810"></path></svg>`,
+        widget: "draw"
+      },
+      {
+        name: "卷帘对比",
+        icon: `<svg t="1724055110613" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5809" width="14" height="14"><path d="M160 575.616l461.44-461.44a40.768 40.768 0 0 1 57.6 0l230.72 230.72a40.832 40.832 0 0 1 0 57.6l-461.44 461.44-346.112 57.6z m59.712 30.784l-39.552 237.504 237.504-39.552 267.968-268.032-197.888-197.888z m533.824-138.048l94.592-94.592-197.888-197.824-94.592 94.592z" fill="#2c2c2c" p-id="5810"></path></svg>`,
+        widget: "mapSplit"
+      }
     ]
   },
   {
@@ -125,7 +139,7 @@ const data = [
         name: "限高分析",
         icon: `<svg t="1723792067891" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5672" width="14" height="14"><path d="M56.8832 1024H0V0h56.8832z" fill="#2c2c2c" p-id="5673"></path><path d="M662.5792 247.7056L511.8976 97.1264 361.472 247.4496l-40.192-40.2432L491.8272 36.8128a28.4672 28.4672 0 0 1 40.192 0l170.752 170.8544z" fill="#2c2c2c" p-id="5674"></path><path d="M512.1536 995.584a28.3648 28.3648 0 0 1-20.1216-8.3456l-170.8032-170.6496 40.192-40.2432 150.6816 150.5792 150.4768-150.2208 40.192 40.2432-170.5472 170.3936a28.3648 28.3648 0 0 1-20.0704 8.2432z" fill="#2c2c2c" p-id="5675"></path><path d="M540.416 967.1168H483.5328V56.8832h56.8832z" fill="#2c2c2c" p-id="5676"></path><path d="M1024 1024h-56.8832V0H1024z" fill="#2c2c2c" p-id="5677"></path></svg>`,
         widget: "limitHeight"
-      },
+      }
     ]
   }
 ]
@@ -161,8 +175,6 @@ const clickMenu = ({ key }: any) => {
       background-color: var(--mars-select-bg);
     }
   }
-
-
 
   .mars-icon {
     margin-right: 5px;

@@ -17,7 +17,7 @@ export function onMounted(mapInstance) {
 
   measure = new mars3d.thing.Measure({
     label: {
-      color: "#ffffff",
+      color: "rgba(255, 0, 0, 1)",
       font_family: "楷体",
       font_size: 20,
       background: false
@@ -68,7 +68,7 @@ export async function measureLength() {
       type: "div",
       updateText: function (text, graphic) {
         // updateText是必须，用于动态更新 text
-        graphic.html = `<div class="marsGreenGradientPnl" >${text}</div>`
+        graphic.html = `<div class="marsGreenGradientPnl" style="color:rgb(255,255,255)">${text}</div>`
       },
       // 下面是graphic对应类型本身的参数
       html: `<div class="marsGreenGradientPnl" ></div>`,
@@ -156,56 +156,6 @@ export async function measurePoint() {
     //   </div>`
     // }
   })
-}
-
-function addDemoGraphic1(graphicLayer) {
-  const graphic = new mars3d.graphic.DistanceMeasure({
-    positions: [
-      [116.193794, 30.994415, 654.8],
-      [116.236077, 30.925154, 506.2],
-      [116.314569, 30.864239, 408.7],
-      [116.341924, 30.847984, 381.8],
-      [116.392754, 30.854264, 581.7],
-      [116.415222, 30.880092, 580.5],
-      [116.567457, 30.85223, 314.6]
-    ],
-    style: {
-      width: 5,
-      color: "#3388ff"
-    },
-    showAddText: true,
-    label: {
-      // 自定义显示label的graphic类型
-      type: "div",
-      updateText: function (text, graphic) {
-        // updateText是必须，用于动态更新 text
-        graphic.html = `<div class="marsGreenGradientPnl" >${text}</div>`
-      },
-      // 下面是graphic对应类型本身的参数
-      html: `<div class="marsGreenGradientPnl" ></div>`,
-      horizontalOrigin: Cesium.HorizontalOrigin.CENTER,
-      verticalOrigin: Cesium.VerticalOrigin.BOTTOM
-    },
-    attr: { remark: "示例1" }
-  })
-  graphicLayer.addGraphic(graphic)
-}
-
-function addDemoGraphic2(graphicLayer) {
-  const graphic = new mars3d.graphic.AreaMeasure({
-    positions: [
-      [116.361008, 31.128286, 802.2],
-      [116.375784, 31.029192, 868.6],
-      [116.497717, 31.063687, 497.5],
-      [116.509114, 31.146745, 577.1],
-      [116.425476, 31.184474, 676.2]
-    ],
-    style: {
-      color: "#ff0000"
-    },
-    attr: { remark: "示例2" }
-  })
-  graphicLayer.addGraphic(graphic)
 }
 
 export function openJSON(file) {
