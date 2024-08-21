@@ -64,8 +64,13 @@ const data = [
       },
       {
         name: "卷帘对比",
-        icon: `<svg t="1724055110613" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5809" width="14" height="14"><path d="M160 575.616l461.44-461.44a40.768 40.768 0 0 1 57.6 0l230.72 230.72a40.832 40.832 0 0 1 0 57.6l-461.44 461.44-346.112 57.6z m59.712 30.784l-39.552 237.504 237.504-39.552 267.968-268.032-197.888-197.888z m533.824-138.048l94.592-94.592-197.888-197.824-94.592 94.592z" fill="#2c2c2c" p-id="5810"></path></svg>`,
+        icon: `<svg width="14" height="14" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30 10H40C41.8856 10 42.8284 10 43.4142 10.5858C44 11.1716 44 12.1144 44 14V34C44 35.8856 44 36.8284 43.4142 37.4142C42.8284 38 41.8856 38 40 38H30" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M18 10H8C6.11438 10 5.17157 10 4.58579 10.5858C4 11.1716 4 12.1144 4 14V34C4 35.8856 4 36.8284 4.58579 37.4142C5.17157 38 6.11438 38 8 38H18" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M24 6V42" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path></svg>`,
         widget: "mapSplit"
+      },
+      {
+        name: "双屏对比",
+        icon: `<svg width="14" height="14" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 40H6C4.89543 40 4 39.1046 4 38V10C4 8.89543 4.89543 8 6 8H42C43.1046 8 44 8.89543 44 10V16" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M42 24H26C24.8954 24 24 24.8954 24 26V38C24 39.1046 24.8954 40 26 40H42C43.1046 40 44 39.1046 44 38V26C44 24.8954 43.1046 24 42 24Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"></path></svg>`,
+        widget: "compare"
       }
     ]
   },

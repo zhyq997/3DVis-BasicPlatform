@@ -1,5 +1,5 @@
 <template>
-  <mars-dialog :visible="true" right="10" top="60" title="卷帘对比" customClass="mapsplit-pannel">
+  <mars-dialog :visible="true" right="10" top="60" customClass="compare-pannel" title="分屏对比">
     <a-space :size="20">
       <mars-button @click="createMap">
         <mars-icon icon="split" :size="20"></mars-icon>
@@ -30,7 +30,7 @@ const destroyMap = () => {
 </script>
 
 <style lang="less">
-.mapsplit-pannel {
+.compare-pannel {
   background: transparent !important;
   backdrop-filter: none !important;
 

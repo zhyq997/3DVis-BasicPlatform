@@ -82,6 +82,11 @@ const store: StoreOptions<WidgetState> = {
         group: "tools"
       },
       {
+        component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/compare/index.vue"))),
+        name: "compare",
+        group: "tools"
+      },
+      {
         component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/analysis/visibility/index.vue"))),
         name: "visibility",
         group: "analysis"
