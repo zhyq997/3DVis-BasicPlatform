@@ -54,7 +54,8 @@ export function createControl() {
         name: "大雁塔",
         type: "3dtiles",
         url: "//data.mars3d.cn/3dtiles/qx-dyt/tileset.json",
-        position: { alt: -27 }
+        position: { alt: -27 },
+        flyTo: true
       }
     ],
     leftLayer: [
@@ -87,7 +88,7 @@ export function createControl() {
     <div style="position: absolute;top: 20px;left: 45px;width: 300px;height: 48px;line-height: 48px;border-radius: 3px;background-color: rgba(0,0,0,.6);font-size: 16px;color: #fff;text-align: center;pointer-events: none;"> 右侧影像：2022年8月卫星遥感影像 </div>
   `
   const splitter = mars3d.DomUtil.parseDom(addHTML, true)
-  mapSplit.container.appendChild(splitter)
+  // mapSplit.container.appendChild(splitter)
 }
 
 export function destroyControl() {

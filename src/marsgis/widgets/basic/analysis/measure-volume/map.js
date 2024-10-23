@@ -145,6 +145,7 @@ export function analysisMeasure() {
 
 // 清除
 export function clear() {
+  clearInterResult()
   measure.clear()
   measureVolume = null
   clearInterResult()

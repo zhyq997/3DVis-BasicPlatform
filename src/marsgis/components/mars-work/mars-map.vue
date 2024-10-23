@@ -34,71 +34,74 @@ const withKeyId = computed(() => `mars3d-container-${props.mapKey}`)
 
 const fetchJsonData = async (url: any) => {
   try {
-    const response = await mars3d.Util.fetchJson({ url });
-    return response;
+    const response = await mars3d.Util.fetchJson({ url })
+    return response
   } catch (error) {
-    console.error(`Error fetching data from ${url}:`, error);
-    return null;
+    console.error(`Error fetching data from ${url}:`, error)
+    return null
   }
 }
 
 const initMars3dWithData = (data) => {
   if (data.map3d) {
-    initMars3d(data.map3d);
+    initMars3d(data.map3d)
   } else {
-    initMars3d(data);
+    initMars3d(data)
   }
 }
 
 const fetchAllData = async () => {
   try {
-
-    const promises = props.urls.map(fetchJsonData);
-    const results = await Promise.all(promises);
-    const map3dConfigData = results[0];
-    const popupData = results[1];
+    const promises = props.urls.map(fetchJsonData)
+    const results = await Promise.all(promises)
+    const map3dConfigData = results[0]
+    const popupData = results[1]
 
     // 遍历 map3dConfigData.map3d.layers 并进行匹配和赋值
-    map3dConfigData.map3d.layers.forEach(layer => {
+    map3dConfigData.map3d.layers.forEach((layer) => {
       // 在 popupData.layers 中查找匹配的图层
       if (layer.pid) {
-        const matchingPopupLayer = popupData.layers.find(popupLayer => popupLayer.layers === layer.layers);
+        const matchingPopupLayer = popupData.layers.find((popupLayer) => popupLayer.layers === layer.layers)
 
         // 如果找到匹配的图层，则转换并赋值 popup 数据
         if (matchingPopupLayer) {
           debugger
-          layer.popup = transformPopupData(matchingPopupLayer.popup);
+          layer.popup = transformPopupData(matchingPopupLayer.popup)
         }
       }
-    });
-
+    })
 
     if (map3dConfigData) {
-      initMars3dWithData(map3dConfigData);
+      initMars3dWithData(map3dConfigData)
     }
-
   } catch (error) {
-    console.error("Error fetching data:", error);
+    console.error("Error fetching data:", error)
   }
 }
 
 // 将 popup 数据转换为指定格式的函数
 function transformPopupData(popupArray: any) {
-  let tableRows = popupArray.map((data: { name: String; field: String }) => `
+  let tableRows = popupArray
+    .map(
+      (data: { name: String; field: String }) => `
         <tr>
           <td style="border: 1px solid black;">&nbsp${data.name}</td>
           <td style="border: 1px solid black;">&nbsp{${data.field}}</td>
-        </tr>`).join('');
+        </tr>`
+    )
+    .join("")
 
-  return [{
-    type: 'html',
-    html: `
+  return [
+    {
+      type: "html",
+      html: `
           <table style="border-collapse: collapse; border: 1px solid black;">
             <tbody>
               ${tableRows}
             </tbody>
           </table>`
-  }];
+    }
+  ]
 }
 
 onMounted(() => {
@@ -107,7 +110,6 @@ onMounted(() => {
   //   console.log("configdata", data);
 
   //   // const configPopup = `${process.env.BASE_URL}config/config-anxi.json?time=${new Date().getTime()}`
-
 
   //   if (data.map3d) {
   //     initMars3d(data.map3d)
@@ -120,17 +122,12 @@ onMounted(() => {
     rectangle: [0, 0, 160, 40] // x位置,y位置,宽度，高度
   })
 
-
   fetchAllData()
 })
-
-
 
 // onload事件将在地图渲染后触发
 const emit = defineEmits(["onload"])
 const initMars3d = (option: any) => {
-
-
   option = mars3d.Util.merge(option, toRaw(props.options)) // 合并配置
   map = new mars3d.Map(withKeyId.value, option)
 
@@ -241,7 +238,7 @@ onUnmounted(() => {
   height: 100%;
 }
 
-.cesium-viewer-toolbar>.cesium-toolbar-button,
+.cesium-viewer-toolbar > .cesium-toolbar-button,
 .cesium-navigationHelpButton-wrapper,
 .cesium-viewer-geocoderContainer {
   margin-bottom: 5px;
@@ -370,15 +367,15 @@ onUnmounted(() => {
 .mars3d-sub-menu {
   background-color: rgba(23, 49, 71, 0.8);
 
-  >li>a:hover,
-  >li>a:focus,
-  >li>.active {
+  > li > a:hover,
+  > li > a:focus,
+  > li > .active {
     background-color: var(--mars-hover-btn-bg, #3ea6ff);
   }
 
-  >.active>a,
-  >.active>a:hover,
-  >.active>a:focus {
+  > .active > a,
+  > .active > a:hover,
+  > .active > a:focus {
     background-color: var(--mars-hover-btn-bg, #3ea6ff);
   }
 }
@@ -401,7 +398,6 @@ onUnmounted(() => {
   border: 1px solid #209ffd;
   background: #209ffd1c;
   color: var(--mars-text-color);
-
 }
 
 .mars3d-tooltip {

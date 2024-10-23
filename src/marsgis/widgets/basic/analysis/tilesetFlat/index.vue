@@ -41,8 +41,7 @@
         </a-col>
 
         <a-col :span="24">
-          <mars-table :pagination="{ pageSize: 5 }" :row-selection="rowSelection" :dataSource="dataSource"
-            :columns="columns" size="small" bordered>
+          <mars-table :pagination="{ pageSize: 5 }" :row-selection="rowSelection" :dataSource="dataSource" :columns="columns" size="small" bordered>
             <template #bodyCell="{ column, record }">
               <template v-if="column.key === 'caozuo'">
                 <a-space>
@@ -115,11 +114,12 @@ const rowSelection = {
     mapWork.showHideArea(record.key, selected)
   }
 }
+let counter = 0
 
 mapWork.eventTarget.on("addItem", function (event: any) {
   const item = event.area
 
-  dataSource.value.push({ key: item.id, name: "压平区" + item.id, lineId: item.lineId })
+  dataSource.value.push({ key: item.id, name: "压平区" + ++counter, lineId: item.lineId })
   rowKeys.value.push(item.id)
 })
 
@@ -164,6 +164,7 @@ const btnDraw = () => {
 }
 // 清除
 const removeAll = () => {
+  counter = 0
   mapWork.removeAll()
   // 清除表格
   dataSource.value = []
@@ -180,7 +181,7 @@ const changeFlatHeight = () => {
 
 .miFont {
   margin-top: 10px;
-  color: var(--mars-text-color)
+  color: var(--mars-text-color);
 }
 
 :deep(.ant-table-pagination) {

@@ -1,5 +1,5 @@
 <template>
-  <mars-dialog right="10" top="60" width="330">
+  <mars-dialog right="10" top="60" width="330" title="方量分析">
     <div class="f-mb height">
       <a-space>
         <span class="mars-pannel-item-label">基准面高(米):</span>
@@ -34,7 +34,6 @@
       2. 填方量：计算“基准面”与“墙底部”之间的缺少部分进行填平的体积。
     </p>
   </mars-dialog>
-
 </template>
 
 <script setup lang="ts">
@@ -103,7 +102,7 @@ mapWork.eventTarget.on("heightVal", function (event: any) {
 }
 
 .info {
-  color: rgb(0, 0, 0)
+  color: rgb(0, 0, 0);
 }
 
 .height {

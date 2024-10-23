@@ -88,7 +88,8 @@ export function updateMarker(hasCenter: boolean, jd: number, wd: number, alt: nu
         color: "#3388ff",
         pixelSize: 10,
         outlineColor: "#ffffff",
-        outlineWidth: 2
+        outlineWidth: 2,
+        visibleDepth: false
       }
     })
     map.graphicLayer.addGraphic(pointEntity)

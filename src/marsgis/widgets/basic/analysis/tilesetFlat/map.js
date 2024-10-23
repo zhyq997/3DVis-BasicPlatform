@@ -4,7 +4,6 @@ export let map // mars3d.Map三维地图对象
 
 let lineLayer // 矢量图层对象,用于graphic绑定展示
 let tilesetLayer // 3dtiles模型；添加模型选择
-
 export const mapOptions = {
   scene: {
     center: { lat: 34.215539, lng: 108.959582, alt: 817, heading: 2, pitch: -46 }

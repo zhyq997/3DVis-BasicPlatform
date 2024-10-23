@@ -85,7 +85,6 @@ const stopPlay = () => {
   width: 220px;
 }
 
-
 .btn {
   width: 137px;
   margin-top: 12px;
@@ -94,7 +93,6 @@ const stopPlay = () => {
     margin-left: 9px;
   }
 }
-
 
 // 有竖线的标题
 .title-vertical_line {

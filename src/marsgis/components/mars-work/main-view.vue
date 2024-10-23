@@ -6,8 +6,7 @@
       </div>
       <template v-if="loaded">
         <template v-for="comp in widgets" :key="comp.key">
-          <mars-widget v-if="openAtStart.includes(comp.name) && comp.visible" v-model:visible="comp.visible"
-            :widget="comp" />
+          <mars-widget v-if="openAtStart.includes(comp.name) && comp.visible" v-model:visible="comp.visible" :widget="comp" />
         </template>
       </template>
     </div>
@@ -34,7 +33,6 @@ const widgetStore = useWidgetStore()
 const widgets = computed(() => widgetStore.state.widgets)
 const openAtStart = computed(() => widgetStore.state.openAtStart)
 
-
 const props = withDefaults(
   defineProps<{
     mapOptions?: any
@@ -47,8 +45,8 @@ const props = withDefaults(
 )
 let configUrls: String[] = []
 
-const configUrl1 = (props.url === "" || !props.url) ? `${process.env.BASE_URL}config/config.json?time=${new Date().getTime()}` : props.url
-const configUrl2 = (props.url === "" || !props.url) ? `${process.env.BASE_URL}config/config-anxi-popup.json?time=${new Date().getTime()}` : props.url
+const configUrl1 = props.url === "" || !props.url ? `${process.env.BASE_URL}config/config.json?time=${new Date().getTime()}` : props.url
+const configUrl2 = props.url === "" || !props.url ? `${process.env.BASE_URL}config/config-anxi-popup.json?time=${new Date().getTime()}` : props.url
 
 configUrls.push(configUrl1)
 configUrls.push(configUrl2)

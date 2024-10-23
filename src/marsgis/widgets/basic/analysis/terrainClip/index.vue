@@ -6,8 +6,7 @@
           <a-form-item>
             <a-space>
               <a-checkbox v-model:checked="formState.enabledWadi" @change="chkClippingPlanes"> 是否挖地 </a-checkbox>
-              <a-checkbox v-model:checked="formState.enabledWaiqiege" @change="chkUnionClippingRegions"> 是否外切割
-              </a-checkbox>
+              <a-checkbox v-model:checked="formState.enabledWaiqiege" @change="chkUnionClippingRegions"> 是否外切割 </a-checkbox>
               <a-checkbox v-model:checked="formState.enabledShendu" @change="chkTestTerrain"> 深度检测 </a-checkbox>
             </a-space>
           </a-form-item>
@@ -15,8 +14,7 @@
 
         <a-col :span="24">
           <a-form-item label="开挖深度" :labelCol="labelCol" :labelAlign="labelAlign">
-            <mars-input-number v-model:value="formState.txtHeight" @change="changeClipHeight" :step="1" :min="-500"
-              :max="999" />
+            <mars-input-number v-model:value="formState.txtHeight" @change="changeClipHeight" :step="1" :min="-500" :max="999" />
           </a-form-item>
         </a-col>
 
@@ -32,10 +30,17 @@
           </a-form-item>
         </a-col>
 
-
         <a-col :span="24">
-          <mars-table class="mars-noHeader-table" :pagination="false" :row-selection="rowSelection"
-            :dataSource="dataSource" :columns="columns" size="small" :showHeader="false" :bordered="false">
+          <mars-table
+            class="mars-noHeader-table"
+            :pagination="false"
+            :row-selection="rowSelection"
+            :dataSource="dataSource"
+            :columns="columns"
+            size="small"
+            :showHeader="false"
+            :bordered="false"
+          >
             <template #bodyCell="{ column, record }">
               <template v-if="column.key === 'caozuo'">
                 <div class="table-tools">
@@ -125,6 +130,7 @@ mapWork.eventTabel.on("tableObject", function (event: any) {
   if (!event.tableItem) {
     return
   }
+  debugger
   dataSource.value.push(event.tableItem)
   rowKeys.value.push(event.tableItem.key)
 })

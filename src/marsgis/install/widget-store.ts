@@ -87,6 +87,11 @@ const store: StoreOptions<WidgetState> = {
         group: "tools"
       },
       {
+        component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/roam/index.vue"))),
+        name: "roam",
+        group: "tools"
+      },
+      {
         component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/analysis/visibility/index.vue"))),
         name: "visibility",
         group: "analysis"
@@ -109,11 +114,6 @@ const store: StoreOptions<WidgetState> = {
       {
         component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/analysis/measure-volume/index.vue"))),
         name: "measure-volume",
-        group: "analysis"
-      },
-      {
-        component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/analysis/sightline-terrain/index.vue"))),
-        name: "sightline-terrain",
         group: "analysis"
       },
       {
@@ -154,6 +154,11 @@ const store: StoreOptions<WidgetState> = {
       {
         component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/analysis/limitHeight/index.vue"))),
         name: "limitHeight",
+        group: "analysis"
+      },
+      {
+        component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/analysis/measure-section/index.vue"))),
+        name: "measure-section",
         group: "analysis"
       }
     ],

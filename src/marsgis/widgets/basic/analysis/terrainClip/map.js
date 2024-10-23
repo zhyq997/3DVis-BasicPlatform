@@ -3,7 +3,7 @@ import * as mars3d from "mars3d"
 
 export let map // mars3d.Map三维地图对象
 let terrainClip
-
+let counter = 0
 export const mapOptions = {
   scene: {
     center: { lat: 30.827414, lng: 116.378229, alt: 16933, heading: 0, pitch: -56 }
@@ -27,6 +27,7 @@ export function onMounted(mapInstance) {
  * @returns {void} 无
  */
 export function onUnmounted() {
+  counter = 0
   removeAll()
   map = null
 }
@@ -105,7 +106,8 @@ export function chkTestTerrain(val) {
 
 // 区域表格添加一行记录
 function addTableItem(item) {
-  eventTabel.fire("tableObject", { tableItem: { key: item.id, name: "开挖区域" + item.id, show: item.show } })
+  counter++
+  eventTabel.fire("tableObject", { tableItem: { key: item.id, name: "开挖区域" + counter, show: item.show } })
 }
 
 // 表格操作

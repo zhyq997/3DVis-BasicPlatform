@@ -1,5 +1,6 @@
 import { Data } from "@icon-park/svg"
 import * as mars3d from "mars3d"
+import { $alert, $message, $showLoading, $hideLoading } from "@mars/components/mars-ui/index"
 
 export let map // mars3d.Map三维地图对象
 let shadows
@@ -95,7 +96,7 @@ export function clearArea() {
 }
 
 export async function drawArea(date) {
-  // globalNotify("已知问题提示", `(1) 不同视角下ShadowMap精度存在差异，分析结果会存在误差，尽量俯视整个区域进行分析。`)
+  $message("提示：不同视角下ShadowMap精度存在差异，分析结果会存在误差，尽量俯视整个区域进行分析。")
 
   map.graphicLayer.clear()
   const graphic = await map.graphicLayer.startDraw({

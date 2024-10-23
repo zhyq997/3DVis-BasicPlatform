@@ -45,9 +45,9 @@ export function onMounted(mapInstance) {
     }
   })
 
-  setTimeout(() => {
-    addTestData()
-  }, 10000)
+  // setTimeout(() => {
+  //   addTestData()
+  // }, 1000)
 }
 
 /**
@@ -55,6 +55,8 @@ export function onMounted(mapInstance) {
  * @returns {void} 无
  */
 export function onUnmounted() {
+  map.off(mars3d.EventType.addLayer)
+  destroyControl()
   map = null
 }
 
@@ -99,7 +101,6 @@ export function destroyControl() {
     $message("控件已销毁,无需重复销毁!")
     return
   }
-
   map.removeControl(mapSplit)
   mapSplit = null
   const mapOld = document.getElementById("centerDiv")
@@ -113,7 +114,8 @@ function addTestData() {
     position: { lng: 116.267315, lat: 31.457617, alt: 103 },
     scale: 100,
     maximumScreenSpaceError: 2,
-    cullWithChildrenBounds: false
+    cullWithChildrenBounds: false,
+    flyTo: true
   })
   map.addLayer(layer)
 }

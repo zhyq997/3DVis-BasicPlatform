@@ -46,7 +46,7 @@ export function onMounted(mapInstance) {
  * @returns {void} 无
  */
 export function onUnmounted() {
-  clear()
+  clearAll()
   map = null
 }
 
@@ -140,6 +140,10 @@ export async function drawPoly2() {
 }
 
 export function clear() {
+  modelPlanClip.clear()
+}
+
+export function clearAll() {
   map.graphicLayer.clear()
   modelPlanClip.clear()
 }

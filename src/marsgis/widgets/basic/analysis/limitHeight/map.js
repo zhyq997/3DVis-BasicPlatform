@@ -38,6 +38,7 @@ export function onMounted(mapInstance) {
 
   // 加3dtiles模型
   tilesetLayer = new mars3d.layer.TilesetLayer({
+    pid: -1,
     flyTo: true,
     name: "合肥天鹅湖",
     type: "3dtiles",

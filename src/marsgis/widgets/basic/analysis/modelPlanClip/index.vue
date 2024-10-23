@@ -1,7 +1,7 @@
 <template>
   <mars-dialog :visible="true" right="10" top="60" width="390" title="模型剖切">
     <div class="grid-item">
-      <div class="grid-item_0"> 单个裁剪面: </div>
+      <div class="grid-item_0">单个裁剪面:</div>
       <mars-button class="grid-item_1" @click="drawLine">按绘制线裁剪</mars-button>
       <mars-button @click="mapWork.clippingType('ZR')">切顶部</mars-button>
       <mars-button @click="mapWork.clippingType('Z')">切底部</mars-button>
@@ -12,7 +12,7 @@
     </div>
 
     <div class="grid-item grid-item_more">
-      <div class="grid-item_0"> 多个裁剪面: </div>
+      <div class="grid-item_0">多个裁剪面:</div>
       <mars-button @click="drawExtent">绘制矩形</mars-button>
       <mars-button @click="drawPoly">绘制面</mars-button>
       <mars-button class="grid-item_1" @click="drawPoly2">绘制面（外切）</mars-button>
@@ -110,7 +110,6 @@ const clear = () => {
   }
 }
 
-
 .grid-item_more {
   grid-template-columns: 75px repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
@@ -131,6 +130,5 @@ const clear = () => {
   :deep(.ant-input-number-group-addon) {
     padding: 0 8px 0 0;
   }
-
 }
 </style>

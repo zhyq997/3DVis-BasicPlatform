@@ -1,5 +1,5 @@
 <template>
-  <mars-dialog :visible="true" right="10" top="60" title="限高分析">
+  <mars-dialog :visible="true" right="10" top="60" title="限高分析" width="330">
     <div class="f-mb">
       <a-space>
         <span>分析区域</span>

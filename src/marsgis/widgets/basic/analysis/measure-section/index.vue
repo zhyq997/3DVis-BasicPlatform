@@ -1,18 +1,17 @@
 <template>
   <!-- UI面板 -->
-  <mars-dialog :visible="true" right="10" top="10" width="330">
+  <mars-dialog :visible="true" right="10" top="60" width="330" title="剖面分析">
     <a-space>
       <mars-button class="btn" @click="measureSection">绘制线</mars-button>
       <mars-button class="btn" danger @click="clear">清除</mars-button>
     </a-space>
+    <!-- ecahrt图表 -->
+    <mars-dialog v-model:visible="isShow" :left="70" :right="240" :bottom="40">
+      <div class="echatsView">
+        <div id="echartsView1" style="width: 100%; height: 100%"></div>
+      </div>
+    </mars-dialog>
   </mars-dialog>
-  <!-- ecahrt图表 -->
-  <mars-dialog v-model:visible="isShow" :left="70" :right="240" :bottom="40">
-    <div class="echatsView">
-      <div id="echartsView1" style="width: 100%; height: 100%"></div>
-    </div>
-  </mars-dialog>
-
 </template>
 
 <script setup lang="ts">
@@ -119,7 +118,7 @@ function setEchartsData(data: any) {
         axisLabel: {
           show: true,
           formatter: "{value} 米",
-          color: "#fff"
+          color: "#000"
         },
         data: data.arrLen
       }
@@ -132,7 +131,7 @@ function setEchartsData(data: any) {
         min: getMinZ(arrPoint),
         axisLabel: {
           formatter: "{value} 米",
-          color: "#fff"
+          color: "#000"
         }
       }
     ],
@@ -193,6 +192,6 @@ function getMinZ(arr: any) {
 }
 
 .btn {
-  width: 146px;
+  width: 145px;
 }
 </style>

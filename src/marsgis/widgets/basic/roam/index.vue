@@ -3,7 +3,7 @@
     <div class="f-mb f-tac">
       <a-space-compact style="width: 100%">
         <mars-input v-model:value="formState.input" placeholder="输入名称"></mars-input>
-        <mars-button @click="butAddTxtName">添加</mars-button>
+        <mars-button @click="butAddTxtName">新增路线</mars-button>
       </a-space-compact>
     </div>
     <div class="bookmarkView">
@@ -33,7 +33,7 @@ useLifecycle(mapWork)
 const formState = reactive({
   input: "",
   found: false,
-  imgObject: [{ name: "无数据", img: "", center: "" }]
+  imgObject: [{ name: "没有匹配的值", img: "", center: "" }]
 })
 
 onMounted(() => {

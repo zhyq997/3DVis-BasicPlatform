@@ -1,5 +1,5 @@
 <template>
-  <mars-dialog :visible="true" right="10" top="60" customClass="compare-pannel" title="分屏对比">
+  <mars-dialog :visible="true" right="10" top="60" customClass="compare-pannel" title="双屏对比" width="330">
     <a-space :size="20">
       <mars-button @click="createMap">
         <mars-icon icon="split" :size="20"></mars-icon>

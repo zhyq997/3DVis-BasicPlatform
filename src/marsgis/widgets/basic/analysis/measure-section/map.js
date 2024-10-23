@@ -33,14 +33,14 @@ export function onMounted(mapInstance) {
   // 触发事件：开始分析前
   measureObj.on(mars3d.EventType.start, function (e) {
     // console.log("开始分析", e)
-    showLoading()
+    // showLoading()
   })
 
   // 触发事件：异步分析完成后
   measureObj.on(mars3d.EventType.end, function (e) {
     // console.log("分析结束", e)
 
-    hideLoading()
+    // hideLoading()
     if (e.graphic?.type === mars3d.graphic.SectionMeasure.type) {
       eventTarget.fire("measureEnd", e)
     }
@@ -56,7 +56,7 @@ export function onMounted(mapInstance) {
   })
 
   // 加一些演示数据
-  addDemoGraphic1(measureObj.graphicLayer)
+  // addDemoGraphic1(measureObj.graphicLayer)
 }
 /**
  * 释放当前地图业务的生命周期函数
@@ -86,8 +86,6 @@ function addDemoGraphic1(graphicLayer) {
   })
   graphicLayer.addGraphic(graphic)
 }
-
-
 
 export function removeAll() {
   measureObj.clear()
