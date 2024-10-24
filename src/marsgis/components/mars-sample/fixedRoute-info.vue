@@ -16,7 +16,6 @@
           <p>已漫游时间</p>
         </div>
       </a-space>
-
     </div>
 
     <div class="postions">
@@ -36,7 +35,6 @@
           <p>漫游高程</p>
         </div>
       </a-space>
-
     </div>
 
     <div class="all">
@@ -49,7 +47,6 @@
         <p>总时长</p>
       </div>
     </div>
-
   </mars-dialog>
 </template>
 
@@ -89,7 +86,6 @@ const formState: UnwrapRef<FormState> = reactive({
   percent: 0
 })
 
-
 const props = withDefaults(
   defineProps<{
     top: string
@@ -98,7 +94,6 @@ const props = withDefaults(
     top: null
   }
 )
-
 
 onMounted(() => {
   if (mapWork.fixedRoute?.info) {
@@ -111,7 +106,6 @@ onMounted(() => {
   mapWork.eventTarget.on("endRoam", (item: any) => {
     showInfo(mapWork.fixedRoute.info)
   })
-
 })
 
 function showInfo(item: any) {
@@ -178,8 +172,6 @@ function showInfo(item: any) {
     border-radius: 2px;
     background: rgba(255, 255, 255, 0.2);
     text-align: center;
-
-
   }
 }
 

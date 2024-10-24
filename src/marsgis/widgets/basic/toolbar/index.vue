@@ -74,7 +74,7 @@ const data = [
       },
       {
         name: "飞行漫游",
-        icon: `<svg width="14" height="14" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 40H6C4.89543 40 4 39.1046 4 38V10C4 8.89543 4.89543 8 6 8H42C43.1046 8 44 8.89543 44 10V16" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M42 24H26C24.8954 24 24 24.8954 24 26V38C24 39.1046 24.8954 40 26 40H42C43.1046 40 44 39.1046 44 38V26C44 24.8954 43.1046 24 42 24Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"></path></svg>`,
+        icon: `<svg t="1729735529183" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4254" width="14" height="14"><path d="M869.146853 431.843357H726.825175l-254.836364-313.6H354.372028l117.572028 313.6H231.876923L131.490909 352.268531H61.986014l59.211189 236.397203h350.746853L354.372028 902.265734h117.572028l254.836364-313.6h196.027972c16.872727 0 39.205594 0 39.205594-39.205594 0-52.095105-40.637762-117.572028-92.822378-117.572028V431.888112z" p-id="4255" fill="#2c2c2c"></path></svg>`,
         widget: "roam"
       }
     ]

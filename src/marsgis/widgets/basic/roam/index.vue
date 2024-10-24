@@ -15,7 +15,18 @@
       >
         <img class="markImg" :src="value.img" @click="flytoView(value)" v-show="formState.found" />
         <p>{{ value.name }}</p>
-        <mars-icon icon="delete" class="deleteImg" color="var(--mars-text-color)" @click="butDeleteTxtName(index)" v-show="formState.found" />
+        <a-tooltip placement="bottom">
+          <template #title>
+            <span>删除</span>
+          </template>
+          <mars-icon icon="delete" class="deleteImg" color="var(--mars-text-color)" @click="btnDeleteTxtName(index)" v-show="formState.found" />
+        </a-tooltip>
+        <a-tooltip placement="bottom">
+          <template #title>
+            <span>开始漫游</span>
+          </template>
+          <PlayCircleOutlined v-show="formState.found" class="flyImg" />
+        </a-tooltip>
       </div>
     </div>
   </mars-dialog>
@@ -26,6 +37,7 @@ import { onMounted, reactive } from "vue"
 import * as mapWork from "./map.js"
 import { $message } from "@mars/components/mars-ui/index"
 import useLifecycle from "@mars/common/uses/use-lifecycle"
+import { PlayCircleOutlined } from "@ant-design/icons-vue"
 
 // 启用map.ts生命周期
 useLifecycle(mapWork)
@@ -33,7 +45,7 @@ useLifecycle(mapWork)
 const formState = reactive({
   input: "",
   found: false,
-  imgObject: [{ name: "没有匹配的值", img: "", center: "" }]
+  imgObject: [{ name: "没有匹配的值", img: "", center: "", graphics: {} }]
 })
 
 onMounted(() => {
@@ -80,9 +92,14 @@ const butAddTxtName = () => {
     $message(name + " 已存在，请更换名称!")
     return
   }
+  $message("请绘制飞行轨迹!")
+  mapWork.graphicLayer.clear()
+  mapWork.drawPolyline().then(function (graphic) {
+    console.log("绘制矢量对象完成", graphic)
+    mapWork.butAddTxtName(name)
+  })
 
   // 动态的获取index
-  mapWork.butAddTxtName(name)
 
   // UI处理
   formState.input = ""
@@ -91,7 +108,6 @@ const butAddTxtName = () => {
 // 触发事件
 mapWork.eventTarget.on("addImgObject", (event: any) => {
   formState.imgObject.push(event.item)
-
   // 记录到历史
   localStorage.setItem("bookmark", JSON.stringify(formState.imgObject))
 })
@@ -99,13 +115,17 @@ mapWork.eventTarget.on("addImgObject", (event: any) => {
 // 视角操作
 const flytoView = (val: any) => {
   mapWork.flytoView(val.center)
+  mapWork.graphicLayer.clear()
+  mapWork.graphicLayer.addGraphic(val.graphics)
 }
 
-const butDeleteTxtName = (index: number) => {
+const btnDeleteTxtName = (index: number) => {
   formState.imgObject.splice(index, 1)
 
+  mapWork.graphicLayer.clear()
+
   if (formState.imgObject.length === 0) {
-    formState.imgObject = [{ name: "没有匹配的值", img: "", center: "" }]
+    formState.imgObject = [{ name: "没有匹配的值", img: "", center: "", graphics: {} }]
     formState.found = false
     localStorage.removeItem("bookmark")
     return
@@ -185,12 +205,23 @@ const butDeleteTxtName = (index: number) => {
 }
 
 .deleteImg {
-  width: 54px;
-  height: 19px;
+  width: 14px;
+  height: 14px;
   border: none;
   position: absolute;
-  top: 178px;
-  right: -25px;
+  top: 176px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0);
+  border-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+.flyImg {
+  width: 14px;
+  height: 14px;
+  border: none;
+  position: absolute;
+  top: 176px;
+  right: 40px;
   background-color: rgba(0, 0, 0, 0);
   border-color: rgba(0, 0, 0, 0);
   cursor: pointer;

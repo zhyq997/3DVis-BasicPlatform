@@ -1,7 +1,8 @@
 import * as mars3d from "mars3d"
 
 export let map // mars3d.Map三维地图对象
-
+export let graphicLayer // 矢量图层对象
+export let graphic
 // 需要覆盖config.json中地图属性参数（当前示例框架中自动处理合并）
 export const mapOptions = {
   scene: {
@@ -20,7 +21,14 @@ export const eventTarget = new mars3d.BaseClass()
 export function onMounted(mapInstance) {
   map = mapInstance // 记录map
 
-  const graphicLayer = new mars3d.layer.GraphicLayer()
+  graphicLayer = new mars3d.layer.GraphicLayer({
+    // isRestorePositions: true,
+    hasEdit: true,
+    isAutoEditing: false // 绘制完成后是否自动激活编辑
+    // drawAddEventType: false,
+    // drawEndEventType: mars3d.EventType.rightClick,
+    // drawDelEventType: mars3d.EventType.middleClick
+  })
   map.addLayer(graphicLayer)
 }
 
@@ -37,7 +45,8 @@ export function butAddTxtName(name) {
   // 动态的获取index
   const item = {
     name,
-    center: map.getCameraView()
+    center: map.getCameraView(),
+    graphics: graphic.toJSON()
   }
 
   map
@@ -54,4 +63,17 @@ export function butAddTxtName(name) {
 // 飞向视角
 export function flytoView(center) {
   map.setCameraView(center)
+}
+
+export async function drawPolyline() {
+  graphic = await graphicLayer.startDraw({
+    type: "polyline",
+    style: {
+      color: "#ffff00",
+      width: 3,
+      clampToGround: true
+    }
+  })
+  return graphic
+  // console.log("完成了draw标绘", graphic)
 }
