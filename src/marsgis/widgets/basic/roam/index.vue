@@ -21,11 +21,56 @@
           </template>
           <mars-icon icon="delete" class="deleteImg" color="var(--mars-text-color)" @click="btnDeleteTxtName(index)" v-show="formState.found" />
         </a-tooltip>
-        <a-tooltip placement="bottom">
+        <a-tooltip placement="bottom" v-if="!value.isStart && formState.found">
           <template #title>
             <span>开始漫游</span>
           </template>
-          <PlayCircleOutlined v-show="formState.found" class="flyImg" />
+          <!-- <PlayCircleOutlined v-show="formState.found" class="flyImg" @click="startRoam(value)" /> -->
+          <icon class="flyImg" @click="startRoam(value, index)">
+            <template #component>
+              <svg
+                t="1729750931011"
+                class="icon"
+                viewBox="0 0 1024 1024"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                p-id="6252"
+                width="14"
+                height="14"
+              >
+                <path
+                  d="M512 1024A512 512 0 1 1 512 0a512 512 0 0 1 0 1024z m3.008-92.992a416 416 0 1 0 0-832 416 416 0 0 0 0 832zM383.232 287.616l384 224.896-384 223.104v-448z"
+                  fill="#2c2c2c"
+                  p-id="6253"
+                ></path>
+              </svg>
+            </template>
+          </icon>
+        </a-tooltip>
+        <a-tooltip placement="bottom" v-if="value.isStart && formState.found">
+          <template #title>
+            <span>结束漫游</span>
+          </template>
+          <icon class="flyImg" @click="stopRoam(index)">
+            <template #component>
+              <svg
+                t="1729750966037"
+                class="icon"
+                viewBox="0 0 1024 1024"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                p-id="7355"
+                width="14"
+                height="14"
+              >
+                <path
+                  d="M512 1024A512 512 0 1 1 512 0a512 512 0 0 1 0 1024z m3.008-92.992a416 416 0 1 0 0-832 416 416 0 0 0 0 832zM320 320h384v384H320V320z"
+                  fill="#262626"
+                  p-id="7356"
+                ></path>
+              </svg>
+            </template>
+          </icon>
         </a-tooltip>
       </div>
     </div>
@@ -33,23 +78,44 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, reactive } from "vue"
+import { onMounted, reactive, onUnmounted } from "vue"
 import * as mapWork from "./map.js"
-import { $message } from "@mars/components/mars-ui/index"
-import useLifecycle from "@mars/common/uses/use-lifecycle"
-import { PlayCircleOutlined } from "@ant-design/icons-vue"
+import { $alert, $message, $showLoading, $hideLoading } from "@mars/components/mars-ui/index"
 
+import useLifecycle from "@mars/common/uses/use-lifecycle"
+import Icon from "@ant-design/icons-vue"
 // 启用map.ts生命周期
 useLifecycle(mapWork)
 
 const formState = reactive({
   input: "",
   found: false,
-  imgObject: [{ name: "没有匹配的值", img: "", center: "", graphics: {} }]
+  imgObject: [{ name: "没有匹配的值", img: "", center: "", graphics: {}, isStart: false, isPause: false }]
 })
+
+function udpateState(index) {
+  formState.imgObject.map((item) => {
+    item.isStart = false
+    item.isPause = false
+  })
+  if (index === -1) {
+    return
+  }
+  setTimeout(() => {
+    formState.imgObject[index].isStart = mapWork.fixedRoute.isStart
+    formState.imgObject[index].isPause = mapWork.fixedRoute.isPause
+  }, 100)
+}
 
 onMounted(() => {
   getLocalStorage()
+})
+
+onUnmounted(() => {
+  formState.imgObject.map((item) => {
+    item.isStart = false
+    item.isPause = false
+  })
 })
 
 // 读取历史记录
@@ -114,9 +180,32 @@ mapWork.eventTarget.on("addImgObject", (event: any) => {
 
 // 视角操作
 const flytoView = (val: any) => {
+  mapWork.stopRoam()
+  udpateState(-1)
   mapWork.flytoView(val.center)
   mapWork.graphicLayer.clear()
   mapWork.graphicLayer.addGraphic(val.graphics)
+}
+
+// const startRoam = (val: any, index: number) => {
+//   mapWork.stopRoam()
+//   mapWork.startRoam(val.graphics.positions)
+//   udpateState(index)
+// }
+
+const startRoam = async (val: any, index: number) => {
+  mapWork.stopRoam()
+  try {
+    await mapWork.startRoam(val.graphics.positions) // 等待 startRoam 完成
+    udpateState(index) // 然后运行 udpateState
+  } catch (error) {
+    console.error("Error starting roam:", error)
+  }
+}
+
+const stopRoam = (index: number) => {
+  mapWork.stopRoam()
+  udpateState(index)
 }
 
 const btnDeleteTxtName = (index: number) => {
@@ -125,7 +214,7 @@ const btnDeleteTxtName = (index: number) => {
   mapWork.graphicLayer.clear()
 
   if (formState.imgObject.length === 0) {
-    formState.imgObject = [{ name: "没有匹配的值", img: "", center: "", graphics: {} }]
+    formState.imgObject = [{ name: "没有匹配的值", img: "", center: "", graphics: {}, isStart: false, isPause: false }]
     formState.found = false
     localStorage.removeItem("bookmark")
     return
@@ -170,10 +259,14 @@ const btnDeleteTxtName = (index: number) => {
   cursor: pointer;
 }
 
+.addNewImg + .addNewImg {
+  margin-top: 22px;
+}
+
 .addNewImg {
   position: relative;
   border: 1px solid white;
-  margin-top: 22px;
+  // margin-top: 22px;
   border: 1px solid rgba(0, 138, 255, 0.5);
   padding: 2px 5px;
   background-color: rgba(0, 136, 255, 0.76);

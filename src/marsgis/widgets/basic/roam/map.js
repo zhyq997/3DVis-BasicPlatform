@@ -1,8 +1,10 @@
 import * as mars3d from "mars3d"
+import { $alert, $message, $showLoading, $hideLoading } from "@mars/components/mars-ui/index"
 
 export let map // mars3d.Map三维地图对象
 export let graphicLayer // 矢量图层对象
 export let graphic
+export let fixedRoute
 // 需要覆盖config.json中地图属性参数（当前示例框架中自动处理合并）
 export const mapOptions = {
   scene: {
@@ -62,7 +64,7 @@ export function butAddTxtName(name) {
 
 // 飞向视角
 export function flytoView(center) {
-  map.setCameraView(center)
+  map.setCameraView(center, { duration: 1 })
 }
 
 export async function drawPolyline() {
@@ -76,4 +78,55 @@ export async function drawPolyline() {
   })
   return graphic
   // console.log("完成了draw标绘", graphic)
+}
+
+export function startRoam(positions) {
+  return new Promise((resolve, reject) => {
+    try {
+      fixedRoute = new mars3d.graphic.FixedRoute({
+        name: "空中漫游",
+        speed: 150,
+        positions,
+        clockLoop: true,
+        interpolation: false,
+        camera: {
+          type: "gs",
+          pitch: -30,
+          radius: 500
+        },
+        model: {
+          url: "//data.mars3d.cn/gltf/mars/jingche/jingche.gltf",
+          heading: 90,
+          mergeOrientation: true,
+          minimumPixelSize: 50
+        },
+        polyline: {
+          color: "#fff",
+          width: 3
+        }
+      })
+
+      graphicLayer.addGraphic(fixedRoute)
+
+      // 开始漫游
+      fixedRoute
+        .autoSurfaceHeight({ exact: true })
+        .then(() => {
+          fixedRoute.start() // 启动漫游
+          resolve() // 漫游开始后解析 Promise
+        })
+        .catch(reject) // 处理计算贴地的错误
+    } catch (error) {
+      reject(error) // 捕获任何其他错误
+    }
+  })
+}
+
+export function stopRoam() {
+  if (!fixedRoute) {
+    return
+  }
+  fixedRoute.stop()
+  graphicLayer.removeGraphic(fixedRoute, true)
+  // 开始漫游
 }
