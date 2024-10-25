@@ -13,7 +13,7 @@
         :key="value.name"
         v-for="(value, index) in formState.imgObject"
       >
-        <img class="markImg" :src="value.img" @click="flytoView(value)" v-show="formState.found" />
+        <img class="markImg" :src="value.img" @click="flytoView(value, index)" v-show="formState.found" />
         <p>{{ value.name }}</p>
         <a-tooltip placement="bottom">
           <template #title>
@@ -74,18 +74,25 @@
         </a-tooltip>
       </div>
     </div>
+    <a-modal v-model:open="showModal" title="保存确认" @ok="handleOk">
+      <h1 style="display: flex; justify-content: center">是否保存编辑？？？</h1>
+    </a-modal>
   </mars-dialog>
 </template>
 
 <script setup lang="ts">
-import { onMounted, reactive, onUnmounted } from "vue"
+import { onMounted, reactive, onUnmounted, ref } from "vue"
 import * as mapWork from "./map.js"
 import { $alert, $message, $showLoading, $hideLoading } from "@mars/components/mars-ui/index"
-
+import * as mars3d from "mars3d"
 import useLifecycle from "@mars/common/uses/use-lifecycle"
 import Icon from "@ant-design/icons-vue"
 // 启用map.ts生命周期
 useLifecycle(mapWork)
+
+let currentName = ""
+let currentIndex = -1
+const showModal = ref<boolean>(false)
 
 const formState = reactive({
   input: "",
@@ -109,7 +116,17 @@ function udpateState(index) {
 
 onMounted(() => {
   getLocalStorage()
+  // 修改了矢量数据
+  mapWork.graphicLayer.on([mars3d.EventType.editStop], function (e) {
+    console.log("修改完成", e)
+    showModal.value = true
+  })
 })
+
+const handleOk = (e: MouseEvent) => {
+  mapWork.editTxtName(currentName)
+  showModal.value = false
+}
 
 onUnmounted(() => {
   formState.imgObject.map((item) => {
@@ -177,9 +194,18 @@ mapWork.eventTarget.on("addImgObject", (event: any) => {
   // 记录到历史
   localStorage.setItem("bookmark", JSON.stringify(formState.imgObject))
 })
+// 触发事件
+mapWork.eventTarget.on("editImgObject", (event: any) => {
+  debugger
+  formState.imgObject[currentIndex] = event.item
+  // 记录到历史
+  localStorage.setItem("bookmark", JSON.stringify(formState.imgObject))
+})
 
 // 视角操作
-const flytoView = (val: any) => {
+const flytoView = (val: any, index: number) => {
+  currentIndex = index
+  currentName = val.name
   mapWork.stopRoam()
   udpateState(-1)
   mapWork.flytoView(val.center)

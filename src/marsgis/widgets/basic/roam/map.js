@@ -32,6 +32,10 @@ export function onMounted(mapInstance) {
     // drawDelEventType: mars3d.EventType.middleClick
   })
   map.addLayer(graphicLayer)
+  graphicLayer.on(mars3d.EventType.editStop, function (e) {
+    graphic = e.graphic
+    console.log("停止编辑", e)
+  })
 }
 
 /**
@@ -39,16 +43,25 @@ export function onMounted(mapInstance) {
  * @returns {void} 无
  */
 export function onUnmounted() {
+  clearAll()
   map = null
 }
 
-// 添加书签
+export function clearAll() {
+  stopRoam()
+  graphicLayer.clear()
+  fixedRoute = null
+  graphic = null
+  graphicLayer = null
+}
+
+// 添加飞行漫游
 export function butAddTxtName(name) {
   // 动态的获取index
   const item = {
     name,
     center: map.getCameraView(),
-    graphics: graphic.toJSON()
+    graphics: graphic?.toJSON()
   }
 
   map
@@ -59,6 +72,26 @@ export function butAddTxtName(name) {
     .then((result) => {
       item.img = result.image
       eventTarget.fire("addImgObject", { item })
+    })
+}
+
+// 修改飞行漫游
+export function editTxtName(name) {
+  // 动态的获取index
+  const item = {
+    name,
+    center: map.getCameraView(),
+    graphics: graphic?.toJSON()
+  }
+
+  map
+    .expImage({
+      download: false,
+      width: 300
+    })
+    .then((result) => {
+      item.img = result.image
+      eventTarget.fire("editImgObject", { item })
     })
 }
 
@@ -85,7 +118,7 @@ export function startRoam(positions) {
     try {
       fixedRoute = new mars3d.graphic.FixedRoute({
         name: "空中漫游",
-        speed: 150,
+        speed: 250,
         positions,
         clockLoop: true,
         interpolation: false,
@@ -105,7 +138,8 @@ export function startRoam(positions) {
           width: 3
         }
       })
-
+      // 绑定popup
+      bindPopup(fixedRoute)
       graphicLayer.addGraphic(fixedRoute)
 
       // 开始漫游
@@ -113,6 +147,7 @@ export function startRoam(positions) {
         .autoSurfaceHeight({ exact: true })
         .then(() => {
           fixedRoute.start() // 启动漫游
+          fixedRoute.openPopup() // 显示popup
           resolve() // 漫游开始后解析 Promise
         })
         .catch(reject) // 处理计算贴地的错误
@@ -129,4 +164,52 @@ export function stopRoam() {
   fixedRoute.stop()
   graphicLayer.removeGraphic(fixedRoute, true)
   // 开始漫游
+}
+
+function bindPopup(fixedRoute) {
+  fixedRoute.bindPopup(
+    `<div style="width: 200px">
+      <div>总 距 离：<span id="lblAllLen"> </span></div>
+      <div>总 时 间：<span id="lblAllTime"> </span></div>
+      <div>开始时间：<span id="lblStartTime"> </span></div>
+      <div>剩余时间：<span id="lblRemainTime"> </span></div>
+      <div>剩余距离：<span id="lblRemainLen"> </span></div>
+    </div>`,
+    { closeOnClick: false }
+  )
+
+  // 刷新局部DOM,不影响popup面板的其他控件操作
+  fixedRoute.on(mars3d.EventType.popupRender, function (event) {
+    const container = event.container // popup对应的DOM
+
+    const params = fixedRoute?.info
+    if (!params) {
+      return
+    }
+
+    const lblAllLen = container.querySelector("#lblAllLen")
+    if (lblAllLen) {
+      lblAllLen.innerHTML = mars3d.MeasureUtil.formatDistance(params.distance_all)
+    }
+
+    const lblAllTime = container.querySelector("#lblAllTime")
+    if (lblAllTime) {
+      lblAllTime.innerHTML = mars3d.Util.formatTime(params.second_all / map.clock.multiplier)
+    }
+
+    const lblStartTime = container.querySelector("#lblStartTime")
+    if (lblStartTime) {
+      lblStartTime.innerHTML = mars3d.Util.formatDate(Cesium.JulianDate.toDate(fixedRoute.startTime), "yyyy-M-d HH:mm:ss")
+    }
+
+    const lblRemainTime = container.querySelector("#lblRemainTime")
+    if (lblRemainTime) {
+      lblRemainTime.innerHTML = mars3d.Util.formatTime((params.second_all - params.second) / map.clock.multiplier)
+    }
+
+    const lblRemainLen = container.querySelector("#lblRemainLen")
+    if (lblRemainLen) {
+      lblRemainLen.innerHTML = mars3d.MeasureUtil.formatDistance(params.distance_all - params.distance) || "完成"
+    }
+  })
 }
