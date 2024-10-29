@@ -56,12 +56,13 @@ export function clearAll() {
 }
 
 // 添加飞行漫游
-export function butAddTxtName(name) {
+export function addTxtName(name, roamOptions) {
   // 动态的获取index
   const item = {
     name,
     center: map.getCameraView(),
-    graphics: graphic?.toJSON()
+    graphics: graphic?.toJSON(),
+    roamOptions
   }
 
   map
@@ -113,46 +114,43 @@ export async function drawPolyline() {
   // console.log("完成了draw标绘", graphic)
 }
 
-export function startRoam(positions) {
+export function startRoam(positions, roamOptions) {
   return new Promise((resolve, reject) => {
-    try {
-      fixedRoute = new mars3d.graphic.FixedRoute({
-        name: "空中漫游",
-        speed: 250,
-        positions,
-        clockLoop: true,
-        interpolation: false,
-        camera: {
-          type: "gs",
-          pitch: -30,
-          radius: 500
-        },
-        model: {
-          url: "//data.mars3d.cn/gltf/mars/jingche/jingche.gltf",
-          heading: 90,
-          mergeOrientation: true,
-          minimumPixelSize: 50
-        },
-        polyline: {
-          color: "#fff",
-          width: 3
-        }
-      })
-      // 绑定popup
-      bindPopup(fixedRoute)
-      graphicLayer.addGraphic(fixedRoute)
-
-      // 开始漫游
-      fixedRoute
-        .autoSurfaceHeight({ exact: true })
-        .then(() => {
-          fixedRoute.start() // 启动漫游
-          fixedRoute.openPopup() // 显示popup
-          resolve() // 漫游开始后解析 Promise
-        })
-        .catch(reject) // 处理计算贴地的错误
-    } catch (error) {
-      reject(error) // 捕获任何其他错误
+    fixedRoute = new mars3d.graphic.FixedRoute({
+      name: "空中漫游",
+      speed: roamOptions.speed,
+      positions,
+      clockLoop: roamOptions.clockLoop,
+      interpolation: roamOptions.interpolation,
+      camera: {
+        type: "gs",
+        pitch: -30,
+        radius: 500
+      }
+    })
+    if (roamOptions.model) {
+      fixedRoute.model = roamOptions.model
+    }
+    // 绑定popup
+    bindPopup(fixedRoute)
+    graphicLayer.addGraphic(fixedRoute)
+    if (roamOptions.surfaceHeight) {
+      try {
+        // 开始漫游
+        fixedRoute
+          .autoSurfaceHeight({ exact: true })
+          .then(() => {
+            fixedRoute.start() // 启动漫游
+            fixedRoute.openPopup() // 显示popup
+            resolve() // 漫游开始后解析 Promise
+          })
+          .catch(reject) // 处理计算贴地的错误
+      } catch (error) {
+        reject(error) // 捕获任何其他错误
+      }
+    } else {
+      fixedRoute.start() // 启动漫游
+      fixedRoute.openPopup() // 显示popup
     }
   })
 }
@@ -162,7 +160,7 @@ export function stopRoam() {
     return
   }
   fixedRoute.stop()
-  graphicLayer.removeGraphic(fixedRoute, true)
+  graphicLayer.removeGraphic(fixedRoute, false)
   // 开始漫游
 }
 

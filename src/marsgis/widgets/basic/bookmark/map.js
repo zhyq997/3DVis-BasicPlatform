@@ -33,7 +33,7 @@ export function onUnmounted() {
 }
 
 // 添加书签
-export function butAddTxtName(name) {
+export function addTxtName(name) {
   // 动态的获取index
   const item = {
     name,

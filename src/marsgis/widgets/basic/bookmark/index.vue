@@ -3,7 +3,7 @@
     <div class="f-mb f-tac">
       <a-space-compact style="width: 100%">
         <mars-input v-model:value="formState.input" placeholder="输入名称"></mars-input>
-        <mars-button @click="butAddTxtName">添加</mars-button>
+        <mars-button @click="addTxtName">添加</mars-button>
       </a-space-compact>
     </div>
     <div class="bookmarkView">
@@ -60,7 +60,7 @@ function getLocalStorage() {
 }
 
 // 添加视角书签
-const butAddTxtName = () => {
+const addTxtName = () => {
   const name = formState.input
   const imgObject = formState.imgObject
 
@@ -82,7 +82,7 @@ const butAddTxtName = () => {
   }
 
   // 动态的获取index
-  mapWork.butAddTxtName(name)
+  mapWork.addTxtName(name)
 
   // UI处理
   formState.input = ""

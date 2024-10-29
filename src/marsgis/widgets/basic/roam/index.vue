@@ -1,82 +1,120 @@
 <template>
-  <mars-dialog :visible="true" right="10" top="60" bottom="40" width="330" title="视角书签">
-    <div class="f-mb f-tac">
-      <a-space-compact style="width: 100%">
-        <mars-input v-model:value="formState.input" placeholder="输入名称"></mars-input>
-        <mars-button @click="butAddTxtName">新增路线</mars-button>
-      </a-space-compact>
-    </div>
-    <div class="bookmarkView">
-      <div
-        class="bookmarkView-conponent"
-        v-bind:class="formState.found ? 'addNewImg' : 'noFound'"
-        :key="value.name"
-        v-for="(value, index) in formState.imgObject"
-      >
-        <img class="markImg" :src="value.img" @click="flytoView(value, index)" v-show="formState.found" />
-        <p>{{ value.name }}</p>
-        <a-tooltip placement="bottom">
-          <template #title>
-            <span>删除</span>
-          </template>
-          <mars-icon icon="delete" class="deleteImg" color="var(--mars-text-color)" @click="btnDeleteTxtName(index)" v-show="formState.found" />
-        </a-tooltip>
-        <a-tooltip placement="bottom" v-if="!value.isStart && formState.found">
-          <template #title>
-            <span>开始漫游</span>
-          </template>
-          <!-- <PlayCircleOutlined v-show="formState.found" class="flyImg" @click="startRoam(value)" /> -->
-          <icon class="flyImg" @click="startRoam(value, index)">
-            <template #component>
-              <svg
-                t="1729750931011"
-                class="icon"
-                viewBox="0 0 1024 1024"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                p-id="6252"
-                width="14"
-                height="14"
-              >
-                <path
-                  d="M512 1024A512 512 0 1 1 512 0a512 512 0 0 1 0 1024z m3.008-92.992a416 416 0 1 0 0-832 416 416 0 0 0 0 832zM383.232 287.616l384 224.896-384 223.104v-448z"
-                  fill="#2c2c2c"
-                  p-id="6253"
-                ></path>
-              </svg>
-            </template>
-          </icon>
-        </a-tooltip>
-        <a-tooltip placement="bottom" v-if="value.isStart && formState.found">
-          <template #title>
-            <span>结束漫游</span>
-          </template>
-          <icon class="flyImg" @click="stopRoam(index)">
-            <template #component>
-              <svg
-                t="1729750966037"
-                class="icon"
-                viewBox="0 0 1024 1024"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                p-id="7355"
-                width="14"
-                height="14"
-              >
-                <path
-                  d="M512 1024A512 512 0 1 1 512 0a512 512 0 0 1 0 1024z m3.008-92.992a416 416 0 1 0 0-832 416 416 0 0 0 0 832zM320 320h384v384H320V320z"
-                  fill="#262626"
-                  p-id="7356"
-                ></path>
-              </svg>
-            </template>
-          </icon>
-        </a-tooltip>
+  <mars-dialog :visible="true" right="10" top="60" bottom="40" width="330" title="飞行漫游">
+    <div v-show="!isShow">
+      <div class="f-mb f-tac">
+        <a-space-compact style="width: 100%">
+          <mars-input v-model:value="formState.input" placeholder="输入名称"></mars-input>
+          <mars-button @click="addTxtName">新增路线</mars-button>
+        </a-space-compact>
       </div>
+      <div class="bookmarkView">
+        <div
+          class="bookmarkView-conponent"
+          v-bind:class="formState.found ? 'addNewImg' : 'noFound'"
+          :key="value.name"
+          v-for="(value, index) in formState.imgObject"
+        >
+          <img class="markImg" :src="value.img" @click="flytoView(value, index)" v-show="formState.found" />
+          <p>{{ value.name }}</p>
+          <a-tooltip placement="bottom">
+            <template #title>
+              <span>删除</span>
+            </template>
+            <mars-icon icon="delete" class="deleteImg" color="var(--mars-text-color)" @click="btnDeleteTxtName(index)" v-show="formState.found" />
+          </a-tooltip>
+          <a-tooltip placement="bottom" v-if="!value.isStart && formState.found">
+            <template #title>
+              <span>开始漫游</span>
+            </template>
+            <!-- <PlayCircleOutlined v-show="formState.found" class="flyImg" @click="startRoam(value)" /> -->
+            <icon class="flyImg" @click="startRoam(value, index)">
+              <template #component>
+                <svg
+                  t="1729750931011"
+                  class="icon"
+                  viewBox="0 0 1024 1024"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  p-id="6252"
+                  width="14"
+                  height="14"
+                >
+                  <path
+                    d="M512 1024A512 512 0 1 1 512 0a512 512 0 0 1 0 1024z m3.008-92.992a416 416 0 1 0 0-832 416 416 0 0 0 0 832zM383.232 287.616l384 224.896-384 223.104v-448z"
+                    fill="#2c2c2c"
+                    p-id="6253"
+                  ></path>
+                </svg>
+              </template>
+            </icon>
+          </a-tooltip>
+          <a-tooltip placement="bottom" v-if="value.isStart && formState.found">
+            <template #title>
+              <span>结束漫游</span>
+            </template>
+            <icon class="flyImg" @click="stopRoam(index)">
+              <template #component>
+                <svg
+                  t="1729750966037"
+                  class="icon"
+                  viewBox="0 0 1024 1024"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  p-id="7355"
+                  width="14"
+                  height="14"
+                >
+                  <path
+                    d="M512 1024A512 512 0 1 1 512 0a512 512 0 0 1 0 1024z m3.008-92.992a416 416 0 1 0 0-832 416 416 0 0 0 0 832zM320 320h384v384H320V320z"
+                    fill="#262626"
+                    p-id="7356"
+                  ></path>
+                </svg>
+              </template>
+            </icon>
+          </a-tooltip>
+          <a-tooltip placement="bottom" v-if="formState.found">
+            <template #title>
+              <span>修改参数</span>
+            </template>
+            <icon class="editImg" @click="editOptions(index, value.name)">
+              <template #component>
+                <svg
+                  t="1729819714307"
+                  class="icon"
+                  viewBox="0 0 1024 1024"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  p-id="4267"
+                  width="14"
+                  height="14"
+                >
+                  <path
+                    d="M855.04 994.304H174.08c-78.848 0-143.36-64.512-143.36-143.36v-680.96c0-78.848 64.512-143.36 143.36-143.36h578.56c22.528 0 40.96 18.432 40.96 40.96s-18.432 40.96-40.96 40.96H174.08c-33.792 0-61.44 27.648-61.44 61.44v680.96c0 33.792 27.648 61.44 61.44 61.44h680.96c33.792 0 61.44-27.648 61.44-61.44v-450.56c0-22.528 18.432-40.96 40.96-40.96s40.96 18.432 40.96 40.96v450.56c0 78.848-64 143.36-143.36 143.36z"
+                    fill="#2c2c2c"
+                    p-id="4268"
+                  ></path>
+                  <path
+                    d="M378.368 757.76c-10.24 0-20.992-4.096-29.184-11.776-15.872-15.872-15.872-41.984 0-57.856L928.768 108.544c15.872-15.872 41.984-15.872 57.856 0 15.872 15.872 15.872 41.984 0 57.856L407.552 745.984c-8.192 7.68-18.432 11.776-29.184 11.776z"
+                    fill="#2c2c2c"
+                    p-id="4269"
+                  ></path>
+                </svg>
+              </template>
+            </icon>
+          </a-tooltip>
+        </div>
+      </div>
+      <a-modal v-model:open="showModal" title="保存确认" @ok="handleOk">
+        <h1 style="display: flex; justify-content: center">是否保存编辑？？？</h1>
+      </a-modal>
     </div>
-    <a-modal v-model:open="showModal" title="保存确认" @ok="handleOk">
-      <h1 style="display: flex; justify-content: center">是否保存编辑？？？</h1>
-    </a-modal>
+    <div v-if="isShow">
+      <div class="title-vertical">线路名称：{{ currentName }}</div>
+      <div class="title-vertical_line">飞行漫游属性</div>
+      <mars-gui :options="options()" @change="gui1Change" labelCol="9"></mars-gui>
+      <mars-button @click="goBack">返回</mars-button>
+    </div>
   </mars-dialog>
 </template>
 
@@ -87,19 +125,141 @@ import { $alert, $message, $showLoading, $hideLoading } from "@mars/components/m
 import * as mars3d from "mars3d"
 import useLifecycle from "@mars/common/uses/use-lifecycle"
 import Icon from "@ant-design/icons-vue"
+import type { GuiItem } from "@mars/components/mars-ui/mars-gui"
+
 // 启用map.ts生命周期
 useLifecycle(mapWork)
 
+interface roamOptions {
+  interpolation: boolean
+  clockLoop: boolean
+  speed: number
+  model: object
+  surfaceHeight: boolean //是否开启贴地
+  test: string
+}
+
 let currentName = ""
 let currentIndex = -1
+let currentRoamOptions = ref(<roamOptions>{})
 const showModal = ref<boolean>(false)
+const isShow = ref(false)
+const options = () => {
+  return <GuiItem[]>[
+    {
+      type: "number",
+      field: "speed",
+      label: "速度",
+      step: 1,
+      min: 1,
+      max: 200,
+      value: currentRoamOptions.value.speed,
+      change(data) {
+        // $message("你输入了：" + data)
+        currentRoamOptions.value.speed = data
+        updataRoamOptions()
+        console.log(data)
+      }
+    },
+    {
+      type: "switch",
+      field: "interpolation",
+      label: "是否弧形插值",
+      value: currentRoamOptions.value.interpolation,
+      change(data) {
+        currentRoamOptions.value.interpolation = data
+        updataRoamOptions()
+        console.log(data)
+      }
+    },
+    {
+      type: "switch",
+      field: "clockLoop",
+      label: "是否循环漫游",
+      value: currentRoamOptions.value.clockLoop,
+      change(data) {
+        currentRoamOptions.value.clockLoop = data
+        updataRoamOptions()
+        console.log(data)
+      }
+    },
+    {
+      type: "switch",
+      field: "surfaceHeight",
+      label: "是否贴地漫游",
+      value: currentRoamOptions.value.surfaceHeight,
+      change(data) {
+        currentRoamOptions.value.surfaceHeight = data
+        updataRoamOptions()
+        console.log(data)
+      }
+    },
+    {
+      type: "select",
+      field: "model",
+      label: "模型选择",
+      value: currentRoamOptions.value.model?.url || "none",
+      data: [
+        {
+          label: "无",
+          value: "none"
+        },
+        {
+          label: "汽车",
+          value: "https://data.mars3d.cn/gltf/mars/qiche.gltf"
+        },
+        {
+          label: "飞机",
+          value: "https://data.mars3d.cn/gltf/mars/feiji.glb"
+        },
+        {
+          label: "战斗机",
+          value: "https://data.mars3d.cn/gltf/mars/zhanji.gltf"
+        },
+        {
+          label: "行人",
+          value: "https://data.mars3d.cn/gltf/mars/man/running.glb"
+        }
+      ],
+      change(data) {
+        updateModel(data)
+      }
+    }
+  ]
+}
+
+function gui1Change(data) {
+  console.log(data) // data为该gui对象包含的所有数据
+}
 
 const formState = reactive({
   input: "",
   found: false,
-  imgObject: [{ name: "没有匹配的值", img: "", center: "", graphics: {}, isStart: false, isPause: false }]
+  imgObject: [
+    {
+      name: "没有匹配的值",
+      img: "",
+      center: "",
+      graphics: {},
+      isStart: false,
+      isPause: false,
+      roamOptions: <roamOptions>{
+        interpolation: false,
+        speed: 200,
+        clockLoop: true
+      }
+    }
+  ]
 })
 
+// 默认值
+const roamOptions = <roamOptions>{
+  interpolation: false,
+  speed: 200,
+  clockLoop: true,
+  surfaceHeight: true,
+  test: "test"
+}
 function udpateState(index) {
   formState.imgObject.map((item) => {
     item.isStart = false
@@ -138,7 +298,7 @@ onUnmounted(() => {
 // 读取历史记录
 function getLocalStorage() {
   try {
-    const data = JSON.parse(localStorage.getItem("bookmark"))
+    const data = JSON.parse(localStorage.getItem("roamLists"))
     if (data && data.length > 0) {
       console.log("历史数据", data)
       for (let i = 0; i < data.length; i++) {
@@ -154,8 +314,8 @@ function getLocalStorage() {
   } catch (err) {}
 }
 
-// 添加视角书签
-const butAddTxtName = () => {
+// 添加飞行路线
+const addTxtName = () => {
   const name = formState.input
   const imgObject = formState.imgObject
 
@@ -179,7 +339,7 @@ const butAddTxtName = () => {
   mapWork.graphicLayer.clear()
   mapWork.drawPolyline().then(function (graphic) {
     console.log("绘制矢量对象完成", graphic)
-    mapWork.butAddTxtName(name)
+    mapWork.addTxtName(name, roamOptions)
   })
 
   // 动态的获取index
@@ -188,18 +348,17 @@ const butAddTxtName = () => {
   formState.input = ""
 }
 
-// 触发事件
+// 触发添加路线事件
 mapWork.eventTarget.on("addImgObject", (event: any) => {
   formState.imgObject.push(event.item)
   // 记录到历史
-  localStorage.setItem("bookmark", JSON.stringify(formState.imgObject))
+  localStorage.setItem("roamLists", JSON.stringify(formState.imgObject))
 })
-// 触发事件
+// 触发修改路线事件
 mapWork.eventTarget.on("editImgObject", (event: any) => {
-  debugger
   formState.imgObject[currentIndex] = event.item
   // 记录到历史
-  localStorage.setItem("bookmark", JSON.stringify(formState.imgObject))
+  localStorage.setItem("roamLists", JSON.stringify(formState.imgObject))
 })
 
 // 视角操作
@@ -219,37 +378,145 @@ const flytoView = (val: any, index: number) => {
 //   udpateState(index)
 // }
 
+/**
+ * 开始漫游
+ *
+ * @param val 路线数据
+ * @param index 路线索引
+ */
 const startRoam = async (val: any, index: number) => {
   mapWork.stopRoam()
   try {
-    await mapWork.startRoam(val.graphics.positions) // 等待 startRoam 完成
+    await mapWork.startRoam(val.graphics.positions, val.roamOptions) // 等待 startRoam 完成
     udpateState(index) // 然后运行 udpateState
   } catch (error) {
     console.error("Error starting roam:", error)
   }
 }
 
+/**
+ * 停止漫游
+ *
+ * @param index 路线索引
+ */
 const stopRoam = (index: number) => {
   mapWork.stopRoam()
   udpateState(index)
 }
 
+/**
+ * 删除对象
+ *
+ * @param index 要删除路线对象的索引
+ */
 const btnDeleteTxtName = (index: number) => {
   formState.imgObject.splice(index, 1)
 
   mapWork.graphicLayer.clear()
 
   if (formState.imgObject.length === 0) {
-    formState.imgObject = [{ name: "没有匹配的值", img: "", center: "", graphics: {}, isStart: false, isPause: false }]
+    formState.imgObject = [
+      {
+        name: "没有匹配的值",
+        img: "",
+        center: "",
+        graphics: {},
+        isStart: false,
+        isPause: false,
+        roamOptions: {
+          interpolation: false,
+          speed: 10,
+          clockLoop: true,
+          surfaceHeight: true,
+          model: {}
+        }
+      }
+    ]
     formState.found = false
-    localStorage.removeItem("bookmark")
+    localStorage.removeItem("roamLists")
     return
   }
   // 记录到历史
-  localStorage.setItem("bookmark", JSON.stringify(formState.imgObject))
+  localStorage.setItem("roamLists", JSON.stringify(formState.imgObject))
+}
+
+/**
+ * 修改选项
+ *
+ * @param index 当前项的索引
+ * @param name 当前项的名称
+ */
+const editOptions = (index: any, name: string) => {
+  currentName = name
+  currentIndex = index
+  currentRoamOptions.value = formState.imgObject[index].roamOptions
+  isShow.value = true
+}
+
+/**
+ * 返回操作
+ *
+ * 将isShow的值设置为false，通常用于关闭弹窗或返回上一页
+ */
+const goBack = () => {
+  isShow.value = false
+}
+
+const updataRoamOptions = () => {
+  // 记录到历史
+  localStorage.setItem("roamLists", JSON.stringify(formState.imgObject))
+}
+
+// 动态更新 fixedRoute 的 model 属性
+const updateModel = (url: string) => {
+  // mapWork.updateModel(url)
+  // 如果选择的是“无”
+  if (url === "none") {
+    delete currentRoamOptions.value.model // 删除 model 属性
+  } else {
+    currentRoamOptions.value.model = {
+      url,
+      heading: 0,
+      mergeOrientation: true,
+      minimumPixelSize: 5
+    }
+  }
+  updataRoamOptions()
+
+  // 如果需要重新启动漫游
+  // fixedRoute.start();
 }
 </script>
 <style scoped lang="less">
+.title-vertical {
+  padding-bottom: 10px;
+  font-family: 思源黑体;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--mars-control-text);
+  position: relative;
+}
+.title-vertical_line {
+  padding-left: 12px;
+  padding-bottom: 10px;
+  font-family: 思源黑体;
+  font-size: 16px;
+  font-weight: normal;
+  color: var(--mars-control-text);
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 4px;
+    height: 19px;
+    border-radius: 2px;
+    background-color: var(--mars-primary-color);
+  }
+}
+
 .infoview {
   height: 91%;
 }
@@ -258,7 +525,7 @@ const btnDeleteTxtName = (index: number) => {
   height: calc(100% - 53px);
   border: 1px solid white;
   border-radius: 5px;
-  overflow-y: auto;
+  overflow-y: hidden;
   overflow-x: hidden;
 }
 
@@ -341,6 +608,17 @@ const btnDeleteTxtName = (index: number) => {
   position: absolute;
   top: 176px;
   right: 40px;
+  background-color: rgba(0, 0, 0, 0);
+  border-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+.editImg {
+  width: 14px;
+  height: 14px;
+  border: none;
+  position: absolute;
+  top: 176px;
+  right: 70px;
   background-color: rgba(0, 0, 0, 0);
   border-color: rgba(0, 0, 0, 0);
   cursor: pointer;
