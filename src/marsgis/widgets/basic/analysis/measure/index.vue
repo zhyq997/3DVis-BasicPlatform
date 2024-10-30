@@ -19,7 +19,14 @@
     <div class="f-mb">
       <a-space>
         <mars-button class="control_btn" @click="saveGeoJSON">保存Json</mars-button>
-        <a-upload :multiple="false" name="file" accept="json,geojson" :showUploadList="false" @change="openGeoJSON" :beforeUpload="() => false">
+        <a-upload
+          :multiple="false"
+          name="file"
+          accept="json,geojson"
+          :showUploadList="false"
+          @change="openGeoJSON"
+          :beforeUpload="() => false"
+        >
           <mars-button class="control_btn"> 打开Json </mars-button>
         </a-upload>
         <mars-button class="control_btn" danger @click="clear">清除</mars-button>
@@ -33,95 +40,95 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue"
-// import LocationTo from "@mars/components/mars-sample/location-to.vue"
-import * as mapWork from "./map.js"
-import useLifecycle from "@mars/common/uses/use-lifecycle"
+  import { ref, onMounted, onUnmounted } from 'vue';
+  // import LocationTo from "@mars/components/mars-sample/location-to.vue"
+  import * as mapWork from './map.js';
+  import useLifecycle from '@mars/common/uses/use-lifecycle';
 
-useLifecycle(mapWork)
-const checked = ref(false)
+  useLifecycle(mapWork);
+  const checked = ref(false);
 
-// 空间距离
-const measureLength = () => {
-  mapWork.measureLength()
-}
-// 水平面积
-const measureArea = () => {
-  mapWork.measureArea()
-}
+  // 空间距离
+  const measureLength = () => {
+    mapWork.measureLength();
+  };
+  // 水平面积
+  const measureArea = () => {
+    mapWork.measureArea();
+  };
 
-// 高度差
-const measureHeight = () => {
-  mapWork.measureHeight()
-}
+  // 高度差
+  const measureHeight = () => {
+    mapWork.measureHeight();
+  };
 
-// 坐标测量
-const measurePoint = () => {
-  mapWork.measurePoint()
-}
+  // 坐标测量
+  const measurePoint = () => {
+    mapWork.measurePoint();
+  };
 
-// 贴地距离
-const measureSurfaceLength = () => {
-  mapWork.measureSurfaceLength()
-}
+  // 贴地距离
+  const measureSurfaceLength = () => {
+    mapWork.measureSurfaceLength();
+  };
 
-// 贴地面积
-const measureSurfaceeArea = () => {
-  mapWork.measureSurfaceeArea()
-}
+  // 贴地面积
+  const measureSurfaceeArea = () => {
+    mapWork.measureSurfaceeArea();
+  };
 
-// 三角测量
-const measureTriangleHeight = () => {
-  mapWork.measureTriangleHeight()
-}
-// 方位角
-const measureAngle = () => {
-  mapWork.measureAngle()
-}
+  // 三角测量
+  const measureTriangleHeight = () => {
+    mapWork.measureTriangleHeight();
+  };
+  // 方位角
+  const measureAngle = () => {
+    mapWork.measureAngle();
+  };
 
-const isChecked = () => {
-  mapWork.onlyVertexPosition(checked.value)
-}
-const clear = () => {
-  mapWork.removeAll()
-}
+  const isChecked = () => {
+    mapWork.onlyVertexPosition(checked.value);
+  };
+  const clear = () => {
+    mapWork.removeAll();
+  };
 
-interface FileItem {
-  uid: string
-  name?: string
-  status?: string
-  response?: string
-  url?: string
-}
+  interface FileItem {
+    uid: string;
+    name?: string;
+    status?: string;
+    response?: string;
+    url?: string;
+  }
 
-interface FileInfo {
-  file: FileItem
-  fileList: FileItem[]
-}
+  interface FileInfo {
+    file: FileItem;
+    fileList: FileItem[];
+  }
 
-// 打开JSON
-const openGeoJSON = (info: FileInfo) => {
-  mapWork.openJSON(info.file)
-}
-// 点击保存GeoJSON
-const saveGeoJSON = () => {
-  mapWork.saveJSON()
-}
+  // 打开JSON
+  const openGeoJSON = (info: FileInfo) => {
+    mapWork.openJSON(info.file);
+  };
+  // 点击保存GeoJSON
+  const saveGeoJSON = () => {
+    mapWork.saveJSON();
+  };
 </script>
 <style lang="less" scoped>
-.mars-button {
-  padding: 0px;
-}
+  .mars-button {
+    padding: 0px;
+  }
 
-.btn {
-  width: 68.3px;
-}
+  .btn {
+    width: 68.3px;
+  }
 
-.control_btn {
-  width: 94px;
-}
+  .control_btn {
+    width: 94px;
+  }
 
-.clear_btn {
-  width: 302px;
-}
+  .clear_btn {
+    width: 302px;
+  }
 </style>

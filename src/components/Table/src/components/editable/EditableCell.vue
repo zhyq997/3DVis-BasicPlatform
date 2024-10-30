@@ -417,7 +417,7 @@
             class={{ [`${this.prefixCls}__normal`]: true, 'ellipsis-cell': this.column.ellipsis }}
             onClick={this.handleEdit}
           >
-            <div class="cell-content" title={this.column.ellipsis ? this.getValues ?? '' : ''}>
+            <div class="cell-content" title={this.column.ellipsis ? (this.getValues ?? '') : ''}>
               {this.column.editRender
                 ? this.column.editRender({
                     text: this.value,
@@ -426,7 +426,7 @@
                     index: this.index,
                     currentValue: this.currentValueRef,
                   })
-                : this.getValues ?? '\u00A0'}
+                : (this.getValues ?? '\u00A0')}
             </div>
             {!this.column.editRow && !this.getDisable && (
               <FormOutlined class={`${this.prefixCls}__normal-icon`} />

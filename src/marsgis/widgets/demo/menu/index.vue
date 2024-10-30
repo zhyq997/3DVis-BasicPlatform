@@ -11,27 +11,27 @@
 </template>
 
 <script setup lang="ts">
-import { useWidget } from "@mars/common/store/widget"
-import useLifecycle from "@mars/common/uses/use-lifecycle"
-import * as mapWork from "./map"
-import { useRouter } from "vue-router"
+  import { useWidget } from '@mars/common/store/widget';
+  import useLifecycle from '@mars/common/uses/use-lifecycle';
+  import * as mapWork from './map';
+  import { useRouter } from 'vue-router';
 
-const router = useRouter()
-// 启用map.ts生命周期
-useLifecycle(mapWork)
+  const router = useRouter();
+  // 启用map.ts生命周期
+  useLifecycle(mapWork);
 
-const { activate, updateWidget } = useWidget()
+  const { activate, updateWidget } = useWidget();
 
-const show = (name: string) => {
-  activate(name)
-}
+  const show = (name: string) => {
+    activate(name);
+  };
 
-const update = () => {
-  updateWidget("my-widget", "测试")
-}
+  const update = () => {
+    updateWidget('my-widget', '测试');
+  };
 
-const back = () => {
-  router.back()
-}
+  const back = () => {
+    router.back();
+  };
 </script>
 <style lang="less"></style>

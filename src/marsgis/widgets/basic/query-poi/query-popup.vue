@@ -1,6 +1,8 @@
 <template>
   <div class="mars3d-popup-content-wrapper mars3d-popup-background">
-    <span class="mars3d-popup-close-button mars3d-popup-color closeButton" @click="closePopup"> × </span>
+    <span class="mars3d-popup-close-button mars3d-popup-color closeButton" @click="closePopup">
+      ×
+    </span>
 
     <div class="mars3d-popup-content-wrapper mars3d-popup-background">
       <div class="mars3d-template-titile">
@@ -18,25 +20,25 @@
 </template>
 
 <script lang="ts" setup>
-import * as mapWork from "./map"
-const props = defineProps<{
-  id: string
-  name: string
-  tel?: string
-  address?: string
-  type?: string
-  yzb?: string,
-  xzb?: string,
-}>()
+  import * as mapWork from './map';
+  const props = defineProps<{
+    id: string;
+    name: string;
+    tel?: string;
+    address?: string;
+    type?: string;
+    yzb?: string;
+    xzb?: string;
+  }>();
 
-const closePopup = () => {
-  mapWork.graphicLayer.closePopup()
-}
+  const closePopup = () => {
+    mapWork.graphicLayer.closePopup();
+  };
 </script>
 
 <style>
-.mars3d-template-content {
-  color: black;
-  padding-bottom: 20px;
-}
+  .mars3d-template-content {
+    color: black;
+    padding-bottom: 20px;
+  }
 </style>

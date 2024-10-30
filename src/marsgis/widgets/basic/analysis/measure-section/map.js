@@ -1,15 +1,15 @@
-import * as mars3d from "mars3d"
+import * as mars3d from 'mars3d';
 
-export let map // mars3d.Map三维地图对象
-let measureObj
+export let map; // mars3d.Map三维地图对象
+let measureObj;
 
 export const mapOptions = {
   scene: {
-    center: { lat: 30.715648, lng: 116.300527, alt: 10727, heading: 3, pitch: -25 }
-  }
-}
+    center: { lat: 30.715648, lng: 116.300527, alt: 10727, heading: 3, pitch: -25 },
+  },
+};
 
-export const eventTarget = new mars3d.BaseClass() // 事件对象，用于抛出事件到面板中
+export const eventTarget = new mars3d.BaseClass(); // 事件对象，用于抛出事件到面板中
 
 /**
  * 初始化地图业务，生命周期钩子函数（必须）
@@ -18,23 +18,23 @@ export const eventTarget = new mars3d.BaseClass() // 事件对象，用于抛出
  * @returns {void} 无
  */
 export function onMounted(mapInstance) {
-  map = mapInstance // 记录map
+  map = mapInstance; // 记录map
 
   measureObj = new mars3d.thing.Measure({
     // 设置文本样式
     label: {
-      color: "#ffffff",
-      font_family: "楷体",
-      font_size: 20
-    }
-  })
-  map.addThing(measureObj)
+      color: '#ffffff',
+      font_family: '楷体',
+      font_size: 20,
+    },
+  });
+  map.addThing(measureObj);
 
   // 触发事件：开始分析前
   measureObj.on(mars3d.EventType.start, function (e) {
     // console.log("开始分析", e)
     // showLoading()
-  })
+  });
 
   // 触发事件：异步分析完成后
   measureObj.on(mars3d.EventType.end, function (e) {
@@ -42,18 +42,18 @@ export function onMounted(mapInstance) {
 
     // hideLoading()
     if (e.graphic?.type === mars3d.graphic.SectionMeasure.type) {
-      eventTarget.fire("measureEnd", e)
+      eventTarget.fire('measureEnd', e);
     }
-  })
+  });
 
   measureObj.on(mars3d.EventType.click, function (e) {
     // console.log("单击了对象", e)
-    hideTipMarker()
+    hideTipMarker();
 
     if (e.graphic?.type === mars3d.graphic.SectionMeasure.type) {
-      eventTarget.fire("measureClick", { value: e.graphic?.measured })
+      eventTarget.fire('measureClick', { value: e.graphic?.measured });
     }
-  })
+  });
 
   // 加一些演示数据
   // addDemoGraphic1(measureObj.graphicLayer)
@@ -63,7 +63,7 @@ export function onMounted(mapInstance) {
  * @returns {void} 无
  */
 export function onUnmounted() {
-  map = null
+  map = null;
 }
 
 function addDemoGraphic1(graphicLayer) {
@@ -76,38 +76,38 @@ function addDemoGraphic1(graphicLayer) {
       [116.341924, 30.847984, 381.8],
       [116.392754, 30.854264, 581.7],
       [116.415222, 30.880092, 580.5],
-      [116.567457, 30.85223, 314.6]
+      [116.567457, 30.85223, 314.6],
     ],
     style: {
       width: 5,
-      color: "#3388ff"
+      color: '#3388ff',
     },
-    attr: { remark: "示例1" }
-  })
-  graphicLayer.addGraphic(graphic)
+    attr: { remark: '示例1' },
+  });
+  graphicLayer.addGraphic(graphic);
 }
 
 export function removeAll() {
-  measureObj.clear()
-  hideTipMarker()
+  measureObj.clear();
+  hideTipMarker();
 }
 
 export function measureSection() {
   measureObj.section({
     // maxPointNum:2,
     splitNum: 300, // 插值次数
-    exact: false // 是否进行精确计算， 传false时是否快速概略计算方式，该方式计算精度较低，但计算速度快，仅能计算在当前视域内坐标的高度
-  })
+    exact: false, // 是否进行精确计算， 传false时是否快速概略计算方式，该方式计算精度较低，但计算速度快，仅能计算在当前视域内坐标的高度
+  });
 }
 
 export function calculation(params) {
-  const len = mars3d.MeasureUtil.formatDistance(Number(params.axisValue))
-  const hbgdStr = mars3d.MeasureUtil.formatDistance(Number(params.value))
+  const len = mars3d.MeasureUtil.formatDistance(Number(params.axisValue));
+  const hbgdStr = mars3d.MeasureUtil.formatDistance(Number(params.value));
 
-  return { len, hbgdStr }
+  return { len, hbgdStr };
 }
 
-let tipGraphic
+let tipGraphic;
 /**
  *  echart图表中的图标
  *
@@ -118,30 +118,30 @@ let tipGraphic
  * @returns {void}
  */
 export function showTipMarker(point, z, inthtml) {
-  const _position_draw = Cesium.Cartesian3.fromDegrees(point.lng, point.lat, z)
+  const _position_draw = Cesium.Cartesian3.fromDegrees(point.lng, point.lat, z);
 
   if (!tipGraphic) {
     tipGraphic = new mars3d.graphic.BillboardEntity({
-      name: "当前点",
+      name: '当前点',
       position: _position_draw,
       style: {
-        image: "img/marker/mark-blue.png",
+        image: 'img/marker/mark-blue.png',
         scale: 1,
         horizontalOrigin: Cesium.HorizontalOrigin.CENTER,
         verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
-        scaleByDistance: new Cesium.NearFarScalar(10000, 1.0, 500000, 0.2)
-      }
-    }).addTo(map.graphicLayer)
-    tipGraphic._setPositionsToCallback()
+        scaleByDistance: new Cesium.NearFarScalar(10000, 1.0, 500000, 0.2),
+      },
+    }).addTo(map.graphicLayer);
+    tipGraphic._setPositionsToCallback();
   }
-  tipGraphic._position_draw = _position_draw
-  tipGraphic.bindPopup(inthtml).openPopup()
+  tipGraphic._position_draw = _position_draw;
+  tipGraphic.bindPopup(inthtml).openPopup();
 }
 
 export function hideTipMarker() {
   if (!tipGraphic) {
-    return
+    return;
   }
-  tipGraphic.remove(true)
-  tipGraphic = null
+  tipGraphic.remove(true);
+  tipGraphic = null;
 }

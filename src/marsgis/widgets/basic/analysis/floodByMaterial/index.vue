@@ -26,7 +26,6 @@
           <span class="text-default">淹没颜色:</span>
           <mars-color-picker v-model:value="floodColor" @change="onChangeColor" />
         </a-space>
-
       </div>
 
       <div class="f-mb">
@@ -37,7 +36,6 @@
             <mars-button type="primary" danger @click="clearDraw">清除</mars-button>
           </a-space>
         </div>
-
       </div>
 
       <div class="f-tac">
@@ -49,8 +47,14 @@
       <div class="f-mb">
         <a-space>
           <span class="text-default">高度选择</span>
-          <mars-slider tooltipPlacement="bottom" v-model:value="formState.height" @change="onChangeHeight()"
-            :min="formState.minHeight" :max="formState.maxHeight" :step="1" />
+          <mars-slider
+            tooltipPlacement="bottom"
+            v-model:value="formState.height"
+            @change="onChangeHeight()"
+            :min="formState.minHeight"
+            :max="formState.maxHeight"
+            :step="1"
+          />
         </a-space>
       </div>
 
@@ -67,7 +71,7 @@
           <mars-button :class="isStart ? 'pause-btn' : 'play-btn'" @click="startPlay">
             <mars-icon v-if="!isStart" icon="play"></mars-icon>
             <mars-icon v-else icon="pause-one"></mars-icon>
-            {{ isStart ? "暂停" : "播放" }}
+            {{ isStart ? '暂停' : '播放' }}
           </mars-button>
 
           <mars-button @click="goBack">返回</mars-button>
@@ -75,151 +79,152 @@
       </div>
 
       <div class="f-pt">
-        <a-checkbox v-model:checked="formState.enabledShowElse" @change="onChangeElse">显示非淹没区域</a-checkbox>
+        <a-checkbox v-model:checked="formState.enabledShowElse" @change="onChangeElse"
+          >显示非淹没区域</a-checkbox
+        >
       </div>
     </div>
   </mars-dialog>
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from "vue"
-import type { UnwrapRef } from "vue"
-import * as mapWork from "./map.js"
-import useLifecycle from "@mars/common/uses/use-lifecycle"
+  import { reactive, ref } from 'vue';
+  import type { UnwrapRef } from 'vue';
+  import * as mapWork from './map.js';
+  import useLifecycle from '@mars/common/uses/use-lifecycle';
 
-useLifecycle(mapWork)
+  useLifecycle(mapWork);
 
-interface FormState {
-  minHeight: number
-  maxHeight: number
-  speed: number
-  height: number
-  enabledShowElse: boolean
-}
+  interface FormState {
+    minHeight: number;
+    maxHeight: number;
+    speed: number;
+    height: number;
+    enabledShowElse: boolean;
+  }
 
-const formState: UnwrapRef<FormState> = reactive({
-  minHeight: 0,
-  maxHeight: 0,
-  height: 0,
-  speed: 80,
-  enabledShowElse: true
-})
+  const formState: UnwrapRef<FormState> = reactive({
+    minHeight: 0,
+    maxHeight: 0,
+    height: 0,
+    speed: 80,
+    enabledShowElse: true,
+  });
 
-const isStart = ref(true)
-const isShow = ref(false)
+  const isStart = ref(true);
+  const isShow = ref(false);
 
-const floodColor = ref("rgba(0, 123, 230, 0.5)")
+  const floodColor = ref('rgba(0, 123, 230, 0.5)');
 
-// 监听到高度发生变化
-mapWork.eventTarget.on("heightChange", (e: any) => {
-  isShow.value = true
-  formState.height = Math.ceil(e.height)
-})
+  // 监听到高度发生变化
+  mapWork.eventTarget.on('heightChange', (e: any) => {
+    isShow.value = true;
+    formState.height = Math.ceil(e.height);
+  });
 
-// 监听淹没完成
-mapWork.eventTarget.on("floodEnd", (e: any) => {
-  isStart.value = false
-})
+  // 监听淹没完成
+  mapWork.eventTarget.on('floodEnd', (e: any) => {
+    isStart.value = false;
+  });
 
-// 添加矩形
-const btnDrawExtent = () => {
-  mapWork.btnDrawExtent((min: any, max: any) => {
-    formState.minHeight = min
-    formState.maxHeight = max
-  }, floodColor.value)
-}
-// 添加多边形
-const btnDraw = () => {
-  mapWork.btnDraw((min: any, max: any) => {
-    formState.minHeight = Math.ceil(min)
-    formState.maxHeight = Math.ceil(max)
-  }, floodColor.value)
-}
-const clearDraw = () => {
-  mapWork.clearDraw()
+  // 添加矩形
+  const btnDrawExtent = () => {
+    mapWork.btnDrawExtent((min: any, max: any) => {
+      formState.minHeight = min;
+      formState.maxHeight = max;
+    }, floodColor.value);
+  };
+  // 添加多边形
+  const btnDraw = () => {
+    mapWork.btnDraw((min: any, max: any) => {
+      formState.minHeight = Math.ceil(min);
+      formState.maxHeight = Math.ceil(max);
+    }, floodColor.value);
+  };
+  const clearDraw = () => {
+    mapWork.clearDraw();
 
-  formState.minHeight = 0
-  formState.maxHeight = 0
-}
+    formState.minHeight = 0;
+    formState.maxHeight = 0;
+  };
 
-// 开始淹没
-const begin = () => {
-  mapWork.begin(formState)
-}
+  // 开始淹没
+  const begin = () => {
+    mapWork.begin(formState);
+  };
 
-// 高度改变
-const onChangeHeight = () => {
-  mapWork.onChangeHeight(formState.height)
-}
+  // 高度改变
+  const onChangeHeight = () => {
+    mapWork.onChangeHeight(formState.height);
+  };
 
-// 颜色修改
-const onChangeColor = (e) => {
-  mapWork.onChangeColor(floodColor.value)
-}
+  // 颜色修改
+  const onChangeColor = (e) => {
+    mapWork.onChangeColor(floodColor.value);
+  };
 
-// 默认自动播放
-const startPlay = () => {
-  isStart.value = !isStart.value
-  mapWork.startPlay()
-}
+  // 默认自动播放
+  const startPlay = () => {
+    isStart.value = !isStart.value;
+    mapWork.startPlay();
+  };
 
-const goBack = () => {
-  mapWork.clearDraw()
-  formState.minHeight = 0
-  formState.maxHeight = 0
-  isShow.value = false
-  isStart.value = true
-  formState.enabledShowElse = true
-}
+  const goBack = () => {
+    mapWork.clearDraw();
+    formState.minHeight = 0;
+    formState.maxHeight = 0;
+    isShow.value = false;
+    isStart.value = true;
+    formState.enabledShowElse = true;
+  };
 
-const onChangeElse = () => {
-  mapWork.onChangeElse(formState.enabledShowElse)
-}
+  const onChangeElse = () => {
+    mapWork.onChangeElse(formState.enabledShowElse);
+  };
 </script>
 <style scoped lang="less">
-.ant-slider {
-  width: 224px;
-}
-
-.text-default {
-  color: #000000;
-}
-
-.analysis-btn {
-  width: 298px;
-}
-
-.mars-input-number,
-.mars-color-view {
-  width: 232px;
-}
-
-
-.draw-tools {
-  .mars-button {
-    width: 94px;
+  .ant-slider {
+    width: 224px;
   }
-}
 
-.control-btn {
-  .pause-btn {
-    background: #2CC719;
+  .text-default {
+    color: #000000;
+  }
 
-    &:hover {
-      background: #2CC719;
+  .analysis-btn {
+    width: 298px;
+  }
+
+  .mars-input-number,
+  .mars-color-view {
+    width: 232px;
+  }
+
+  .draw-tools {
+    .mars-button {
+      width: 94px;
     }
   }
 
-  .play-btn {
-    background: #F96868;
+  .control-btn {
+    .pause-btn {
+      background: #2cc719;
 
-    &:hover {
-      background: #F96868;
+      &:hover {
+        background: #2cc719;
+      }
+    }
+
+    .play-btn {
+      background: #f96868;
+
+      &:hover {
+        background: #f96868;
+      }
+    }
+
+    .mars-button {
+      width: 146px;
     }
   }
-
-  .mars-button {
-    width: 146px;
-  }
-}
 </style>

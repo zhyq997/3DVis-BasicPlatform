@@ -1,9 +1,9 @@
-import * as mars3d from "mars3d"
-import "@/assets/lib/dom2img/dom-to-image.js"
+import * as mars3d from 'mars3d';
+import '@/assets/lib/dom2img/dom-to-image.js';
 
-let map // mars3d.Map三维地图对象
+let map; // mars3d.Map三维地图对象
 
-const eventTarget = new mars3d.BaseClass() // 事件对象，用于抛出事件到面板中
+const eventTarget = new mars3d.BaseClass(); // 事件对象，用于抛出事件到面板中
 
 /**
  * 初始化地图业务，生命周期钩子函数（必须）
@@ -12,7 +12,7 @@ const eventTarget = new mars3d.BaseClass() // 事件对象，用于抛出事件�
  * @returns {void} 无
  */
 export function onMounted(mapInstance) {
-  map = mapInstance // 记录map
+  map = mapInstance; // 记录map
 }
 
 /**
@@ -20,19 +20,19 @@ export function onMounted(mapInstance) {
  * @returns {void} 无
  */
 export function onUnmounted() {
-  map = null
+  map = null;
 }
 
 // 查看场景出图
 export function showMapImg(options = {}) {
   return map.expImage({ download: false, ...options }).then((result) => {
-    return result.image
-  })
+    return result.image;
+  });
 }
 
 // 下载场景出图
 export function downLoad() {
-  map.expImage()
+  map.expImage();
 }
 
 // 下载场景缩略图
@@ -40,24 +40,24 @@ export function downLoad2() {
   map.expImage({
     height: 300, // 指定 高度 或 宽度(指定1种就行，对应的自动缩放)
     // width: 300, //同时指定后去裁剪中间部分
-    download: true
-  })
+    download: true,
+  });
 }
 
 export async function downLoadDiv() {
   // 地图DIV的webgl
-  const mapImg = await map.expImage({ download: false })
-  console.log("downLoadDiv：1. 地图部分截图成功")
+  const mapImg = await map.expImage({ download: false });
+  console.log('downLoadDiv：1. 地图部分截图成功');
 
-  const filterNode = map.container.getElementsByClassName("cesium-viewer-cesiumWidgetContainer")
+  const filterNode = map.container.getElementsByClassName('cesium-viewer-cesiumWidgetContainer');
 
   // 其他部分DIV，使用 lib/dom2img/dom-to-image.js
   const divImg = await window.domtoimage.toPng(map.container, {
     filter: function (node) {
-      return node !== filterNode[0]
-    }
-  })
-  console.log("downLoadDiv：2.DIV部分截图成功")
+      return node !== filterNode[0];
+    },
+  });
+  console.log('downLoadDiv：2.DIV部分截图成功');
 
   // 其他部分DIV，使用 lib/dom2img/html2canvas.js
   // const divImg = await window.html2canvas(map.container, {
@@ -70,38 +70,38 @@ export async function downLoadDiv() {
   // console.log("downLoadDiv：2.DIV部分截图成功")
 
   // 合并
-  const newImg = await mergeImage(mapImg.image, divImg, mapImg.width, mapImg.height)
-  console.log("downLoadDiv：3.合并2个图片完成")
+  const newImg = await mergeImage(mapImg.image, divImg, mapImg.width, mapImg.height);
+  console.log('downLoadDiv：3.合并2个图片完成');
 
-  mars3d.Util.downloadBase64Image("场景出图_含DIV.png", newImg) // 下载图片
+  mars3d.Util.downloadBase64Image('场景出图_含DIV.png', newImg); // 下载图片
 }
 
 // 合并2张图片
 function mergeImage(base1, base2, width, height) {
   return new Promise((resolve, reject) => {
-    const canvas = document.createElement("canvas")
-    canvas.width = width
-    canvas.height = height
-    const ctx = canvas.getContext("2d")
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
 
-    const image = new Image() // MAP图片
-    image.crossOrigin = "Anonymous" // 支持跨域图片
+    const image = new Image(); // MAP图片
+    image.crossOrigin = 'Anonymous'; // 支持跨域图片
     image.onload = () => {
-      ctx.drawImage(image, 0, 0, width, height)
+      ctx.drawImage(image, 0, 0, width, height);
 
-      const image2 = new Image() // div图片
-      image2.crossOrigin = "Anonymous" // 支持跨域图片
+      const image2 = new Image(); // div图片
+      image2.crossOrigin = 'Anonymous'; // 支持跨域图片
       image2.onload = () => {
-        ctx.drawImage(image2, 0, 0, width, height)
+        ctx.drawImage(image2, 0, 0, width, height);
 
         // 合并后的图片
-        const base64 = canvas.toDataURL("image/png")
-        resolve(base64)
-      }
-      image2.src = base2
-    }
-    image.src = base1
-  })
+        const base64 = canvas.toDataURL('image/png');
+        resolve(base64);
+      };
+      image2.src = base2;
+    };
+    image.src = base1;
+  });
 }
 
 // 内置扩展的动态文本 DivBoderLabel
@@ -109,14 +109,14 @@ function addGraphic_06(graphicLayer) {
   const graphic = new mars3d.graphic.DivBoderLabel({
     position: [116.460722, 31.140888, 781],
     style: {
-      text: "火星科技Mars3D平台",
+      text: '火星科技Mars3D平台',
       font_size: 15,
-      font_family: "微软雅黑",
-      color: "#ccc",
-      boderColor: "#15d1f2"
-    }
-  })
-  graphicLayer.addGraphic(graphic)
+      font_family: '微软雅黑',
+      color: '#ccc',
+      boderColor: '#15d1f2',
+    },
+  });
+  graphicLayer.addGraphic(graphic);
 }
 
 // 类似popup/toolitp的自定义html
@@ -133,11 +133,11 @@ function addGraphic_08(graphicLayer) {
       // 高亮时的样式
       highlight: {
         type: mars3d.EventType.click,
-        className: "mars-popup-highlight"
-      }
-    }
-  })
-  graphicLayer.addGraphic(graphic)
+        className: 'mars-popup-highlight',
+      },
+    },
+  });
+  graphicLayer.addGraphic(graphic);
 }
 
 // 倾斜指向左下角的面板样式
@@ -193,26 +193,26 @@ function addGraphic_09(graphicLayer) {
       verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
       distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0, 200000), // 按视距距离显示
       scaleByDistance: new Cesium.NearFarScalar(1000, 1.0, 200000, 0.2),
-      clampToGround: true
+      clampToGround: true,
     },
-    attr: { remark: "示例9" },
-    pointerEvents: false // false时不允许拾取和触发任意鼠标事件，但可以穿透div缩放地球
-  })
-  graphicLayer.addGraphic(graphic)
+    attr: { remark: '示例9' },
+    pointerEvents: false, // false时不允许拾取和触发任意鼠标事件，但可以穿透div缩放地球
+  });
+  graphicLayer.addGraphic(graphic);
 
   // 刷新局部DOM,不影响面板的其他控件操作
   // [建议读取到后端接口数据后主动去修改DOM，比下面演示的实时刷新效率高些]
   graphic.on(mars3d.EventType.popupRender, function (event) {
-    const container = event.container // popup对应的DOM
+    const container = event.container; // popup对应的DOM
 
-    const lablLiuliang = container.querySelector("#lablLiuliang")
+    const lablLiuliang = container.querySelector('#lablLiuliang');
     if (lablLiuliang) {
-      lablLiuliang.innerHTML = (Math.random() * 100).toFixed(0) // 测试的随机数
+      lablLiuliang.innerHTML = (Math.random() * 100).toFixed(0); // 测试的随机数
     }
 
-    const lablYeWei = container.querySelector("#lablYeWei")
+    const lablYeWei = container.querySelector('#lablYeWei');
     if (lablYeWei) {
-      lablYeWei.innerHTML = mars3d.Util.formatDate(new Date(), "ss.S") // 测试的随机数
+      lablYeWei.innerHTML = mars3d.Util.formatDate(new Date(), 'ss.S'); // 测试的随机数
     }
-  })
+  });
 }

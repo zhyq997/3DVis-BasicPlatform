@@ -28,94 +28,94 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from "vue"
-import dayjs from "dayjs"
-import * as mapWork from "./map.js"
-import useLifecycle from "@mars/common/uses/use-lifecycle"
+  import { computed, onMounted, ref } from 'vue';
+  import dayjs from 'dayjs';
+  import * as mapWork from './map.js';
+  import useLifecycle from '@mars/common/uses/use-lifecycle';
 
-useLifecycle(mapWork)
+  useLifecycle(mapWork);
 
-const activeKey = ref(["1", "2"])
+  const activeKey = ref(['1', '2']);
 
-const currDate = ref<string>(dayjs().format("YYYY-MM-DD"))
-const timeVal = ref<number>(420)
+  const currDate = ref<string>(dayjs().format('YYYY-MM-DD'));
+  const timeVal = ref<number>(420);
 
-const hours = computed(() => Math.floor(timeVal.value / 60))
-const minutes = computed(() => Math.floor(timeVal.value % 60))
+  const hours = computed(() => Math.floor(timeVal.value / 60));
+  const minutes = computed(() => Math.floor(timeVal.value % 60));
 
-mapWork.eventTarget.on("changeShadows", (event: any) => {
-  const date = event.shadowTime
-  timeVal.value = date.getHours() * 60 + date.getMinutes()
-})
+  mapWork.eventTarget.on('changeShadows', (event: any) => {
+    const date = event.shadowTime;
+    timeVal.value = date.getHours() * 60 + date.getMinutes();
+  });
 
-onMounted(() => {
-  mapWork.getCurreDate(currDate.value)
-  timeChange()
-})
+  onMounted(() => {
+    mapWork.getCurreDate(currDate.value);
+    timeChange();
+  });
 
-const timeChange = () => {
-  mapWork.setShadows(currDate.value, hours.value, minutes.value)
-}
-const drawArea = () => {
-  mapWork.drawArea(currDate.value)
-}
+  const timeChange = () => {
+    mapWork.setShadows(currDate.value, hours.value, minutes.value);
+  };
+  const drawArea = () => {
+    mapWork.drawArea(currDate.value);
+  };
 
-const clearArea = () => {
-  mapWork.clearArea()
-}
+  const clearArea = () => {
+    mapWork.clearArea();
+  };
 
-const startPlay = () => {
-  mapWork.startPlay(currDate.value, hours.value, minutes.value)
-}
-const stopPlay = () => {
-  mapWork.stopPlay()
-}
+  const startPlay = () => {
+    mapWork.startPlay(currDate.value, hours.value, minutes.value);
+  };
+  const stopPlay = () => {
+    mapWork.stopPlay();
+  };
 </script>
 <style scoped lang="less">
-.mars-pannel-item-label {
-  width: 55px;
-}
-
-.ant-slider {
-  width: 219px;
-  margin: 0px;
-}
-
-.mars-date-picker {
-  width: 220px;
-}
-
-.btn {
-  width: 137px;
-  margin-top: 12px;
-
-  &:first-child {
-    margin-left: 9px;
+  .mars-pannel-item-label {
+    width: 55px;
   }
-}
 
-// 有竖线的标题
-.title-vertical_line {
-  padding-left: 12px;
-  font-family: 思源黑体;
-  font-size: 16px;
-  font-weight: normal;
-  color: var(--mars-control-text);
-  position: relative;
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: 2px;
-    left: 0;
-    width: 4px;
-    height: 19px;
-    border-radius: 2px;
-    background-color: var(--mars-primary-color);
+  .ant-slider {
+    width: 219px;
+    margin: 0px;
   }
-}
 
-.play_btn {
-  width: 106px;
-}
+  .mars-date-picker {
+    width: 220px;
+  }
+
+  .btn {
+    width: 137px;
+    margin-top: 12px;
+
+    &:first-child {
+      margin-left: 9px;
+    }
+  }
+
+  // 有竖线的标题
+  .title-vertical_line {
+    padding-left: 12px;
+    font-family: 思源黑体;
+    font-size: 16px;
+    font-weight: normal;
+    color: var(--mars-control-text);
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 0;
+      width: 4px;
+      height: 19px;
+      border-radius: 2px;
+      background-color: var(--mars-primary-color);
+    }
+  }
+
+  .play_btn {
+    width: 106px;
+  }
 </style>

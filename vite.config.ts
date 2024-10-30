@@ -56,20 +56,19 @@ export default defineApplicationConfig({
       preprocessorOptions: {
         less: {
           javascriptEnabled: true,
-          additionalData: `@import "${path.resolve(__dirname, "src/marsgis/components/mars-ui/base.less")}";`
-        }
-      }
+          additionalData: `@import "${path.resolve(__dirname, 'src/marsgis/components/mars-ui/base.less')}";`,
+        },
+      },
     },
     plugins: [mars3dPlugin()],
     build: {
       commonjsOptions: {
         //默认内部只处理了node_modules，需要将"packages/"也标识处理
-        include: /node_modules|packages/
+        include: /node_modules|packages/,
       },
-    }
+    },
   },
 });
-
 
 function pathResolve(dir: string) {
   return resolve(process.cwd(), '.', dir);

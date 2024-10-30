@@ -3,20 +3,35 @@
     <div class="f-mb height">
       <a-space>
         <span class="mars-pannel-item-label">基准面高(米):</span>
-        <mars-input-number @change="baseHeight" id="inputNumber" v-model:value="baseValue" step="0.1" />
+        <mars-input-number
+          @change="baseHeight"
+          id="inputNumber"
+          v-model:value="baseValue"
+          step="0.1"
+        />
         <mars-button @click="selHeight">点选高度</mars-button>
       </a-space>
     </div>
     <div class="f-mb">
       <a-space>
         <span class="mars-pannel-item-label">围墙底高(米):</span>
-        <mars-input-number @change="txtMinHeight" id="inputNumber" v-model:value="bottomValue" step="0.1" />
+        <mars-input-number
+          @change="txtMinHeight"
+          id="inputNumber"
+          v-model:value="bottomValue"
+          step="0.1"
+        />
       </a-space>
     </div>
     <div class="f-mb">
       <a-space>
         <span class="mars-pannel-item-label">围墙顶高(米):</span>
-        <mars-input-number @change="txtMaxHeight" id="inputNumber" v-model:value="topValue" step="0.1" />
+        <mars-input-number
+          @change="txtMaxHeight"
+          id="inputNumber"
+          v-model:value="topValue"
+          step="0.1"
+        />
       </a-space>
     </div>
     <div class="f-mb">
@@ -37,81 +52,81 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue"
-import * as mapWork from "./map.js"
-import useLifecycle from "@mars/common/uses/use-lifecycle"
+  import { ref } from 'vue';
+  import * as mapWork from './map.js';
+  import useLifecycle from '@mars/common/uses/use-lifecycle';
 
-useLifecycle(mapWork)
+  useLifecycle(mapWork);
 
-const baseValue = ref<number>()
+  const baseValue = ref<number>();
 
-const bottomValue = ref<number>()
+  const bottomValue = ref<number>();
 
-const topValue = ref<number>()
+  const topValue = ref<number>();
 
-const checked = ref(false)
+  const checked = ref(false);
 
-// 方量分析
-const analysisMeasure = () => {
-  mapWork.analysisMeasure()
-}
-// 清除
-const clear = () => {
-  mapWork.clear()
-}
+  // 方量分析
+  const analysisMeasure = () => {
+    mapWork.analysisMeasure();
+  };
+  // 清除
+  const clear = () => {
+    mapWork.clear();
+  };
 
-// 复选框显示结果
-const showResult = () => {
-  const isShow = mapWork.showResult(checked.value)
-  checked.value = isShow
-}
+  // 复选框显示结果
+  const showResult = () => {
+    const isShow = mapWork.showResult(checked.value);
+    checked.value = isShow;
+  };
 
-// 基础高度修改
-const baseHeight = () => {
-  mapWork.baseHeight(baseValue.value)
-}
+  // 基础高度修改
+  const baseHeight = () => {
+    mapWork.baseHeight(baseValue.value);
+  };
 
-// 修改底高
-const txtMinHeight = () => {
-  mapWork.txtMinHeight(bottomValue.value)
-}
+  // 修改底高
+  const txtMinHeight = () => {
+    mapWork.txtMinHeight(bottomValue.value);
+  };
 
-// 修改顶高
-const txtMaxHeight = () => {
-  mapWork.txtMaxHeight(topValue.value)
-}
+  // 修改顶高
+  const txtMaxHeight = () => {
+    mapWork.txtMaxHeight(topValue.value);
+  };
 
-// 点选高度
-const selHeight = () => {
-  mapWork.selHeight()
-}
-mapWork.eventTarget.on("heightVal", function (event: any) {
-  showResult()
-  baseValue.value = event.baseHeight
-  bottomValue.value = event.minHeight
-  topValue.value = event.maxHeight
-})
+  // 点选高度
+  const selHeight = () => {
+    mapWork.selHeight();
+  };
+  mapWork.eventTarget.on('heightVal', function (event: any) {
+    showResult();
+    baseValue.value = event.baseHeight;
+    bottomValue.value = event.minHeight;
+    topValue.value = event.maxHeight;
+  });
 </script>
 <style scoped lang="less">
-.mars-pannel-item-label {
-  width: 90px;
-}
-
-.btn {
-  width: 146px;
-}
-
-.info {
-  color: rgb(0, 0, 0);
-}
-
-.height {
-  .ant-input-number {
-    width: 118px !important;
+  .mars-pannel-item-label {
+    width: 90px;
   }
-}
 
-.ant-input-number {
-  width: 204px !important;
-}
+  .btn {
+    width: 146px;
+  }
+
+  .info {
+    color: rgb(0, 0, 0);
+  }
+
+  .height {
+    .ant-input-number {
+      width: 118px !important;
+    }
+  }
+
+  .ant-input-number {
+    width: 204px !important;
+  }
 </style>

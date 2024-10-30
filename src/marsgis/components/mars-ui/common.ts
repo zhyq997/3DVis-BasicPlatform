@@ -1,2 +1,2 @@
-const doc = document.documentElement
-doc.dataset.theme = "dark"
+const doc = document.documentElement;
+doc.dataset.theme = 'dark';

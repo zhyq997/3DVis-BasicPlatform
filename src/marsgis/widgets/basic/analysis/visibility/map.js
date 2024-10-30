@@ -1,10 +1,10 @@
-import * as mars3d from "mars3d"
+import * as mars3d from 'mars3d';
 
-export let map // mars3d.Map三维地图对象
-export let graphicLayer
+export let map; // mars3d.Map三维地图对象
+export let graphicLayer;
 
 // 事件对象，用于抛出事件给面板
-export const eventTarget = new mars3d.BaseClass()
+export const eventTarget = new mars3d.BaseClass();
 
 /**
  * 初始化地图业务，生命周期钩子函数（必须）
@@ -13,7 +13,7 @@ export const eventTarget = new mars3d.BaseClass()
  * @returns {void} 无
  */
 export function onMounted(mapInstance) {
-  map = mapInstance // 记录map
+  map = mapInstance; // 记录map
 
   // globalNotify("已知问题提示", `(1) 目前会存在锯齿。(2) 视角变化时可能有锯齿抖动。`)
 
@@ -28,8 +28,8 @@ export function onMounted(mapInstance) {
   // map.addLayer(tiles3dLayer)
 
   // 创建矢量数据图层
-  graphicLayer = new mars3d.layer.GraphicLayer()
-  map.addLayer(graphicLayer)
+  graphicLayer = new mars3d.layer.GraphicLayer();
+  map.addLayer(graphicLayer);
 
   // 加一些演示数据
   // addDemoGraphic1()
@@ -42,23 +42,23 @@ export function onMounted(mapInstance) {
  * @returns {void} 无
  */
 export function onUnmounted() {
-  map = null
-  clear()
+  map = null;
+  clear();
 }
 
 export function clear() {
-  graphicLayer.clear()
+  graphicLayer.clear();
 }
 
 function addDemoGraphic1() {
   const pointLight = new mars3d.graphic.PointVisibility({
     position: [119.481049, 28.440174, 145],
     style: {
-      color: "#e3e238",
-      radius: 100
-    }
-  })
-  graphicLayer.addGraphic(pointLight)
+      color: '#e3e238',
+      radius: 100,
+    },
+  });
+  graphicLayer.addGraphic(pointLight);
 }
 
 function addDemoGraphic2() {
@@ -66,100 +66,100 @@ function addDemoGraphic2() {
     position: [119.481236, 28.439863, 142],
     targetPosition: [119.482314, 28.441137, 129.5],
     style: {
-      color: "#e33838"
+      color: '#e33838',
       // radius: 100
       // heading: 180
-    }
-  })
-  graphicLayer.addGraphic(pointLight)
+    },
+  });
+  graphicLayer.addGraphic(pointLight);
 }
 
 function addDemoGraphic3() {
   const pointLight = new mars3d.graphic.PointVisibility({
     position: [119.48157, 28.440346, 150],
     style: {
-      radius: 100
-    }
-  })
-  graphicLayer.addGraphic(pointLight)
+      radius: 100,
+    },
+  });
+  graphicLayer.addGraphic(pointLight);
 
   map.viewer.entities.add({
     position: new Cesium.CallbackProperty(() => {
-      return pointLight.position
+      return pointLight.position;
     }, false),
     point: {
-      pixelSize: 10
-    }
-  })
+      pixelSize: 10,
+    },
+  });
 
   map.on(mars3d.EventType.mouseMove, function (event) {
     if (event.cartesian && pointLight.isAdded) {
-      pointLight.position = mars3d.PointUtil.addPositionsHeight(event.cartesian, 10)
+      pointLight.position = mars3d.PointUtil.addPositionsHeight(event.cartesian, 10);
     }
-  })
+  });
 }
 
 // 添加
 export function startDrawGraphic() {
   // 开始绘制
   graphicLayer.startDraw({
-    type: "coneVisibility",
+    type: 'coneVisibility',
     style: {
       radius: 200,
-      addHeight: 1
-    }
-  })
+      addHeight: 1,
+    },
+  });
 }
 
 export function startDrawGraphic2() {
   // 开始绘制
   graphicLayer.startDraw({
-    type: "pointVisibility",
+    type: 'pointVisibility',
     style: {
       radius: 200,
-      addHeight: 1
-    }
-  })
+      addHeight: 1,
+    },
+  });
 }
 
 // 生成演示数据(测试数据量)
 export function addRandomGraphicByCount(count) {
-  graphicLayer.clear()
-  graphicLayer.enabledEvent = false // 关闭事件，大数据addGraphic时影响加载时间
+  graphicLayer.clear();
+  graphicLayer.enabledEvent = false; // 关闭事件，大数据addGraphic时影响加载时间
 
-  const bbox = [119.474745, 28.436478, 119.484204, 28.444144]
-  const result = mars3d.PolyUtil.getGridPoints(bbox, count, 140)
-  console.log("生成的测试网格坐标", result)
+  const bbox = [119.474745, 28.436478, 119.484204, 28.444144];
+  const result = mars3d.PolyUtil.getGridPoints(bbox, count, 140);
+  console.log('生成的测试网格坐标', result);
 
   for (let j = 0; j < result.points.length; ++j) {
-    const position = result.points[j]
-    const index = j + 1
+    const position = result.points[j];
+    const index = j + 1;
 
     const graphic = new mars3d.graphic.PointVisibility({
       position,
       style: {
-        radius: 100
+        radius: 100,
       },
-      attr: { index }
-    })
-    graphicLayer.addGraphic(graphic)
+      attr: { index },
+    });
+    graphicLayer.addGraphic(graphic);
 
     // 测试位置的
     map.viewer.entities.add({
       position: new Cesium.CallbackProperty(() => {
-        return graphic.position
+        return graphic.position;
       }, false),
       point: {
-        pixelSize: 10
-      }
-    })
+        pixelSize: 10,
+      },
+    });
   }
 
-  graphicLayer.enabledEvent = true // 恢复事件
-  return result.points.length
+  graphicLayer.enabledEvent = true; // 恢复事件
+  return result.points.length;
 }
 export function getGraphic(graphicId) {
-  return graphicLayer.getGraphicById(graphicId)
+  return graphicLayer.getGraphicById(graphicId);
 }
 
 // export function getMars3D() {

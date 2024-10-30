@@ -18,27 +18,27 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from "vue"
-import useLifecycle from "@mars/common/uses/use-lifecycle"
-import * as mapWork from "./map"
+  import { reactive } from 'vue';
+  import useLifecycle from '@mars/common/uses/use-lifecycle';
+  import * as mapWork from './map';
 
-// 启用map.ts生命周期
-useLifecycle(mapWork)
+  // 启用map.ts生命周期
+  useLifecycle(mapWork);
 
-interface FormState {
-  extent: string
-}
-const formState = reactive<FormState>({
-  extent: ""
-})
+  interface FormState {
+    extent: string;
+  }
+  const formState = reactive<FormState>({
+    extent: '',
+  });
 
-// 渲染模型
-const onClickDrawExtent = () => {
-  // formState.extent = "测试组件内部数据是否响应"
-  mapWork.drawExtent()
-}
-mapWork.eventTarget.on("drawExtent", function (event: any) {
-  formState.extent = event.extent
-})
+  // 渲染模型
+  const onClickDrawExtent = () => {
+    // formState.extent = "测试组件内部数据是否响应"
+    mapWork.drawExtent();
+  };
+  mapWork.eventTarget.on('drawExtent', function (event: any) {
+    formState.extent = event.extent;
+  });
 </script>
 <style lang="less"></style>

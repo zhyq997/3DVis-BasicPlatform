@@ -1,6 +1,5 @@
 <template>
   <mars-dialog title="地表透明" right="10" top="60" width="340">
-
     <div class="f-mb">
       <a-space>
         <span class="mars-pannel-item-label">状态控制:</span>
@@ -12,7 +11,13 @@
     <div class="f-mb">
       <a-space>
         <span class="mars-pannel-item-label">地表透明度:</span>
-        <mars-slider @change="opacityChange" v-model:value="inputValue" :min="0" :max="1" :step="0.1" />
+        <mars-slider
+          @change="opacityChange"
+          v-model:value="inputValue"
+          :min="0"
+          :max="1"
+          :step="0.1"
+        />
       </a-space>
     </div>
 
@@ -27,61 +32,60 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue"
-import * as mapWork from "./map.js"
-import useLifecycle from "@mars/common/uses/use-lifecycle"
+  import { ref } from 'vue';
+  import * as mapWork from './map.js';
+  import useLifecycle from '@mars/common/uses/use-lifecycle';
 
-useLifecycle(mapWork)
+  useLifecycle(mapWork);
 
-const inputValue = ref<number>(0.5)
-const checked = ref(true)
+  const inputValue = ref<number>(0.5);
+  const checked = ref(true);
 
-// 俯视视角
-const centerAtDX1 = () => {
-  mapWork.centerAtDX1()
-}
+  // 俯视视角
+  const centerAtDX1 = () => {
+    mapWork.centerAtDX1();
+  };
 
-// 地下视角1
-const centerAtDX2 = () => {
-  mapWork.centerAtDX2()
-}
+  // 地下视角1
+  const centerAtDX2 = () => {
+    mapWork.centerAtDX2();
+  };
 
-// 地下视角2
-const centerAtDX3 = () => {
-  mapWork.centerAtDX3()
-}
+  // 地下视角2
+  const centerAtDX3 = () => {
+    mapWork.centerAtDX3();
+  };
 
-// 透明度发生改变
-const opacityChange = () => {
-  mapWork.opacityChange(inputValue.value)
-}
+  // 透明度发生改变
+  const opacityChange = () => {
+    mapWork.opacityChange(inputValue.value);
+  };
 
-const isChecked = () => {
-  mapWork.chkUnderground(checked.value)
-}
-
+  const isChecked = () => {
+    mapWork.chkUnderground(checked.value);
+  };
 </script>
 <style scoped lang="less">
-.mars-pannel-item-label {
-  width: 74px;
-}
+  .mars-pannel-item-label {
+    width: 74px;
+  }
 
-.pannel_label {
-  font-size: 12px;
-  font-weight: normal;
-  line-height: 22px;
-  color: rgba(234, 242, 255, 0.5);
-}
+  .pannel_label {
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 22px;
+    color: rgba(234, 242, 255, 0.5);
+  }
 
-.switch_btn {
-  margin-bottom: 1px;
-}
+  .switch_btn {
+    margin-bottom: 1px;
+  }
 
-.control_btn {
-  width: 94px;
-}
+  .control_btn {
+    width: 94px;
+  }
 
-.ant-slider {
-  width: 210px;
-}
+  .ant-slider {
+    width: 210px;
+  }
 </style>

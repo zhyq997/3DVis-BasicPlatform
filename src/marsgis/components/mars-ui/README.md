@@ -1,15 +1,13 @@
-
 ## mars-ui介绍
 
 ## 依赖库
+
 - [Ant Design Vue](https://next.antdv.com/components/overview-cn/)：UI 控件库
 - [IconPark](https://iconpark.oceanengine.com/official)：UI 图标库
-
 
 ## 将mars-ui集成到自己的项目中
 
 > 前提条件：需要 2 个项目的技术栈基本是一致的，比如`vue3+ts+ant-design-vue`等
-
 
 ### 流程概览：
 
@@ -27,7 +25,9 @@
 ![image](http://mars3d.cn/dev/img/guide/project-vue-hebing.jpg)
 
 ### 1. 拷贝src/components/mars-ui文件夹
+
 ### 2. 在main.ts文件中进行集成
+
 ```json
 
 import "./components/mars-ui/common";
@@ -36,7 +36,9 @@ import MarsUIInstall from "./components/mars-ui";
 
 MarsUIInstall(app);
 ```
+
 ### 3. 安装相关依赖
+
 ```json
   "dependencies": {
     "@icon-park/svg": "^1.4.2",
@@ -54,6 +56,7 @@ MarsUIInstall(app);
 ```
 
 ### 4. 配置vite文件
+
 ```json
   export default defineConfig({
   css: {
@@ -90,7 +93,7 @@ MarsUIInstall(app);
 ```
 
 ### 5. 使用
+
 参考实例，使用对应的标签
 
 基础项目已经基本保证不会影响外部样式，此处要处理的是您项目中的全局样式对 mars3d 相关组件的影响。修改相关 CSS 保证基础项目功能 UI 正常即可。
-

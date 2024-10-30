@@ -1,5 +1,12 @@
 <template>
-  <mars-dialog :visible="true" right="10" top="60" customClass="compare-pannel" title="双屏对比" width="330">
+  <mars-dialog
+    :visible="true"
+    right="10"
+    top="60"
+    customClass="compare-pannel"
+    title="双屏对比"
+    width="330"
+  >
     <a-space :size="20">
       <mars-button @click="createMap">
         <mars-icon icon="split" :size="20"></mars-icon>
@@ -14,33 +21,33 @@
 </template>
 
 <script lang="ts" setup>
-import * as mapWork from "./map.js"
-import useLifecycle from "@mars/common/uses/use-lifecycle"
+  import * as mapWork from './map.js';
+  import useLifecycle from '@mars/common/uses/use-lifecycle';
 
-// 启用map.ts生命周期
-useLifecycle(mapWork)
-// 创建地图
-const createMap = () => {
-  mapWork.createControl()
-}
-// 销毁地图
-const destroyMap = () => {
-  mapWork.destroyControl()
-}
+  // 启用map.ts生命周期
+  useLifecycle(mapWork);
+  // 创建地图
+  const createMap = () => {
+    mapWork.createControl();
+  };
+  // 销毁地图
+  const destroyMap = () => {
+    mapWork.destroyControl();
+  };
 </script>
 
 <style lang="less">
-.compare-pannel {
-  background: transparent !important;
-  backdrop-filter: none !important;
+  .compare-pannel {
+    background: transparent !important;
+    backdrop-filter: none !important;
 
-  .mars-dialog__content {
-    background-color: transparent !important;
-  }
+    .mars-dialog__content {
+      background-color: transparent !important;
+    }
 
-  .mars-button {
-    width: 120px;
-    height: 46px;
+    .mars-button {
+      width: 120px;
+      height: 46px;
+    }
   }
-}
 </style>

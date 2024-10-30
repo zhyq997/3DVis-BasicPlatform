@@ -1,14 +1,14 @@
-import * as mars3d from "mars3d"
-import { $alert, $message, $showLoading, $hideLoading } from "@mars/components/mars-ui/index"
+import * as mars3d from 'mars3d';
+import { $alert, $message, $showLoading, $hideLoading } from '@mars/components/mars-ui/index';
 
-export let map // mars3d.Map三维地图对象
-let limitHeight
-let tilesetLayer
+export let map; // mars3d.Map三维地图对象
+let limitHeight;
+let tilesetLayer;
 export const mapOptions = {
   scene: {
-    center: { lat: 31.794547, lng: 117.21215, alt: 1672, heading: 18, pitch: -33 }
-  }
-}
+    center: { lat: 31.794547, lng: 117.21215, alt: 1672, heading: 18, pitch: -33 },
+  },
+};
 
 /**
  * 初始化地图业务，生命周期钩子函数（必须）
@@ -17,8 +17,8 @@ export const mapOptions = {
  * @returns {void} 无
  */
 export function onMounted(mapInstance) {
-  map = mapInstance // 记录map
-  map.fixedLight = true // 固定光照，避免gltf模型随时间存在亮度不一致。
+  map = mapInstance; // 记录map
+  map.fixedLight = true; // 固定光照，避免gltf模型随时间存在亮度不一致。
 
   // // 创建矢量数据图层
   // const graphicLayer = new mars3d.layer.GraphicLayer()
@@ -40,24 +40,24 @@ export function onMounted(mapInstance) {
   tilesetLayer = new mars3d.layer.TilesetLayer({
     pid: -1,
     flyTo: true,
-    name: "合肥天鹅湖",
-    type: "3dtiles",
-    url: "//data.mars3d.cn/3dtiles/qx-teh/tileset.json",
+    name: '合肥天鹅湖',
+    type: '3dtiles',
+    url: '//data.mars3d.cn/3dtiles/qx-teh/tileset.json',
     position: { lng: 117.218434, lat: 31.81807, alt: 163 },
     maximumScreenSpaceError: 16,
     cacheBytes: 1073741824, // 1024MB = 1024*1024*1024
     maximumCacheOverflowBytes: 2147483648, // 2048MB = 2048*1024*1024
     cullWithChildrenBounds: false,
     skipLevelOfDetail: true,
-    preferLeaves: true
-  })
-  map.addLayer(tilesetLayer)
+    preferLeaves: true,
+  });
+  map.addLayer(tilesetLayer);
 
   // 限高分析类
   limitHeight = new mars3d.thing.LimitHeight({
-    color: "rgba(255,0,0,0.5)",
+    color: 'rgba(255,0,0,0.5)',
     height: 80, // 限高
-    bottomHeight: 32 // 模型地面的海拔高度（单位：米）
+    bottomHeight: 32, // 模型地面的海拔高度（单位：米）
     // positions: [
     //   [117.210446, 31.829032, 0],
     //   [117.226334, 31.826662, 0],
@@ -65,8 +65,8 @@ export function onMounted(mapInstance) {
     //   [117.209776, 31.808359, 0],
     //   [117.209778, 31.808341, 0]
     // ]
-  })
-  map.addThing(limitHeight)
+  });
+  map.addThing(limitHeight);
 
   // 自动读取模型的高度，但不一定准确。
   // tilesetLayer.on(mars3d.EventType.load, function (event) {
@@ -80,32 +80,32 @@ export function onMounted(mapInstance) {
  */
 export function onUnmounted() {
   if (tilesetLayer) {
-    map.removeLayer(tilesetLayer, true)
+    map.removeLayer(tilesetLayer, true);
   }
-  clear()
-  map = null
+  clear();
+  map = null;
 }
 
 // 滑动条
 export function currHeight(value) {
-  limitHeight.height = value
+  limitHeight.height = value;
 }
 export function setDiffHeight(value) {
-  limitHeight.diffHeight = value
+  limitHeight.diffHeight = value;
 }
 
 // 绘制矩形
 export async function drawExtent() {
-  map.graphicLayer.clear()
+  map.graphicLayer.clear();
   const graphic = await map.graphicLayer.startDraw({
-    type: "rectangle",
+    type: 'rectangle',
     style: {
-      color: "#ffff00",
+      color: '#ffff00',
       opacity: 0.3,
-      clampToGround: true
-    }
-  })
-  $showLoading()
+      clampToGround: true,
+    },
+  });
+  $showLoading();
 
   // 对图层内的数据做贴地运算,自动得到贴地高度
   map.graphicLayer
@@ -113,38 +113,38 @@ export async function drawExtent() {
       endItem: function (result) {
         const resultData = {
           percent: result.index + 1,
-          percentAll: result.count
-        }
-      }
+          percentAll: result.count,
+        };
+      },
     })
     .then(() => {
-      $hideLoading()
-    })
-  const positions = graphic.getOutlinePositions(false)
-  limitHeight.positions = positions
+      $hideLoading();
+    });
+  const positions = graphic.getOutlinePositions(false);
+  limitHeight.positions = positions;
 
-  map.graphicLayer.clear()
+  map.graphicLayer.clear();
 }
 
 // 绘制面
 export async function drawPolygon() {
-  map.graphicLayer.clear()
+  map.graphicLayer.clear();
   const graphic = await map.graphicLayer.startDraw({
-    type: "polygon",
+    type: 'polygon',
     style: {
-      color: "#ffff00",
+      color: '#ffff00',
       opacity: 0.3,
-      clampToGround: true
-    }
-  })
-  const positions = graphic.positionsShow
-  limitHeight.positions = positions
+      clampToGround: true,
+    },
+  });
+  const positions = graphic.positionsShow;
+  limitHeight.positions = positions;
 
-  map.graphicLayer.clear()
-  console.log("绘制坐标为", JSON.stringify(mars3d.LngLatArray.toArray(positions))) // 方便测试拷贝坐标
+  map.graphicLayer.clear();
+  console.log('绘制坐标为', JSON.stringify(mars3d.LngLatArray.toArray(positions))); // 方便测试拷贝坐标
 }
 
 export function clear() {
-  limitHeight.clear()
-  map.graphicLayer.clear()
+  limitHeight.clear();
+  map.graphicLayer.clear();
 }

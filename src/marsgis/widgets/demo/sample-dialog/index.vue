@@ -17,26 +17,26 @@
 </template>
 
 <script setup lang="ts">
-import { onUnmounted, ref } from "vue"
-import useLifecycle from "@mars/common/uses/use-lifecycle"
-import * as mapWork from "./map"
+  import { onUnmounted, ref } from 'vue';
+  import useLifecycle from '@mars/common/uses/use-lifecycle';
+  import * as mapWork from './map';
 
-// 启用map.ts生命周期
-useLifecycle(mapWork)
+  // 启用map.ts生命周期
+  useLifecycle(mapWork);
 
-const extent = ref("")
+  const extent = ref('');
 
-// 渲染模型
-const onClickDrawExtent = () => {
-  // formState.extent = "测试组件内部数据是否响应"
-  mapWork.drawExtent()
-}
-mapWork.eventTarget.on("drawExtent", function (event: any) {
-  extent.value = event.extent
-})
+  // 渲染模型
+  const onClickDrawExtent = () => {
+    // formState.extent = "测试组件内部数据是否响应"
+    mapWork.drawExtent();
+  };
+  mapWork.eventTarget.on('drawExtent', function (event: any) {
+    extent.value = event.extent;
+  });
 
-onUnmounted(() => {
-  // 销毁操作
-})
+  onUnmounted(() => {
+    // 销毁操作
+  });
 </script>
 <style lang="less"></style>

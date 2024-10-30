@@ -23,31 +23,31 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue"
-import * as mapWork from "./map"
-import useLifecycle from "@mars/common/uses/use-lifecycle"
-import { useWidget } from "@mars/common/store/widget"
+  import { ref, onMounted } from 'vue';
+  import * as mapWork from './map';
+  import useLifecycle from '@mars/common/uses/use-lifecycle';
+  import { useWidget } from '@mars/common/store/widget';
 
-const { currentWidget } = useWidget()
+  const { currentWidget } = useWidget();
 
-currentWidget.onUpdate((e) => {
-  // console.log(e)
-})
+  currentWidget.onUpdate((e) => {
+    // console.log(e)
+  });
 
-useLifecycle(mapWork)
+  useLifecycle(mapWork);
 
-const extent = ref("")
+  const extent = ref('');
 
-const onClickDrawExtent = async () => {
-  const data = await mapWork.drawExtent()
-  extent.value = data.extent
-}
+  const onClickDrawExtent = async () => {
+    const data = await mapWork.drawExtent();
+    extent.value = data.extent;
+  };
 
-const couter = ref(10)
-onMounted(() => {
-  setTimeout(() => {
-    couter.value = 100
-  }, 2000)
-})
+  const couter = ref(10);
+  onMounted(() => {
+    setTimeout(() => {
+      couter.value = 100;
+    }, 2000);
+  });
 </script>
 <style lang="less"></style>

@@ -1,8 +1,8 @@
-import * as mars3d from "mars3d"
+import * as mars3d from 'mars3d';
 
-export let map // mars3d.Map三维地图对象
-let underground
-let graphicLayer
+export let map; // mars3d.Map三维地图对象
+let underground;
+let graphicLayer;
 export const mapOptions = {
   scene: {
     center: { lat: 31.840106, lng: 117.216768, alt: 554, heading: 0, pitch: -59 },
@@ -13,10 +13,10 @@ export const mapOptions = {
     showSkyAtmosphere: false,
     fog: false,
     globe: {
-      depthTestAgainstTerrain: true // 开启深度检测
-    }
-  }
-}
+      depthTestAgainstTerrain: true, // 开启深度检测
+    },
+  },
+};
 
 /**
  * 初始化地图业务，生命周期钩子函数（必须）
@@ -25,12 +25,12 @@ export const mapOptions = {
  * @returns {void} 无
  */
 export function onMounted(mapInstance) {
-  map = mapInstance // 记录map
-  map.container.style.backgroundColor = "#546a53" // 背景色
+  map = mapInstance; // 记录map
+  map.container.style.backgroundColor = '#546a53'; // 背景色
 
   // globalNotify("已知问题提示", `(1) 启用透明度后，放大层级底图瓦片衔接处有黑色缝隙 `)
 
-  addLayer()
+  addLayer();
 }
 
 /**
@@ -38,15 +38,15 @@ export function onMounted(mapInstance) {
  * @returns {void} 无
  */
 export function onUnmounted() {
-  clear()
-  map = null
+  clear();
+  map = null;
 }
 
 function addLayer() {
   underground = new mars3d.thing.Underground({
-    alpha: 0.5
-  })
-  map.addThing(underground)
+    alpha: 0.5,
+  });
+  map.addThing(underground);
 
   /* // 地下颜色的个性化处理
   underground.color = Cesium.Color.BLACK
@@ -54,26 +54,26 @@ function addLayer() {
 
   // 加个模型
   const tiles3dLayer = new mars3d.layer.TilesetLayer({
-    name: "地下管网",
-    url: "//data.mars3d.cn/3dtiles/max-piping/tileset.json",
+    name: '地下管网',
+    url: '//data.mars3d.cn/3dtiles/max-piping/tileset.json',
     position: { lng: 117.215457, lat: 31.843363, alt: -3.6 },
     rotation: { z: 336.7 },
     maximumScreenSpaceError: 2,
-    highlight: { type: "click", color: "#00FFFF" },
-    popup: "all",
+    highlight: { type: 'click', color: '#00FFFF' },
+    popup: 'all',
     center: { lat: 31.838081, lng: 117.216584, alt: 406, heading: 1, pitch: -34 },
-    flyTo: true
-  })
-  map.addLayer(tiles3dLayer)
+    flyTo: true,
+  });
+  map.addLayer(tiles3dLayer);
 
   // 创建矢量数据图层
-  graphicLayer = new mars3d.layer.GraphicLayer()
-  map.addLayer(graphicLayer)
+  graphicLayer = new mars3d.layer.GraphicLayer();
+  map.addLayer(graphicLayer);
 }
 
 function clear() {
-  graphicLayer.clear()
-  underground.remove()
+  graphicLayer.clear();
+  underground.remove();
 }
 
 // 俯视视角
@@ -84,8 +84,8 @@ export function centerAtDX1() {
     z: 554.36,
     heading: 0,
     pitch: -59.3,
-    roll: 0
-  })
+    roll: 0,
+  });
 }
 
 // 地下视角1
@@ -96,8 +96,8 @@ export function centerAtDX2() {
     z: -13.35,
     heading: 40.6,
     pitch: 15.7,
-    roll: 0.1
-  })
+    roll: 0.1,
+  });
 }
 
 // 地下视角2
@@ -108,16 +108,16 @@ export function centerAtDX3() {
     z: -63.75,
     heading: 349.2,
     pitch: 18.2,
-    roll: 0
-  })
+    roll: 0,
+  });
 }
 
 // 透明度发生改变
 export function opacityChange(value) {
-  underground.alpha = value
+  underground.alpha = value;
 }
 
 // 复选框，是否开启地下模式
 export function chkUnderground(value) {
-  underground.enabled = value
+  underground.enabled = value;
 }

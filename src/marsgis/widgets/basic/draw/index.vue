@@ -6,10 +6,16 @@
         <div class="grid-checkboxs">
           <a-checkbox v-model:checked="enabledShowHide" @change="onChangeShow">显示隐藏</a-checkbox>
           <a-checkbox v-model:checked="enabledPopup" @change="onChangePopup">Popup绑定</a-checkbox>
-          <a-checkbox v-model:checked="enabledTooltip" @change="onChangeTooltip">Tooltip绑定</a-checkbox>
-          <a-checkbox v-model:checked="enabledRightMenu" @change="onChangeContextMenu">右键菜单绑定</a-checkbox>
+          <a-checkbox v-model:checked="enabledTooltip" @change="onChangeTooltip"
+            >Tooltip绑定</a-checkbox
+          >
+          <a-checkbox v-model:checked="enabledRightMenu" @change="onChangeContextMenu"
+            >右键菜单绑定</a-checkbox
+          >
           <a-checkbox v-model:checked="enabledEdit" @change="onChangeHasEdit">是否编辑</a-checkbox>
-          <a-checkbox v-model:checked="onlyVertexPosition" @change="updateOnlyVertexPosition">开启顶点吸附 </a-checkbox>
+          <a-checkbox v-model:checked="onlyVertexPosition" @change="updateOnlyVertexPosition"
+            >开启顶点吸附
+          </a-checkbox>
         </div>
       </a-col>
     </a-row>
@@ -90,7 +96,9 @@
           <mars-button @click="drawExtrudedCircle">圆柱</mars-button>
           <mars-button class="pad-none" @click="draWall(true)">闭合墙</mars-button>
           <mars-button class="pad-none" @click="drawExtrudedPolygon">面立体</mars-button>
-          <mars-button class="pad-none" @click="drawExtrudedRectangle" style="font-size: 12px">矩形立体</mars-button>
+          <mars-button class="pad-none" @click="drawExtrudedRectangle" style="font-size: 12px"
+            >矩形立体</mars-button
+          >
         </a-space>
       </a-col>
     </a-row>
@@ -107,265 +115,273 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, markRaw, onMounted } from "vue"
-import { useWidget } from "@mars/common/store/widget"
-import * as mapWork from "./map.js"
-import useLifecycle from "@mars/common/uses/use-lifecycle"
-import * as mars3d from "mars3d"
+  import { ref, markRaw, onMounted } from 'vue';
+  import { useWidget } from '@mars/common/store/widget';
+  import * as mapWork from './map.js';
+  import useLifecycle from '@mars/common/uses/use-lifecycle';
+  import * as mars3d from 'mars3d';
 
-// 启用map.ts生命周期
-useLifecycle(mapWork)
-interface FileItem {
-  uid: string
-  name?: string
-  status?: string
-  response?: string
-  url?: string
-}
-
-interface FileInfo {
-  file: FileItem
-  fileList: FileItem[]
-}
-
-// 显示隐藏
-const enabledShowHide = ref(true)
-const onChangeShow = () => {
-  mapWork.graphicLayer.show = enabledShowHide.value
-}
-
-// 是否绑定Popup
-const enabledPopup = ref(false)
-const onChangePopup = () => {
-  if (enabledPopup.value) {
-    mapWork.bindLayerPopup()
-  } else {
-    mapWork.graphicLayer.unbindPopup()
+  // 启用map.ts生命周期
+  useLifecycle(mapWork);
+  interface FileItem {
+    uid: string;
+    name?: string;
+    status?: string;
+    response?: string;
+    url?: string;
   }
-}
 
-// 是否绑定Tooltip
-const enabledTooltip = ref(false)
-const onChangeTooltip = () => {
-  if (enabledTooltip.value) {
-    mapWork.graphicLayer.bindTooltip("我是layer上绑定的Tooltip")
-  } else {
-    mapWork.graphicLayer.unbindTooltip()
+  interface FileInfo {
+    file: FileItem;
+    fileList: FileItem[];
   }
-}
 
-// 是否绑定右键菜单
-const enabledRightMenu = ref(true)
-const onChangeContextMenu = () => {
-  if (enabledRightMenu.value) {
-    mapWork.bindLayerContextMenu()
-  } else {
-    mapWork.graphicLayer.unbindContextMenu(true)
-  }
-}
+  // 显示隐藏
+  const enabledShowHide = ref(true);
+  const onChangeShow = () => {
+    mapWork.graphicLayer.show = enabledShowHide.value;
+  };
 
-// 是否可编辑
-const enabledEdit = ref(true)
-const onChangeHasEdit = () => {
-  mapWork.graphicLayer.hasEdit = enabledEdit.value
-}
-
-//
-const onlyVertexPosition = ref(false)
-const updateOnlyVertexPosition = () => {
-  mapWork.updateOnlyVertexPosition(onlyVertexPosition.value)
-}
-
-// 点击清除按钮
-const onClickClear = () => {
-  mapWork.graphicLayer.clear()
-}
-
-// 点击保存GeoJSON
-const onClickSaveJson = () => {
-  mapWork.saveGeoJSON()
-}
-
-// 打开GeoJSON
-const onClickOpenJson = (info: FileInfo) => {
-  mapWork.openGeoJSON(info.file)
-}
-
-// 点击保存KML
-const onClickSaveKml = () => {
-  mapWork.saveKML()
-}
-
-// 点击保存WKT
-const onClickSaveWKT = () => {
-  mapWork.saveWKT()
-}
-
-function drawPoint() {
-  mapWork.drawPoint()
-}
-
-function drawMarker() {
-  mapWork.drawMarker()
-}
-
-function drawLabel() {
-  mapWork.drawLabel()
-}
-
-function onClickStartDarw() {
-  mapWork.startDrawModel()
-}
-
-function drawPolyline(clampToGround: boolean) {
-  mapWork.drawPolyline(clampToGround)
-}
-
-function drawBrushLine(clampToGround: boolean) {
-  mapWork.drawBrushLine(clampToGround)
-}
-
-function drawPolygon(clampToGround: boolean) {
-  mapWork.drawPolygon(clampToGround)
-}
-
-function drawCurve(clampToGround: boolean) {
-  mapWork.drawCurve(clampToGround)
-}
-
-function drawCorridor(clampToGround: boolean) {
-  mapWork.drawCorridor(clampToGround)
-}
-
-function drawEllipse(clampToGround: boolean) {
-  mapWork.drawEllipse(clampToGround)
-}
-
-function drawRectangle(clampToGround: boolean) {
-  mapWork.drawRectangle(clampToGround)
-}
-
-function draPlane() {
-  mapWork.draPlane()
-}
-
-function draWall(closure: boolean) {
-  mapWork.draWall(closure)
-}
-
-function drawBox() {
-  mapWork.drawBox()
-}
-
-function drawCylinder() {
-  mapWork.drawCylinder()
-}
-
-function drawEllipsoid() {
-  mapWork.drawEllipsoid()
-}
-
-function drawExtrudedPolygon() {
-  mapWork.drawExtrudedPolygon()
-}
-
-function drawExtrudedRectangle() {
-  mapWork.drawExtrudedRectangle()
-}
-
-function drawExtrudedCircle() {
-  mapWork.drawExtrudedCircle()
-}
-
-// 数据编辑属性面板 相关处理
-const { activate, disable, isActivate, updateWidget } = useWidget()
-
-onMounted(() => {
-  // 矢量数据创建完成
-  mapWork.graphicLayer.on(mars3d.EventType.drawCreated, function (e) {
-    if (enabledEdit.value) {
-      showEditor(e)
+  // 是否绑定Popup
+  const enabledPopup = ref(false);
+  const onChangePopup = () => {
+    if (enabledPopup.value) {
+      mapWork.bindLayerPopup();
+    } else {
+      mapWork.graphicLayer.unbindPopup();
     }
-  })
-  // 修改了矢量数据
-  mapWork.graphicLayer.on(
-    [mars3d.EventType.editStart, mars3d.EventType.editMovePoint, mars3d.EventType.editStyle, mars3d.EventType.editRemovePoint],
-    function (e) {
-      showEditor(e)
+  };
+
+  // 是否绑定Tooltip
+  const enabledTooltip = ref(false);
+  const onChangeTooltip = () => {
+    if (enabledTooltip.value) {
+      mapWork.graphicLayer.bindTooltip('我是layer上绑定的Tooltip');
+    } else {
+      mapWork.graphicLayer.unbindTooltip();
     }
-  )
-  // 停止编辑
-  mapWork.graphicLayer.on([mars3d.EventType.editStop, mars3d.EventType.removeGraphic], function (e) {
-    setTimeout(() => {
-      if (!mapWork.graphicLayer.isEditing) {
-        disable("graphic-editor")
-      }
-    }, 100)
-  })
-})
+  };
 
-const showEditor = (e: any) => {
-  const graphic = e.graphic
-  if (!graphic._conventStyleJson) {
-    graphic.options.style = graphic.toJSON().style // 因为示例中的样式可能有复杂对象，需要转为单个json简单对象
-    graphic._conventStyleJson = true // 只处理一次
+  // 是否绑定右键菜单
+  const enabledRightMenu = ref(true);
+  const onChangeContextMenu = () => {
+    if (enabledRightMenu.value) {
+      mapWork.bindLayerContextMenu();
+    } else {
+      mapWork.graphicLayer.unbindContextMenu(true);
+    }
+  };
+
+  // 是否可编辑
+  const enabledEdit = ref(true);
+  const onChangeHasEdit = () => {
+    mapWork.graphicLayer.hasEdit = enabledEdit.value;
+  };
+
+  //
+  const onlyVertexPosition = ref(false);
+  const updateOnlyVertexPosition = () => {
+    mapWork.updateOnlyVertexPosition(onlyVertexPosition.value);
+  };
+
+  // 点击清除按钮
+  const onClickClear = () => {
+    mapWork.graphicLayer.clear();
+  };
+
+  // 点击保存GeoJSON
+  const onClickSaveJson = () => {
+    mapWork.saveGeoJSON();
+  };
+
+  // 打开GeoJSON
+  const onClickOpenJson = (info: FileInfo) => {
+    mapWork.openGeoJSON(info.file);
+  };
+
+  // 点击保存KML
+  const onClickSaveKml = () => {
+    mapWork.saveKML();
+  };
+
+  // 点击保存WKT
+  const onClickSaveWKT = () => {
+    mapWork.saveWKT();
+  };
+
+  function drawPoint() {
+    mapWork.drawPoint();
   }
 
-  if (!isActivate("graphic-editor")) {
-    activate({
-      name: "graphic-editor",
-      data: {
-        graphic: markRaw(graphic)
-      }
-    })
-  } else {
-    updateWidget("graphic-editor", {
-      data: {
-        graphic: markRaw(graphic)
-      }
-    })
+  function drawMarker() {
+    mapWork.drawMarker();
   }
-}
+
+  function drawLabel() {
+    mapWork.drawLabel();
+  }
+
+  function onClickStartDarw() {
+    mapWork.startDrawModel();
+  }
+
+  function drawPolyline(clampToGround: boolean) {
+    mapWork.drawPolyline(clampToGround);
+  }
+
+  function drawBrushLine(clampToGround: boolean) {
+    mapWork.drawBrushLine(clampToGround);
+  }
+
+  function drawPolygon(clampToGround: boolean) {
+    mapWork.drawPolygon(clampToGround);
+  }
+
+  function drawCurve(clampToGround: boolean) {
+    mapWork.drawCurve(clampToGround);
+  }
+
+  function drawCorridor(clampToGround: boolean) {
+    mapWork.drawCorridor(clampToGround);
+  }
+
+  function drawEllipse(clampToGround: boolean) {
+    mapWork.drawEllipse(clampToGround);
+  }
+
+  function drawRectangle(clampToGround: boolean) {
+    mapWork.drawRectangle(clampToGround);
+  }
+
+  function draPlane() {
+    mapWork.draPlane();
+  }
+
+  function draWall(closure: boolean) {
+    mapWork.draWall(closure);
+  }
+
+  function drawBox() {
+    mapWork.drawBox();
+  }
+
+  function drawCylinder() {
+    mapWork.drawCylinder();
+  }
+
+  function drawEllipsoid() {
+    mapWork.drawEllipsoid();
+  }
+
+  function drawExtrudedPolygon() {
+    mapWork.drawExtrudedPolygon();
+  }
+
+  function drawExtrudedRectangle() {
+    mapWork.drawExtrudedRectangle();
+  }
+
+  function drawExtrudedCircle() {
+    mapWork.drawExtrudedCircle();
+  }
+
+  // 数据编辑属性面板 相关处理
+  const { activate, disable, isActivate, updateWidget } = useWidget();
+
+  onMounted(() => {
+    // 矢量数据创建完成
+    mapWork.graphicLayer.on(mars3d.EventType.drawCreated, function (e) {
+      if (enabledEdit.value) {
+        showEditor(e);
+      }
+    });
+    // 修改了矢量数据
+    mapWork.graphicLayer.on(
+      [
+        mars3d.EventType.editStart,
+        mars3d.EventType.editMovePoint,
+        mars3d.EventType.editStyle,
+        mars3d.EventType.editRemovePoint,
+      ],
+      function (e) {
+        showEditor(e);
+      },
+    );
+    // 停止编辑
+    mapWork.graphicLayer.on(
+      [mars3d.EventType.editStop, mars3d.EventType.removeGraphic],
+      function (e) {
+        setTimeout(() => {
+          if (!mapWork.graphicLayer.isEditing) {
+            disable('graphic-editor');
+          }
+        }, 100);
+      },
+    );
+  });
+
+  const showEditor = (e: any) => {
+    const graphic = e.graphic;
+    if (!graphic._conventStyleJson) {
+      graphic.options.style = graphic.toJSON().style; // 因为示例中的样式可能有复杂对象，需要转为单个json简单对象
+      graphic._conventStyleJson = true; // 只处理一次
+    }
+
+    if (!isActivate('graphic-editor')) {
+      activate({
+        name: 'graphic-editor',
+        data: {
+          graphic: markRaw(graphic),
+        },
+      });
+    } else {
+      updateWidget('graphic-editor', {
+        data: {
+          graphic: markRaw(graphic),
+        },
+      });
+    }
+  };
 </script>
 <style scoped lang="less">
-:deep(.ant-space) {
-  flex-wrap: wrap;
-}
-
-.save-btn,
-.open-btn {
-  width: 109px !important;
-}
-
-.kml-btn,
-.wkt-btn,
-.remove-btn {
-  width: 70px !important;
-  padding: 0 5px;
-}
-
-.mars-button {
-  width: 50px;
-}
-
-.mars-pannel-item-label {
-  line-height: 32px;
-}
-
-.grid-checkboxs {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-
-  :deep(.ant-checkbox + span) {
-    padding-inline-end: 0 !important;
+  :deep(.ant-space) {
+    flex-wrap: wrap;
   }
-}
 
-.grid-btns {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 7px;
-}
+  .save-btn,
+  .open-btn {
+    width: 109px !important;
+  }
+
+  .kml-btn,
+  .wkt-btn,
+  .remove-btn {
+    width: 70px !important;
+    padding: 0 5px;
+  }
+
+  .mars-button {
+    width: 50px;
+  }
+
+  .mars-pannel-item-label {
+    line-height: 32px;
+  }
+
+  .grid-checkboxs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    :deep(.ant-checkbox + span) {
+      padding-inline-end: 0 !important;
+    }
+  }
+
+  .grid-btns {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 7px;
+  }
 </style>

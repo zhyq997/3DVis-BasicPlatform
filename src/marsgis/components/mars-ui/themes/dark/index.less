@@ -1,6 +1,6 @@
-@import url("./zhts.less");
+@import url('./zhts.less');
 
-:root[data-theme="dark"] {
+:root[data-theme='dark'] {
   --mars-primary-color: rgba(0, 138, 255, 0.9);
   --mars-primary-half-color: rgba(0, 138, 255, 0.5);
   --mars-sub-color: #26ddff;
@@ -19,7 +19,12 @@
   --mars-odd-table-bg: rgba(0, 138, 255, 0.06); // 奇数表格背景
   --mars-bg-title: #0f3453; // 普通的头部背景色
   --mars-base-border-color: #b9b9b9;
-  --mars-list-active: linear-gradient(90deg, rgba(0, 138, 255, 0) 0%, rgba(0, 138, 255, 0.58) 53%, rgba(0, 138, 255, 0.02) 100%);
+  --mars-list-active: linear-gradient(
+    90deg,
+    rgba(0, 138, 255, 0) 0%,
+    rgba(0, 138, 255, 0.58) 53%,
+    rgba(0, 138, 255, 0.02) 100%
+  );
 
   --mars-title-active: linear-gradient(0deg, rgba(0, 138, 255, 0.6) 0%, rgba(0, 138, 255, 0) 100%);
   --mars-title-text-active: #ffffff;
@@ -28,7 +33,7 @@
 
   --mars-msg-title-bg: url(../assets/images/msg-title-bg.png);
   --mars-msg-title-color: #c7d3dd;
-  --mars-msg-content-bg: url("../assets/images/border-image-base.png");
+  --mars-msg-content-bg: url('../assets/images/border-image-base.png');
 
   --mars-alert-title-color: #0089fe;
 
@@ -37,5 +42,5 @@
 
   --mars-sub-title-color: #cdcdcd; // 小标题的颜色
 
-  --mars-collapse-title-bg: url("@mars/components/mars-ui/assets/images/tab-title.png");
+  --mars-collapse-title-bg: url('@mars/components/mars-ui/assets/images/tab-title.png');
 }

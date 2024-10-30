@@ -28,8 +28,8 @@ const charts: AppRouteModule = {
       name: 'BaiduMap',
       meta: {
         title: t('routes.demo.charts.baiduMap'),
-    roles: [RoleEnum.TEST],
-  },
+        roles: [RoleEnum.TEST],
+      },
       component: () => import('@/views/demo/charts/map/Baidu.vue'),
     },
     {
@@ -37,8 +37,8 @@ const charts: AppRouteModule = {
       name: 'AMap',
       meta: {
         title: t('routes.demo.charts.aMap'),
-    roles: [RoleEnum.TEST],
-  },
+        roles: [RoleEnum.TEST],
+      },
       component: () => import('@/views/demo/charts/map/Gaode.vue'),
     },
     {
@@ -46,8 +46,8 @@ const charts: AppRouteModule = {
       name: 'GoogleMap',
       meta: {
         title: t('routes.demo.charts.googleMap'),
-    roles: [RoleEnum.TEST],
-  },
+        roles: [RoleEnum.TEST],
+      },
       component: () => import('@/views/demo/charts/map/Google.vue'),
     },
 
@@ -57,8 +57,8 @@ const charts: AppRouteModule = {
       component: getParentLayout('Echarts'),
       meta: {
         title: 'Echarts',
-    roles: [RoleEnum.TEST],
-  },
+        roles: [RoleEnum.TEST],
+      },
       redirect: '/charts/echarts/map',
       children: [
         {

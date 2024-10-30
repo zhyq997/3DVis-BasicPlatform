@@ -15,183 +15,183 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick, onMounted, ref } from "vue"
-import * as echarts from "echarts"
-import * as mapWork from "./map.js"
-import useLifecycle from "@mars/common/uses/use-lifecycle"
-useLifecycle(mapWork)
+  import { nextTick, onMounted, ref } from 'vue';
+  import * as echarts from 'echarts';
+  import * as mapWork from './map.js';
+  import useLifecycle from '@mars/common/uses/use-lifecycle';
+  useLifecycle(mapWork);
 
-const isShow = ref<boolean>(false)
+  const isShow = ref<boolean>(false);
 
-let myChart1: echarts.ECharts
+  let myChart1: echarts.ECharts;
 
-// 图表自适应
-window.onresize = function () {
-  myChart1.resize()
-}
+  // 图表自适应
+  window.onresize = function () {
+    myChart1.resize();
+  };
 
-onMounted(() => {
-  myChart1 = echarts.init(document.getElementById("echartsView1")!)
-})
+  onMounted(() => {
+    myChart1 = echarts.init(document.getElementById('echartsView1')!);
+  });
 
-mapWork.eventTarget.on("measureEnd", function (event: any) {
-  isShow.value = true
-  nextTick(() => {
-    setEchartsData(event)
-  })
-})
-
-mapWork.eventTarget.on("measureClick", function (event: any) {
-  if (event.value) {
+  mapWork.eventTarget.on('measureEnd', function (event: any) {
+    isShow.value = true;
     nextTick(() => {
-      setEchartsData(event.value)
-    })
-  }
-})
+      setEchartsData(event);
+    });
+  });
 
-const measureSection = () => {
-  mapWork.measureSection()
-}
+  mapWork.eventTarget.on('measureClick', function (event: any) {
+    if (event.value) {
+      nextTick(() => {
+        setEchartsData(event.value);
+      });
+    }
+  });
 
-const clear = () => {
-  mapWork.removeAll()
-  isShow.value = false
-  myChart1.clear()
-}
+  const measureSection = () => {
+    mapWork.measureSection();
+  };
 
-function setEchartsData(data: any) {
-  if (data == null || data.arrPoint == null) {
-    return
-  }
-  const arrPoint = data.arrPoint
-  let inhtml = ""
+  const clear = () => {
+    mapWork.removeAll();
+    isShow.value = false;
+    myChart1.clear();
+  };
 
-  const option = {
-    grid: {
-      left: 10,
-      right: 40,
-      bottom: 10,
-      top: 40,
-      containLabel: true
-    },
-    dataZoom: [
-      {
-        type: "inside",
-        throttle: 50
-      }
-    ],
-    tooltip: {
-      trigger: "axis",
-      // position: function (point, params, dom, rect, size) {
-      //    return [10, 20];
-      // },
-      formatter: (params: any) => {
-        if (params.length === 0) {
-          mapWork.hideTipMarker()
-          return inhtml
-        }
+  function setEchartsData(data: any) {
+    if (data == null || data.arrPoint == null) {
+      return;
+    }
+    const arrPoint = data.arrPoint;
+    let inhtml = '';
 
-        const hbgd = params[0].value // 海拔高度
-        const point = arrPoint[params[0].dataIndex] // 所在经纬度
-        const result = mapWork.calculation(params[0])
+    const option = {
+      grid: {
+        left: 10,
+        right: 40,
+        bottom: 10,
+        top: 40,
+        containLabel: true,
+      },
+      dataZoom: [
+        {
+          type: 'inside',
+          throttle: 50,
+        },
+      ],
+      tooltip: {
+        trigger: 'axis',
+        // position: function (point, params, dom, rect, size) {
+        //    return [10, 20];
+        // },
+        formatter: (params: any) => {
+          if (params.length === 0) {
+            mapWork.hideTipMarker();
+            return inhtml;
+          }
 
-        inhtml = `当前位置<br />
+          const hbgd = params[0].value; // 海拔高度
+          const point = arrPoint[params[0].dataIndex]; // 所在经纬度
+          const result = mapWork.calculation(params[0]);
+
+          inhtml = `当前位置<br />
                       距起点：${result.len}<br />
                       海拔：<span style='color:${params[0].color};'>${result.hbgdStr}</span><br />
                       经度：${point.lng}<br />
-                      纬度：${point.lat}`
+                      纬度：${point.lat}`;
 
-        mapWork.showTipMarker(point, hbgd, inhtml)
+          mapWork.showTipMarker(point, hbgd, inhtml);
 
-        return inhtml
-      }
-    },
-    xAxis: [
-      {
-        name: "行程",
-        type: "category",
-        nameTextStyle: { color: "rgb(255, 70, 131)" },
-        boundaryGap: false,
-        axisLine: {
-          show: true
+          return inhtml;
         },
-        axisLabel: {
-          show: true,
-          formatter: "{value} 米",
-          color: "#000"
+      },
+      xAxis: [
+        {
+          name: '行程',
+          type: 'category',
+          nameTextStyle: { color: 'rgb(255, 70, 131)' },
+          boundaryGap: false,
+          axisLine: {
+            show: true,
+          },
+          axisLabel: {
+            show: true,
+            formatter: '{value} 米',
+            color: '#000',
+          },
+          data: data.arrLen,
         },
-        data: data.arrLen
-      }
-    ],
-    yAxis: [
-      {
-        name: "高程",
-        nameTextStyle: { color: "rgb(255, 70, 131)" },
-        type: "value",
-        min: getMinZ(arrPoint),
-        axisLabel: {
-          formatter: "{value} 米",
-          color: "#000"
-        }
-      }
-    ],
-    series: [
-      {
-        name: "高程值",
-        type: "line",
-        smooth: true,
-        symbol: "none",
-        sampling: "average",
-        itemStyle: {
-          normal: {
-            color: "rgb(255, 70, 131)"
-          }
+      ],
+      yAxis: [
+        {
+          name: '高程',
+          nameTextStyle: { color: 'rgb(255, 70, 131)' },
+          type: 'value',
+          min: getMinZ(arrPoint),
+          axisLabel: {
+            formatter: '{value} 米',
+            color: '#000',
+          },
         },
-        areaStyle: {
-          normal: {
-            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-              {
-                offset: 0,
-                color: "rgb(255, 158, 68)"
-              },
-              {
-                offset: 1,
-                color: "rgb(255, 70, 131)"
-              }
-            ])
-          }
+      ],
+      series: [
+        {
+          name: '高程值',
+          type: 'line',
+          smooth: true,
+          symbol: 'none',
+          sampling: 'average',
+          itemStyle: {
+            normal: {
+              color: 'rgb(255, 70, 131)',
+            },
+          },
+          areaStyle: {
+            normal: {
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                {
+                  offset: 0,
+                  color: 'rgb(255, 158, 68)',
+                },
+                {
+                  offset: 1,
+                  color: 'rgb(255, 70, 131)',
+                },
+              ]),
+            },
+          },
+          data: data.arrHB,
         },
-        data: data.arrHB
-      }
-    ]
+      ],
+    };
+
+    myChart1.setOption(option);
+    myChart1.resize();
   }
 
-  myChart1.setOption(option)
-  myChart1.resize()
-}
-
-function getMinZ(arr: any) {
-  let minz = "dataMin"
-  if (arr == null || arr.length === 0) {
-    return minz
-  }
-
-  minz = arr[0].alt
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i].alt < minz) {
-      minz = arr[i].alt
+  function getMinZ(arr: any) {
+    let minz = 'dataMin';
+    if (arr == null || arr.length === 0) {
+      return minz;
     }
+
+    minz = arr[0].alt;
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].alt < minz) {
+        minz = arr[i].alt;
+      }
+    }
+    return minz;
   }
-  return minz
-}
 </script>
 <style scoped lang="less">
-.echatsView {
-  width: 100%;
-  height: 240px;
-}
+  .echatsView {
+    width: 100%;
+    height: 240px;
+  }
 
-.btn {
-  width: 145px;
-}
+  .btn {
+    width: 145px;
+  }
 </style>

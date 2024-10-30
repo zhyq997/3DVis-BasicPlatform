@@ -14,13 +14,24 @@
           :key="value.name"
           v-for="(value, index) in formState.imgObject"
         >
-          <img class="markImg" :src="value.img" @click="flytoView(value, index)" v-show="formState.found" />
+          <img
+            class="markImg"
+            :src="value.img"
+            @click="flytoView(value, index)"
+            v-show="formState.found"
+          />
           <p>{{ value.name }}</p>
           <a-tooltip placement="bottom">
             <template #title>
               <span>删除</span>
             </template>
-            <mars-icon icon="delete" class="deleteImg" color="var(--mars-text-color)" @click="btnDeleteTxtName(index)" v-show="formState.found" />
+            <mars-icon
+              icon="delete"
+              class="deleteImg"
+              color="var(--mars-text-color)"
+              @click="btnDeleteTxtName(index)"
+              v-show="formState.found"
+            />
           </a-tooltip>
           <a-tooltip placement="bottom" v-if="!value.isStart && formState.found">
             <template #title>
@@ -119,508 +130,508 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, reactive, onUnmounted, ref } from "vue"
-import * as mapWork from "./map.js"
-import { $alert, $message, $showLoading, $hideLoading } from "@mars/components/mars-ui/index"
-import * as mars3d from "mars3d"
-import useLifecycle from "@mars/common/uses/use-lifecycle"
-import Icon from "@ant-design/icons-vue"
-import type { GuiItem } from "@mars/components/mars-ui/mars-gui"
+  import { onMounted, reactive, onUnmounted, ref } from 'vue';
+  import * as mapWork from './map.js';
+  import { $alert, $message, $showLoading, $hideLoading } from '@mars/components/mars-ui/index';
+  import * as mars3d from 'mars3d';
+  import useLifecycle from '@mars/common/uses/use-lifecycle';
+  import Icon from '@ant-design/icons-vue';
+  import type { GuiItem } from '@mars/components/mars-ui/mars-gui';
 
-// 启用map.ts生命周期
-useLifecycle(mapWork)
+  // 启用map.ts生命周期
+  useLifecycle(mapWork);
 
-interface roamOptions {
-  interpolation: boolean
-  clockLoop: boolean
-  speed: number
-  model: object
-  surfaceHeight: boolean //是否开启贴地
-  test: string
-}
-
-let currentName = ""
-let currentIndex = -1
-let currentRoamOptions = ref(<roamOptions>{})
-const showModal = ref<boolean>(false)
-const isShow = ref(false)
-const options = () => {
-  return <GuiItem[]>[
-    {
-      type: "number",
-      field: "speed",
-      label: "速度",
-      step: 1,
-      min: 1,
-      max: 200,
-      value: currentRoamOptions.value.speed,
-      change(data) {
-        // $message("你输入了：" + data)
-        currentRoamOptions.value.speed = data
-        updataRoamOptions()
-        console.log(data)
-      }
-    },
-    {
-      type: "switch",
-      field: "interpolation",
-      label: "是否弧形插值",
-      value: currentRoamOptions.value.interpolation,
-      change(data) {
-        currentRoamOptions.value.interpolation = data
-        updataRoamOptions()
-        console.log(data)
-      }
-    },
-    {
-      type: "switch",
-      field: "clockLoop",
-      label: "是否循环漫游",
-      value: currentRoamOptions.value.clockLoop,
-      change(data) {
-        currentRoamOptions.value.clockLoop = data
-        updataRoamOptions()
-        console.log(data)
-      }
-    },
-    {
-      type: "switch",
-      field: "surfaceHeight",
-      label: "是否贴地漫游",
-      value: currentRoamOptions.value.surfaceHeight,
-      change(data) {
-        currentRoamOptions.value.surfaceHeight = data
-        updataRoamOptions()
-        console.log(data)
-      }
-    },
-    {
-      type: "select",
-      field: "model",
-      label: "模型选择",
-      value: currentRoamOptions.value.model?.url || "none",
-      data: [
-        {
-          label: "无",
-          value: "none"
-        },
-        {
-          label: "汽车",
-          value: "https://data.mars3d.cn/gltf/mars/qiche.gltf"
-        },
-        {
-          label: "飞机",
-          value: "https://data.mars3d.cn/gltf/mars/feiji.glb"
-        },
-        {
-          label: "战斗机",
-          value: "https://data.mars3d.cn/gltf/mars/zhanji.gltf"
-        },
-        {
-          label: "行人",
-          value: "https://data.mars3d.cn/gltf/mars/man/running.glb"
-        }
-      ],
-      change(data) {
-        updateModel(data)
-      }
-    }
-  ]
-}
-
-function gui1Change(data) {
-  console.log(data) // data为该gui对象包含的所有数据
-}
-
-const formState = reactive({
-  input: "",
-  found: false,
-  imgObject: [
-    {
-      name: "没有匹配的值",
-      img: "",
-      center: "",
-      graphics: {},
-      isStart: false,
-      isPause: false,
-      roamOptions: <roamOptions>{
-        interpolation: false,
-        speed: 200,
-        clockLoop: true
-      }
-    }
-  ]
-})
-
-// 默认值
-const roamOptions = <roamOptions>{
-  interpolation: false,
-  speed: 200,
-  clockLoop: true,
-  surfaceHeight: true,
-  test: "test"
-}
-function udpateState(index) {
-  formState.imgObject.map((item) => {
-    item.isStart = false
-    item.isPause = false
-  })
-  if (index === -1) {
-    return
-  }
-  setTimeout(() => {
-    formState.imgObject[index].isStart = mapWork.fixedRoute.isStart
-    formState.imgObject[index].isPause = mapWork.fixedRoute.isPause
-  }, 100)
-}
-
-onMounted(() => {
-  getLocalStorage()
-  // 修改了矢量数据
-  mapWork.graphicLayer.on([mars3d.EventType.editStop], function (e) {
-    console.log("修改完成", e)
-    showModal.value = true
-  })
-})
-
-const handleOk = (e: MouseEvent) => {
-  mapWork.editTxtName(currentName)
-  showModal.value = false
-}
-
-onUnmounted(() => {
-  formState.imgObject.map((item) => {
-    item.isStart = false
-    item.isPause = false
-  })
-})
-
-// 读取历史记录
-function getLocalStorage() {
-  try {
-    const data = JSON.parse(localStorage.getItem("roamLists"))
-    if (data && data.length > 0) {
-      console.log("历史数据", data)
-      for (let i = 0; i < data.length; i++) {
-        const item = data[i]
-        // 删除未匹配项
-        if (formState.imgObject[0].img === "") {
-          formState.imgObject.splice(0, 1)
-          formState.found = true
-        }
-        formState.imgObject.push(item)
-      }
-    }
-  } catch (err) {}
-}
-
-// 添加飞行路线
-const addTxtName = () => {
-  const name = formState.input
-  const imgObject = formState.imgObject
-
-  if (!name) {
-    $message("请输入名称")
-    return
+  interface roamOptions {
+    interpolation: boolean;
+    clockLoop: boolean;
+    speed: number;
+    model: object;
+    surfaceHeight: boolean; //是否开启贴地
+    test: string;
   }
 
-  // 删除未匹配项
-  if (imgObject[0].img === "") {
-    formState.imgObject.splice(0, 1)
-    formState.found = true
-  }
-
-  // 不能使用相同名称
-  if (formState.imgObject.some((item) => item.name === name)) {
-    $message(name + " 已存在，请更换名称!")
-    return
-  }
-  $message("请绘制飞行轨迹!")
-  mapWork.graphicLayer.clear()
-  mapWork.drawPolyline().then(function (graphic) {
-    console.log("绘制矢量对象完成", graphic)
-    mapWork.addTxtName(name, roamOptions)
-  })
-
-  // 动态的获取index
-
-  // UI处理
-  formState.input = ""
-}
-
-// 触发添加路线事件
-mapWork.eventTarget.on("addImgObject", (event: any) => {
-  formState.imgObject.push(event.item)
-  // 记录到历史
-  localStorage.setItem("roamLists", JSON.stringify(formState.imgObject))
-})
-// 触发修改路线事件
-mapWork.eventTarget.on("editImgObject", (event: any) => {
-  formState.imgObject[currentIndex] = event.item
-  // 记录到历史
-  localStorage.setItem("roamLists", JSON.stringify(formState.imgObject))
-})
-
-// 视角操作
-const flytoView = (val: any, index: number) => {
-  currentIndex = index
-  currentName = val.name
-  mapWork.stopRoam()
-  udpateState(-1)
-  mapWork.flytoView(val.center)
-  mapWork.graphicLayer.clear()
-  mapWork.graphicLayer.addGraphic(val.graphics)
-}
-
-// const startRoam = (val: any, index: number) => {
-//   mapWork.stopRoam()
-//   mapWork.startRoam(val.graphics.positions)
-//   udpateState(index)
-// }
-
-/**
- * 开始漫游
- *
- * @param val 路线数据
- * @param index 路线索引
- */
-const startRoam = async (val: any, index: number) => {
-  mapWork.stopRoam()
-  try {
-    await mapWork.startRoam(val.graphics.positions, val.roamOptions) // 等待 startRoam 完成
-    udpateState(index) // 然后运行 udpateState
-  } catch (error) {
-    console.error("Error starting roam:", error)
-  }
-}
-
-/**
- * 停止漫游
- *
- * @param index 路线索引
- */
-const stopRoam = (index: number) => {
-  mapWork.stopRoam()
-  udpateState(index)
-}
-
-/**
- * 删除对象
- *
- * @param index 要删除路线对象的索引
- */
-const btnDeleteTxtName = (index: number) => {
-  formState.imgObject.splice(index, 1)
-
-  mapWork.graphicLayer.clear()
-
-  if (formState.imgObject.length === 0) {
-    formState.imgObject = [
+  let currentName = '';
+  let currentIndex = -1;
+  let currentRoamOptions = ref(<roamOptions>{});
+  const showModal = ref<boolean>(false);
+  const isShow = ref(false);
+  const options = () => {
+    return <GuiItem[]>[
       {
-        name: "没有匹配的值",
-        img: "",
-        center: "",
+        type: 'number',
+        field: 'speed',
+        label: '速度',
+        step: 1,
+        min: 1,
+        max: 200,
+        value: currentRoamOptions.value.speed,
+        change(data) {
+          // $message("你输入了：" + data)
+          currentRoamOptions.value.speed = data;
+          updataRoamOptions();
+          console.log(data);
+        },
+      },
+      {
+        type: 'switch',
+        field: 'interpolation',
+        label: '是否弧形插值',
+        value: currentRoamOptions.value.interpolation,
+        change(data) {
+          currentRoamOptions.value.interpolation = data;
+          updataRoamOptions();
+          console.log(data);
+        },
+      },
+      {
+        type: 'switch',
+        field: 'clockLoop',
+        label: '是否循环漫游',
+        value: currentRoamOptions.value.clockLoop,
+        change(data) {
+          currentRoamOptions.value.clockLoop = data;
+          updataRoamOptions();
+          console.log(data);
+        },
+      },
+      {
+        type: 'switch',
+        field: 'surfaceHeight',
+        label: '是否贴地漫游',
+        value: currentRoamOptions.value.surfaceHeight,
+        change(data) {
+          currentRoamOptions.value.surfaceHeight = data;
+          updataRoamOptions();
+          console.log(data);
+        },
+      },
+      {
+        type: 'select',
+        field: 'model',
+        label: '模型选择',
+        value: currentRoamOptions.value.model?.url || 'none',
+        data: [
+          {
+            label: '无',
+            value: 'none',
+          },
+          {
+            label: '汽车',
+            value: 'https://data.mars3d.cn/gltf/mars/qiche.gltf',
+          },
+          {
+            label: '飞机',
+            value: 'https://data.mars3d.cn/gltf/mars/feiji.glb',
+          },
+          {
+            label: '战斗机',
+            value: 'https://data.mars3d.cn/gltf/mars/zhanji.gltf',
+          },
+          {
+            label: '行人',
+            value: 'https://data.mars3d.cn/gltf/mars/man/running.glb',
+          },
+        ],
+        change(data) {
+          updateModel(data);
+        },
+      },
+    ];
+  };
+
+  function gui1Change(data) {
+    console.log(data); // data为该gui对象包含的所有数据
+  }
+
+  const formState = reactive({
+    input: '',
+    found: false,
+    imgObject: [
+      {
+        name: '没有匹配的值',
+        img: '',
+        center: '',
         graphics: {},
         isStart: false,
         isPause: false,
-        roamOptions: {
+        roamOptions: <roamOptions>{
           interpolation: false,
-          speed: 10,
+          speed: 200,
           clockLoop: true,
-          surfaceHeight: true,
-          model: {}
+        },
+      },
+    ],
+  });
+
+  // 默认值
+  const roamOptions = <roamOptions>{
+    interpolation: false,
+    speed: 200,
+    clockLoop: true,
+    surfaceHeight: true,
+    test: 'test',
+  };
+  function udpateState(index) {
+    formState.imgObject.map((item) => {
+      item.isStart = false;
+      item.isPause = false;
+    });
+    if (index === -1) {
+      return;
+    }
+    setTimeout(() => {
+      formState.imgObject[index].isStart = mapWork.fixedRoute.isStart;
+      formState.imgObject[index].isPause = mapWork.fixedRoute.isPause;
+    }, 100);
+  }
+
+  onMounted(() => {
+    getLocalStorage();
+    // 修改了矢量数据
+    mapWork.graphicLayer.on([mars3d.EventType.editStop], function (e) {
+      console.log('修改完成', e);
+      showModal.value = true;
+    });
+  });
+
+  const handleOk = (e: MouseEvent) => {
+    mapWork.editTxtName(currentName);
+    showModal.value = false;
+  };
+
+  onUnmounted(() => {
+    formState.imgObject.map((item) => {
+      item.isStart = false;
+      item.isPause = false;
+    });
+  });
+
+  // 读取历史记录
+  function getLocalStorage() {
+    try {
+      const data = JSON.parse(localStorage.getItem('roamLists'));
+      if (data && data.length > 0) {
+        console.log('历史数据', data);
+        for (let i = 0; i < data.length; i++) {
+          const item = data[i];
+          // 删除未匹配项
+          if (formState.imgObject[0].img === '') {
+            formState.imgObject.splice(0, 1);
+            formState.found = true;
+          }
+          formState.imgObject.push(item);
         }
       }
-    ]
-    formState.found = false
-    localStorage.removeItem("roamLists")
-    return
+    } catch (err) {}
   }
-  // 记录到历史
-  localStorage.setItem("roamLists", JSON.stringify(formState.imgObject))
-}
 
-/**
- * 修改选项
- *
- * @param index 当前项的索引
- * @param name 当前项的名称
- */
-const editOptions = (index: any, name: string) => {
-  currentName = name
-  currentIndex = index
-  currentRoamOptions.value = formState.imgObject[index].roamOptions
-  isShow.value = true
-}
+  // 添加飞行路线
+  const addTxtName = () => {
+    const name = formState.input;
+    const imgObject = formState.imgObject;
 
-/**
- * 返回操作
- *
- * 将isShow的值设置为false，通常用于关闭弹窗或返回上一页
- */
-const goBack = () => {
-  isShow.value = false
-}
-
-const updataRoamOptions = () => {
-  // 记录到历史
-  localStorage.setItem("roamLists", JSON.stringify(formState.imgObject))
-}
-
-// 动态更新 fixedRoute 的 model 属性
-const updateModel = (url: string) => {
-  // mapWork.updateModel(url)
-  // 如果选择的是“无”
-  if (url === "none") {
-    delete currentRoamOptions.value.model // 删除 model 属性
-  } else {
-    currentRoamOptions.value.model = {
-      url,
-      heading: 0,
-      mergeOrientation: true,
-      minimumPixelSize: 5
+    if (!name) {
+      $message('请输入名称');
+      return;
     }
-  }
-  updataRoamOptions()
 
-  // 如果需要重新启动漫游
-  // fixedRoute.start();
-}
+    // 删除未匹配项
+    if (imgObject[0].img === '') {
+      formState.imgObject.splice(0, 1);
+      formState.found = true;
+    }
+
+    // 不能使用相同名称
+    if (formState.imgObject.some((item) => item.name === name)) {
+      $message(name + ' 已存在，请更换名称!');
+      return;
+    }
+    $message('请绘制飞行轨迹!');
+    mapWork.graphicLayer.clear();
+    mapWork.drawPolyline().then(function (graphic) {
+      console.log('绘制矢量对象完成', graphic);
+      mapWork.addTxtName(name, roamOptions);
+    });
+
+    // 动态的获取index
+
+    // UI处理
+    formState.input = '';
+  };
+
+  // 触发添加路线事件
+  mapWork.eventTarget.on('addImgObject', (event: any) => {
+    formState.imgObject.push(event.item);
+    // 记录到历史
+    localStorage.setItem('roamLists', JSON.stringify(formState.imgObject));
+  });
+  // 触发修改路线事件
+  mapWork.eventTarget.on('editImgObject', (event: any) => {
+    formState.imgObject[currentIndex] = event.item;
+    // 记录到历史
+    localStorage.setItem('roamLists', JSON.stringify(formState.imgObject));
+  });
+
+  // 视角操作
+  const flytoView = (val: any, index: number) => {
+    currentIndex = index;
+    currentName = val.name;
+    mapWork.stopRoam();
+    udpateState(-1);
+    mapWork.flytoView(val.center);
+    mapWork.graphicLayer.clear();
+    mapWork.graphicLayer.addGraphic(val.graphics);
+  };
+
+  // const startRoam = (val: any, index: number) => {
+  //   mapWork.stopRoam()
+  //   mapWork.startRoam(val.graphics.positions)
+  //   udpateState(index)
+  // }
+
+  /**
+   * 开始漫游
+   *
+   * @param val 路线数据
+   * @param index 路线索引
+   */
+  const startRoam = async (val: any, index: number) => {
+    mapWork.stopRoam();
+    try {
+      await mapWork.startRoam(val.graphics.positions, val.roamOptions); // 等待 startRoam 完成
+      udpateState(index); // 然后运行 udpateState
+    } catch (error) {
+      console.error('Error starting roam:', error);
+    }
+  };
+
+  /**
+   * 停止漫游
+   *
+   * @param index 路线索引
+   */
+  const stopRoam = (index: number) => {
+    mapWork.stopRoam();
+    udpateState(index);
+  };
+
+  /**
+   * 删除对象
+   *
+   * @param index 要删除路线对象的索引
+   */
+  const btnDeleteTxtName = (index: number) => {
+    formState.imgObject.splice(index, 1);
+
+    mapWork.graphicLayer.clear();
+
+    if (formState.imgObject.length === 0) {
+      formState.imgObject = [
+        {
+          name: '没有匹配的值',
+          img: '',
+          center: '',
+          graphics: {},
+          isStart: false,
+          isPause: false,
+          roamOptions: {
+            interpolation: false,
+            speed: 10,
+            clockLoop: true,
+            surfaceHeight: true,
+            model: {},
+          },
+        },
+      ];
+      formState.found = false;
+      localStorage.removeItem('roamLists');
+      return;
+    }
+    // 记录到历史
+    localStorage.setItem('roamLists', JSON.stringify(formState.imgObject));
+  };
+
+  /**
+   * 修改选项
+   *
+   * @param index 当前项的索引
+   * @param name 当前项的名称
+   */
+  const editOptions = (index: any, name: string) => {
+    currentName = name;
+    currentIndex = index;
+    currentRoamOptions.value = formState.imgObject[index].roamOptions;
+    isShow.value = true;
+  };
+
+  /**
+   * 返回操作
+   *
+   * 将isShow的值设置为false，通常用于关闭弹窗或返回上一页
+   */
+  const goBack = () => {
+    isShow.value = false;
+  };
+
+  const updataRoamOptions = () => {
+    // 记录到历史
+    localStorage.setItem('roamLists', JSON.stringify(formState.imgObject));
+  };
+
+  // 动态更新 fixedRoute 的 model 属性
+  const updateModel = (url: string) => {
+    // mapWork.updateModel(url)
+    // 如果选择的是“无”
+    if (url === 'none') {
+      delete currentRoamOptions.value.model; // 删除 model 属性
+    } else {
+      currentRoamOptions.value.model = {
+        url,
+        heading: 0,
+        mergeOrientation: true,
+        minimumPixelSize: 5,
+      };
+    }
+    updataRoamOptions();
+
+    // 如果需要重新启动漫游
+    // fixedRoute.start();
+  };
 </script>
 <style scoped lang="less">
-.title-vertical {
-  padding-bottom: 10px;
-  font-family: 思源黑体;
-  font-size: 16px;
-  font-weight: bold;
-  color: var(--mars-control-text);
-  position: relative;
-}
-.title-vertical_line {
-  padding-left: 12px;
-  padding-bottom: 10px;
-  font-family: 思源黑体;
-  font-size: 16px;
-  font-weight: normal;
-  color: var(--mars-control-text);
-  position: relative;
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: 2px;
-    left: 0;
-    width: 4px;
-    height: 19px;
-    border-radius: 2px;
-    background-color: var(--mars-primary-color);
+  .title-vertical {
+    padding-bottom: 10px;
+    font-family: 思源黑体;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--mars-control-text);
+    position: relative;
   }
-}
+  .title-vertical_line {
+    padding-left: 12px;
+    padding-bottom: 10px;
+    font-family: 思源黑体;
+    font-size: 16px;
+    font-weight: normal;
+    color: var(--mars-control-text);
+    position: relative;
 
-.infoview {
-  height: 91%;
-}
-.bookmarkView {
-  width: 100%;
-  height: calc(100% - 53px);
-  border: 1px solid white;
-  border-radius: 5px;
-  overflow-y: hidden;
-  overflow-x: hidden;
-}
+    &::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 0;
+      width: 4px;
+      height: 19px;
+      border-radius: 2px;
+      background-color: var(--mars-primary-color);
+    }
+  }
 
-.bookmarkView .addNewImg:hover {
-  background-color: rgba(0, 138, 255, 0.5);
-}
-.bookmarkView-conponent :hover {
-  background-color: rgba(0, 138, 255, 0);
-}
+  .infoview {
+    height: 91%;
+  }
+  .bookmarkView {
+    width: 100%;
+    height: calc(100% - 53px);
+    border: 1px solid white;
+    border-radius: 5px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
 
-.noFound {
-  border: none;
-  padding-bottom: 15px;
-  border-bottom: 0.5px solid white;
-  width: 100%;
-  padding-left: 30%;
-}
+  .bookmarkView .addNewImg:hover {
+    background-color: rgba(0, 138, 255, 0.5);
+  }
+  .bookmarkView-conponent :hover {
+    background-color: rgba(0, 138, 255, 0);
+  }
 
-.markImg {
-  height: 160px;
-  width: 100%;
-  z-index: 0;
-  margin-bottom: 15px;
-  cursor: pointer;
-}
+  .noFound {
+    border: none;
+    padding-bottom: 15px;
+    border-bottom: 0.5px solid white;
+    width: 100%;
+    padding-left: 30%;
+  }
 
-.addNewImg + .addNewImg {
-  margin-top: 22px;
-}
+  .markImg {
+    height: 160px;
+    width: 100%;
+    z-index: 0;
+    margin-bottom: 15px;
+    cursor: pointer;
+  }
 
-.addNewImg {
-  position: relative;
-  border: 1px solid white;
-  // margin-top: 22px;
-  border: 1px solid rgba(0, 138, 255, 0.5);
-  padding: 2px 5px;
-  background-color: rgba(0, 136, 255, 0.76);
-}
+  .addNewImg + .addNewImg {
+    margin-top: 22px;
+  }
 
-.markImg :hover {
-  background-color: red;
-}
+  .addNewImg {
+    position: relative;
+    border: 1px solid white;
+    // margin-top: 22px;
+    border: 1px solid rgba(0, 138, 255, 0.5);
+    padding: 2px 5px;
+    background-color: rgba(0, 136, 255, 0.76);
+  }
 
-.addNewImg p:after {
-  content: "";
-  width: calc(100% + 20px);
-  height: 1px;
-  background-color: white;
-  position: absolute;
-  bottom: -11px;
-  left: -11px;
-}
-.addNewImg p {
-  color: var(--mars-text-color);
-  font-weight: 700;
-}
+  .markImg :hover {
+    background-color: red;
+  }
 
-.addNewImg p :hover {
-  display: inline-block;
-  width: 160px;
-  white-space: normal;
-  word-wrap: break-word;
-}
+  .addNewImg p:after {
+    content: '';
+    width: calc(100% + 20px);
+    height: 1px;
+    background-color: white;
+    position: absolute;
+    bottom: -11px;
+    left: -11px;
+  }
+  .addNewImg p {
+    color: var(--mars-text-color);
+    font-weight: 700;
+  }
 
-.deleteImg {
-  width: 14px;
-  height: 14px;
-  border: none;
-  position: absolute;
-  top: 176px;
-  right: 10px;
-  background-color: rgba(0, 0, 0, 0);
-  border-color: rgba(0, 0, 0, 0);
-  cursor: pointer;
-}
-.flyImg {
-  width: 14px;
-  height: 14px;
-  border: none;
-  position: absolute;
-  top: 176px;
-  right: 40px;
-  background-color: rgba(0, 0, 0, 0);
-  border-color: rgba(0, 0, 0, 0);
-  cursor: pointer;
-}
-.editImg {
-  width: 14px;
-  height: 14px;
-  border: none;
-  position: absolute;
-  top: 176px;
-  right: 70px;
-  background-color: rgba(0, 0, 0, 0);
-  border-color: rgba(0, 0, 0, 0);
-  cursor: pointer;
-}
+  .addNewImg p :hover {
+    display: inline-block;
+    width: 160px;
+    white-space: normal;
+    word-wrap: break-word;
+  }
+
+  .deleteImg {
+    width: 14px;
+    height: 14px;
+    border: none;
+    position: absolute;
+    top: 176px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+  }
+  .flyImg {
+    width: 14px;
+    height: 14px;
+    border: none;
+    position: absolute;
+    top: 176px;
+    right: 40px;
+    background-color: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+  }
+  .editImg {
+    width: 14px;
+    height: 14px;
+    border: none;
+    position: absolute;
+    top: 176px;
+    right: 70px;
+    background-color: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+  }
 </style>

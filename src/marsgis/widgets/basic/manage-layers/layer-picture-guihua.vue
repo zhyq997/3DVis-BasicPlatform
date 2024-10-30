@@ -5,12 +5,12 @@
 </template>
 
 <style lang="less" scoped>
-.layer-pictrue {
-  position: absolute;
-  bottom: 30px;
-  left: 60px;
-  .layer-picture_img {
-    height: 180px;
+  .layer-pictrue {
+    position: absolute;
+    bottom: 30px;
+    left: 60px;
+    .layer-picture_img {
+      height: 180px;
+    }
   }
-}
 </style>

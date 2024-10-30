@@ -1,7 +1,11 @@
 <template>
   <mars-dialog right="10" top="60" width="330">
-    <graphic-layer-state :defaultCount="100" :customEditor="'dynamicRiver'" @onStartEditor="onStartEditor"
-      @onStopEditor="onStopEditor" />
+    <graphic-layer-state
+      :defaultCount="100"
+      :customEditor="'dynamicRiver'"
+      @onStartEditor="onStartEditor"
+      @onStopEditor="onStopEditor"
+    />
     <span style="color: #ccc">提示:沿水流方向选点，直线也多标点</span>
   </mars-dialog>
 
@@ -41,73 +45,73 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue"
-import GraphicLayerState from "./graphic-layer-state.vue"
-import * as mapWork from "./map.js"
+  import { ref } from 'vue';
+  import GraphicLayerState from './graphic-layer-state.vue';
+  import * as mapWork from './map.js';
 
-const activeKey = ref(["1", "2"])
+  const activeKey = ref(['1', '2']);
 
-// 绘制河流
-const onClickStartDraw = () => {
-  mapWork.startDrawGraphic()
-}
+  // 绘制河流
+  const onClickStartDraw = () => {
+    mapWork.startDrawGraphic();
+  };
 
-// 点击表格开始编辑矢量数据的参数
-const pannelTitle = ref<string>("")
-const selectedGraphic = ref<boolean>(false)
+  // 点击表格开始编辑矢量数据的参数
+  const pannelTitle = ref<string>('');
+  const selectedGraphic = ref<boolean>(false);
 
-function onStartEditor(data) {
-  const graphic = mapWork.getGraphic(data.graphicId)
-  pannelTitle.value = data.graphicName
+  function onStartEditor(data) {
+    const graphic = mapWork.getGraphic(data.graphicId);
+    pannelTitle.value = data.graphicName;
 
-  widthValue.value = graphic.width
-  heightValue.value = graphic.height
-  speedValue.value = graphic.speed
+    widthValue.value = graphic.width;
+    heightValue.value = graphic.height;
+    speedValue.value = graphic.speed;
 
-  selectedGraphic.value = true
-}
-function onStopEditor() {
-  selectedGraphic.value = false
-}
+    selectedGraphic.value = true;
+  }
+  function onStopEditor() {
+    selectedGraphic.value = false;
+  }
 
-// 宽度
-const widthValue = ref<number>(280)
-const widthChange = () => {
-  mapWork.widthChange(widthValue.value)
-}
+  // 宽度
+  const widthValue = ref<number>(280);
+  const widthChange = () => {
+    mapWork.widthChange(widthValue.value);
+  };
 
-// 高度
-const heightValue = ref<number>(30)
-const heightChange = () => {
-  mapWork.heightChange(Number(heightValue.value))
-}
+  // 高度
+  const heightValue = ref<number>(30);
+  const heightChange = () => {
+    mapWork.heightChange(Number(heightValue.value));
+  };
 
-// 流速
-const speedValue = ref<number>(10)
-const speedChange = () => {
-  mapWork.speedChange(speedValue.value)
-}
+  // 流速
+  const speedValue = ref<number>(10);
+  const speedChange = () => {
+    mapWork.speedChange(speedValue.value);
+  };
 
-// 升高
-const addHeight = () => {
-  mapWork.addHeight()
-}
+  // 升高
+  const addHeight = () => {
+    mapWork.addHeight();
+  };
 
-// 降低
-const lowerHeight = () => {
-  mapWork.lowerHeight()
-}
+  // 降低
+  const lowerHeight = () => {
+    mapWork.lowerHeight();
+  };
 
-const slow = () => {
-  mapWork.addSlowHeight(3, 30)
-}
+  const slow = () => {
+    mapWork.addSlowHeight(3, 30);
+  };
 </script>
 <style scoped lang="less">
-.ant-slider {
-  width: 100px;
-}
+  .ant-slider {
+    width: 100px;
+  }
 
-:deep(.ant-input-number-input) {
-  width: 100px !important;
-}
+  :deep(.ant-input-number-input) {
+    width: 100px !important;
+  }
 </style>

@@ -16,10 +16,20 @@
         :graphicType="graphicType"
         @styleChange="styleChange"
       />
-      <mars-availability v-if="activeTab === 'availability'" :availability="availability" @availabilityChange="availabilityChange" />
+      <mars-availability
+        v-if="activeTab === 'availability'"
+        :availability="availability"
+        @availabilityChange="availabilityChange"
+      />
     </div>
     <template #footer>
-      <a-tabs v-model:activeKey="activeTab" centered type="card" tabPosition="bottom" @change="tabChange">
+      <a-tabs
+        v-model:activeKey="activeTab"
+        centered
+        type="card"
+        tabPosition="bottom"
+        @change="tabChange"
+      >
         <a-tab-pane key="style" tab="样式"></a-tab-pane>
         <a-tab-pane v-if="showAvailability" key="availability" tab="时序"></a-tab-pane>
       </a-tabs>
@@ -28,132 +38,132 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, toRaw } from "vue"
-import _ from "lodash-es"
-import localforage from "localforage"
-import MarsStyles from "./mars-styles.vue"
-import MarsAvailability from "./mars-availability.vue"
-import * as mapWork from "./map"
-import useLifecycle from "@mars/common/uses/use-lifecycle"
-import { useWidget } from "@mars/common/store/widget"
+  import { ref, onMounted, toRaw } from 'vue';
+  import _ from 'lodash-es';
+  import localforage from 'localforage';
+  import MarsStyles from './mars-styles.vue';
+  import MarsAvailability from './mars-availability.vue';
+  import * as mapWork from './map';
+  import useLifecycle from '@mars/common/uses/use-lifecycle';
+  import { useWidget } from '@mars/common/store/widget';
 
-const { currentWidget } = useWidget()
+  const { currentWidget } = useWidget();
 
-const activeTab = ref("style") // 卡片所处位置
+  const activeTab = ref('style'); // 卡片所处位置
 
-const tabChange = (item: any) => {
-  localforage.setItem("active-tab", item)
-  availability.value = graphic.availability
-  style.value = graphic.style
-}
+  const tabChange = (item: any) => {
+    localforage.setItem('active-tab', item);
+    availability.value = graphic.availability;
+    style.value = graphic.style;
+  };
 
-const layerName = ref("")
-const customType = ref("")
-const graphicType = ref("")
-const style = ref(null)
+  const layerName = ref('');
+  const customType = ref('');
+  const graphicType = ref('');
+  const style = ref(null);
 
-const availability = ref(null) // 时序
-const showAvailability = ref(true)
+  const availability = ref(null); // 时序
+  const showAvailability = ref(true);
 
-let graphic
+  let graphic;
 
-// 启用map.ts生命周期
-useLifecycle(mapWork)
+  // 启用map.ts生命周期
+  useLifecycle(mapWork);
 
-onMounted(() => {
-  graphic = currentWidget.data.graphic
-  if (currentWidget.data.hideAvailability) {
-    showAvailability.value = false
-  }
-  updataLayer()
-})
+  onMounted(() => {
+    graphic = currentWidget.data.graphic;
+    if (currentWidget.data.hideAvailability) {
+      showAvailability.value = false;
+    }
+    updataLayer();
+  });
 
-if (currentWidget) {
-  currentWidget.onUpdate((e) => {
-    graphic = e.data.graphic
-    updataLayer()
-  })
-}
-
-// 监听到矢量数据发生变化
-function updataLayer() {
-  if (!graphic || !graphic.isAdded) {
-    return
+  if (currentWidget) {
+    currentWidget.onUpdate((e) => {
+      graphic = e.data.graphic;
+      updataLayer();
+    });
   }
 
-  layerName.value = graphic._layer.name || ""
-  graphicType.value = graphic.type
-  customType.value = currentWidget.data.styleType || graphic.options.styleType
+  // 监听到矢量数据发生变化
+  function updataLayer() {
+    if (!graphic || !graphic.isAdded) {
+      return;
+    }
 
-  console.log("开始编辑style样式", graphic.style)
-  style.value = _.cloneDeep(graphic.style)
+    layerName.value = graphic._layer.name || '';
+    graphicType.value = graphic.type;
+    customType.value = currentWidget.data.styleType || graphic.options.styleType;
 
-  // if (graphic.style.lastMaterialType) {
-  //   style.value.lastMaterialType = graphic.style.lastMaterialType
-  // }
+    console.log('开始编辑style样式', graphic.style);
+    style.value = _.cloneDeep(graphic.style);
 
-  const avail = graphic.availability
-  console.log("开始编辑availability时序", avail)
-  availability.value = _.cloneDeep(avail)
-}
+    // if (graphic.style.lastMaterialType) {
+    //   style.value.lastMaterialType = graphic.style.lastMaterialType
+    // }
 
-function styleChange(style: any) {
-  style = toRaw(style)
-  console.log("修改了style样式", style)
-
-  graphic.setStyle(style)
-}
-
-function availabilityChange(availability: any[]) {
-  if (availability && availability.length) {
-    graphic.availability = availability
-  } else {
-    graphic.availability = null
+    const avail = graphic.availability;
+    console.log('开始编辑availability时序', avail);
+    availability.value = _.cloneDeep(avail);
   }
-}
 
-// *********************  删除定位保存文件方法  ******************* //
-function getGeoJson() {
-  const geojson = graphic.toGeoJSON() // 文件处理
-  geojson.properties._layer = graphic._layer.name
+  function styleChange(style: any) {
+    style = toRaw(style);
+    console.log('修改了style样式', style);
 
-  mapWork.downloadFile("标绘item.json", JSON.stringify(geojson))
-}
+    graphic.setStyle(style);
+  }
 
-function flyToGraphic() {
-  graphic.flyTo() // 事件处理
-}
+  function availabilityChange(availability: any[]) {
+    if (availability && availability.length) {
+      graphic.availability = availability;
+    } else {
+      graphic.availability = null;
+    }
+  }
 
-function deleteEntity() {
-  graphic.remove() // 删除
-}
+  // *********************  删除定位保存文件方法  ******************* //
+  function getGeoJson() {
+    const geojson = graphic.toGeoJSON(); // 文件处理
+    geojson.properties._layer = graphic._layer.name;
+
+    mapWork.downloadFile('标绘item.json', JSON.stringify(geojson));
+  }
+
+  function flyToGraphic() {
+    graphic.flyTo(); // 事件处理
+  }
+
+  function deleteEntity() {
+    graphic.remove(); // 删除
+  }
 </script>
 <style lang="less" scoped>
-.top-handle-bar {
-  border-bottom: 1px solid #cde1de;
-  padding: 5px 0 2px 12px;
+  .top-handle-bar {
+    border-bottom: 1px solid #cde1de;
+    padding: 5px 0 2px 12px;
 
-  :deep(.mars-icon) {
-    cursor: pointer;
+    :deep(.mars-icon) {
+      cursor: pointer;
+    }
   }
-}
 
-.attr-editor-main {
-  // 编辑面板高度问题
-  height: calc(100% - 70px);
-  overflow-y: auto;
+  .attr-editor-main {
+    // 编辑面板高度问题
+    height: calc(100% - 70px);
+    overflow-y: auto;
 
-  :deep(*) {
-    font-size: 12px;
+    :deep(*) {
+      font-size: 12px;
+    }
   }
-}
 
-:deep(.ant-tabs-nav) {
-  margin: 0;
-}
+  :deep(.ant-tabs-nav) {
+    margin: 0;
+  }
 
-:deep(.ant-select),
-:deep(.ant-input-number) {
-  width: 100%;
-}
+  :deep(.ant-select),
+  :deep(.ant-input-number) {
+    width: 100%;
+  }
 </style>

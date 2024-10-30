@@ -23,7 +23,13 @@
       <a-space>
         <span class="mars-pannel-item-label">裁剪距离</span>
         <mars-slider @change="distance" v-model:value="distanceValue" :min="-100" :max="100" />
-        <mars-input-number @change="txtDistance" v-model:value="distanceValue" :min="-100" :max="100" addon-after="米" />
+        <mars-input-number
+          @change="txtDistance"
+          v-model:value="distanceValue"
+          :min="-100"
+          :max="100"
+          addon-after="米"
+        />
       </a-space>
     </div>
 
@@ -31,7 +37,13 @@
       <a-space>
         <span class="mars-pannel-item-label">斜切偏移量</span>
         <mars-slider @change="deviation" v-model:value="deviationValue" :min="-10" :max="10" />
-        <mars-input-number @change="txtDeviation" v-model:value="deviationValue" :min="-10" :max="10" addon-after="米" />
+        <mars-input-number
+          @change="txtDeviation"
+          v-model:value="deviationValue"
+          :min="-10"
+          :max="10"
+          addon-after="米"
+        />
       </a-space>
     </div>
 
@@ -40,95 +52,95 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue"
-import * as mapWork from "./map.js"
-import useLifecycle from "@mars/common/uses/use-lifecycle"
+  import { ref } from 'vue';
+  import * as mapWork from './map.js';
+  import useLifecycle from '@mars/common/uses/use-lifecycle';
 
-useLifecycle(mapWork)
-const distanceValue = ref<number>(0)
-const deviationValue = ref<number>(0)
+  useLifecycle(mapWork);
+  const distanceValue = ref<number>(0);
+  const deviationValue = ref<number>(0);
 
-// 绘制线
-const drawLine = () => {
-  mapWork.drawLine()
-}
-// 绘制矩形
-const drawExtent = () => {
-  mapWork.drawExtent()
-}
-// 绘制面
-const drawPoly = () => {
-  mapWork.drawPoly()
-}
-// 绘制面(外切)
-const drawPoly2 = () => {
-  mapWork.drawPoly2()
-}
+  // 绘制线
+  const drawLine = () => {
+    mapWork.drawLine();
+  };
+  // 绘制矩形
+  const drawExtent = () => {
+    mapWork.drawExtent();
+  };
+  // 绘制面
+  const drawPoly = () => {
+    mapWork.drawPoly();
+  };
+  // 绘制面(外切)
+  const drawPoly2 = () => {
+    mapWork.drawPoly2();
+  };
 
-const distance = () => {
-  mapWork.rangeDistance(distanceValue.value)
-}
-const txtDistance = () => {
-  mapWork.rangeDistance(distanceValue.value)
-}
+  const distance = () => {
+    mapWork.rangeDistance(distanceValue.value);
+  };
+  const txtDistance = () => {
+    mapWork.rangeDistance(distanceValue.value);
+  };
 
-const deviation = () => {
-  mapWork.rangeNormalZ(deviationValue.value)
-}
-const txtDeviation = () => {
-  mapWork.rangeNormalZ(deviationValue.value)
-}
-const clear = () => {
-  mapWork.clear()
-}
+  const deviation = () => {
+    mapWork.rangeNormalZ(deviationValue.value);
+  };
+  const txtDeviation = () => {
+    mapWork.rangeNormalZ(deviationValue.value);
+  };
+  const clear = () => {
+    mapWork.clear();
+  };
 </script>
 <style scoped lang="less">
-.ant-slider {
-  width: 110px;
-  margin: 0;
-}
-
-.mars-pannel-item-label {
-  width: 75px;
-}
-
-.grid-item {
-  display: grid;
-  gap: 10px 10px;
-  grid-template-columns: 75px repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  margin-bottom: 10px;
-
-  .grid-item_0 {
-    grid-row: 1 / span 3;
-    padding-top: 5px;
-    color: var(--mars-text-color);
+  .ant-slider {
+    width: 110px;
+    margin: 0;
   }
 
-  .grid-item_1 {
-    grid-column: 2 / span 3;
-  }
-}
-
-.grid-item_more {
-  grid-template-columns: 75px repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  margin-bottom: 0;
-
-  .grid-item_1 {
-    grid-column: 2 / span 2;
-  }
-}
-
-.unitClass {
-  width: 65px;
-
-  :deep(.ant-input-number-handler-wrap) {
-    display: none;
+  .mars-pannel-item-label {
+    width: 75px;
   }
 
-  :deep(.ant-input-number-group-addon) {
-    padding: 0 8px 0 0;
+  .grid-item {
+    display: grid;
+    gap: 10px 10px;
+    grid-template-columns: 75px repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    margin-bottom: 10px;
+
+    .grid-item_0 {
+      grid-row: 1 / span 3;
+      padding-top: 5px;
+      color: var(--mars-text-color);
+    }
+
+    .grid-item_1 {
+      grid-column: 2 / span 3;
+    }
   }
-}
+
+  .grid-item_more {
+    grid-template-columns: 75px repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    margin-bottom: 0;
+
+    .grid-item_1 {
+      grid-column: 2 / span 2;
+    }
+  }
+
+  .unitClass {
+    width: 65px;
+
+    :deep(.ant-input-number-handler-wrap) {
+      display: none;
+    }
+
+    :deep(.ant-input-number-group-addon) {
+      padding: 0 8px 0 0;
+    }
+  }
 </style>

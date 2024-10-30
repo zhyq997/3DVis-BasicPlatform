@@ -4,7 +4,7 @@
  * @copyright 火星科技 mars3d.cn
  * @author 木遥 2022-01-01
  */
-import * as mars3d from "mars3d"
+import * as mars3d from 'mars3d';
 
 /**
  * 判断是否 "经度,纬度" 字符串值
@@ -14,8 +14,9 @@ import * as mars3d from "mars3d"
  * @return {boolean} 是否 经度,纬度
  */
 export function isLonLat(text: string): boolean {
-  const reg = /^-?((0|1?[0-7]?[0-9]?)(([.][0-9]*)?)|180(([.][0]*)?)),-?((0|[1-8]?[0-9]?)(([.][0-9]*)?)|90(([.][0]*)?))$/
-  return reg.test(text)
+  const reg =
+    /^-?((0|1?[0-7]?[0-9]?)(([.][0-9]*)?)|180(([.][0]*)?)),-?((0|[1-8]?[0-9]?)(([.][0-9]*)?)|90(([.][0]*)?))$/;
+  return reg.test(text);
 }
 
 /**
@@ -25,22 +26,26 @@ export function isLonLat(text: string): boolean {
  * @param {string} [container="sanbox-warpper"] 窗口id
  * @return {void}
  */
-export function setAutoHeight(callback: (v: number) => void, lose = 0, container = "sanbox-warpper"): void {
-  const wapper = document.getElementById(container) || document.body
+export function setAutoHeight(
+  callback: (v: number) => void,
+  lose = 0,
+  container = 'sanbox-warpper',
+): void {
+  const wapper = document.getElementById(container) || document.body;
 
-  let wapperHeight = wapper?.clientHeight || 0
-  const result = wapperHeight - lose
-  callback(result)
+  let wapperHeight = wapper?.clientHeight || 0;
+  const result = wapperHeight - lose;
+  callback(result);
 
   const resize = () => {
-    wapperHeight = wapper?.clientHeight || 0
-    const resizeHeight = wapperHeight - lose
-    callback(resizeHeight)
-  }
+    wapperHeight = wapper?.clientHeight || 0;
+    const resizeHeight = wapperHeight - lose;
+    callback(resizeHeight);
+  };
 
-  window.addEventListener("resize", resize)
+  window.addEventListener('resize', resize);
 
-  resize()
+  resize();
   // return () => {
   //   window.removeEventListener("resize", resize)
   // }
@@ -54,9 +59,8 @@ export function setAutoHeight(callback: (v: number) => void, lose = 0, container
  * @return {string | null}  参数值
  */
 export function getQueryString(parameter: string): string | null {
-  return new URL(window.location.href).searchParams.get(parameter)
+  return new URL(window.location.href).searchParams.get(parameter);
 }
-
 
 /**
  * 将指定的异步方法转为Promise
@@ -67,8 +71,8 @@ export function getQueryString(parameter: string): string | null {
  * @param {string} [error="error"]
  * @return {*} Promise
  */
-export function apiToSync(context: any, apiName: string, success = "success", error = "error") {
-  return apiArrayToSync(context, [apiName], success, error)[0]
+export function apiToSync(context: any, apiName: string, success = 'success', error = 'error') {
+  return apiArrayToSync(context, [apiName], success, error)[0];
 }
 
 /**
@@ -80,22 +84,27 @@ export function apiToSync(context: any, apiName: string, success = "success", er
  * @param {string} [error="error"]
  * @return {*} Promise[]
  */
-export function apiArrayToSync(context: any, apiNames: string[], success = "success", error = "error") {
+export function apiArrayToSync(
+  context: any,
+  apiNames: string[],
+  success = 'success',
+  error = 'error',
+) {
   return apiNames.map((name) => {
-    const apiFunc = context[name]
+    const apiFunc = context[name];
 
     return (options: any) =>
       new Promise((resolve, reject) => {
         options[success] = function (result: any) {
-          resolve(result)
-        }
+          resolve(result);
+        };
         options[error] = function (error) {
-          reject(error)
-        }
+          reject(error);
+        };
         // console.log("zhix", options)
-        apiFunc.call(context, options)
-      })
-  })
+        apiFunc.call(context, options);
+      });
+  });
 }
 
 /**
@@ -104,18 +113,18 @@ export function apiArrayToSync(context: any, apiNames: string[], success = "succ
  * @param {*} base64 map.expImage方法的回调函数参数
  */
 export function printImage(base64: any) {
-  const iframe: HTMLIFrameElement = mars3d.DomUtil.create("iframe", "", document.body)
-  let doc = null
-  iframe.setAttribute("style", "position:absolute;width:0px;height:0px;left:-500px;top:-500px;")
-  document.body.appendChild(iframe)
-  doc = iframe.contentWindow.document
-  doc.write(`<div><img src="${base64}" style="margin:0" /></div>`)
-  doc.close()
+  const iframe: HTMLIFrameElement = mars3d.DomUtil.create('iframe', '', document.body);
+  let doc = null;
+  iframe.setAttribute('style', 'position:absolute;width:0px;height:0px;left:-500px;top:-500px;');
+  document.body.appendChild(iframe);
+  doc = iframe.contentWindow.document;
+  doc.write(`<div><img src="${base64}" style="margin:0" /></div>`);
+  doc.close();
 
-  iframe.focus()
-  iframe.contentWindow.focus()
+  iframe.focus();
+  iframe.contentWindow.focus();
   setTimeout(() => {
-    iframe.contentWindow.print()
-    document.body.removeChild(iframe)
-  }, 500)
+    iframe.contentWindow.print();
+    document.body.removeChild(iframe);
+  }, 500);
 }

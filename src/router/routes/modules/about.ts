@@ -14,7 +14,7 @@ const about: AppRouteModule = {
     title: t('routes.dashboard.about'),
     orderNo: 100000,
     roles: [RoleEnum.TEST],
-  },    
+  },
 
   children: [
     {

@@ -14,33 +14,33 @@
 </template>
 
 <script lang="ts" setup>
-import * as mapWork from "./map.js"
-import useLifecycle from "@mars/common/uses/use-lifecycle"
+  import * as mapWork from './map.js';
+  import useLifecycle from '@mars/common/uses/use-lifecycle';
 
-// 启用map.ts生命周期
-useLifecycle(mapWork)
-// 创建地图
-const createMap = () => {
-  mapWork.createControl()
-}
-// 销毁地图
-const destroyMap = () => {
-  mapWork.destroyControl()
-}
+  // 启用map.ts生命周期
+  useLifecycle(mapWork);
+  // 创建地图
+  const createMap = () => {
+    mapWork.createControl();
+  };
+  // 销毁地图
+  const destroyMap = () => {
+    mapWork.destroyControl();
+  };
 </script>
 
 <style lang="less">
-.mapsplit-pannel {
-  background: transparent !important;
-  backdrop-filter: none !important;
+  .mapsplit-pannel {
+    background: transparent !important;
+    backdrop-filter: none !important;
 
-  .mars-dialog__content {
-    background-color: transparent !important;
-  }
+    .mars-dialog__content {
+      background-color: transparent !important;
+    }
 
-  .mars-button {
-    width: 120px;
-    height: 46px;
+    .mars-button {
+      width: 120px;
+      height: 46px;
+    }
   }
-}
 </style>
