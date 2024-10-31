@@ -77,12 +77,13 @@ export function addTxtName(name, roamOptions) {
 }
 
 // 修改飞行漫游
-export function editTxtName(name) {
+export function editTxtName(name, roamOptions) {
   // 动态的获取index
   const item = {
     name,
     center: map.getCameraView(),
     graphics: graphic?.toJSON(),
+    roamOptions,
   };
 
   map
@@ -114,25 +115,25 @@ export async function drawPolyline() {
   // console.log("完成了draw标绘", graphic)
 }
 
-export function startRoam(positions, roamOptions) {
+export function startRoam(positions, roamOptions, name) {
   return new Promise((resolve, reject) => {
     fixedRoute = new mars3d.graphic.FixedRoute({
-      name: '空中漫游',
+      name: name,
       speed: roamOptions.speed,
       positions,
       clockLoop: roamOptions.clockLoop,
       interpolation: roamOptions.interpolation,
       camera: {
-        type: 'gs',
-        pitch: -30,
-        radius: 500,
+        type: roamOptions.camera.type,
+        followedX: roamOptions.camera.followedX,
+        radius: roamOptions.camera.radius,
       },
     });
     if (roamOptions.model) {
       fixedRoute.model = roamOptions.model;
     }
     // 绑定popup
-    bindPopup(fixedRoute);
+    bindPopup(fixedRoute, name);
     graphicLayer.addGraphic(fixedRoute);
     if (roamOptions.surfaceHeight) {
       try {
@@ -164,9 +165,10 @@ export function stopRoam() {
   // 开始漫游
 }
 
-function bindPopup(fixedRoute) {
+function bindPopup(fixedRoute, name) {
   fixedRoute.bindPopup(
     `<div style="width: 200px">
+      <div>线路名称：<span>${name}</span></div>
       <div>总 距 离：<span id="lblAllLen"> </span></div>
       <div>总 时 间：<span id="lblAllTime"> </span></div>
       <div>开始时间：<span id="lblStartTime"> </span></div>

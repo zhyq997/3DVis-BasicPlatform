@@ -17,7 +17,7 @@
           <img
             class="markImg"
             :src="value.img"
-            @click="flytoView(value, index)"
+            @click="flytoView(value, index, true)"
             v-show="formState.found"
           />
           <p>{{ value.name }}</p>
@@ -88,7 +88,7 @@
             <template #title>
               <span>修改参数</span>
             </template>
-            <icon class="editImg" @click="editOptions(index, value.name)">
+            <icon class="editImg" @click="editOptions(index, value)">
               <template #component>
                 <svg
                   t="1729819714307"
@@ -122,8 +122,17 @@
     </div>
     <div v-if="isShow">
       <div class="title-vertical">线路名称：{{ currentName }}</div>
-      <div class="title-vertical_line">飞行漫游属性</div>
-      <mars-gui :options="options()" @change="gui1Change" labelCol="9"></mars-gui>
+      <div class="">
+        <div class="title-vertical_line">飞行漫游属性</div>
+        <mars-gui :options="options()" @change="gui1Change" :labelCol="9"></mars-gui>
+      </div>
+      <div>
+        <div class="title-vertical_line">坐标编辑</div>
+        <div v-for="(item, index) in currentPositions" class="poi-div">
+          <div class="position-title">第{{ index + 1 }}个点</div>
+          <mars-gui :options="positionOptions(item)" @change="gui1Change" :labelCol="9"></mars-gui>
+        </div>
+      </div>
       <mars-button @click="goBack">返回</mars-button>
     </div>
   </mars-dialog>
@@ -145,14 +154,34 @@
     interpolation: boolean;
     clockLoop: boolean;
     speed: number;
-    model: object;
+    model: {
+      url: string;
+    };
     surfaceHeight: boolean; //是否开启贴地
-    test: string;
+    camera: {
+      type: string;
+      radius: number;
+      followedX: number;
+    };
   }
+
+  const defaultRoamOptions = <roamOptions>{
+    interpolation: false,
+    speed: 200,
+    clockLoop: true,
+    surfaceHeight: true,
+    model: { url: '' },
+    camera: {
+      type: 'gs',
+      radius: 500,
+      followedX: 500,
+    },
+  };
 
   let currentName = '';
   let currentIndex = -1;
   let currentRoamOptions = ref(<roamOptions>{});
+  let currentPositions = ref([]);
   const showModal = ref<boolean>(false);
   const isShow = ref(false);
   const options = () => {
@@ -236,7 +265,117 @@
           updateModel(data);
         },
       },
+      // {
+      //   type: 'select',
+      //   field: 'camera',
+      //   label: '视角选择',
+      //   value: currentRoamOptions.value.camera?.type || '',
+      //   data: [
+      //     {
+      //       label: '无',
+      //       value: '',
+      //     },
+      //     {
+      //       label: '跟随视角',
+      //       value: 'gs',
+      //     },
+      //     {
+      //       label: '锁定第一是视角',
+      //       value: 'dy',
+      //     },
+      //     {
+      //       label: '锁定上帝视角',
+      //       value: 'sd',
+      //     },
+      //   ],
+      //   change(data) {
+      //     // updateModel(data);
+      //     currentRoamOptions.value.camera.type = data;
+      //     updataRoamOptions();
+      //     console.log(data);
+      //   },
+      // },
+      // {
+      //   type: 'number',
+      //   field: 'radius',
+      //   label: '视角高度',
+      //   step: 1,
+      //   min: 1,
+      //   max: 10000,
+      //   value: currentRoamOptions.value.camera.radius,
+      //   change(data) {
+      //     // $message("你输入了：" + data)
+      //     currentRoamOptions.value.camera.radius = data;
+      //     updataRoamOptions();
+      //     console.log(data);
+      //   },
+      // },
+      // {
+      //   type: 'number',
+      //   field: 'followedX',
+      //   label: '视角距离',
+      //   step: 1,
+      //   min: 1,
+      //   max: 10000,
+      //   value: currentRoamOptions.value.camera.followedX,
+      //   change(data) {
+      //     // $message("你输入了：" + data)
+      //     currentRoamOptions.value.camera.followedX = data;
+      //     updataRoamOptions();
+      //     console.log(data);
+      //   },
+      // },
     ];
+  };
+  const positionOptions = (positions) => {
+    const data = [
+      {
+        type: 'number',
+        field: 'lng',
+        label: '经度',
+        step: 1,
+        min: 0,
+        max: 360,
+        value: positions[0],
+        change(data) {
+          $message('你输入了：' + data);
+          // currentRoamOptions.value.speed = data;
+          // updataRoamOptions();
+          // console.log(data);
+        },
+      },
+      {
+        type: 'number',
+        field: 'lat',
+        label: '纬度',
+        step: 1,
+        min: 0,
+        max: 180,
+        value: positions[1],
+        change(data) {
+          $message('你输入了：' + data);
+          // currentRoamOptions.value.speed = data;
+          // updataRoamOptions();
+          // console.log(data);
+        },
+      },
+      {
+        type: 'number',
+        field: 'alt',
+        label: '高度',
+        step: 1,
+        min: 1,
+        max: 1000,
+        value: positions[2],
+        change(data) {
+          $message('你输入了：' + data);
+          // currentRoamOptions.value.speed = data;
+          // updataRoamOptions();
+          // console.log(data);
+        },
+      },
+    ];
+    return <GuiItem[]>data;
   };
 
   function gui1Change(data) {
@@ -258,19 +397,13 @@
           interpolation: false,
           speed: 200,
           clockLoop: true,
+          surfaceHeight: true,
+          model: { url: 'none' },
         },
       },
     ],
   });
 
-  // 默认值
-  const roamOptions = <roamOptions>{
-    interpolation: false,
-    speed: 200,
-    clockLoop: true,
-    surfaceHeight: true,
-    test: 'test',
-  };
   function udpateState(index) {
     formState.imgObject.map((item) => {
       item.isStart = false;
@@ -292,10 +425,23 @@
       console.log('修改完成', e);
       showModal.value = true;
     });
+    mapWork.graphicLayer.on(
+      [
+        mars3d.EventType.editMovePoint,
+        mars3d.EventType.editAddPoint,
+        mars3d.EventType.editRemovePoint,
+      ],
+      function (e) {
+        console.log('edit事件', e);
+        currentPositions.value = e.graphic.toJSON().positions;
+      },
+    );
   });
 
   const handleOk = (e: MouseEvent) => {
-    mapWork.editTxtName(currentName);
+    mapWork.editTxtName(currentName, currentRoamOptions.value);
+    console.log(mapWork.graphic.toJSON());
+    currentPositions.value = mapWork.graphic.toJSON().positions;
     showModal.value = false;
   };
 
@@ -350,7 +496,9 @@
     mapWork.graphicLayer.clear();
     mapWork.drawPolyline().then(function (graphic) {
       console.log('绘制矢量对象完成', graphic);
-      mapWork.addTxtName(name, roamOptions);
+      // 深拷贝
+      const newRoamOptions = JSON.parse(JSON.stringify(defaultRoamOptions));
+      mapWork.addTxtName(name, newRoamOptions);
     });
 
     // 动态的获取index
@@ -373,12 +521,13 @@
   });
 
   // 视角操作
-  const flytoView = (val: any, index: number) => {
+  const flytoView = (val: any, index: number, isfly: boolean) => {
     currentIndex = index;
     currentName = val.name;
+    currentRoamOptions.value = val.roamOptions;
     mapWork.stopRoam();
     udpateState(-1);
-    mapWork.flytoView(val.center);
+    if (isfly) mapWork.flytoView(val.center);
     mapWork.graphicLayer.clear();
     mapWork.graphicLayer.addGraphic(val.graphics);
   };
@@ -396,9 +545,11 @@
    * @param index 路线索引
    */
   const startRoam = async (val: any, index: number) => {
-    mapWork.stopRoam();
+    flytoView(val, index, false);
     try {
-      await mapWork.startRoam(val.graphics.positions, val.roamOptions); // 等待 startRoam 完成
+      $showLoading();
+      await mapWork.startRoam(val.graphics.positions, val.roamOptions, val.name); // 等待 startRoam 完成
+      $hideLoading();
       udpateState(index); // 然后运行 udpateState
     } catch (error) {
       console.error('Error starting roam:', error);
@@ -436,10 +587,17 @@
           isPause: false,
           roamOptions: {
             interpolation: false,
-            speed: 10,
+            speed: 200,
             clockLoop: true,
             surfaceHeight: true,
-            model: {},
+            model: {
+              url: '',
+            },
+            camera: {
+              type: 'gs',
+              radius: 50,
+              followedX: 50,
+            },
           },
         },
       ];
@@ -457,9 +615,12 @@
    * @param index 当前项的索引
    * @param name 当前项的名称
    */
-  const editOptions = (index: any, name: string) => {
-    currentName = name;
+  const editOptions = (index: number, val: any) => {
+    currentName = val.name;
     currentIndex = index;
+    currentPositions.value = val.graphics.positions;
+    console.log('修改选项', val.graphics.positions);
+
     currentRoamOptions.value = formState.imgObject[index].roamOptions;
     isShow.value = true;
   };
@@ -487,9 +648,6 @@
     } else {
       currentRoamOptions.value.model = {
         url,
-        heading: 0,
-        mergeOrientation: true,
-        minimumPixelSize: 5,
       };
     }
     updataRoamOptions();
@@ -499,21 +657,45 @@
   };
 </script>
 <style scoped lang="less">
+  .poi-div + .poi-div {
+    margin-top: 10px;
+  }
+  .position-title {
+    padding-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .position-title:before {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    background-color: #3385ff;
+    position: relative;
+    left: -10px;
+    top: 12px;
+    border-radius: 50%;
+  }
+
   .title-vertical {
     padding-bottom: 10px;
     font-family: 思源黑体;
     font-size: 16px;
     font-weight: bold;
-    color: var(--mars-control-text);
+    color: black;
     position: relative;
   }
+
   .title-vertical_line {
     padding-left: 12px;
     padding-bottom: 10px;
     font-family: 思源黑体;
-    font-size: 16px;
-    font-weight: normal;
-    color: var(--mars-control-text);
+    font-size: 17px;
+    font-weight: bold;
+    color: black;
     position: relative;
 
     &::after {
