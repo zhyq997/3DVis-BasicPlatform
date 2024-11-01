@@ -116,7 +116,7 @@
           </a-tooltip>
         </div>
       </div>
-      <a-modal v-model:open="showModal" title="保存确认" @ok="handleOk">
+      <a-modal v-model:open="showModal" title="保存确认" @ok="handleOk" @cancel="handleCancel">
         <h1 style="display: flex; justify-content: center">是否保存编辑？？？</h1>
       </a-modal>
     </div>
@@ -130,7 +130,11 @@
         <div class="title-vertical_line">坐标编辑</div>
         <div v-for="(item, index) in currentPositions" class="poi-div">
           <div class="position-title">第{{ index + 1 }}个点</div>
-          <mars-gui :options="positionOptions(item)" @change="gui1Change" :labelCol="9"></mars-gui>
+          <mars-gui
+            :options="positionOptions(item, index)"
+            @change="gui1Change"
+            :labelCol="9"
+          ></mars-gui>
         </div>
       </div>
       <mars-button @click="goBack">返回</mars-button>
@@ -182,6 +186,7 @@
   let currentIndex = -1;
   let currentRoamOptions = ref(<roamOptions>{});
   let currentPositions = ref([]);
+  let currentGraphic;
   const showModal = ref<boolean>(false);
   const isShow = ref(false);
   const options = () => {
@@ -327,7 +332,8 @@
       // },
     ];
   };
-  const positionOptions = (positions) => {
+  const positionOptions = (positions: Array<number>, index: number) => {
+    const positions_draw = mapWork.graphicLayer.graphics[0].setCallbackPositions(); // 切换坐标为动态回调模式
     const data = [
       {
         type: 'number',
@@ -338,10 +344,10 @@
         max: 360,
         value: positions[0],
         change(data) {
-          $message('你输入了：' + data);
-          // currentRoamOptions.value.speed = data;
-          // updataRoamOptions();
-          // console.log(data);
+          const position = new mars3d.LngLatPoint(data, positions[1], positions[2]).toCartesian(
+            false,
+          );
+          positions_draw[index] = position;
         },
       },
       {
@@ -353,10 +359,11 @@
         max: 180,
         value: positions[1],
         change(data) {
-          $message('你输入了：' + data);
-          // currentRoamOptions.value.speed = data;
-          // updataRoamOptions();
-          // console.log(data);
+          const position = new mars3d.LngLatPoint(positions[0], data, positions[2]).toCartesian(
+            false,
+          );
+          positions_draw[index] = position;
+          return data;
         },
       },
       {
@@ -368,10 +375,10 @@
         max: 1000,
         value: positions[2],
         change(data) {
-          $message('你输入了：' + data);
-          // currentRoamOptions.value.speed = data;
-          // updataRoamOptions();
-          // console.log(data);
+          const position = new mars3d.LngLatPoint(positions[0], positions[1], data).toCartesian(
+            false,
+          );
+          positions_draw[index] = position;
         },
       },
     ];
@@ -438,10 +445,17 @@
     );
   });
 
-  const handleOk = (e: MouseEvent) => {
+  const handleOk = () => {
     mapWork.editTxtName(currentName, currentRoamOptions.value);
-    console.log(mapWork.graphic.toJSON());
-    currentPositions.value = mapWork.graphic.toJSON().positions;
+    const graphic = mapWork.graphic.toJSON();
+    currentGraphic = graphic;
+    showModal.value = false;
+  };
+
+  const handleCancel = () => {
+    mapWork.graphicLayer.clear();
+    mapWork.graphicLayer.addGraphic(currentGraphic);
+    currentPositions.value = currentGraphic.positions;
     showModal.value = false;
   };
 
@@ -525,6 +539,7 @@
     currentIndex = index;
     currentName = val.name;
     currentRoamOptions.value = val.roamOptions;
+    currentGraphic = val.graphics;
     mapWork.stopRoam();
     udpateState(-1);
     if (isfly) mapWork.flytoView(val.center);
@@ -616,6 +631,7 @@
    * @param name 当前项的名称
    */
   const editOptions = (index: number, val: any) => {
+    if (!currentGraphic) flytoView(val, index, true);
     currentName = val.name;
     currentIndex = index;
     currentPositions.value = val.graphics.positions;

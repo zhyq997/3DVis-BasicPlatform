@@ -165,6 +165,14 @@ export function stopRoam() {
   // 开始漫游
 }
 
+export function updataGraphic(editGraphic) {
+  if (editGraphic) {
+    graphic = editGraphic;
+  } else {
+    console.log('请先绘制路线');
+  }
+}
+
 function bindPopup(fixedRoute, name) {
   fixedRoute.bindPopup(
     `<div style="width: 200px">

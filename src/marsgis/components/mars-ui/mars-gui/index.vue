@@ -13,6 +13,7 @@
             :options="item.data || []"
             :units="item.units"
             @change="itemChange(item)"
+            @blur="itemBlur(item)"
           >
           </component>
         </div>
@@ -175,6 +176,9 @@
     } else {
       emits('change', attrForm.value);
     }
+  }
+  function itemBlur(item: GuiItem) {
+    console.log('blur', item);
   }
 </script>
 <script lang="ts">
