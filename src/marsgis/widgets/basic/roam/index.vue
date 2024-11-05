@@ -1,6 +1,6 @@
 <template>
-  <mars-dialog :visible="true" right="10" top="60" bottom="40" width="330" title="飞行漫游">
-    <div v-show="!isShow">
+  <mars-dialog :visible="!isShow" right="10" top="60" bottom="40" width="330" title="飞行漫游">
+    <div>
       <div class="f-mb f-tac">
         <a-space-compact style="width: 100%">
           <mars-input v-model:value="formState.input" placeholder="输入名称"></mars-input>
@@ -120,25 +120,52 @@
         <h1 style="display: flex; justify-content: center">是否保存编辑？？？</h1>
       </a-modal>
     </div>
-    <div v-if="isShow">
-      <div class="title-vertical">线路名称：{{ currentName }}</div>
-      <div class="">
-        <div class="title-vertical_line">飞行漫游属性</div>
-        <mars-gui :options="options()" @change="gui1Change" :labelCol="9"></mars-gui>
-      </div>
+    <mars-dialog
+      :visible="isShow"
+      right="10"
+      top="60"
+      bottom="40"
+      width="330"
+      title="属性编辑"
+      @closed="closed()"
+    >
       <div>
-        <div class="title-vertical_line">坐标编辑</div>
-        <div v-for="(item, index) in currentPositions" class="poi-div">
-          <div class="position-title">第{{ index + 1 }}个点</div>
-          <mars-gui
-            :options="positionOptions(item, index)"
-            @change="gui1Change"
-            :labelCol="9"
-          ></mars-gui>
+        <!-- <div class="btn-container">
+          <a-row :gutter="10">
+            <a-col :span="12"
+              ><mars-button @click="addTxtName" class="w-100">导出为 JSON</mars-button></a-col
+            >
+            <a-col :span="12"
+              ><mars-button @click="addTxtName" class="w-100">导入 JSON</mars-button></a-col
+            >
+          </a-row>
+        </div> -->
+        <div>
+          <div class="title-vertical_line">飞行漫游属性</div>
+          <mars-gui :options="options()" @change="gui1Change" :labelCol="9"></mars-gui>
         </div>
+        <div>
+          <div class="title-vertical_line">坐标编辑</div>
+          <div v-for="(item, index) in currentPositions" class="poi-div">
+            <div class="position-title">第{{ index + 1 }}个点</div>
+            <mars-gui
+              :options="positionOptions(item, index)"
+              @change="gui1Change"
+              :labelCol="9"
+            ></mars-gui>
+          </div>
+        </div>
+        <!-- <mars-button @click="goBack">返回</mars-button> -->
       </div>
-      <mars-button @click="goBack">返回</mars-button>
-    </div>
+      <a-modal
+        v-model:open="showSaveModal"
+        title="保存确认"
+        @ok="handleSaveOk"
+        @cancel="handleSaveCancel"
+      >
+        <h1 style="display: flex; justify-content: center">是否保存坐标编辑？？？</h1>
+      </a-modal>
+    </mars-dialog>
   </mars-dialog>
 </template>
 
@@ -174,7 +201,7 @@
     speed: 200,
     clockLoop: true,
     surfaceHeight: true,
-    model: { url: '' },
+    model: { url: 'https://data.mars3d.cn/gltf/mars/qiche.gltf' },
     camera: {
       type: 'gs',
       radius: 500,
@@ -188,9 +215,23 @@
   let currentPositions = ref([]);
   let currentGraphic;
   const showModal = ref<boolean>(false);
-  const isShow = ref(false);
+  const showSaveModal = ref<boolean>(false);
+  const isShow = ref<boolean>(false);
+  const isEdited = ref<boolean>(false);
+  let positions_draw;
   const options = () => {
     return <GuiItem[]>[
+      {
+        type: 'input',
+        field: 'name',
+        label: '路线名称',
+        value: currentName,
+        change(data) {
+          // mapWork.editTxtName(data, currentRoamOptions.value);
+          formState.imgObject[currentIndex].name = data;
+          updataName();
+        },
+      },
       {
         type: 'number',
         field: 'speed',
@@ -243,7 +284,7 @@
         type: 'select',
         field: 'model',
         label: '模型选择',
-        value: currentRoamOptions.value.model?.url || 'none',
+        value: currentRoamOptions.value.model?.url || 'https://data.mars3d.cn/gltf/mars/qiche.gltf',
         data: [
           {
             label: '无',
@@ -333,7 +374,7 @@
     ];
   };
   const positionOptions = (positions: Array<number>, index: number) => {
-    const positions_draw = mapWork.graphicLayer.graphics[0].setCallbackPositions(); // 切换坐标为动态回调模式
+    positions_draw = mapWork.graphicLayer.graphics[0].setCallbackPositions(); // 切换坐标为动态回调模式
     const data = [
       {
         type: 'number',
@@ -348,6 +389,7 @@
             false,
           );
           positions_draw[index] = position;
+          isEdited.value = true;
         },
       },
       {
@@ -363,7 +405,7 @@
             false,
           );
           positions_draw[index] = position;
-          return data;
+          isEdited.value = true;
         },
       },
       {
@@ -379,6 +421,7 @@
             false,
           );
           positions_draw[index] = position;
+          isEdited.value = true;
         },
       },
     ];
@@ -394,7 +437,7 @@
     found: false,
     imgObject: [
       {
-        name: '没有匹配的值',
+        name: '没有飞行线路',
         img: '',
         center: '',
         graphics: {},
@@ -445,6 +488,13 @@
     );
   });
 
+  const closed = () => {
+    if (isEdited.value) {
+      showSaveModal.value = true;
+    }
+    isShow.value = false;
+  };
+
   const handleOk = () => {
     mapWork.editTxtName(currentName, currentRoamOptions.value);
     const graphic = mapWork.graphic.toJSON();
@@ -457,6 +507,19 @@
     mapWork.graphicLayer.addGraphic(currentGraphic);
     currentPositions.value = currentGraphic.positions;
     showModal.value = false;
+  };
+  const handleSaveOk = () => {
+    showSaveModal.value = false;
+    isEdited.value = false;
+    mapWork.updataGraphic(mapWork.graphicLayer.graphics[0]);
+    mapWork.editTxtName(currentName, currentRoamOptions.value);
+    currentGraphic = mapWork.graphicLayer.graphics[0].toJSON();
+  };
+
+  const handleSaveCancel = () => {
+    showSaveModal.value = false;
+    isEdited.value = false;
+    handleCancel();
   };
 
   onUnmounted(() => {
@@ -606,7 +669,7 @@
             clockLoop: true,
             surfaceHeight: true,
             model: {
-              url: '',
+              url: 'https://data.mars3d.cn/gltf/mars/qiche.gltf',
             },
             camera: {
               type: 'gs',
@@ -631,7 +694,7 @@
    * @param name 当前项的名称
    */
   const editOptions = (index: number, val: any) => {
-    if (!currentGraphic) flytoView(val, index, true);
+    flytoView(val, index, true);
     currentName = val.name;
     currentIndex = index;
     currentPositions.value = val.graphics.positions;
@@ -647,10 +710,17 @@
    * 将isShow的值设置为false，通常用于关闭弹窗或返回上一页
    */
   const goBack = () => {
+    if (isEdited.value) {
+      showSaveModal.value = true;
+    }
     isShow.value = false;
   };
 
   const updataRoamOptions = () => {
+    // 记录到历史
+    localStorage.setItem('roamLists', JSON.stringify(formState.imgObject));
+  };
+  const updataName = () => {
     // 记录到历史
     localStorage.setItem('roamLists', JSON.stringify(formState.imgObject));
   };
@@ -673,6 +743,12 @@
   };
 </script>
 <style scoped lang="less">
+  .btn-container {
+    margin-bottom: 10px;
+    .w-100 {
+      width: 100%;
+    }
+  }
   .poi-div + .poi-div {
     margin-top: 10px;
   }
@@ -707,6 +783,7 @@
 
   .title-vertical_line {
     padding-left: 12px;
+    margin-top: 10px;
     padding-bottom: 10px;
     font-family: 思源黑体;
     font-size: 17px;

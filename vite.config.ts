@@ -30,7 +30,7 @@ export default defineApplicationConfig({
       },
     },
     server: {
-      port: 5200,
+      port: 5203,
       proxy: {
         '/basic-api': {
           target: 'http://localhost:3000',
