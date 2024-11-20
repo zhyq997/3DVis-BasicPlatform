@@ -1,0 +1,7271 @@
+{
+  "layers": [
+    {
+      "pid": 400,
+      "type": "wms",
+      "name": "大型超市、百货店和亿元以上商品交易市场_矢量点",
+      "layers": "anxi-emergency:DXSC_1",
+      "popup": [
+        {
+          "field": "id",
+          "name": "唯一标识"
+        },
+        {
+          "field": "dwmc",
+          "name": "市场名称"
+        },
+        {
+          "field": "address",
+          "name": "市场详细地址"
+        },
+        {
+          "field": "sylx",
+          "name": "商业类型"
+        },
+        {
+          "field": "zdmj",
+          "name": "占地面积"
+        },
+        {
+          "field": "jzmj",
+          "name": "建筑面积"
+        },
+        {
+          "field": "yymj",
+          "name": "营业面积"
+        },
+        {
+          "field": "nmcyrs",
+          "name": "年末从业人数"
+        },
+        {
+          "field": "rzdrll",
+          "name": "日最大人流量"
+        },
+        {
+          "field": "tws",
+          "name": "摊位数"
+        },
+        {
+          "field": "nzyywsr",
+          "name": "年主营业务收入"
+        },
+        {
+          "field": "sclbdl",
+          "name": "其中：市场类别（大类）"
+        },
+        {
+          "field": "sclbzl",
+          "name": "市场类别（中类）"
+        },
+        {
+          "field": "aqbwrysl",
+          "name": "安全保卫人员数量"
+        },
+        {
+          "field": "yjgdnl",
+          "name": "应急供电能力"
+        },
+        {
+          "field": "gsfs",
+          "name": "供水方式"
+        },
+        {
+          "field": "gnfs",
+          "name": "供暖方式"
+        },
+        {
+          "field": "yjtxbzfs",
+          "name": "应急通信保障方式"
+        },
+        {
+          "field": "cjzsgdzrz1",
+          "name": "曾经遭受过的自然灾害类型"
+        },
+        {
+          "field": "yyzrzhyjy1",
+          "name": "已有自然灾害应急预案类型"
+        },
+        {
+          "field": "yjgdnl_qts",
+          "name": "应急供电能力-其他项说明"
+        },
+        {
+          "field": "yjtxbzfs_q",
+          "name": "应急通信保障方式-其他项说明"
+        },
+        {
+          "field": "sclbzl_qts",
+          "name": "市场类别（中类）-其他项说明"
+        },
+        {
+          "field": "sclbdl_qts",
+          "name": "市场类别（大类）-其他项说明"
+        },
+        {
+          "field": "sfsytfsjyj",
+          "name": "其他项说明-失效"
+        },
+        {
+          "field": "sylx_qtsm",
+          "name": "商业类型-其他项说明"
+        },
+        {
+          "field": "dgeom",
+          "name": "空间面geojson"
+        },
+        {
+          "field": "lxdh",
+          "name": "联系电话"
+        },
+        {
+          "field": "tbr",
+          "name": "填表人"
+        },
+        {
+          "field": "code",
+          "name": "行政区划代码"
+        },
+        {
+          "field": "cjrmc",
+          "name": "创建人名称"
+        },
+        {
+          "field": "cjsj",
+          "name": "创建时间"
+        },
+        {
+          "field": "dzxiang",
+          "name": "地址乡"
+        },
+        {
+          "field": "dzjh",
+          "name": "地址街号"
+        },
+        {
+          "field": "dzcun",
+          "name": "地址村"
+        },
+        {
+          "field": "dzshi",
+          "name": "地址市"
+        },
+        {
+          "field": "dzsheng",
+          "name": "地址省"
+        },
+        {
+          "field": "tjfzr",
+          "name": "统计负责人"
+        },
+        {
+          "field": "dzxian",
+          "name": "地址县"
+        },
+        {
+          "field": "dwfzr",
+          "name": "单位负责人"
+        },
+        {
+          "field": "tbrq",
+          "name": "报出日期"
+        },
+        {
+          "field": "yyzrzhyjy2",
+          "name": "已有自然灾害应急预案类型-其他说明"
+        },
+        {
+          "field": "gnfs_qtsm",
+          "name": "供暖方式-其他项说明"
+        },
+        {
+          "field": "gsfs_qtsm",
+          "name": "供水方式-其他项说明"
+        },
+        {
+          "field": "cjzsgdzrz2",
+          "name": "曾经遭受过的自然灾害类型-其他说明"
+        },
+        {
+          "field": "jgbm",
+          "name": "机构编码"
+        },
+        {
+          "field": "dmlx",
+          "name": "代码类型"
+        },
+        {
+          "field": "fxpc_datai",
+          "name": "物理主键"
+        },
+        {
+          "field": "fxpc_dcdxb",
+          "name": "调查对象编码"
+        },
+        {
+          "field": "fxpc_xzqh1",
+          "name": "行政区划编码省"
+        },
+        {
+          "field": "fxpc_xzqh2",
+          "name": "行政区划编码市"
+        },
+        {
+          "field": "fxpc_xzqh3",
+          "name": "行政区划编码县"
+        },
+        {
+          "field": "fxpc_updat",
+          "name": "更新时间"
+        },
+        {
+          "field": "fxpc_creat",
+          "name": "写入时间"
+        },
+        {
+          "field": "fxpc_sjzt_",
+          "name": "数据状态"
+        },
+        {
+          "field": "fxpc_shlcz",
+          "name": "审核流程状态"
+        },
+        {
+          "field": "fxpc_shzt_",
+          "name": "审核状态"
+        },
+        {
+          "field": "fxpc_sshy_",
+          "name": "所属行业"
+        },
+        {
+          "field": "fxpc_rqfp_",
+          "name": "日期分片"
+        },
+        {
+          "field": "fxpc_pch_s",
+          "name": "批次号"
+        }
+      ],
+      "mapSplit": false,
+      "show": false,
+      "flyTo": true
+    },
+    {
+      "pid": 400,
+      "type": "wms",
+      "name": "大型超市、百货店和亿元以上商品交易市场_矢量面",
+      "layers": "anxi-emergency:DXSC",
+      "popup": [
+        {
+          "field": "id",
+          "name": "唯一标识"
+        },
+        {
+          "field": "dwmc",
+          "name": "市场名称"
+        },
+        {
+          "field": "address",
+          "name": "市场详细地址"
+        },
+        {
+          "field": "sylx",
+          "name": "商业类型"
+        },
+        {
+          "field": "zdmj",
+          "name": "占地面积"
+        },
+        {
+          "field": "jzmj",
+          "name": "建筑面积"
+        },
+        {
+          "field": "yymj",
+          "name": "营业面积"
+        },
+        {
+          "field": "nmcyrs",
+          "name": "年末从业人数"
+        },
+        {
+          "field": "rzdrll",
+          "name": "日最大人流量"
+        },
+        {
+          "field": "tws",
+          "name": "摊位数"
+        },
+        {
+          "field": "nzyywsr",
+          "name": "年主营业务收入"
+        },
+        {
+          "field": "sclbdl",
+          "name": "其中：市场类别（大类）"
+        },
+        {
+          "field": "sclbzl",
+          "name": "市场类别（中类）"
+        },
+        {
+          "field": "aqbwrysl",
+          "name": "安全保卫人员数量"
+        },
+        {
+          "field": "yjgdnl",
+          "name": "应急供电能力"
+        },
+        {
+          "field": "gsfs",
+          "name": "供水方式"
+        },
+        {
+          "field": "gnfs",
+          "name": "供暖方式"
+        },
+        {
+          "field": "yjtxbzfs",
+          "name": "应急通信保障方式"
+        },
+        {
+          "field": "cjzsgdzrz1",
+          "name": "曾经遭受过的自然灾害类型"
+        },
+        {
+          "field": "yyzrzhyjy1",
+          "name": "已有自然灾害应急预案类型"
+        },
+        {
+          "field": "yjgdnl_qts",
+          "name": "应急供电能力-其他项说明"
+        },
+        {
+          "field": "yjtxbzfs_q",
+          "name": "应急通信保障方式-其他项说明"
+        },
+        {
+          "field": "sclbzl_qts",
+          "name": "市场类别（中类）-其他项说明"
+        },
+        {
+          "field": "sclbdl_qts",
+          "name": "市场类别（大类）-其他项说明"
+        },
+        {
+          "field": "sfsytfsjyj",
+          "name": "其他项说明-失效"
+        },
+        {
+          "field": "sylx_qtsm",
+          "name": "商业类型-其他项说明"
+        },
+        {
+          "field": "dgeom",
+          "name": "空间面geojson"
+        },
+        {
+          "field": "lxdh",
+          "name": "联系电话"
+        },
+        {
+          "field": "tbr",
+          "name": "填表人"
+        },
+        {
+          "field": "code",
+          "name": "行政区划代码"
+        },
+        {
+          "field": "cjrmc",
+          "name": "创建人名称"
+        },
+        {
+          "field": "cjsj",
+          "name": "创建时间"
+        },
+        {
+          "field": "dzxiang",
+          "name": "地址乡"
+        },
+        {
+          "field": "dzjh",
+          "name": "地址街号"
+        },
+        {
+          "field": "dzcun",
+          "name": "地址村"
+        },
+        {
+          "field": "dzshi",
+          "name": "地址市"
+        },
+        {
+          "field": "dzsheng",
+          "name": "地址省"
+        },
+        {
+          "field": "tjfzr",
+          "name": "统计负责人"
+        },
+        {
+          "field": "dzxian",
+          "name": "地址县"
+        },
+        {
+          "field": "dwfzr",
+          "name": "单位负责人"
+        },
+        {
+          "field": "tbrq",
+          "name": "报出日期"
+        },
+        {
+          "field": "yyzrzhyjy2",
+          "name": "已有自然灾害应急预案类型-其他说明"
+        },
+        {
+          "field": "gnfs_qtsm",
+          "name": "供暖方式-其他项说明"
+        },
+        {
+          "field": "gsfs_qtsm",
+          "name": "供水方式-其他项说明"
+        },
+        {
+          "field": "cjzsgdzrz2",
+          "name": "曾经遭受过的自然灾害类型-其他说明"
+        },
+        {
+          "field": "jgbm",
+          "name": "机构编码"
+        },
+        {
+          "field": "dmlx",
+          "name": "代码类型"
+        },
+        {
+          "field": "fxpc_datai",
+          "name": "物理主键"
+        },
+        {
+          "field": "fxpc_dcdxb",
+          "name": "调查对象编码"
+        },
+        {
+          "field": "fxpc_xzqh1",
+          "name": "行政区划编码省"
+        },
+        {
+          "field": "fxpc_xzqh2",
+          "name": "行政区划编码市"
+        },
+        {
+          "field": "fxpc_xzqh3",
+          "name": "行政区划编码县"
+        },
+        {
+          "field": "fxpc_updat",
+          "name": "更新时间"
+        },
+        {
+          "field": "fxpc_creat",
+          "name": "写入时间"
+        },
+        {
+          "field": "fxpc_sjzt_",
+          "name": "数据状态"
+        },
+        {
+          "field": "fxpc_shlcz",
+          "name": "审核流程状态"
+        },
+        {
+          "field": "fxpc_shzt_",
+          "name": "审核状态"
+        },
+        {
+          "field": "fxpc_sshy_",
+          "name": "所属行业"
+        },
+        {
+          "field": "fxpc_rqfp_",
+          "name": "日期分片"
+        },
+        {
+          "field": "fxpc_pch_s",
+          "name": "批次号"
+        }
+      ],
+      "mapSplit": false,
+      "show": false,
+      "flyTo": true
+    },
+    {
+      "pid": 400,
+      "type": "wms",
+      "name": "公共文化场所_矢量点",
+      "layers": "anxi-emergency:GGWHCS_1",
+      "popup": [
+        {
+          "field": "id",
+          "name": "唯一标识"
+        },
+        {
+          "field": "dwmc",
+          "name": "单位名称"
+        },
+        {
+          "field": "address",
+          "name": "单位详细地址"
+        },
+        {
+          "field": "jglx",
+          "name": "机构类型"
+        },
+        {
+          "field": "zdmj",
+          "name": "占地面积"
+        },
+        {
+          "field": "jzmj",
+          "name": "建筑面积"
+        },
+        {
+          "field": "sfhwwbhdwh",
+          "name": "是否含文物保护单位或历史建筑"
+        },
+        {
+          "field": "cyrys",
+          "name": "从业人员数"
+        },
+        {
+          "field": "nzltrc",
+          "name": "年总流通人次"
+        },
+        {
+          "field": "sfmfkf",
+          "name": "是否免费开放"
+        },
+        {
+          "field": "zcl",
+          "name": "总藏量"
+        },
+        {
+          "field": "yjpwws",
+          "name": "其中：一级品文物数"
+        },
+        {
+          "field": "ejpwws",
+          "name": "二级品文物数"
+        },
+        {
+          "field": "sjpwws",
+          "name": "三级品文物数"
+        },
+        {
+          "field": "zxs",
+          "name": "坐席数"
+        },
+        {
+          "field": "aqbwrysl",
+          "name": "安全保卫人员数量"
+        },
+        {
+          "field": "yjgdnl",
+          "name": "应急供电能力"
+        },
+        {
+          "field": "gsfs",
+          "name": "供水方式"
+        },
+        {
+          "field": "gnfs",
+          "name": "供暖方式"
+        },
+        {
+          "field": "yjtxbzfs",
+          "name": "应急通信保障方式"
+        },
+        {
+          "field": "cjzsgdzrz1",
+          "name": "曾经遭受过的自然灾害类型"
+        },
+        {
+          "field": "yyzrzhyjy1",
+          "name": "已有自然灾害应急预案类型"
+        },
+        {
+          "field": "yjtxbzfs_q",
+          "name": "应急通信保障方式-其他项说明"
+        },
+        {
+          "field": "jglx_qtsm",
+          "name": "机构类型-其他项说明"
+        },
+        {
+          "field": "yjgdnl_qts",
+          "name": "应急供电能力-其他项说明"
+        },
+        {
+          "field": "cjsj",
+          "name": "创建时间"
+        },
+        {
+          "field": "tbrq",
+          "name": "报出日期"
+        },
+        {
+          "field": "dzsheng",
+          "name": "地址省"
+        },
+        {
+          "field": "tjfzr",
+          "name": "统计负责人"
+        },
+        {
+          "field": "code",
+          "name": "行政区划代码"
+        },
+        {
+          "field": "cjzsgdzrz2",
+          "name": "曾经遭受过的自然灾害类型-其他说明"
+        },
+        {
+          "field": "dzxiang",
+          "name": "地址乡"
+        },
+        {
+          "field": "dzjh",
+          "name": "地址街号"
+        },
+        {
+          "field": "cjrmc",
+          "name": "创建人名称"
+        },
+        {
+          "field": "dzcun",
+          "name": "地址村"
+        },
+        {
+          "field": "tbr",
+          "name": "填表人"
+        },
+        {
+          "field": "dgeom",
+          "name": "空间面geojson"
+        },
+        {
+          "field": "lxdh",
+          "name": "联系电话"
+        },
+        {
+          "field": "yyzrzhyjy2",
+          "name": "已有自然灾害应急预案类型-其他说明"
+        },
+        {
+          "field": "dzshi",
+          "name": "地址市"
+        },
+        {
+          "field": "dzxian",
+          "name": "地址县"
+        },
+        {
+          "field": "dwfzr",
+          "name": "单位负责人"
+        },
+        {
+          "field": "gnfs_qtsm",
+          "name": "供暖方式-其他项说明"
+        },
+        {
+          "field": "sfsytfsjyj",
+          "name": "其他项说明-失效"
+        },
+        {
+          "field": "gsfs_qtsm",
+          "name": "供水方式-其他项说明"
+        },
+        {
+          "field": "jgbm",
+          "name": "统一社会信用代码/原组织机构代码"
+        },
+        {
+          "field": "dmlx",
+          "name": "代码类型"
+        },
+        {
+          "field": "fxpc_datai",
+          "name": "物理主键"
+        },
+        {
+          "field": "fxpc_dcdxb",
+          "name": "调查对象编码"
+        },
+        {
+          "field": "fxpc_xzqh1",
+          "name": "行政区划编码省"
+        },
+        {
+          "field": "fxpc_xzqh2",
+          "name": "行政区划编码市"
+        },
+        {
+          "field": "fxpc_xzqh3",
+          "name": "行政区划编码县"
+        },
+        {
+          "field": "fxpc_updat",
+          "name": "更新时间"
+        },
+        {
+          "field": "fxpc_creat",
+          "name": "写入时间"
+        },
+        {
+          "field": "fxpc_sjzt_",
+          "name": "数据状态"
+        },
+        {
+          "field": "fxpc_shlcz",
+          "name": "审核流程状态"
+        },
+        {
+          "field": "fxpc_shzt_",
+          "name": "审核状态"
+        },
+        {
+          "field": "fxpc_sshy_",
+          "name": "所属行业"
+        },
+        {
+          "field": "fxpc_rqfp_",
+          "name": "日期分片"
+        },
+        {
+          "field": "fxpc_pch_s",
+          "name": "批次号"
+        }
+      ],
+      "mapSplit": false,
+      "show": false,
+      "flyTo": true
+    },
+    {
+      "pid": 400,
+      "type": "wms",
+      "name": "公共文化场所_矢量面",
+      "layers": "anxi-emergency:GGWHCS",
+      "popup": [
+        {
+          "field": "id",
+          "name": "唯一标识"
+        },
+        {
+          "field": "dwmc",
+          "name": "单位名称"
+        },
+        {
+          "field": "address",
+          "name": "单位详细地址"
+        },
+        {
+          "field": "jglx",
+          "name": "机构类型"
+        },
+        {
+          "field": "zdmj",
+          "name": "占地面积"
+        },
+        {
+          "field": "jzmj",
+          "name": "建筑面积"
+        },
+        {
+          "field": "sfhwwbhdwh",
+          "name": "是否含文物保护单位或历史建筑"
+        },
+        {
+          "field": "cyrys",
+          "name": "从业人员数"
+        },
+        {
+          "field": "nzltrc",
+          "name": "年总流通人次"
+        },
+        {
+          "field": "sfmfkf",
+          "name": "是否免费开放"
+        },
+        {
+          "field": "zcl",
+          "name": "总藏量"
+        },
+        {
+          "field": "yjpwws",
+          "name": "其中：一级品文物数"
+        },
+        {
+          "field": "ejpwws",
+          "name": "二级品文物数"
+        },
+        {
+          "field": "sjpwws",
+          "name": "三级品文物数"
+        },
+        {
+          "field": "zxs",
+          "name": "坐席数"
+        },
+        {
+          "field": "aqbwrysl",
+          "name": "安全保卫人员数量"
+        },
+        {
+          "field": "yjgdnl",
+          "name": "应急供电能力"
+        },
+        {
+          "field": "gsfs",
+          "name": "供水方式"
+        },
+        {
+          "field": "gnfs",
+          "name": "供暖方式"
+        },
+        {
+          "field": "yjtxbzfs",
+          "name": "应急通信保障方式"
+        },
+        {
+          "field": "cjzsgdzrz1",
+          "name": "曾经遭受过的自然灾害类型"
+        },
+        {
+          "field": "yyzrzhyjy1",
+          "name": "已有自然灾害应急预案类型"
+        },
+        {
+          "field": "yjtxbzfs_q",
+          "name": "应急通信保障方式-其他项说明"
+        },
+        {
+          "field": "jglx_qtsm",
+          "name": "机构类型-其他项说明"
+        },
+        {
+          "field": "yjgdnl_qts",
+          "name": "应急供电能力-其他项说明"
+        },
+        {
+          "field": "cjsj",
+          "name": "创建时间"
+        },
+        {
+          "field": "tbrq",
+          "name": "报出日期"
+        },
+        {
+          "field": "dzsheng",
+          "name": "地址省"
+        },
+        {
+          "field": "tjfzr",
+          "name": "统计负责人"
+        },
+        {
+          "field": "code",
+          "name": "行政区划代码"
+        },
+        {
+          "field": "cjzsgdzrz2",
+          "name": "曾经遭受过的自然灾害类型-其他说明"
+        },
+        {
+          "field": "dzxiang",
+          "name": "地址乡"
+        },
+        {
+          "field": "dzjh",
+          "name": "地址街号"
+        },
+        {
+          "field": "cjrmc",
+          "name": "创建人名称"
+        },
+        {
+          "field": "dzcun",
+          "name": "地址村"
+        },
+        {
+          "field": "tbr",
+          "name": "填表人"
+        },
+        {
+          "field": "dgeom",
+          "name": "空间面geojson"
+        },
+        {
+          "field": "lxdh",
+          "name": "联系电话"
+        },
+        {
+          "field": "yyzrzhyjy2",
+          "name": "已有自然灾害应急预案类型-其他说明"
+        },
+        {
+          "field": "dzshi",
+          "name": "地址市"
+        },
+        {
+          "field": "dzxian",
+          "name": "地址县"
+        },
+        {
+          "field": "dwfzr",
+          "name": "单位负责人"
+        },
+        {
+          "field": "gnfs_qtsm",
+          "name": "供暖方式-其他项说明"
+        },
+        {
+          "field": "sfsytfsjyj",
+          "name": "其他项说明-失效"
+        },
+        {
+          "field": "gsfs_qtsm",
+          "name": "供水方式-其他项说明"
+        },
+        {
+          "field": "jgbm",
+          "name": "统一社会信用代码/原组织机构代码"
+        },
+        {
+          "field": "dmlx",
+          "name": "代码类型"
+        },
+        {
+          "field": "fxpc_datai",
+          "name": "物理主键"
+        },
+        {
+          "field": "fxpc_dcdxb",
+          "name": "调查对象编码"
+        },
+        {
+          "field": "fxpc_xzqh1",
+          "name": "行政区划编码省"
+        },
+        {
+          "field": "fxpc_xzqh2",
+          "name": "行政区划编码市"
+        },
+        {
+          "field": "fxpc_xzqh3",
+          "name": "行政区划编码县"
+        },
+        {
+          "field": "fxpc_updat",
+          "name": "更新时间"
+        },
+        {
+          "field": "fxpc_creat",
+          "name": "写入时间"
+        },
+        {
+          "field": "fxpc_sjzt_",
+          "name": "数据状态"
+        },
+        {
+          "field": "fxpc_shlcz",
+          "name": "审核流程状态"
+        },
+        {
+          "field": "fxpc_shzt_",
+          "name": "审核状态"
+        },
+        {
+          "field": "fxpc_sshy_",
+          "name": "所属行业"
+        },
+        {
+          "field": "fxpc_rqfp_",
+          "name": "日期分片"
+        },
+        {
+          "field": "fxpc_pch_s",
+          "name": "批次号"
+        }
+      ],
+      "mapSplit": false,
+      "show": false,
+      "flyTo": true
+    },
+    {
+      "pid": 400,
+      "type": "wms",
+      "name": "金属非金属地下矿山",
+      "layers": "anxi-emergency:JSFJSDXKS",
+      "popup": [
+        {
+          "field": "id",
+          "name": "唯一标识"
+        },
+        {
+          "field": "dwmc",
+          "name": "矿山名称"
+        },
+        {
+          "field": "ssqymc",
+          "name": "所属企业名称"
+        },
+        {
+          "field": "address",
+          "name": "矿山地址"
+        },
+        {
+          "field": "sczt",
+          "name": "生产状态"
+        },
+        {
+          "field": "kz",
+          "name": "矿种"
+        },
+        {
+          "field": "aqscxkzbh",
+          "name": "采矿许可证编号"
+        },
+        {
+          "field": "aqscxkzzt",
+          "name": "安全生产许可证持证状态"
+        },
+        {
+          "field": "ksnscgm",
+          "name": "设计开采规模"
+        },
+        {
+          "field": "ktfs",
+          "name": "开拓方式"
+        },
+        {
+          "field": "ckff",
+          "name": "采矿方法"
+        },
+        {
+          "field": "dbtxqk",
+          "name": "地表塌陷情况"
+        },
+        {
+          "field": "sjkcbg_qt1",
+          "name": "设计开采标高-其它说明1"
+        },
+        {
+          "field": "sjkcbg_qt2",
+          "name": "设计开采标高-其它说明2"
+        },
+        {
+          "field": "sfyyxaqdqz",
+          "name": "周边是否存在潜在地质/洪水灾害影响"
+        },
+        {
+          "field": "ygrs",
+          "name": "员工人数"
+        },
+        {
+          "field": "dbzdzgrs",
+          "name": "单班最大在岗人数"
+        },
+        {
+          "field": "gdzcjz",
+          "name": "固定资产净值"
+        },
+        {
+          "field": "dzld",
+          "name": "地震烈度"
+        },
+        {
+          "field": "ddlszghsw",
+          "name": "当地历史最高洪水位"
+        },
+        {
+          "field": "sfnrqyyjjy",
+          "name": "是否把自然灾害防治纳入到企业应急管理工作"
+        },
+        {
+          "field": "jhdlb",
+          "name": "矿山救护队的类别"
+        },
+        {
+          "field": "jhdgm",
+          "name": "若有专职救护队，专职矿山救护队的规模"
+        },
+        {
+          "field": "gycdsfzhtc",
+          "name": "工业场地是否在可能发生的滑坡体冲击范围内"
+        },
+        {
+          "field": "gycdsfznsl",
+          "name": "工业场地是否在可能发生的泥石流冲击范围内"
+        },
+        {
+          "field": "gycdsfzhsy",
+          "name": "工业场地是否在可能发生的洪水淹没范围内"
+        },
+        {
+          "field": "txqsfknfsn",
+          "name": "塌陷区是否在可能发生的泥石流/洪水下泄范围内"
+        },
+        {
+          "field": "dzzhffcs",
+          "name": "地质灾害防范措施"
+        },
+        {
+          "field": "zygjwkzsf1",
+          "name": "主要建（构）筑物抗震设防烈度"
+        },
+        {
+          "field": "sfazbdqdzl",
+          "name": "主要建（构）筑物抗震设防烈度是否按照本地区地震烈度设计"
+        },
+        {
+          "field": "jksl",
+          "name": "井口数量"
+        },
+        {
+          "field": "fscsl",
+          "name": "废石场数量"
+        },
+        {
+          "field": "dzhengzhcs",
+          "name": "地震导致矿山灾害事故次数"
+        },
+        {
+          "field": "dizhizhcsm",
+          "name": "地质灾害导致矿山灾害事故次数"
+        },
+        {
+          "field": "hszhcsmksg",
+          "name": "洪水灾害导致矿山灾害事故次数"
+        },
+        {
+          "field": "ckff_qtsm",
+          "name": "采矿方法-其他说明"
+        },
+        {
+          "field": "dgeom",
+          "name": "空间点geojson"
+        },
+        {
+          "field": "jgbm",
+          "name": "机构编码"
+        },
+        {
+          "field": "tbrq",
+          "name": "报出日期"
+        },
+        {
+          "field": "dzsheng",
+          "name": "地址省"
+        },
+        {
+          "field": "dwfzr",
+          "name": "单位负责人"
+        },
+        {
+          "field": "tjfzr",
+          "name": "统计负责人"
+        },
+        {
+          "field": "tbr",
+          "name": "填表人"
+        },
+        {
+          "field": "dmlx",
+          "name": "代码类型"
+        },
+        {
+          "field": "cjsj",
+          "name": "创建时间"
+        },
+        {
+          "field": "lxdh",
+          "name": "联系电话"
+        },
+        {
+          "field": "cjrmc",
+          "name": "创建人名称"
+        },
+        {
+          "field": "aqscxkzzt_",
+          "name": "安全生产许可证持证状态-其他说明"
+        },
+        {
+          "field": "zygjwkzsf2",
+          "name": "主要建（构）筑物抗震设防烈度-其他说明"
+        },
+        {
+          "field": "sczt_qtsm",
+          "name": "生产状态-其它说明"
+        },
+        {
+          "field": "dzshi",
+          "name": "地址市"
+        },
+        {
+          "field": "dzxian",
+          "name": "地址县"
+        },
+        {
+          "field": "dzjh",
+          "name": "地址街号"
+        },
+        {
+          "field": "dzld_qtsm",
+          "name": "地震烈度-其他说明"
+        },
+        {
+          "field": "dzxiang",
+          "name": "地址乡"
+        },
+        {
+          "field": "dzcun",
+          "name": "地址村"
+        },
+        {
+          "field": "code",
+          "name": "行政区划代码"
+        },
+        {
+          "field": "ktfs_qtsm",
+          "name": "开拓方式-其他说明"
+        },
+        {
+          "field": "fxpc_datai",
+          "name": "物理主键"
+        },
+        {
+          "field": "fxpc_dcdxb",
+          "name": "调查对象编码"
+        },
+        {
+          "field": "fxpc_xzqh1",
+          "name": "行政区划编码省"
+        },
+        {
+          "field": "fxpc_xzqh2",
+          "name": "行政区划编码市"
+        },
+        {
+          "field": "fxpc_xzqh3",
+          "name": "行政区划编码县"
+        },
+        {
+          "field": "fxpc_updat",
+          "name": "更新时间"
+        },
+        {
+          "field": "fxpc_creat",
+          "name": "写入时间"
+        },
+        {
+          "field": "fxpc_sjzt_",
+          "name": "数据状态"
+        },
+        {
+          "field": "fxpc_shlcz",
+          "name": "审核流程状态"
+        },
+        {
+          "field": "fxpc_shzt_",
+          "name": "审核状态"
+        },
+        {
+          "field": "fxpc_sshy_",
+          "name": "所属行业"
+        },
+        {
+          "field": "fxpc_rqfp_",
+          "name": "日期分片"
+        },
+        {
+          "field": "fxpc_pch_s",
+          "name": "批次号"
+        }
+      ],
+      "mapSplit": false,
+      "show": false,
+      "flyTo": true
+    },
+    {
+      "pid": 400,
+      "type": "wms",
+      "name": "金属非金属露天矿山",
+      "layers": "anxi-emergency:JSFJSLTKS",
+      "popup": [
+        {
+          "field": "id",
+          "name": "唯一标识"
+        },
+        {
+          "field": "dwmc",
+          "name": "矿山名称"
+        },
+        {
+          "field": "tsryoc",
+          "name": "所属企业名称"
+        },
+        {
+          "field": "address",
+          "name": "矿山地址"
+        },
+        {
+          "field": "sczt",
+          "name": "生产状态"
+        },
+        {
+          "field": "lz",
+          "name": "矿种"
+        },
+        {
+          "field": "aqscxkzbh",
+          "name": "采矿许可证编号"
+        },
+        {
+          "field": "arscxlzcz1",
+          "name": "安全生产许可证持证状态"
+        },
+        {
+          "field": "ksnscgm",
+          "name": "设计开采规模"
+        },
+        {
+          "field": "sjkcbg_qt1",
+          "name": "设计开采标高-其它说明2"
+        },
+        {
+          "field": "sjkcbg_qt2",
+          "name": "设计开采标高-其它说明1"
+        },
+        {
+          "field": "lrzbsfyyxa",
+          "name": "周边是否存在潜在地质/洪水灾害影响"
+        },
+        {
+          "field": "ygrs",
+          "name": "员工人数"
+        },
+        {
+          "field": "dbzdzgrs",
+          "name": "单班最大在岗人数"
+        },
+        {
+          "field": "gdzcjz",
+          "name": "固定资产净值"
+        },
+        {
+          "field": "dzod",
+          "name": "地震烈度"
+        },
+        {
+          "field": "sjzzbpgd",
+          "name": "设计最终边坡高度"
+        },
+        {
+          "field": "sjzzbpj",
+          "name": "设计最终边坡角"
+        },
+        {
+          "field": "sfnrglgz",
+          "name": "是否把自然灾害防治纳入到企业应急管理工作"
+        },
+        {
+          "field": "lsjjddlb",
+          "name": "矿山救护队的类别"
+        },
+        {
+          "field": "ryzzjjdzzl",
+          "name": "若有专职救护队，专职矿山救护队的规模"
+        },
+        {
+          "field": "gycdsfzlo1",
+          "name": "工业场地是否在可能发生的滑坡体冲击范围内"
+        },
+        {
+          "field": "gycdsfzlo2",
+          "name": "工业场地是否在可能发生的泥石流冲击范围内"
+        },
+        {
+          "field": "gycdsfzlo3",
+          "name": "工业场地是否在可能发生的洪水淹没范围内"
+        },
+        {
+          "field": "hpzhffcs",
+          "name": "滑坡灾害预防范措施"
+        },
+        {
+          "field": "btzhffcs",
+          "name": "崩塌灾害预防范措施"
+        },
+        {
+          "field": "nslzhffcs",
+          "name": "泥石流灾害预防范措施"
+        },
+        {
+          "field": "zygjwkzsf1",
+          "name": "主要建（构）筑物抗震设防烈度"
+        },
+        {
+          "field": "bparjcxtjs",
+          "name": "边坡安全监测系统建设情况"
+        },
+        {
+          "field": "sfszjjg",
+          "name": "是否设置截洪沟（截排水沟）"
+        },
+        {
+          "field": "jjgsffjsjy",
+          "name": "截洪沟（截排水沟）是否符合设计要求"
+        },
+        {
+          "field": "ptcso",
+          "name": "排土场数量"
+        },
+        {
+          "field": "dzzjcslssg",
+          "name": "地震灾害导致矿山灾害事故次数"
+        },
+        {
+          "field": "dzhizjcsl1",
+          "name": "地质灾害导致矿山灾害事故次数-滑坡"
+        },
+        {
+          "field": "dzhizjcsl2",
+          "name": "地质灾害导致矿山灾害事故次数-崩塌"
+        },
+        {
+          "field": "dzhizjcsl3",
+          "name": "地质灾害导致矿山灾害事故次数-泥石流"
+        },
+        {
+          "field": "jszjcslssg",
+          "name": "洪水灾害导致矿山灾害事故次数"
+        },
+        {
+          "field": "jgbm",
+          "name": "机构编码"
+        },
+        {
+          "field": "dzxiang",
+          "name": "地址乡"
+        },
+        {
+          "field": "dzxian",
+          "name": "地址县"
+        },
+        {
+          "field": "dzshi",
+          "name": "地址市"
+        },
+        {
+          "field": "zygjwkzsf2",
+          "name": "主要建（构）筑物抗震设防烈度-其他说明"
+        },
+        {
+          "field": "lxdh",
+          "name": "联系电话"
+        },
+        {
+          "field": "dgeom",
+          "name": "空间点geojson"
+        },
+        {
+          "field": "tbrq",
+          "name": "报出日期"
+        },
+        {
+          "field": "dzod_qtsm",
+          "name": "地震烈度_其他说明"
+        },
+        {
+          "field": "arscxlzcz2",
+          "name": "安全生产许可证持证状态-其他说明"
+        },
+        {
+          "field": "code",
+          "name": "行政区划代码"
+        },
+        {
+          "field": "dzsheng",
+          "name": "地址省"
+        },
+        {
+          "field": "cjrmc",
+          "name": "创建人名称"
+        },
+        {
+          "field": "dzjh",
+          "name": "地址街号"
+        },
+        {
+          "field": "dwfzr",
+          "name": "单位负责人"
+        },
+        {
+          "field": "tjfzr",
+          "name": "统计负责人"
+        },
+        {
+          "field": "tbr",
+          "name": "填表人"
+        },
+        {
+          "field": "dzcun",
+          "name": "地址村"
+        },
+        {
+          "field": "cjsj",
+          "name": "创建时间"
+        },
+        {
+          "field": "dmlx",
+          "name": "代码类型"
+        },
+        {
+          "field": "sczt_qtsm",
+          "name": "生产状态-其它说明"
+        },
+        {
+          "field": "fxpc_datai",
+          "name": "物理主键"
+        },
+        {
+          "field": "fxpc_dcdxb",
+          "name": "调查对象编码"
+        },
+        {
+          "field": "fxpc_xzqh1",
+          "name": "行政区划编码省"
+        },
+        {
+          "field": "fxpc_xzqh2",
+          "name": "行政区划编码市"
+        },
+        {
+          "field": "fxpc_xzqh3",
+          "name": "行政区划编码县"
+        },
+        {
+          "field": "fxpc_updat",
+          "name": "更新时间"
+        },
+        {
+          "field": "fxpc_creat",
+          "name": "写入时间"
+        },
+        {
+          "field": "fxpc_sjzt_",
+          "name": "数据状态"
+        },
+        {
+          "field": "fxpc_shlcz",
+          "name": "审核流程状态"
+        },
+        {
+          "field": "fxpc_shzt_",
+          "name": "审核状态"
+        },
+        {
+          "field": "fxpc_sshy_",
+          "name": "所属行业"
+        },
+        {
+          "field": "fxpc_rqfp_",
+          "name": "日期分片"
+        },
+        {
+          "field": "fxpc_pch_s",
+          "name": "批次号"
+        }
+      ],
+      "mapSplit": false,
+      "show": false,
+      "flyTo": true
+    },
+    {
+      "pid": 400,
+      "type": "wms",
+      "name": "旅游景区_矢量点",
+      "layers": "anxi-emergency:LYJQ_1",
+      "popup": [
+        {
+          "field": "id",
+          "name": "唯一标识"
+        },
+        {
+          "field": "dwmc",
+          "name": "景区名称"
+        },
+        {
+          "field": "address",
+          "name": "景区详细地址"
+        },
+        {
+          "field": "jqqyxz",
+          "name": "景区企业性质"
+        },
+        {
+          "field": "jqjyms",
+          "name": "景区经营模式"
+        },
+        {
+          "field": "jqlx",
+          "name": "景区类型"
+        },
+        {
+          "field": "jqdqdj",
+          "name": "景区当前等级"
+        },
+        {
+          "field": "jqsbmj",
+          "name": "景区申报面积"
+        },
+        {
+          "field": "jzmj",
+          "name": "建筑面积"
+        },
+        {
+          "field": "sfhwwbhdwh",
+          "name": "是否含文物保护单位或历史建筑"
+        },
+        {
+          "field": "zjyrs",
+          "name": "总就业人数"
+        },
+        {
+          "field": "kfsj",
+          "name": "开放时间"
+        },
+        {
+          "field": "ykzjdl",
+          "name": "游客总接待量"
+        },
+        {
+          "field": "sszdczl",
+          "name": "瞬时最大承载量"
+        },
+        {
+          "field": "rzdczl",
+          "name": "日最大承载量"
+        },
+        {
+          "field": "aqbwrysl",
+          "name": "安全保卫人员数量"
+        },
+        {
+          "field": "yjgdnl",
+          "name": "应急供电能力"
+        },
+        {
+          "field": "gsfs",
+          "name": "供水方式"
+        },
+        {
+          "field": "gnfs",
+          "name": "供暖方式"
+        },
+        {
+          "field": "yjtxbzfs",
+          "name": "应急通信保障方式"
+        },
+        {
+          "field": "cjzsgdzrz1",
+          "name": "曾经遭受过的自然灾害类型"
+        },
+        {
+          "field": "yyzrzhyjy1",
+          "name": "已有自然灾害应急预案类型"
+        },
+        {
+          "field": "yjtxbzfs_q",
+          "name": "应急通信保障方式-其他项说明"
+        },
+        {
+          "field": "yjgdnl_qts",
+          "name": "应急供电能力-其他项说明"
+        },
+        {
+          "field": "jqjyms_qts",
+          "name": "景区经营模式-其他项说明"
+        },
+        {
+          "field": "jqqyxz_qts",
+          "name": "景区企业性质-其他项说明"
+        },
+        {
+          "field": "jgbm",
+          "name": "机构编码"
+        },
+        {
+          "field": "dmlx",
+          "name": "代码类型"
+        },
+        {
+          "field": "kfsj_qtsm",
+          "name": "开放时间-其他项说明"
+        },
+        {
+          "field": "dzcun",
+          "name": "地址村"
+        },
+        {
+          "field": "dzxiang",
+          "name": "地址乡"
+        },
+        {
+          "field": "cjrmc",
+          "name": "创建人名称"
+        },
+        {
+          "field": "cjzsgdzrz2",
+          "name": "曾经遭受过的自然灾害类型-其他说明"
+        },
+        {
+          "field": "code",
+          "name": "行政区划代码"
+        },
+        {
+          "field": "dwfzr",
+          "name": "单位负责人"
+        },
+        {
+          "field": "dzxian",
+          "name": "地址县"
+        },
+        {
+          "field": "tbrq",
+          "name": "报出日期"
+        },
+        {
+          "field": "cjsj",
+          "name": "创建时间"
+        },
+        {
+          "field": "dzsheng",
+          "name": "地址省"
+        },
+        {
+          "field": "dzshi",
+          "name": "地址市"
+        },
+        {
+          "field": "dzjh",
+          "name": "地址街号"
+        },
+        {
+          "field": "tjfzr",
+          "name": "统计负责人"
+        },
+        {
+          "field": "tbr",
+          "name": "填表人"
+        },
+        {
+          "field": "lxdh",
+          "name": "联系电话"
+        },
+        {
+          "field": "yyzrzhyjy2",
+          "name": "已有自然灾害应急预案类型-其他说明"
+        },
+        {
+          "field": "jqdqdj_qts",
+          "name": "景区当前等级-他项说明"
+        },
+        {
+          "field": "jqlx_qtsm",
+          "name": "景区类型-其他项说明"
+        },
+        {
+          "field": "sfsytfsjyj",
+          "name": "其他项说明-失效"
+        },
+        {
+          "field": "gsfs_qtsm",
+          "name": "供水方式-其他项说明"
+        },
+        {
+          "field": "gnfs_qtsm",
+          "name": "供暖方式-其他项说明"
+        },
+        {
+          "field": "fxpc_datai",
+          "name": "物理主键"
+        },
+        {
+          "field": "fxpc_dcdxb",
+          "name": "调查对象编码"
+        },
+        {
+          "field": "fxpc_xzqh1",
+          "name": "行政区划编码省"
+        },
+        {
+          "field": "fxpc_xzqh2",
+          "name": "行政区划编码市"
+        },
+        {
+          "field": "fxpc_xzqh3",
+          "name": "行政区划编码县"
+        },
+        {
+          "field": "fxpc_updat",
+          "name": "更新时间"
+        },
+        {
+          "field": "fxpc_creat",
+          "name": "写入时间"
+        },
+        {
+          "field": "fxpc_sjzt_",
+          "name": "数据状态"
+        },
+        {
+          "field": "fxpc_shlcz",
+          "name": "审核流程状态"
+        },
+        {
+          "field": "fxpc_shzt_",
+          "name": "审核状态"
+        },
+        {
+          "field": "fxpc_sshy_",
+          "name": "所属行业"
+        },
+        {
+          "field": "fxpc_rqfp_",
+          "name": "日期分片"
+        },
+        {
+          "field": "fxpc_pch_s",
+          "name": "批次号"
+        },
+        {
+          "field": "mgeom",
+          "name": "空间面geojson"
+        }
+      ],
+      "mapSplit": false,
+      "show": false,
+      "flyTo": true
+    },
+    {
+      "pid": 400,
+      "type": "wms",
+      "name": "旅游景区_矢量面",
+      "layers": "anxi-emergency:LYJQ",
+      "popup": [
+        {
+          "field": "id",
+          "name": "唯一标识"
+        },
+        {
+          "field": "dwmc",
+          "name": "景区名称"
+        },
+        {
+          "field": "address",
+          "name": "景区详细地址"
+        },
+        {
+          "field": "jqqyxz",
+          "name": "景区企业性质"
+        },
+        {
+          "field": "jqjyms",
+          "name": "景区经营模式"
+        },
+        {
+          "field": "jqlx",
+          "name": "景区类型"
+        },
+        {
+          "field": "jqdqdj",
+          "name": "景区当前等级"
+        },
+        {
+          "field": "jqsbmj",
+          "name": "景区申报面积"
+        },
+        {
+          "field": "jzmj",
+          "name": "建筑面积"
+        },
+        {
+          "field": "sfhwwbhdwh",
+          "name": "是否含文物保护单位或历史建筑"
+        },
+        {
+          "field": "zjyrs",
+          "name": "总就业人数"
+        },
+        {
+          "field": "kfsj",
+          "name": "开放时间"
+        },
+        {
+          "field": "ykzjdl",
+          "name": "游客总接待量"
+        },
+        {
+          "field": "sszdczl",
+          "name": "瞬时最大承载量"
+        },
+        {
+          "field": "rzdczl",
+          "name": "日最大承载量"
+        },
+        {
+          "field": "aqbwrysl",
+          "name": "安全保卫人员数量"
+        },
+        {
+          "field": "yjgdnl",
+          "name": "应急供电能力"
+        },
+        {
+          "field": "gsfs",
+          "name": "供水方式"
+        },
+        {
+          "field": "gnfs",
+          "name": "供暖方式"
+        },
+        {
+          "field": "yjtxbzfs",
+          "name": "应急通信保障方式"
+        },
+        {
+          "field": "cjzsgdzrz1",
+          "name": "曾经遭受过的自然灾害类型"
+        },
+        {
+          "field": "yyzrzhyjy1",
+          "name": "已有自然灾害应急预案类型"
+        },
+        {
+          "field": "yjtxbzfs_q",
+          "name": "应急通信保障方式-其他项说明"
+        },
+        {
+          "field": "yjgdnl_qts",
+          "name": "应急供电能力-其他项说明"
+        },
+        {
+          "field": "jqjyms_qts",
+          "name": "景区经营模式-其他项说明"
+        },
+        {
+          "field": "jqqyxz_qts",
+          "name": "景区企业性质-其他项说明"
+        },
+        {
+          "field": "jgbm",
+          "name": "机构编码"
+        },
+        {
+          "field": "dmlx",
+          "name": "代码类型"
+        },
+        {
+          "field": "kfsj_qtsm",
+          "name": "开放时间-其他项说明"
+        },
+        {
+          "field": "dzcun",
+          "name": "地址村"
+        },
+        {
+          "field": "dzxiang",
+          "name": "地址乡"
+        },
+        {
+          "field": "cjrmc",
+          "name": "创建人名称"
+        },
+        {
+          "field": "cjzsgdzrz2",
+          "name": "曾经遭受过的自然灾害类型-其他说明"
+        },
+        {
+          "field": "code",
+          "name": "行政区划代码"
+        },
+        {
+          "field": "dwfzr",
+          "name": "单位负责人"
+        },
+        {
+          "field": "dzxian",
+          "name": "地址县"
+        },
+        {
+          "field": "tbrq",
+          "name": "报出日期"
+        },
+        {
+          "field": "cjsj",
+          "name": "创建时间"
+        },
+        {
+          "field": "dzsheng",
+          "name": "地址省"
+        },
+        {
+          "field": "dzshi",
+          "name": "地址市"
+        },
+        {
+          "field": "dzjh",
+          "name": "地址街号"
+        },
+        {
+          "field": "tjfzr",
+          "name": "统计负责人"
+        },
+        {
+          "field": "tbr",
+          "name": "填表人"
+        },
+        {
+          "field": "lxdh",
+          "name": "联系电话"
+        },
+        {
+          "field": "yyzrzhyjy2",
+          "name": "已有自然灾害应急预案类型-其他说明"
+        },
+        {
+          "field": "jqdqdj_qts",
+          "name": "景区当前等级-他项说明"
+        },
+        {
+          "field": "jqlx_qtsm",
+          "name": "景区类型-其他项说明"
+        },
+        {
+          "field": "sfsytfsjyj",
+          "name": "其他项说明-失效"
+        },
+        {
+          "field": "gsfs_qtsm",
+          "name": "供水方式-其他项说明"
+        },
+        {
+          "field": "gnfs_qtsm",
+          "name": "供暖方式-其他项说明"
+        },
+        {
+          "field": "fxpc_datai",
+          "name": "物理主键"
+        },
+        {
+          "field": "fxpc_dcdxb",
+          "name": "调查对象编码"
+        },
+        {
+          "field": "fxpc_xzqh1",
+          "name": "行政区划编码省"
+        },
+        {
+          "field": "fxpc_xzqh2",
+          "name": "行政区划编码市"
+        },
+        {
+          "field": "fxpc_xzqh3",
+          "name": "行政区划编码县"
+        },
+        {
+          "field": "fxpc_updat",
+          "name": "更新时间"
+        },
+        {
+          "field": "fxpc_creat",
+          "name": "写入时间"
+        },
+        {
+          "field": "fxpc_sjzt_",
+          "name": "数据状态"
+        },
+        {
+          "field": "fxpc_shlcz",
+          "name": "审核流程状态"
+        },
+        {
+          "field": "fxpc_shzt_",
+          "name": "审核状态"
+        },
+        {
+          "field": "fxpc_sshy_",
+          "name": "所属行业"
+        },
+        {
+          "field": "fxpc_rqfp_",
+          "name": "日期分片"
+        },
+        {
+          "field": "fxpc_pch_s",
+          "name": "批次号"
+        },
+        {
+          "field": "mgeom",
+          "name": "空间面geojson"
+        }
+      ],
+      "mapSplit": false,
+      "show": false,
+      "flyTo": true
+    },
+    {
+      "pid": 400,
+      "type": "wms",
+      "name": "提供住宿的社会服务机构_矢量点",
+      "layers": "anxi-emergency:",
+      "popup": [
+        {
+          "field": "id",
+          "name": "唯一标识"
+        },
+        {
+          "field": "dwmc",
+          "name": "单位名称"
+        },
+        {
+          "field": "address",
+          "name": "单位详细地址"
+        },
+        {
+          "field": "fwjglx",
+          "name": "服务机构类型"
+        },
+        {
+          "field": "zcdjlx",
+          "name": "注册登记类型"
+        },
+        {
+          "field": "zdmj",
+          "name": "占地面积"
+        },
+        {
+          "field": "jzmj",
+          "name": "建筑面积"
+        },
+        {
+          "field": "nmzgrs",
+          "name": "年末职工人数"
+        },
+        {
+          "field": "zyjsjnrys",
+          "name": "专业技术技能人员数"
+        },
+        {
+          "field": "jgglrys",
+          "name": "机构管理人员数"
+        },
+        {
+          "field": "zyfwrcs",
+          "name": "（二）志愿服务人次数"
+        },
+        {
+          "field": "nmcws",
+          "name": "年末床位数"
+        },
+        {
+          "field": "nzyzrts",
+          "name": "年在院总人天数"
+        },
+        {
+          "field": "nmzyrs",
+          "name": "年末在院人数"
+        },
+        {
+          "field": "kfhylmzrcs",
+          "name": "康复和医疗门诊人次数"
+        },
+        {
+          "field": "aqbwrysl",
+          "name": "安全保卫人员数量"
+        },
+        {
+          "field": "yjgdnl",
+          "name": "应急供电能力"
+        },
+        {
+          "field": "gsfs",
+          "name": "供水方式"
+        },
+        {
+          "field": "gnfs",
+          "name": "供暖方式"
+        },
+        {
+          "field": "yjtxbzfs",
+          "name": "应急通信保障方式"
+        },
+        {
+          "field": "cjzsgdzrz1",
+          "name": "曾经遭受过的自然灾害类型"
+        },
+        {
+          "field": "yyzrzhyjy1",
+          "name": "已有自然灾害应急预案类型"
+        },
+        {
+          "field": "gsfs_qtsm",
+          "name": "供水方式-其他项说明"
+        },
+        {
+          "field": "dmlx",
+          "name": "代码类型"
+        },
+        {
+          "field": "yjtxbzfs_q",
+          "name": "应急通信保障方式-其他项说明"
+        },
+        {
+          "field": "code",
+          "name": "行政区划代码"
+        },
+        {
+          "field": "dzjh",
+          "name": "地址街号"
+        },
+        {
+          "field": "dzxiang",
+          "name": "地址乡"
+        },
+        {
+          "field": "sfsytfsjyj",
+          "name": "sfsytfsjyjczjg-其他项说明-失效"
+        },
+        {
+          "field": "cjrmc",
+          "name": "创建人名称"
+        },
+        {
+          "field": "cjzsgdzrz2",
+          "name": "曾经遭受过的自然灾害类型-其他说明"
+        },
+        {
+          "field": "mgeom",
+          "name": "空间点geojson"
+        },
+        {
+          "field": "tbrq",
+          "name": "报出日期"
+        },
+        {
+          "field": "yyzrzhyjy2",
+          "name": "已有自然灾害应急预案类型-其他说明"
+        },
+        {
+          "field": "zcdjlx_qts",
+          "name": "注册登记类型-其他项说明"
+        },
+        {
+          "field": "dzsheng",
+          "name": "地址省"
+        },
+        {
+          "field": "dzshi",
+          "name": "地址市"
+        },
+        {
+          "field": "dzxian",
+          "name": "地址县"
+        },
+        {
+          "field": "dwfzr",
+          "name": "单位负责人"
+        },
+        {
+          "field": "tjfzr",
+          "name": "统计负责人"
+        },
+        {
+          "field": "tbr",
+          "name": "填表人"
+        },
+        {
+          "field": "lxdh",
+          "name": "联系电话"
+        },
+        {
+          "field": "cjsj",
+          "name": "创建时间"
+        },
+        {
+          "field": "gnfs_qtsm",
+          "name": "供暖方式-其他项说明"
+        },
+        {
+          "field": "fwjglx_qts",
+          "name": "服务机构类型-其他项说明"
+        },
+        {
+          "field": "dzcun",
+          "name": "地址村"
+        },
+        {
+          "field": "yjgdnl_qts",
+          "name": "应急供电能力-其他项说明"
+        },
+        {
+          "field": "jgbm",
+          "name": "统一社会信用代码/原组织机构代码"
+        },
+        {
+          "field": "fxpc_datai",
+          "name": "物理主键"
+        },
+        {
+          "field": "fxpc_dcdxb",
+          "name": "调查对象编码"
+        },
+        {
+          "field": "fxpc_xzqh1",
+          "name": "行政区划编码省"
+        },
+        {
+          "field": "fxpc_xzqh2",
+          "name": "行政区划编码市"
+        },
+        {
+          "field": "fxpc_xzqh3",
+          "name": "行政区划编码县"
+        },
+        {
+          "field": "fxpc_updat",
+          "name": "更新时间"
+        },
+        {
+          "field": "fxpc_creat",
+          "name": "写入时间"
+        },
+        {
+          "field": "fxpc_sjzt_",
+          "name": "数据状态"
+        },
+        {
+          "field": "fxpc_shlcz",
+          "name": "审核流程状态"
+        },
+        {
+          "field": "fxpc_shzt_",
+          "name": "审核状态"
+        },
+        {
+          "field": "fxpc_sshy_",
+          "name": "所属行业"
+        },
+        {
+          "field": "fxpc_rqfp_",
+          "name": "日期分片"
+        },
+        {
+          "field": "fxpc_pch_s",
+          "name": "批次号"
+        }
+      ],
+      "mapSplit": false,
+      "show": false,
+      "flyTo": true
+    },
+    {
+      "pid": 400,
+      "type": "wms",
+      "name": "提供住宿的社会服务机构_矢量面",
+      "layers": "anxi-emergency:TGZSSHFWJG",
+      "popup": [
+        {
+          "field": "id",
+          "name": "唯一标识"
+        },
+        {
+          "field": "dwmc",
+          "name": "单位名称"
+        },
+        {
+          "field": "address",
+          "name": "单位详细地址"
+        },
+        {
+          "field": "fwjglx",
+          "name": "服务机构类型"
+        },
+        {
+          "field": "zcdjlx",
+          "name": "注册登记类型"
+        },
+        {
+          "field": "zdmj",
+          "name": "占地面积"
+        },
+        {
+          "field": "jzmj",
+          "name": "建筑面积"
+        },
+        {
+          "field": "nmzgrs",
+          "name": "年末职工人数"
+        },
+        {
+          "field": "zyjsjnrys",
+          "name": "专业技术技能人员数"
+        },
+        {
+          "field": "jgglrys",
+          "name": "机构管理人员数"
+        },
+        {
+          "field": "zyfwrcs",
+          "name": "（二）志愿服务人次数"
+        },
+        {
+          "field": "nmcws",
+          "name": "年末床位数"
+        },
+        {
+          "field": "nzyzrts",
+          "name": "年在院总人天数"
+        },
+        {
+          "field": "nmzyrs",
+          "name": "年末在院人数"
+        },
+        {
+          "field": "kfhylmzrcs",
+          "name": "康复和医疗门诊人次数"
+        },
+        {
+          "field": "aqbwrysl",
+          "name": "安全保卫人员数量"
+        },
+        {
+          "field": "yjgdnl",
+          "name": "应急供电能力"
+        },
+        {
+          "field": "gsfs",
+          "name": "供水方式"
+        },
+        {
+          "field": "gnfs",
+          "name": "供暖方式"
+        },
+        {
+          "field": "yjtxbzfs",
+          "name": "应急通信保障方式"
+        },
+        {
+          "field": "cjzsgdzrz1",
+          "name": "曾经遭受过的自然灾害类型"
+        },
+        {
+          "field": "yyzrzhyjy1",
+          "name": "已有自然灾害应急预案类型"
+        },
+        {
+          "field": "gsfs_qtsm",
+          "name": "供水方式-其他项说明"
+        },
+        {
+          "field": "dmlx",
+          "name": "代码类型"
+        },
+        {
+          "field": "yjtxbzfs_q",
+          "name": "应急通信保障方式-其他项说明"
+        },
+        {
+          "field": "code",
+          "name": "行政区划代码"
+        },
+        {
+          "field": "dzjh",
+          "name": "地址街号"
+        },
+        {
+          "field": "dzxiang",
+          "name": "地址乡"
+        },
+        {
+          "field": "sfsytfsjyj",
+          "name": "sfsytfsjyjczjg-其他项说明-失效"
+        },
+        {
+          "field": "cjrmc",
+          "name": "创建人名称"
+        },
+        {
+          "field": "cjzsgdzrz2",
+          "name": "曾经遭受过的自然灾害类型-其他说明"
+        },
+        {
+          "field": "mgeom",
+          "name": "空间点geojson"
+        },
+        {
+          "field": "tbrq",
+          "name": "报出日期"
+        },
+        {
+          "field": "yyzrzhyjy2",
+          "name": "已有自然灾害应急预案类型-其他说明"
+        },
+        {
+          "field": "zcdjlx_qts",
+          "name": "注册登记类型-其他项说明"
+        },
+        {
+          "field": "dzsheng",
+          "name": "地址省"
+        },
+        {
+          "field": "dzshi",
+          "name": "地址市"
+        },
+        {
+          "field": "dzxian",
+          "name": "地址县"
+        },
+        {
+          "field": "dwfzr",
+          "name": "单位负责人"
+        },
+        {
+          "field": "tjfzr",
+          "name": "统计负责人"
+        },
+        {
+          "field": "tbr",
+          "name": "填表人"
+        },
+        {
+          "field": "lxdh",
+          "name": "联系电话"
+        },
+        {
+          "field": "cjsj",
+          "name": "创建时间"
+        },
+        {
+          "field": "gnfs_qtsm",
+          "name": "供暖方式-其他项说明"
+        },
+        {
+          "field": "fwjglx_qts",
+          "name": "服务机构类型-其他项说明"
+        },
+        {
+          "field": "dzcun",
+          "name": "地址村"
+        },
+        {
+          "field": "yjgdnl_qts",
+          "name": "应急供电能力-其他项说明"
+        },
+        {
+          "field": "jgbm",
+          "name": "统一社会信用代码/原组织机构代码"
+        },
+        {
+          "field": "fxpc_datai",
+          "name": "物理主键"
+        },
+        {
+          "field": "fxpc_dcdxb",
+          "name": "调查对象编码"
+        },
+        {
+          "field": "fxpc_xzqh1",
+          "name": "行政区划编码省"
+        },
+        {
+          "field": "fxpc_xzqh2",
+          "name": "行政区划编码市"
+        },
+        {
+          "field": "fxpc_xzqh3",
+          "name": "行政区划编码县"
+        },
+        {
+          "field": "fxpc_updat",
+          "name": "更新时间"
+        },
+        {
+          "field": "fxpc_creat",
+          "name": "写入时间"
+        },
+        {
+          "field": "fxpc_sjzt_",
+          "name": "数据状态"
+        },
+        {
+          "field": "fxpc_shlcz",
+          "name": "审核流程状态"
+        },
+        {
+          "field": "fxpc_shzt_",
+          "name": "审核状态"
+        },
+        {
+          "field": "fxpc_sshy_",
+          "name": "所属行业"
+        },
+        {
+          "field": "fxpc_rqfp_",
+          "name": "日期分片"
+        },
+        {
+          "field": "fxpc_pch_s",
+          "name": "批次号"
+        }
+      ],
+      "mapSplit": false,
+      "show": false,
+      "flyTo": true
+    },
+    {
+      "pid": 400,
+      "type": "wms",
+      "name": "体育场馆_矢量点",
+      "layers": "anxi-emergency:TYCG_1",
+      "popup": [
+        {
+          "field": "id",
+          "name": "唯一标识"
+        },
+        {
+          "field": "dwmc",
+          "name": "体育场馆名称"
+        },
+        {
+          "field": "address",
+          "name": "体育场馆详细地址"
+        },
+        {
+          "field": "cglx",
+          "name": "场馆类型"
+        },
+        {
+          "field": "yyms",
+          "name": "运营模式"
+        },
+        {
+          "field": "zdmj",
+          "name": "占地面积"
+        },
+        {
+          "field": "cdmj",
+          "name": "场地面积"
+        },
+        {
+          "field": "jzmj",
+          "name": "建筑面积"
+        },
+        {
+          "field": "cdcyryzs",
+          "name": "场地从业人员总数"
+        },
+        {
+          "field": "pjmzjdrc_n",
+          "name": "平均每周接待人次"
+        },
+        {
+          "field": "gzxw",
+          "name": "观众席位"
+        },
+        {
+          "field": "cdhdcs",
+          "name": "承担活动次数"
+        },
+        {
+          "field": "dwkfqk",
+          "name": "对外开放情况"
+        },
+        {
+          "field": "nkfts",
+          "name": "年开放天数"
+        },
+        {
+          "field": "aqbwrysl",
+          "name": "安全保卫人员数量"
+        },
+        {
+          "field": "yjgdnl",
+          "name": "应急供电能力"
+        },
+        {
+          "field": "gsfs",
+          "name": "供水方式"
+        },
+        {
+          "field": "gnfs",
+          "name": "供暖方式"
+        },
+        {
+          "field": "yjtxbzfs",
+          "name": "应急通信保障方式"
+        },
+        {
+          "field": "cjzsgdzrz1",
+          "name": "曾经遭受过的自然灾害类型"
+        },
+        {
+          "field": "yyzrzhyjy1",
+          "name": "已有自然灾害应急预案类型"
+        },
+        {
+          "field": "yjgdnl_qts",
+          "name": "应急供电能力-其他项说明"
+        },
+        {
+          "field": "tbrq",
+          "name": "报出日期"
+        },
+        {
+          "field": "dmlx",
+          "name": "代码类型"
+        },
+        {
+          "field": "jgbm",
+          "name": "机构编码"
+        },
+        {
+          "field": "gsfs_qtsm",
+          "name": "供水方式-其他项说明"
+        },
+        {
+          "field": "cjsj",
+          "name": "创建时间"
+        },
+        {
+          "field": "dgeom",
+          "name": "空间面geojson"
+        },
+        {
+          "field": "cjrmc",
+          "name": "创建人名称"
+        },
+        {
+          "field": "dzcun",
+          "name": "地址村"
+        },
+        {
+          "field": "dzxian",
+          "name": "地址县"
+        },
+        {
+          "field": "tbr",
+          "name": "填表人"
+        },
+        {
+          "field": "dzshi",
+          "name": "地址市"
+        },
+        {
+          "field": "dwfzr",
+          "name": "单位负责人"
+        },
+        {
+          "field": "dwkfqk_qts",
+          "name": "对外开放情况-其他项说明"
+        },
+        {
+          "field": "yyms_qtsm",
+          "name": "运营模式-其他项说明"
+        },
+        {
+          "field": "gnfs_qtsm",
+          "name": "供暖方式-其他项说明"
+        },
+        {
+          "field": "yyzrzhyjy2",
+          "name": "已有自然灾害应急预案类型-其他说明"
+        },
+        {
+          "field": "cjzsgdzrz2",
+          "name": "曾经遭受过的自然灾害类型-其他说明"
+        },
+        {
+          "field": "nkfts_qtsm",
+          "name": "年开放天数-其他项说明"
+        },
+        {
+          "field": "code",
+          "name": "行政区划代码"
+        },
+        {
+          "field": "dzsheng",
+          "name": "地址省"
+        },
+        {
+          "field": "dzjh",
+          "name": "地址街号"
+        },
+        {
+          "field": "tjfzr",
+          "name": "统计负责人"
+        },
+        {
+          "field": "lxdh",
+          "name": "联系电话"
+        },
+        {
+          "field": "dzxiang",
+          "name": "地址乡"
+        },
+        {
+          "field": "sfsytfsjyj",
+          "name": "sfsytfsjyjczjg-其他项说明-失效"
+        },
+        {
+          "field": "yjtxbzfs_q",
+          "name": "应急通信保障方式-其他项说明"
+        },
+        {
+          "field": "cglx_qtsm",
+          "name": "储罐类型-其他项说明"
+        },
+        {
+          "field": "fxpc_datai",
+          "name": "物理主键"
+        },
+        {
+          "field": "fxpc_dcdxb",
+          "name": "调查对象编码"
+        },
+        {
+          "field": "fxpc_xzqh1",
+          "name": "行政区划编码省"
+        },
+        {
+          "field": "fxpc_xzqh2",
+          "name": "行政区划编码市"
+        },
+        {
+          "field": "fxpc_xzqh3",
+          "name": "行政区划编码县"
+        },
+        {
+          "field": "fxpc_updat",
+          "name": "更新时间"
+        },
+        {
+          "field": "fxpc_creat",
+          "name": "写入时间"
+        },
+        {
+          "field": "fxpc_sjzt_",
+          "name": "数据状态"
+        },
+        {
+          "field": "fxpc_shlcz",
+          "name": "审核流程状态"
+        },
+        {
+          "field": "fxpc_shzt_",
+          "name": "审核状态"
+        },
+        {
+          "field": "fxpc_sshy_",
+          "name": "所属行业"
+        },
+        {
+          "field": "fxpc_rqfp_",
+          "name": "日期分片"
+        },
+        {
+          "field": "fxpc_pch_s",
+          "name": "批次号"
+        }
+      ],
+      "mapSplit": false,
+      "show": false,
+      "flyTo": true
+    },
+    {
+      "pid": 400,
+      "type": "wms",
+      "name": "体育场馆_矢量面",
+      "layers": "anxi-emergency:TYCG",
+      "popup": [
+        {
+          "field": "id",
+          "name": "唯一标识"
+        },
+        {
+          "field": "dwmc",
+          "name": "体育场馆名称"
+        },
+        {
+          "field": "address",
+          "name": "体育场馆详细地址"
+        },
+        {
+          "field": "cglx",
+          "name": "场馆类型"
+        },
+        {
+          "field": "yyms",
+          "name": "运营模式"
+        },
+        {
+          "field": "zdmj",
+          "name": "占地面积"
+        },
+        {
+          "field": "cdmj",
+          "name": "场地面积"
+        },
+        {
+          "field": "jzmj",
+          "name": "建筑面积"
+        },
+        {
+          "field": "cdcyryzs",
+          "name": "场地从业人员总数"
+        },
+        {
+          "field": "pjmzjdrc_n",
+          "name": "平均每周接待人次"
+        },
+        {
+          "field": "gzxw",
+          "name": "观众席位"
+        },
+        {
+          "field": "cdhdcs",
+          "name": "承担活动次数"
+        },
+        {
+          "field": "dwkfqk",
+          "name": "对外开放情况"
+        },
+        {
+          "field": "nkfts",
+          "name": "年开放天数"
+        },
+        {
+          "field": "aqbwrysl",
+          "name": "安全保卫人员数量"
+        },
+        {
+          "field": "yjgdnl",
+          "name": "应急供电能力"
+        },
+        {
+          "field": "gsfs",
+          "name": "供水方式"
+        },
+        {
+          "field": "gnfs",
+          "name": "供暖方式"
+        },
+        {
+          "field": "yjtxbzfs",
+          "name": "应急通信保障方式"
+        },
+        {
+          "field": "cjzsgdzrz1",
+          "name": "曾经遭受过的自然灾害类型"
+        },
+        {
+          "field": "yyzrzhyjy1",
+          "name": "已有自然灾害应急预案类型"
+        },
+        {
+          "field": "yjgdnl_qts",
+          "name": "应急供电能力-其他项说明"
+        },
+        {
+          "field": "tbrq",
+          "name": "报出日期"
+        },
+        {
+          "field": "dmlx",
+          "name": "代码类型"
+        },
+        {
+          "field": "jgbm",
+          "name": "机构编码"
+        },
+        {
+          "field": "gsfs_qtsm",
+          "name": "供水方式-其他项说明"
+        },
+        {
+          "field": "cjsj",
+          "name": "创建时间"
+        },
+        {
+          "field": "dgeom",
+          "name": "空间面geojson"
+        },
+        {
+          "field": "cjrmc",
+          "name": "创建人名称"
+        },
+        {
+          "field": "dzcun",
+          "name": "地址村"
+        },
+        {
+          "field": "dzxian",
+          "name": "地址县"
+        },
+        {
+          "field": "tbr",
+          "name": "填表人"
+        },
+        {
+          "field": "dzshi",
+          "name": "地址市"
+        },
+        {
+          "field": "dwfzr",
+          "name": "单位负责人"
+        },
+        {
+          "field": "dwkfqk_qts",
+          "name": "对外开放情况-其他项说明"
+        },
+        {
+          "field": "yyms_qtsm",
+          "name": "运营模式-其他项说明"
+        },
+        {
+          "field": "gnfs_qtsm",
+          "name": "供暖方式-其他项说明"
+        },
+        {
+          "field": "yyzrzhyjy2",
+          "name": "已有自然灾害应急预案类型-其他说明"
+        },
+        {
+          "field": "cjzsgdzrz2",
+          "name": "曾经遭受过的自然灾害类型-其他说明"
+        },
+        {
+          "field": "nkfts_qtsm",
+          "name": "年开放天数-其他项说明"
+        },
+        {
+          "field": "code",
+          "name": "行政区划代码"
+        },
+        {
+          "field": "dzsheng",
+          "name": "地址省"
+        },
+        {
+          "field": "dzjh",
+          "name": "地址街号"
+        },
+        {
+          "field": "tjfzr",
+          "name": "统计负责人"
+        },
+        {
+          "field": "lxdh",
+          "name": "联系电话"
+        },
+        {
+          "field": "dzxiang",
+          "name": "地址乡"
+        },
+        {
+          "field": "sfsytfsjyj",
+          "name": "sfsytfsjyjczjg-其他项说明-失效"
+        },
+        {
+          "field": "yjtxbzfs_q",
+          "name": "应急通信保障方式-其他项说明"
+        },
+        {
+          "field": "cglx_qtsm",
+          "name": "储罐类型-其他项说明"
+        },
+        {
+          "field": "fxpc_datai",
+          "name": "物理主键"
+        },
+        {
+          "field": "fxpc_dcdxb",
+          "name": "调查对象编码"
+        },
+        {
+          "field": "fxpc_xzqh1",
+          "name": "行政区划编码省"
+        },
+        {
+          "field": "fxpc_xzqh2",
+          "name": "行政区划编码市"
+        },
+        {
+          "field": "fxpc_xzqh3",
+          "name": "行政区划编码县"
+        },
+        {
+          "field": "fxpc_updat",
+          "name": "更新时间"
+        },
+        {
+          "field": "fxpc_creat",
+          "name": "写入时间"
+        },
+        {
+          "field": "fxpc_sjzt_",
+          "name": "数据状态"
+        },
+        {
+          "field": "fxpc_shlcz",
+          "name": "审核流程状态"
+        },
+        {
+          "field": "fxpc_shzt_",
+          "name": "审核状态"
+        },
+        {
+          "field": "fxpc_sshy_",
+          "name": "所属行业"
+        },
+        {
+          "field": "fxpc_rqfp_",
+          "name": "日期分片"
+        },
+        {
+          "field": "fxpc_pch_s",
+          "name": "批次号"
+        }
+      ],
+      "mapSplit": false,
+      "show": false,
+      "flyTo": true
+    },
+    {
+      "pid": 400,
+      "type": "wms",
+      "name": "尾矿库",
+      "layers": "anxi-emergency:WKK",
+      "popup": [
+        {
+          "field": "id",
+          "name": "唯一标识"
+        },
+        {
+          "field": "dwmc",
+          "name": "尾矿库名称"
+        },
+        {
+          "field": "tsryoc",
+          "name": "单位名称"
+        },
+        {
+          "field": "address",
+          "name": "尾矿库地址"
+        },
+        {
+          "field": "sczt",
+          "name": "生产状态"
+        },
+        {
+          "field": "xzkr",
+          "name": "设计总库容"
+        },
+        {
+          "field": "xzzbg",
+          "name": "设计总坝高"
+        },
+        {
+          "field": "phssxs",
+          "name": "排洪设施型式"
+        },
+        {
+          "field": "lrjsoj",
+          "name": "库区汇水面积"
+        },
+        {
+          "field": "sjfjbz",
+          "name": "设计防洪标准"
+        },
+        {
+          "field": "dhyssfafhb",
+          "name": "调洪演算是否按防洪标准要求的年份内最大洪水计算"
+        },
+        {
+          "field": "lrzbsfyyxa",
+          "name": "库区是否存在潜在地质灾害影响"
+        },
+        {
+          "field": "dzod",
+          "name": "地震烈度"
+        },
+        {
+          "field": "gdzcjz",
+          "name": "固定资产净值"
+        },
+        {
+          "field": "sftdk",
+          "name": "是否头顶库"
+        },
+        {
+          "field": "dbzdzgrs",
+          "name": "单班最大在岗人数"
+        },
+        {
+          "field": "xyzrs",
+          "name": "下游1km内总人数（含单班最大在岗人数）"
+        },
+        {
+          "field": "xyzyssqk",
+          "name": "下游1km内重要设施情况（如学校、厂矿、道路、铁路、桥梁情况等）"
+        },
+        {
+          "field": "sfnrglgz",
+          "name": "是否把自然灾害防治纳入到企业应急管理工作"
+        },
+        {
+          "field": "lsjjddlb",
+          "name": "矿山救护队的类别"
+        },
+        {
+          "field": "ryzzjjdzzl",
+          "name": "若有专职救护队，专职矿山救护队的规模"
+        },
+        {
+          "field": "wkbdzsjld",
+          "name": "尾矿坝地震设计烈度"
+        },
+        {
+          "field": "lrsfzlofs1",
+          "name": "库区是否在可能发生的滑坡体冲击范围内"
+        },
+        {
+          "field": "lrsfzlofs2",
+          "name": "库区是否在可能发生的泥石流冲击范围内"
+        },
+        {
+          "field": "xllsysfyrt",
+          "name": "尾矿库上游是否有其他水利设施"
+        },
+        {
+          "field": "hpzhffcs",
+          "name": "滑坡灾害防范措施"
+        },
+        {
+          "field": "nslzhffcs",
+          "name": "泥石流灾害防范措施"
+        },
+        {
+          "field": "arjcxtjsrl",
+          "name": "安全监测系统建设情况"
+        },
+        {
+          "field": "sfszjjg",
+          "name": "是否设置截洪沟（截排水沟）"
+        },
+        {
+          "field": "jjgsffjsjy",
+          "name": "截洪沟（截排水沟）是否符合设计要求"
+        },
+        {
+          "field": "dzzjcsxlls",
+          "name": "地震灾害导致尾矿库灾害事故次数"
+        },
+        {
+          "field": "dzhizjcsl1",
+          "name": "地质灾害导致矿山灾害事故次数-滑坡"
+        },
+        {
+          "field": "dzhizjcsl2",
+          "name": "地质灾害导致矿山灾害事故次数-泥石流"
+        },
+        {
+          "field": "jszjcsxlls",
+          "name": "洪水灾害导致尾矿库灾害事故次数"
+        },
+        {
+          "field": "jgbm",
+          "name": "机构编码"
+        },
+        {
+          "field": "dzcun",
+          "name": "地址村"
+        },
+        {
+          "field": "wkbdzsjld_",
+          "name": "尾矿坝地震设计烈度_其他说明"
+        },
+        {
+          "field": "sczt_qtsm",
+          "name": "生产状态-其它说明"
+        },
+        {
+          "field": "phssxs_qts",
+          "name": "排洪设施型式-其他说明"
+        },
+        {
+          "field": "dzxiang",
+          "name": "地址乡"
+        },
+        {
+          "field": "dzod_qtsm",
+          "name": "地震烈度_其他说明"
+        },
+        {
+          "field": "tbrq",
+          "name": "报出日期"
+        },
+        {
+          "field": "dgeom",
+          "name": "空间点geojson"
+        },
+        {
+          "field": "dzshi",
+          "name": "地址市"
+        },
+        {
+          "field": "dzxian",
+          "name": "地址县"
+        },
+        {
+          "field": "cjsj",
+          "name": "创建时间"
+        },
+        {
+          "field": "dzsheng",
+          "name": "地址省"
+        },
+        {
+          "field": "tjfzr",
+          "name": "统计负责人"
+        },
+        {
+          "field": "lxdh",
+          "name": "联系电话"
+        },
+        {
+          "field": "dzjh",
+          "name": "地址街号"
+        },
+        {
+          "field": "dwfzr",
+          "name": "单位负责人"
+        },
+        {
+          "field": "tbr",
+          "name": "填表人"
+        },
+        {
+          "field": "cjrmc",
+          "name": "创建人名称"
+        },
+        {
+          "field": "code",
+          "name": "行政区划代码"
+        },
+        {
+          "field": "dmlx",
+          "name": "代码类型"
+        },
+        {
+          "field": "fxpc_datai",
+          "name": "物理主键"
+        },
+        {
+          "field": "fxpc_dcdxb",
+          "name": "调查对象编码"
+        },
+        {
+          "field": "fxpc_xzqh1",
+          "name": "行政区划编码省"
+        },
+        {
+          "field": "fxpc_xzqh2",
+          "name": "行政区划编码市"
+        },
+        {
+          "field": "fxpc_xzqh3",
+          "name": "行政区划编码县"
+        },
+        {
+          "field": "fxpc_updat",
+          "name": "更新时间"
+        },
+        {
+          "field": "fxpc_creat",
+          "name": "写入时间"
+        },
+        {
+          "field": "fxpc_sjzt_",
+          "name": "数据状态"
+        },
+        {
+          "field": "fxpc_shlcz",
+          "name": "审核流程状态"
+        },
+        {
+          "field": "fxpc_shzt_",
+          "name": "审核状态"
+        },
+        {
+          "field": "fxpc_sshy_",
+          "name": "所属行业"
+        },
+        {
+          "field": "fxpc_rqfp_",
+          "name": "日期分片"
+        },
+        {
+          "field": "fxpc_pch_s",
+          "name": "批次号"
+        }
+      ],
+      "mapSplit": false,
+      "show": false,
+      "flyTo": true
+    },
+    {
+      "pid": 400,
+      "type": "wms",
+      "name": "星级饭店_矢量点",
+      "layers": "anxi-emergency:XJFD_1",
+      "popup": [
+        {
+          "field": "id",
+          "name": "唯一标识"
+        },
+        {
+          "field": "dwmc",
+          "name": "星级饭店名称"
+        },
+        {
+          "field": "cym",
+          "name": "常用名"
+        },
+        {
+          "field": "address",
+          "name": "星级饭店详细地址"
+        },
+        {
+          "field": "qyxz",
+          "name": "企业性质"
+        },
+        {
+          "field": "fdxj",
+          "name": "饭店星级"
+        },
+        {
+          "field": "zdmj",
+          "name": "占地面积"
+        },
+        {
+          "field": "jzmj",
+          "name": "建筑面积"
+        },
+        {
+          "field": "zjyrs",
+          "name": "总就业人数"
+        },
+        {
+          "field": "kfs",
+          "name": "客房数"
+        },
+        {
+          "field": "cws",
+          "name": "床位数"
+        },
+        {
+          "field": "hysrnrs",
+          "name": "会议室容纳人数"
+        },
+        {
+          "field": "qtptss",
+          "name": "其他配套设施"
+        },
+        {
+          "field": "aqbwrysl",
+          "name": "安全保卫人员数量"
+        },
+        {
+          "field": "yjgdnl",
+          "name": "应急供电能力"
+        },
+        {
+          "field": "gsfs",
+          "name": "供水方式"
+        },
+        {
+          "field": "gnfs",
+          "name": "供暖方式"
+        },
+        {
+          "field": "yjtxbzfs",
+          "name": "应急通信保障方式"
+        },
+        {
+          "field": "cjzsgdzrz1",
+          "name": "曾经遭受过的自然灾害类型"
+        },
+        {
+          "field": "yyzrzhyjy1",
+          "name": "已有自然灾害应急预案类型"
+        },
+        {
+          "field": "qtptss_qts",
+          "name": "其他配套设施-他项说明"
+        },
+        {
+          "field": "yjgdnl_qts",
+          "name": "应急供电能力-其他项说明"
+        },
+        {
+          "field": "fdlx_qtsm",
+          "name": "发电机总功率-其他项说明"
+        },
+        {
+          "field": "yjtxbzfs_q",
+          "name": "应急通信保障方式-其他项说明"
+        },
+        {
+          "field": "dzxiang",
+          "name": "地址乡"
+        },
+        {
+          "field": "dzsheng",
+          "name": "地址省"
+        },
+        {
+          "field": "dzxian",
+          "name": "地址县"
+        },
+        {
+          "field": "dwfzr",
+          "name": "单位负责人"
+        },
+        {
+          "field": "tjfzr",
+          "name": "统计负责人"
+        },
+        {
+          "field": "tbr",
+          "name": "填表人"
+        },
+        {
+          "field": "dmlx",
+          "name": "代码类型"
+        },
+        {
+          "field": "dzjh",
+          "name": "地址街号"
+        },
+        {
+          "field": "gsfs_qtsm",
+          "name": "供水方式-其他项说明"
+        },
+        {
+          "field": "yyzrzhyjy2",
+          "name": "已有自然灾害应急预案类型-其他说明"
+        },
+        {
+          "field": "cjsj",
+          "name": "创建时间"
+        },
+        {
+          "field": "sfsytfsjyj",
+          "name": "sfsytfsjyjczjg-其他项说明-失效"
+        },
+        {
+          "field": "cjrmc",
+          "name": "创建人名称"
+        },
+        {
+          "field": "dzshi",
+          "name": "地址市"
+        },
+        {
+          "field": "cjzsgdzrz2",
+          "name": "曾经遭受过的自然灾害类型-其他说明"
+        },
+        {
+          "field": "lxdh",
+          "name": "联系电话"
+        },
+        {
+          "field": "mgeom",
+          "name": "空间面geojson"
+        },
+        {
+          "field": "tbrq",
+          "name": "报出日期"
+        },
+        {
+          "field": "dzcun",
+          "name": "地址村"
+        },
+        {
+          "field": "code",
+          "name": "行政区划代码"
+        },
+        {
+          "field": "fdxj_qtsm",
+          "name": "饭店星级-其他项说明"
+        },
+        {
+          "field": "qyxz_qtsm",
+          "name": "企业性质-其他项说明"
+        },
+        {
+          "field": "jgbm",
+          "name": "机构编码"
+        },
+        {
+          "field": "gnfs_qtsm",
+          "name": "供暖方式-其他项说明"
+        },
+        {
+          "field": "fxpc_datai",
+          "name": "物理主键"
+        },
+        {
+          "field": "fxpc_dcdxb",
+          "name": "调查对象编码"
+        },
+        {
+          "field": "fxpc_xzqh1",
+          "name": "行政区划编码省"
+        },
+        {
+          "field": "fxpc_xzqh2",
+          "name": "行政区划编码市"
+        },
+        {
+          "field": "fxpc_xzqh3",
+          "name": "行政区划编码县"
+        },
+        {
+          "field": "fxpc_updat",
+          "name": "更新时间"
+        },
+        {
+          "field": "fxpc_creat",
+          "name": "写入时间"
+        },
+        {
+          "field": "fxpc_sjzt_",
+          "name": "数据状态"
+        },
+        {
+          "field": "fxpc_shlcz",
+          "name": "审核流程状态"
+        },
+        {
+          "field": "fxpc_shzt_",
+          "name": "审核状态"
+        },
+        {
+          "field": "fxpc_sshy_",
+          "name": "所属行业"
+        },
+        {
+          "field": "fxpc_rqfp_",
+          "name": "日期分片"
+        },
+        {
+          "field": "fxpc_pch_s",
+          "name": "批次号"
+        }
+      ],
+      "mapSplit": false,
+      "show": false,
+      "flyTo": true
+    },
+    {
+      "pid": 400,
+      "type": "wms",
+      "name": "星级饭店_矢量面",
+      "layers": "anxi-emergency:XJFD",
+      "popup": [
+        {
+          "field": "id",
+          "name": "唯一标识"
+        },
+        {
+          "field": "dwmc",
+          "name": "星级饭店名称"
+        },
+        {
+          "field": "cym",
+          "name": "常用名"
+        },
+        {
+          "field": "address",
+          "name": "星级饭店详细地址"
+        },
+        {
+          "field": "qyxz",
+          "name": "企业性质"
+        },
+        {
+          "field": "fdxj",
+          "name": "饭店星级"
+        },
+        {
+          "field": "zdmj",
+          "name": "占地面积"
+        },
+        {
+          "field": "jzmj",
+          "name": "建筑面积"
+        },
+        {
+          "field": "zjyrs",
+          "name": "总就业人数"
+        },
+        {
+          "field": "kfs",
+          "name": "客房数"
+        },
+        {
+          "field": "cws",
+          "name": "床位数"
+        },
+        {
+          "field": "hysrnrs",
+          "name": "会议室容纳人数"
+        },
+        {
+          "field": "qtptss",
+          "name": "其他配套设施"
+        },
+        {
+          "field": "aqbwrysl",
+          "name": "安全保卫人员数量"
+        },
+        {
+          "field": "yjgdnl",
+          "name": "应急供电能力"
+        },
+        {
+          "field": "gsfs",
+          "name": "供水方式"
+        },
+        {
+          "field": "gnfs",
+          "name": "供暖方式"
+        },
+        {
+          "field": "yjtxbzfs",
+          "name": "应急通信保障方式"
+        },
+        {
+          "field": "cjzsgdzrz1",
+          "name": "曾经遭受过的自然灾害类型"
+        },
+        {
+          "field": "yyzrzhyjy1",
+          "name": "已有自然灾害应急预案类型"
+        },
+        {
+          "field": "qtptss_qts",
+          "name": "其他配套设施-他项说明"
+        },
+        {
+          "field": "yjgdnl_qts",
+          "name": "应急供电能力-其他项说明"
+        },
+        {
+          "field": "fdlx_qtsm",
+          "name": "发电机总功率-其他项说明"
+        },
+        {
+          "field": "yjtxbzfs_q",
+          "name": "应急通信保障方式-其他项说明"
+        },
+        {
+          "field": "dzxiang",
+          "name": "地址乡"
+        },
+        {
+          "field": "dzsheng",
+          "name": "地址省"
+        },
+        {
+          "field": "dzxian",
+          "name": "地址县"
+        },
+        {
+          "field": "dwfzr",
+          "name": "单位负责人"
+        },
+        {
+          "field": "tjfzr",
+          "name": "统计负责人"
+        },
+        {
+          "field": "tbr",
+          "name": "填表人"
+        },
+        {
+          "field": "dmlx",
+          "name": "代码类型"
+        },
+        {
+          "field": "dzjh",
+          "name": "地址街号"
+        },
+        {
+          "field": "gsfs_qtsm",
+          "name": "供水方式-其他项说明"
+        },
+        {
+          "field": "yyzrzhyjy2",
+          "name": "已有自然灾害应急预案类型-其他说明"
+        },
+        {
+          "field": "cjsj",
+          "name": "创建时间"
+        },
+        {
+          "field": "sfsytfsjyj",
+          "name": "sfsytfsjyjczjg-其他项说明-失效"
+        },
+        {
+          "field": "cjrmc",
+          "name": "创建人名称"
+        },
+        {
+          "field": "dzshi",
+          "name": "地址市"
+        },
+        {
+          "field": "cjzsgdzrz2",
+          "name": "曾经遭受过的自然灾害类型-其他说明"
+        },
+        {
+          "field": "lxdh",
+          "name": "联系电话"
+        },
+        {
+          "field": "mgeom",
+          "name": "空间面geojson"
+        },
+        {
+          "field": "tbrq",
+          "name": "报出日期"
+        },
+        {
+          "field": "dzcun",
+          "name": "地址村"
+        },
+        {
+          "field": "code",
+          "name": "行政区划代码"
+        },
+        {
+          "field": "fdxj_qtsm",
+          "name": "饭店星级-其他项说明"
+        },
+        {
+          "field": "qyxz_qtsm",
+          "name": "企业性质-其他项说明"
+        },
+        {
+          "field": "jgbm",
+          "name": "机构编码"
+        },
+        {
+          "field": "gnfs_qtsm",
+          "name": "供暖方式-其他项说明"
+        },
+        {
+          "field": "fxpc_datai",
+          "name": "物理主键"
+        },
+        {
+          "field": "fxpc_dcdxb",
+          "name": "调查对象编码"
+        },
+        {
+          "field": "fxpc_xzqh1",
+          "name": "行政区划编码省"
+        },
+        {
+          "field": "fxpc_xzqh2",
+          "name": "行政区划编码市"
+        },
+        {
+          "field": "fxpc_xzqh3",
+          "name": "行政区划编码县"
+        },
+        {
+          "field": "fxpc_updat",
+          "name": "更新时间"
+        },
+        {
+          "field": "fxpc_creat",
+          "name": "写入时间"
+        },
+        {
+          "field": "fxpc_sjzt_",
+          "name": "数据状态"
+        },
+        {
+          "field": "fxpc_shlcz",
+          "name": "审核流程状态"
+        },
+        {
+          "field": "fxpc_shzt_",
+          "name": "审核状态"
+        },
+        {
+          "field": "fxpc_sshy_",
+          "name": "所属行业"
+        },
+        {
+          "field": "fxpc_rqfp_",
+          "name": "日期分片"
+        },
+        {
+          "field": "fxpc_pch_s",
+          "name": "批次号"
+        }
+      ],
+      "mapSplit": false,
+      "show": false,
+      "flyTo": true
+    },
+    {
+      "pid": 400,
+      "type": "wms",
+      "name": "学校_矢量点",
+      "layers": "anxi-emergency:XX_1",
+      "popup": [
+        {
+          "field": "id",
+          "name": "唯一标识"
+        },
+        {
+          "field": "dwmc",
+          "name": "学校（机构）名称"
+        },
+        {
+          "field": "address",
+          "name": "学校（机构）详细地址"
+        },
+        {
+          "field": "xxbsm",
+          "name": "学校（机构）标识码"
+        },
+        {
+          "field": "xxjgbxlxd1",
+          "name": "学校（机构）办学类型（大类）"
+        },
+        {
+          "field": "xxjgbxlxz1",
+          "name": "学校（机构）办学类型（中类）"
+        },
+        {
+          "field": "xxjgjbz",
+          "name": "学校（机构）举办者"
+        },
+        {
+          "field": "zdmj",
+          "name": "占地面积"
+        },
+        {
+          "field": "xsjzmj",
+          "name": "校舍建筑面积"
+        },
+        {
+          "field": "wyyssbts",
+          "name": "万元以上设备台数"
+        },
+        {
+          "field": "sfhwwbhdwh",
+          "name": "是否含文物保护单位或历史建筑"
+        },
+        {
+          "field": "jzgs",
+          "name": "教职工数"
+        },
+        {
+          "field": "zxss",
+          "name": "在校生数"
+        },
+        {
+          "field": "jssrs",
+          "name": "其中：寄宿生人数"
+        },
+        {
+          "field": "wgjxsrs",
+          "name": "外国籍学生人数"
+        },
+        {
+          "field": "fsjxbxsrs",
+          "name": "附设教学班学生人数"
+        },
+        {
+          "field": "jss",
+          "name": "教室数"
+        },
+        {
+          "field": "jsyfjzmj",
+          "name": "教室用房建筑面积"
+        },
+        {
+          "field": "tygjzmj",
+          "name": "体育馆建筑面积"
+        },
+        {
+          "field": "xsssgyjzmj",
+          "name": "学生宿舍（公寓）建筑面积"
+        },
+        {
+          "field": "swydcdmj",
+          "name": "室外运动场地面积"
+        },
+        {
+          "field": "sfyxyywss1",
+          "name": "是否有校医院/卫生室/医务室"
+        },
+        {
+          "field": "zzxyrs",
+          "name": "专职校医人数"
+        },
+        {
+          "field": "aqbwrysl",
+          "name": "安全保卫人员数量"
+        },
+        {
+          "field": "yjgdnl",
+          "name": "应急供电能力"
+        },
+        {
+          "field": "gsfs",
+          "name": "供水方式"
+        },
+        {
+          "field": "gnfs",
+          "name": "供暖方式"
+        },
+        {
+          "field": "yjtxbzfs",
+          "name": "应急通信保障方式"
+        },
+        {
+          "field": "cjzsgdzrz1",
+          "name": "曾经遭受过的自然灾害类型"
+        },
+        {
+          "field": "yyzrzhyjy1",
+          "name": "已有自然灾害应急预案类型"
+        },
+        {
+          "field": "jgbm",
+          "name": "机构编码"
+        },
+        {
+          "field": "gsfs_qtsm",
+          "name": "供水方式-其他项说明"
+        },
+        {
+          "field": "dmlx",
+          "name": "统一社会信用代码/机构编码"
+        },
+        {
+          "field": "yjgdnl_qts",
+          "name": "应急供电能力-其他项说明"
+        },
+        {
+          "field": "dzjh",
+          "name": "地址街号"
+        },
+        {
+          "field": "yjtxbzfs_q",
+          "name": "应急通信保障方式-其他项说明"
+        },
+        {
+          "field": "cjsj",
+          "name": "创建时间"
+        },
+        {
+          "field": "dzshi",
+          "name": "地址市"
+        },
+        {
+          "field": "dzxian",
+          "name": "地址县"
+        },
+        {
+          "field": "sfsytfsjyj",
+          "name": "sfsytfsjyjczjg-其他项说明-失效"
+        },
+        {
+          "field": "sfyxyywss2",
+          "name": "是否有校医院/卫生室/医务室-其他项说明"
+        },
+        {
+          "field": "lxdh",
+          "name": "联系电话"
+        },
+        {
+          "field": "code",
+          "name": "行政区划代码"
+        },
+        {
+          "field": "dzcun",
+          "name": "地址村"
+        },
+        {
+          "field": "dwfzr",
+          "name": "单位负责人"
+        },
+        {
+          "field": "cjzsgdzrz2",
+          "name": "曾经遭受过的自然灾害类型-其他说明"
+        },
+        {
+          "field": "dzxiang",
+          "name": "地址乡"
+        },
+        {
+          "field": "yyzrzhyjy2",
+          "name": "已有自然灾害应急预案类型-其他说明"
+        },
+        {
+          "field": "tbr",
+          "name": "填表人"
+        },
+        {
+          "field": "cjrmc",
+          "name": "创建人名称"
+        },
+        {
+          "field": "dgeom",
+          "name": "空间面geojson"
+        },
+        {
+          "field": "dzsheng",
+          "name": "地址省"
+        },
+        {
+          "field": "tjfzr",
+          "name": "统计负责人"
+        },
+        {
+          "field": "tbrq",
+          "name": "报出日期"
+        },
+        {
+          "field": "gnfs_qtsm",
+          "name": "供暖方式-其他项说明"
+        },
+        {
+          "field": "xxjgbxlxd2",
+          "name": "学校（机构）办学类型（大类）-其他项说明"
+        },
+        {
+          "field": "xxjgbxlxz2",
+          "name": "学校（机构）办学类型（中类）-其他项说明"
+        },
+        {
+          "field": "xxjgjbz_qt",
+          "name": "学校（机构）举办者-其他项说明"
+        },
+        {
+          "field": "fxpc_datai",
+          "name": "物理主键"
+        },
+        {
+          "field": "fxpc_dcdxb",
+          "name": "调查对象编码"
+        },
+        {
+          "field": "fxpc_xzqh1",
+          "name": "行政区划编码省"
+        },
+        {
+          "field": "fxpc_xzqh2",
+          "name": "行政区划编码市"
+        },
+        {
+          "field": "fxpc_xzqh3",
+          "name": "行政区划编码县"
+        },
+        {
+          "field": "fxpc_updat",
+          "name": "更新时间"
+        },
+        {
+          "field": "fxpc_creat",
+          "name": "写入时间"
+        },
+        {
+          "field": "fxpc_sjzt_",
+          "name": "数据状态"
+        },
+        {
+          "field": "fxpc_shlcz",
+          "name": "审核流程状态"
+        },
+        {
+          "field": "fxpc_shzt_",
+          "name": "审核状态"
+        },
+        {
+          "field": "fxpc_sshy_",
+          "name": "所属行业"
+        },
+        {
+          "field": "fxpc_rqfp_",
+          "name": "日期分片"
+        },
+        {
+          "field": "fxpc_pch_s",
+          "name": "批次号"
+        }
+      ],
+      "mapSplit": false,
+      "show": false,
+      "flyTo": true
+    },
+    {
+      "pid": 400,
+      "type": "wms",
+      "name": "学校_矢量面",
+      "layers": "anxi-emergency:XX",
+      "popup": [
+        {
+          "field": "id",
+          "name": "唯一标识"
+        },
+        {
+          "field": "dwmc",
+          "name": "学校（机构）名称"
+        },
+        {
+          "field": "address",
+          "name": "学校（机构）详细地址"
+        },
+        {
+          "field": "xxbsm",
+          "name": "学校（机构）标识码"
+        },
+        {
+          "field": "xxjgbxlxd1",
+          "name": "学校（机构）办学类型（大类）"
+        },
+        {
+          "field": "xxjgbxlxz1",
+          "name": "学校（机构）办学类型（中类）"
+        },
+        {
+          "field": "xxjgjbz",
+          "name": "学校（机构）举办者"
+        },
+        {
+          "field": "zdmj",
+          "name": "占地面积"
+        },
+        {
+          "field": "xsjzmj",
+          "name": "校舍建筑面积"
+        },
+        {
+          "field": "wyyssbts",
+          "name": "万元以上设备台数"
+        },
+        {
+          "field": "sfhwwbhdwh",
+          "name": "是否含文物保护单位或历史建筑"
+        },
+        {
+          "field": "jzgs",
+          "name": "教职工数"
+        },
+        {
+          "field": "zxss",
+          "name": "在校生数"
+        },
+        {
+          "field": "jssrs",
+          "name": "其中：寄宿生人数"
+        },
+        {
+          "field": "wgjxsrs",
+          "name": "外国籍学生人数"
+        },
+        {
+          "field": "fsjxbxsrs",
+          "name": "附设教学班学生人数"
+        },
+        {
+          "field": "jss",
+          "name": "教室数"
+        },
+        {
+          "field": "jsyfjzmj",
+          "name": "教室用房建筑面积"
+        },
+        {
+          "field": "tygjzmj",
+          "name": "体育馆建筑面积"
+        },
+        {
+          "field": "xsssgyjzmj",
+          "name": "学生宿舍（公寓）建筑面积"
+        },
+        {
+          "field": "swydcdmj",
+          "name": "室外运动场地面积"
+        },
+        {
+          "field": "sfyxyywss1",
+          "name": "是否有校医院/卫生室/医务室"
+        },
+        {
+          "field": "zzxyrs",
+          "name": "专职校医人数"
+        },
+        {
+          "field": "aqbwrysl",
+          "name": "安全保卫人员数量"
+        },
+        {
+          "field": "yjgdnl",
+          "name": "应急供电能力"
+        },
+        {
+          "field": "gsfs",
+          "name": "供水方式"
+        },
+        {
+          "field": "gnfs",
+          "name": "供暖方式"
+        },
+        {
+          "field": "yjtxbzfs",
+          "name": "应急通信保障方式"
+        },
+        {
+          "field": "cjzsgdzrz1",
+          "name": "曾经遭受过的自然灾害类型"
+        },
+        {
+          "field": "yyzrzhyjy1",
+          "name": "已有自然灾害应急预案类型"
+        },
+        {
+          "field": "jgbm",
+          "name": "机构编码"
+        },
+        {
+          "field": "gsfs_qtsm",
+          "name": "供水方式-其他项说明"
+        },
+        {
+          "field": "dmlx",
+          "name": "统一社会信用代码/机构编码"
+        },
+        {
+          "field": "yjgdnl_qts",
+          "name": "应急供电能力-其他项说明"
+        },
+        {
+          "field": "dzjh",
+          "name": "地址街号"
+        },
+        {
+          "field": "yjtxbzfs_q",
+          "name": "应急通信保障方式-其他项说明"
+        },
+        {
+          "field": "cjsj",
+          "name": "创建时间"
+        },
+        {
+          "field": "dzshi",
+          "name": "地址市"
+        },
+        {
+          "field": "dzxian",
+          "name": "地址县"
+        },
+        {
+          "field": "sfsytfsjyj",
+          "name": "sfsytfsjyjczjg-其他项说明-失效"
+        },
+        {
+          "field": "sfyxyywss2",
+          "name": "是否有校医院/卫生室/医务室-其他项说明"
+        },
+        {
+          "field": "lxdh",
+          "name": "联系电话"
+        },
+        {
+          "field": "code",
+          "name": "行政区划代码"
+        },
+        {
+          "field": "dzcun",
+          "name": "地址村"
+        },
+        {
+          "field": "dwfzr",
+          "name": "单位负责人"
+        },
+        {
+          "field": "cjzsgdzrz2",
+          "name": "曾经遭受过的自然灾害类型-其他说明"
+        },
+        {
+          "field": "dzxiang",
+          "name": "地址乡"
+        },
+        {
+          "field": "yyzrzhyjy2",
+          "name": "已有自然灾害应急预案类型-其他说明"
+        },
+        {
+          "field": "tbr",
+          "name": "填表人"
+        },
+        {
+          "field": "cjrmc",
+          "name": "创建人名称"
+        },
+        {
+          "field": "dgeom",
+          "name": "空间面geojson"
+        },
+        {
+          "field": "dzsheng",
+          "name": "地址省"
+        },
+        {
+          "field": "tjfzr",
+          "name": "统计负责人"
+        },
+        {
+          "field": "tbrq",
+          "name": "报出日期"
+        },
+        {
+          "field": "gnfs_qtsm",
+          "name": "供暖方式-其他项说明"
+        },
+        {
+          "field": "xxjgbxlxd2",
+          "name": "学校（机构）办学类型（大类）-其他项说明"
+        },
+        {
+          "field": "xxjgbxlxz2",
+          "name": "学校（机构）办学类型（中类）-其他项说明"
+        },
+        {
+          "field": "xxjgjbz_qt",
+          "name": "学校（机构）举办者-其他项说明"
+        },
+        {
+          "field": "fxpc_datai",
+          "name": "物理主键"
+        },
+        {
+          "field": "fxpc_dcdxb",
+          "name": "调查对象编码"
+        },
+        {
+          "field": "fxpc_xzqh1",
+          "name": "行政区划编码省"
+        },
+        {
+          "field": "fxpc_xzqh2",
+          "name": "行政区划编码市"
+        },
+        {
+          "field": "fxpc_xzqh3",
+          "name": "行政区划编码县"
+        },
+        {
+          "field": "fxpc_updat",
+          "name": "更新时间"
+        },
+        {
+          "field": "fxpc_creat",
+          "name": "写入时间"
+        },
+        {
+          "field": "fxpc_sjzt_",
+          "name": "数据状态"
+        },
+        {
+          "field": "fxpc_shlcz",
+          "name": "审核流程状态"
+        },
+        {
+          "field": "fxpc_shzt_",
+          "name": "审核状态"
+        },
+        {
+          "field": "fxpc_sshy_",
+          "name": "所属行业"
+        },
+        {
+          "field": "fxpc_rqfp_",
+          "name": "日期分片"
+        },
+        {
+          "field": "fxpc_pch_s",
+          "name": "批次号"
+        }
+      ],
+      "mapSplit": false,
+      "show": false,
+      "flyTo": true
+    },
+    {
+      "pid": 400,
+      "type": "wms",
+      "name": "医疗卫生机构_矢量点",
+      "layers": "anxi-emergency:YLWSJG_1",
+      "popup": [
+        {
+          "field": "id",
+          "name": "唯一标识"
+        },
+        {
+          "field": "dwmc",
+          "name": "医疗卫生机构名称"
+        },
+        {
+          "field": "address",
+          "name": "医疗卫生机构详细地址"
+        },
+        {
+          "field": "ylwsjglbdm",
+          "name": "医疗卫生机构类别代码"
+        },
+        {
+          "field": "yljglxdl",
+          "name": "医疗机构类型（大类）"
+        },
+        {
+          "field": "yljglxzl",
+          "name": "医疗机构类型（中类）"
+        },
+        {
+          "field": "yljglxzky1",
+          "name": "医疗机构类型（专科医院分类）"
+        },
+        {
+          "field": "yydj",
+          "name": "医院等级"
+        },
+        {
+          "field": "yljgxz",
+          "name": "医疗机构性质"
+        },
+        {
+          "field": "zdmj",
+          "name": "占地面积"
+        },
+        {
+          "field": "fwjzmj",
+          "name": "房屋建筑面积"
+        },
+        {
+          "field": "wyyssbts",
+          "name": "万元以上设备台数"
+        },
+        {
+          "field": "zgzgrs",
+          "name": "在岗职工人数"
+        },
+        {
+          "field": "wsjsryzs",
+          "name": "卫生技术人员总数"
+        },
+        {
+          "field": "zchsrs",
+          "name": "注册护士人数"
+        },
+        {
+          "field": "gqjnrys",
+          "name": "工勤技能人员数"
+        },
+        {
+          "field": "ndzzlrcs",
+          "name": "年度总诊疗人次数"
+        },
+        {
+          "field": "ndryrs",
+          "name": "年度入院人数"
+        },
+        {
+          "field": "ndcyrs",
+          "name": "年度出院人数"
+        },
+        {
+          "field": "syzycws",
+          "name": "实有住院床位数"
+        },
+        {
+          "field": "fybfcws",
+          "name": "其中：负压病房床位数"
+        },
+        {
+          "field": "zzjqhlbfcw",
+          "name": "重症加强护理病房（ICU）床位数"
+        },
+        {
+          "field": "yqjjzyrys",
+          "name": "院前急救专业人员数"
+        },
+        {
+          "field": "jjzhcsl",
+          "name": "急救指挥车数量"
+        },
+        {
+          "field": "yzxjjcsl",
+          "name": "运转型急救车数量"
+        },
+        {
+          "field": "jhxjjcsl",
+          "name": "监护型急救车数量"
+        },
+        {
+          "field": "fyjjcsl",
+          "name": "负压急救车数量"
+        },
+        {
+          "field": "cxcs",
+          "name": "采血车数"
+        },
+        {
+          "field": "sxcs",
+          "name": "送血车数"
+        },
+        {
+          "field": "aqbwrysl",
+          "name": "安全保卫人员数量"
+        },
+        {
+          "field": "yjgdnl",
+          "name": "应急供电能力"
+        },
+        {
+          "field": "gsfs",
+          "name": "供水方式"
+        },
+        {
+          "field": "gnfs",
+          "name": "供暖方式"
+        },
+        {
+          "field": "yjtxbzfs",
+          "name": "应急通信保障方式"
+        },
+        {
+          "field": "cjzsgdzrz1",
+          "name": "曾经遭受过的自然灾害类型"
+        },
+        {
+          "field": "yyzrzhyjy1",
+          "name": "已有自然灾害应急预案类型"
+        },
+        {
+          "field": "gsfs_qtsm",
+          "name": "供水方式-其他项说明"
+        },
+        {
+          "field": "yljglxzky2",
+          "name": "医疗机构类型（专科医院分类）-其他项说明"
+        },
+        {
+          "field": "yjgdnl_qts",
+          "name": "应急供电能力-其他项说明"
+        },
+        {
+          "field": "yljgxz_qts",
+          "name": "医疗机构性质-其他项说明"
+        },
+        {
+          "field": "yljglxdl_q",
+          "name": "医疗机构类型（大类）-其他项说明"
+        },
+        {
+          "field": "yjtxbzfs_q",
+          "name": "应急通信保障方式-其他项说明"
+        },
+        {
+          "field": "yydj_qtsm",
+          "name": "医院等级-其他项说明"
+        },
+        {
+          "field": "code",
+          "name": "行政区划代码"
+        },
+        {
+          "field": "dzcun",
+          "name": "地址村"
+        },
+        {
+          "field": "dzshi",
+          "name": "地址市"
+        },
+        {
+          "field": "cjrmc",
+          "name": "创建人名称"
+        },
+        {
+          "field": "gnfs_qtsm",
+          "name": "供暖方式-其他项说明"
+        },
+        {
+          "field": "cjzsgdzrz2",
+          "name": "曾经遭受过的自然灾害类型-其他说明"
+        },
+        {
+          "field": "dwfzr",
+          "name": "单位负责人"
+        },
+        {
+          "field": "dgeom",
+          "name": "空间面geojson"
+        },
+        {
+          "field": "tjfzr",
+          "name": "统计负责人"
+        },
+        {
+          "field": "lxdh",
+          "name": "联系电话"
+        },
+        {
+          "field": "yyzrzhyjy2",
+          "name": "已有自然灾害应急预案类型-其他说明"
+        },
+        {
+          "field": "dzsheng",
+          "name": "地址省"
+        },
+        {
+          "field": "cjsj",
+          "name": "创建时间"
+        },
+        {
+          "field": "tbrq",
+          "name": "报出日期"
+        },
+        {
+          "field": "yljglxzl_q",
+          "name": "医疗机构类型（中类）-其他项说明"
+        },
+        {
+          "field": "dzxian",
+          "name": "地址县"
+        },
+        {
+          "field": "dzxiang",
+          "name": "地址乡"
+        },
+        {
+          "field": "dzjh",
+          "name": "地址街号"
+        },
+        {
+          "field": "tbr",
+          "name": "填表人"
+        },
+        {
+          "field": "sfsytfsjyj",
+          "name": "sfsytfsjyjczjg-其他项说明-失效"
+        },
+        {
+          "field": "dmlx",
+          "name": "代码类型"
+        },
+        {
+          "field": "jgbm",
+          "name": "机构编码"
+        },
+        {
+          "field": "fxpc_datai",
+          "name": "物理主键"
+        },
+        {
+          "field": "fxpc_dcdxb",
+          "name": "调查对象编码"
+        },
+        {
+          "field": "fxpc_xzqh1",
+          "name": "行政区划编码省"
+        },
+        {
+          "field": "fxpc_xzqh2",
+          "name": "行政区划编码市"
+        },
+        {
+          "field": "fxpc_xzqh3",
+          "name": "行政区划编码县"
+        },
+        {
+          "field": "fxpc_updat",
+          "name": "更新时间"
+        },
+        {
+          "field": "fxpc_creat",
+          "name": "写入时间"
+        },
+        {
+          "field": "fxpc_sjzt_",
+          "name": "数据状态"
+        },
+        {
+          "field": "fxpc_shlcz",
+          "name": "审核流程状态"
+        },
+        {
+          "field": "fxpc_shzt_",
+          "name": "审核状态"
+        },
+        {
+          "field": "fxpc_sshy_",
+          "name": "所属行业"
+        },
+        {
+          "field": "fxpc_rqfp_",
+          "name": "日期分片"
+        },
+        {
+          "field": "fxpc_pch_s",
+          "name": "批次号"
+        }
+      ],
+      "mapSplit": false,
+      "show": false,
+      "flyTo": true
+    },
+    {
+      "pid": 400,
+      "type": "wms",
+      "name": "医疗卫生机构_矢量面",
+      "layers": "anxi-emergency:YLWSJG",
+      "url": "http://localhost:8080/geoserver/anxi-emergency/wms",
+      "crs": "EPSG:4490",
+      "parameters": {
+        "transparent": "true",
+        "format": "image/png"
+      },
+      "popup": [
+        {
+          "field": "id",
+          "name": "唯一标识"
+        },
+        {
+          "field": "dwmc",
+          "name": "医疗卫生机构名称"
+        },
+        {
+          "field": "address",
+          "name": "医疗卫生机构详细地址"
+        },
+        {
+          "field": "ylwsjglbdm",
+          "name": "医疗卫生机构类别代码"
+        },
+        {
+          "field": "yljglxdl",
+          "name": "医疗机构类型（大类）"
+        },
+        {
+          "field": "yljglxzl",
+          "name": "医疗机构类型（中类）"
+        },
+        {
+          "field": "yljglxzky1",
+          "name": "医疗机构类型（专科医院分类）"
+        },
+        {
+          "field": "yydj",
+          "name": "医院等级"
+        },
+        {
+          "field": "yljgxz",
+          "name": "医疗机构性质"
+        },
+        {
+          "field": "zdmj",
+          "name": "占地面积"
+        },
+        {
+          "field": "fwjzmj",
+          "name": "房屋建筑面积"
+        },
+        {
+          "field": "wyyssbts",
+          "name": "万元以上设备台数"
+        },
+        {
+          "field": "zgzgrs",
+          "name": "在岗职工人数"
+        },
+        {
+          "field": "wsjsryzs",
+          "name": "卫生技术人员总数"
+        },
+        {
+          "field": "zchsrs",
+          "name": "注册护士人数"
+        },
+        {
+          "field": "gqjnrys",
+          "name": "工勤技能人员数"
+        },
+        {
+          "field": "ndzzlrcs",
+          "name": "年度总诊疗人次数"
+        },
+        {
+          "field": "ndryrs",
+          "name": "年度入院人数"
+        },
+        {
+          "field": "ndcyrs",
+          "name": "年度出院人数"
+        },
+        {
+          "field": "syzycws",
+          "name": "实有住院床位数"
+        },
+        {
+          "field": "fybfcws",
+          "name": "其中：负压病房床位数"
+        },
+        {
+          "field": "zzjqhlbfcw",
+          "name": "重症加强护理病房（ICU）床位数"
+        },
+        {
+          "field": "yqjjzyrys",
+          "name": "院前急救专业人员数"
+        },
+        {
+          "field": "jjzhcsl",
+          "name": "急救指挥车数量"
+        },
+        {
+          "field": "yzxjjcsl",
+          "name": "运转型急救车数量"
+        },
+        {
+          "field": "jhxjjcsl",
+          "name": "监护型急救车数量"
+        },
+        {
+          "field": "fyjjcsl",
+          "name": "负压急救车数量"
+        },
+        {
+          "field": "cxcs",
+          "name": "采血车数"
+        },
+        {
+          "field": "sxcs",
+          "name": "送血车数"
+        },
+        {
+          "field": "aqbwrysl",
+          "name": "安全保卫人员数量"
+        },
+        {
+          "field": "yjgdnl",
+          "name": "应急供电能力"
+        },
+        {
+          "field": "gsfs",
+          "name": "供水方式"
+        },
+        {
+          "field": "gnfs",
+          "name": "供暖方式"
+        },
+        {
+          "field": "yjtxbzfs",
+          "name": "应急通信保障方式"
+        },
+        {
+          "field": "cjzsgdzrz1",
+          "name": "曾经遭受过的自然灾害类型"
+        },
+        {
+          "field": "yyzrzhyjy1",
+          "name": "已有自然灾害应急预案类型"
+        },
+        {
+          "field": "gsfs_qtsm",
+          "name": "供水方式-其他项说明"
+        },
+        {
+          "field": "yljglxzky2",
+          "name": "医疗机构类型（专科医院分类）-其他项说明"
+        },
+        {
+          "field": "yjgdnl_qts",
+          "name": "应急供电能力-其他项说明"
+        },
+        {
+          "field": "yljgxz_qts",
+          "name": "医疗机构性质-其他项说明"
+        },
+        {
+          "field": "yljglxdl_q",
+          "name": "医疗机构类型（大类）-其他项说明"
+        },
+        {
+          "field": "yjtxbzfs_q",
+          "name": "应急通信保障方式-其他项说明"
+        },
+        {
+          "field": "yydj_qtsm",
+          "name": "医院等级-其他项说明"
+        },
+        {
+          "field": "code",
+          "name": "行政区划代码"
+        },
+        {
+          "field": "dzcun",
+          "name": "地址村"
+        },
+        {
+          "field": "dzshi",
+          "name": "地址市"
+        },
+        {
+          "field": "cjrmc",
+          "name": "创建人名称"
+        },
+        {
+          "field": "gnfs_qtsm",
+          "name": "供暖方式-其他项说明"
+        },
+        {
+          "field": "cjzsgdzrz2",
+          "name": "曾经遭受过的自然灾害类型-其他说明"
+        },
+        {
+          "field": "dwfzr",
+          "name": "单位负责人"
+        },
+        {
+          "field": "dgeom",
+          "name": "空间面geojson"
+        },
+        {
+          "field": "tjfzr",
+          "name": "统计负责人"
+        },
+        {
+          "field": "lxdh",
+          "name": "联系电话"
+        },
+        {
+          "field": "yyzrzhyjy2",
+          "name": "已有自然灾害应急预案类型-其他说明"
+        },
+        {
+          "field": "dzsheng",
+          "name": "地址省"
+        },
+        {
+          "field": "cjsj",
+          "name": "创建时间"
+        },
+        {
+          "field": "tbrq",
+          "name": "报出日期"
+        },
+        {
+          "field": "yljglxzl_q",
+          "name": "医疗机构类型（中类）-其他项说明"
+        },
+        {
+          "field": "dzxian",
+          "name": "地址县"
+        },
+        {
+          "field": "dzxiang",
+          "name": "地址乡"
+        },
+        {
+          "field": "dzjh",
+          "name": "地址街号"
+        },
+        {
+          "field": "tbr",
+          "name": "填表人"
+        },
+        {
+          "field": "sfsytfsjyj",
+          "name": "sfsytfsjyjczjg-其他项说明-失效"
+        },
+        {
+          "field": "dmlx",
+          "name": "代码类型"
+        },
+        {
+          "field": "jgbm",
+          "name": "机构编码"
+        },
+        {
+          "field": "fxpc_datai",
+          "name": "物理主键"
+        },
+        {
+          "field": "fxpc_dcdxb",
+          "name": "调查对象编码"
+        },
+        {
+          "field": "fxpc_xzqh1",
+          "name": "行政区划编码省"
+        },
+        {
+          "field": "fxpc_xzqh2",
+          "name": "行政区划编码市"
+        },
+        {
+          "field": "fxpc_xzqh3",
+          "name": "行政区划编码县"
+        },
+        {
+          "field": "fxpc_updat",
+          "name": "更新时间"
+        },
+        {
+          "field": "fxpc_creat",
+          "name": "写入时间"
+        },
+        {
+          "field": "fxpc_sjzt_",
+          "name": "数据状态"
+        },
+        {
+          "field": "fxpc_shlcz",
+          "name": "审核流程状态"
+        },
+        {
+          "field": "fxpc_shzt_",
+          "name": "审核状态"
+        },
+        {
+          "field": "fxpc_sshy_",
+          "name": "所属行业"
+        },
+        {
+          "field": "fxpc_rqfp_",
+          "name": "日期分片"
+        },
+        {
+          "field": "fxpc_pch_s",
+          "name": "批次号"
+        }
+      ],
+      "mapSplit": false,
+      "show": false,
+      "flyTo": true
+    },
+    {
+      "pid": 400,
+      "type": "wms",
+      "name": "宗教活动场所_矢量点",
+      "layers": "anxi-emergency:ZJHDCS_1",
+      "popup": [
+        {
+          "field": "id",
+          "name": "唯一标识"
+        },
+        {
+          "field": "dwmc",
+          "name": "宗教活动场所名称"
+        },
+        {
+          "field": "address",
+          "name": "宗教活动场所详细地址"
+        },
+        {
+          "field": "zjlx",
+          "name": "宗教类型"
+        },
+        {
+          "field": "pb",
+          "name": "派别"
+        },
+        {
+          "field": "cslb",
+          "name": "场所类别"
+        },
+        {
+          "field": "zdmj",
+          "name": "占地面积"
+        },
+        {
+          "field": "jzmj",
+          "name": "建筑面积"
+        },
+        {
+          "field": "csjzrys",
+          "name": "场所教职人员数"
+        },
+        {
+          "field": "rcrs",
+          "name": "日常人数"
+        },
+        {
+          "field": "jrrs",
+          "name": "节日人数"
+        },
+        {
+          "field": "sfwwbhdw",
+          "name": "是否含文物保护单位或历史建筑"
+        },
+        {
+          "field": "wwbhjb",
+          "name": "其中：文物保护级别"
+        },
+        {
+          "field": "sfysjysfwz",
+          "name": "是否有省级以上非物质文化遗产"
+        },
+        {
+          "field": "aqbwrysl",
+          "name": "安全保卫人员数量"
+        },
+        {
+          "field": "yjgdnl",
+          "name": "应急供电能力"
+        },
+        {
+          "field": "gsfs",
+          "name": "供水方式"
+        },
+        {
+          "field": "gnfs",
+          "name": "供暖方式"
+        },
+        {
+          "field": "yjtxbzfs",
+          "name": "应急通信保障方式"
+        },
+        {
+          "field": "cjzsgdzrz1",
+          "name": "曾经遭受过的自然灾害类型"
+        },
+        {
+          "field": "yyzrzhyjy1",
+          "name": "已有自然灾害应急预案类型"
+        },
+        {
+          "field": "sfsytfsjyj",
+          "name": "sfsytfsjyjczjg-其他项说明-失效"
+        },
+        {
+          "field": "wwbhjb_qts",
+          "name": "其中：文物保护级别-其他项说明"
+        },
+        {
+          "field": "zjlx_qtsm",
+          "name": "宗教类型-其他项说明"
+        },
+        {
+          "field": "yjgdnl_qts",
+          "name": "应急供电能力-其他项说明"
+        },
+        {
+          "field": "yjtxbzfs_q",
+          "name": "应急通信保障方式-其他项说明"
+        },
+        {
+          "field": "cslb_qtsm",
+          "name": "场所类别-其他项说明"
+        },
+        {
+          "field": "lxdh",
+          "name": "联系电话"
+        },
+        {
+          "field": "tbr",
+          "name": "填表人"
+        },
+        {
+          "field": "tjfzr",
+          "name": "统计负责人"
+        },
+        {
+          "field": "jgbm",
+          "name": "机构编码"
+        },
+        {
+          "field": "dzjh",
+          "name": "地址街号"
+        },
+        {
+          "field": "cjrmc",
+          "name": "创建人名称"
+        },
+        {
+          "field": "tbrq",
+          "name": "报出日期"
+        },
+        {
+          "field": "dzxiang",
+          "name": "地址乡"
+        },
+        {
+          "field": "dgeom",
+          "name": "空间面geojson"
+        },
+        {
+          "field": "dmlx",
+          "name": "代码类型"
+        },
+        {
+          "field": "dzshi",
+          "name": "地址市"
+        },
+        {
+          "field": "dwfzr",
+          "name": "单位负责人"
+        },
+        {
+          "field": "cjsj",
+          "name": "创建时间"
+        },
+        {
+          "field": "gsfs_qtsm",
+          "name": "供水方式-其他项说明"
+        },
+        {
+          "field": "gnfs_qtsm",
+          "name": "供暖方式-其他项说明"
+        },
+        {
+          "field": "yyzrzhyjy2",
+          "name": "已有自然灾害应急预案类型-其他说明"
+        },
+        {
+          "field": "code",
+          "name": "行政区划代码"
+        },
+        {
+          "field": "dzcun",
+          "name": "地址村"
+        },
+        {
+          "field": "cjzsgdzrz2",
+          "name": "曾经遭受过的自然灾害类型-其他说明"
+        },
+        {
+          "field": "dzsheng",
+          "name": "地址省"
+        },
+        {
+          "field": "dzxian",
+          "name": "地址县"
+        },
+        {
+          "field": "pb_qtsm",
+          "name": "派别-其他项说明"
+        },
+        {
+          "field": "fxpc_datai",
+          "name": "物理主键"
+        },
+        {
+          "field": "fxpc_dcdxb",
+          "name": "调查对象编码"
+        },
+        {
+          "field": "fxpc_xzqh1",
+          "name": "行政区划编码省"
+        },
+        {
+          "field": "fxpc_xzqh2",
+          "name": "行政区划编码市"
+        },
+        {
+          "field": "fxpc_xzqh3",
+          "name": "行政区划编码县"
+        },
+        {
+          "field": "fxpc_updat",
+          "name": "更新时间"
+        },
+        {
+          "field": "fxpc_creat",
+          "name": "写入时间"
+        },
+        {
+          "field": "fxpc_sjzt_",
+          "name": "数据状态"
+        },
+        {
+          "field": "fxpc_shlcz",
+          "name": "审核流程状态"
+        },
+        {
+          "field": "fxpc_shzt_",
+          "name": "审核状态"
+        },
+        {
+          "field": "fxpc_sshy_",
+          "name": "所属行业"
+        },
+        {
+          "field": "fxpc_rqfp_",
+          "name": "日期分片"
+        },
+        {
+          "field": "fxpc_pch_s",
+          "name": "批次号"
+        }
+      ],
+      "mapSplit": false,
+      "show": false,
+      "flyTo": true
+    },
+    {
+      "pid": 400,
+      "type": "wms",
+      "name": "宗教活动场所_矢量面",
+      "layers": "anxi-emergency:ZJHDCS",
+      "popup": [
+        {
+          "field": "id",
+          "name": "唯一标识"
+        },
+        {
+          "field": "dwmc",
+          "name": "宗教活动场所名称"
+        },
+        {
+          "field": "address",
+          "name": "宗教活动场所详细地址"
+        },
+        {
+          "field": "zjlx",
+          "name": "宗教类型"
+        },
+        {
+          "field": "pb",
+          "name": "派别"
+        },
+        {
+          "field": "cslb",
+          "name": "场所类别"
+        },
+        {
+          "field": "zdmj",
+          "name": "占地面积"
+        },
+        {
+          "field": "jzmj",
+          "name": "建筑面积"
+        },
+        {
+          "field": "csjzrys",
+          "name": "场所教职人员数"
+        },
+        {
+          "field": "rcrs",
+          "name": "日常人数"
+        },
+        {
+          "field": "jrrs",
+          "name": "节日人数"
+        },
+        {
+          "field": "sfwwbhdw",
+          "name": "是否含文物保护单位或历史建筑"
+        },
+        {
+          "field": "wwbhjb",
+          "name": "其中：文物保护级别"
+        },
+        {
+          "field": "sfysjysfwz",
+          "name": "是否有省级以上非物质文化遗产"
+        },
+        {
+          "field": "aqbwrysl",
+          "name": "安全保卫人员数量"
+        },
+        {
+          "field": "yjgdnl",
+          "name": "应急供电能力"
+        },
+        {
+          "field": "gsfs",
+          "name": "供水方式"
+        },
+        {
+          "field": "gnfs",
+          "name": "供暖方式"
+        },
+        {
+          "field": "yjtxbzfs",
+          "name": "应急通信保障方式"
+        },
+        {
+          "field": "cjzsgdzrz1",
+          "name": "曾经遭受过的自然灾害类型"
+        },
+        {
+          "field": "yyzrzhyjy1",
+          "name": "已有自然灾害应急预案类型"
+        },
+        {
+          "field": "sfsytfsjyj",
+          "name": "sfsytfsjyjczjg-其他项说明-失效"
+        },
+        {
+          "field": "wwbhjb_qts",
+          "name": "其中：文物保护级别-其他项说明"
+        },
+        {
+          "field": "zjlx_qtsm",
+          "name": "宗教类型-其他项说明"
+        },
+        {
+          "field": "yjgdnl_qts",
+          "name": "应急供电能力-其他项说明"
+        },
+        {
+          "field": "yjtxbzfs_q",
+          "name": "应急通信保障方式-其他项说明"
+        },
+        {
+          "field": "cslb_qtsm",
+          "name": "场所类别-其他项说明"
+        },
+        {
+          "field": "lxdh",
+          "name": "联系电话"
+        },
+        {
+          "field": "tbr",
+          "name": "填表人"
+        },
+        {
+          "field": "tjfzr",
+          "name": "统计负责人"
+        },
+        {
+          "field": "jgbm",
+          "name": "机构编码"
+        },
+        {
+          "field": "dzjh",
+          "name": "地址街号"
+        },
+        {
+          "field": "cjrmc",
+          "name": "创建人名称"
+        },
+        {
+          "field": "tbrq",
+          "name": "报出日期"
+        },
+        {
+          "field": "dzxiang",
+          "name": "地址乡"
+        },
+        {
+          "field": "dgeom",
+          "name": "空间面geojson"
+        },
+        {
+          "field": "dmlx",
+          "name": "代码类型"
+        },
+        {
+          "field": "dzshi",
+          "name": "地址市"
+        },
+        {
+          "field": "dwfzr",
+          "name": "单位负责人"
+        },
+        {
+          "field": "cjsj",
+          "name": "创建时间"
+        },
+        {
+          "field": "gsfs_qtsm",
+          "name": "供水方式-其他项说明"
+        },
+        {
+          "field": "gnfs_qtsm",
+          "name": "供暖方式-其他项说明"
+        },
+        {
+          "field": "yyzrzhyjy2",
+          "name": "已有自然灾害应急预案类型-其他说明"
+        },
+        {
+          "field": "code",
+          "name": "行政区划代码"
+        },
+        {
+          "field": "dzcun",
+          "name": "地址村"
+        },
+        {
+          "field": "cjzsgdzrz2",
+          "name": "曾经遭受过的自然灾害类型-其他说明"
+        },
+        {
+          "field": "dzsheng",
+          "name": "地址省"
+        },
+        {
+          "field": "dzxian",
+          "name": "地址县"
+        },
+        {
+          "field": "pb_qtsm",
+          "name": "派别-其他项说明"
+        },
+        {
+          "field": "fxpc_datai",
+          "name": "物理主键"
+        },
+        {
+          "field": "fxpc_dcdxb",
+          "name": "调查对象编码"
+        },
+        {
+          "field": "fxpc_xzqh1",
+          "name": "行政区划编码省"
+        },
+        {
+          "field": "fxpc_xzqh2",
+          "name": "行政区划编码市"
+        },
+        {
+          "field": "fxpc_xzqh3",
+          "name": "行政区划编码县"
+        },
+        {
+          "field": "fxpc_updat",
+          "name": "更新时间"
+        },
+        {
+          "field": "fxpc_creat",
+          "name": "写入时间"
+        },
+        {
+          "field": "fxpc_sjzt_",
+          "name": "数据状态"
+        },
+        {
+          "field": "fxpc_shlcz",
+          "name": "审核流程状态"
+        },
+        {
+          "field": "fxpc_shzt_",
+          "name": "审核状态"
+        },
+        {
+          "field": "fxpc_sshy_",
+          "name": "所属行业"
+        },
+        {
+          "field": "fxpc_rqfp_",
+          "name": "日期分片"
+        },
+        {
+          "field": "fxpc_pch_s",
+          "name": "批次号"
+        }
+      ],
+      "mapSplit": false,
+      "show": false,
+      "flyTo": true,
+      "hue": 5,
+      "highlight": {
+        "clampToGround": true,
+        "fill": true,
+        "color": "#2deaf7",
+        "opacity": 0,
+        "outline": true,
+        "outlineWidth": 3,
+        "outlineColor": "#e000d9",
+        "outlineOpacity": 1.0
+      }
+    },
+    {
+      "pid": 500,
+      "type": "wms",
+      "name": "救灾物资储备库",
+      "layers": "anxi-emergency:JZWZCBK",
+      "popup": [
+        {
+          "field": "id",
+          "name": "唯一标识"
+        },
+        {
+          "field": "dwmc",
+          "name": "储备库名称"
+        },
+        {
+          "field": "address",
+          "name": "储备库地址"
+        },
+        {
+          "field": "rdhzgbm",
+          "name": "储备库认定或主管部门"
+        },
+        {
+          "field": "cbkdj",
+          "name": "储备库等级"
+        },
+        {
+          "field": "cbklx",
+          "name": "储备库类型"
+        },
+        {
+          "field": "jcsj",
+          "name": "建成时间"
+        },
+        {
+          "field": "yxkr",
+          "name": "有效库容"
+        },
+        {
+          "field": "zzwhhglrys",
+          "name": "专职维护或管理人员数量（聘用1年以上）"
+        },
+        {
+          "field": "shlwz_jzzp",
+          "name": "其中：救灾帐篷"
+        },
+        {
+          "field": "mb",
+          "name": "棉被"
+        },
+        {
+          "field": "mymdy",
+          "name": "棉衣、棉大衣"
+        },
+        {
+          "field": "mjb",
+          "name": "毛巾被"
+        },
+        {
+          "field": "mt",
+          "name": "毛毯"
+        },
+        {
+          "field": "dgnsd",
+          "name": "睡袋"
+        },
+        {
+          "field": "zdc",
+          "name": "折叠床"
+        },
+        {
+          "field": "jycs",
+          "name": "简易厕所"
+        },
+        {
+          "field": "shlwzzhje",
+          "name": "生活类物资折合金额"
+        },
+        {
+          "field": "xpct",
+          "name": "其中：橡皮船（艇）"
+        },
+        {
+          "field": "cfz",
+          "name": "冲锋舟"
+        },
+        {
+          "field": "jsc",
+          "name": "救生船"
+        },
+        {
+          "field": "jsy",
+          "name": "救生衣"
+        },
+        {
+          "field": "jsq",
+          "name": "救生圈"
+        },
+        {
+          "field": "bzd",
+          "name": "编织袋"
+        },
+        {
+          "field": "md",
+          "name": "麻袋"
+        },
+        {
+          "field": "csb",
+          "name": "抽水泵"
+        },
+        {
+          "field": "jylwzzhje",
+          "name": "救援类物资折合金额"
+        },
+        {
+          "field": "fdj",
+          "name": "其中：发电机"
+        },
+        {
+          "field": "yjd",
+          "name": "应急灯"
+        },
+        {
+          "field": "qtwzzhje",
+          "name": "其他物资折合金额"
+        },
+        {
+          "field": "jzzp",
+          "name": "救灾帐篷"
+        },
+        {
+          "field": "jzyb",
+          "name": "救灾衣被"
+        },
+        {
+          "field": "jygj",
+          "name": "救援工具"
+        },
+        {
+          "field": "zhje",
+          "name": "折合金额"
+        },
+        {
+          "field": "dzshi",
+          "name": "地址市"
+        },
+        {
+          "field": "dzsheng",
+          "name": "地址省"
+        },
+        {
+          "field": "dzcun",
+          "name": "地址村"
+        },
+        {
+          "field": "code",
+          "name": "行政区划代码"
+        },
+        {
+          "field": "tbrq",
+          "name": "报出日期"
+        },
+        {
+          "field": "dgeom",
+          "name": "空间点geojson"
+        },
+        {
+          "field": "dzxiang",
+          "name": "地址乡"
+        },
+        {
+          "field": "dzjh",
+          "name": "地址街号"
+        },
+        {
+          "field": "cjrmc",
+          "name": "创建人名称"
+        },
+        {
+          "field": "dzxian",
+          "name": "地址县"
+        },
+        {
+          "field": "dwfzr",
+          "name": "单位负责人"
+        },
+        {
+          "field": "tjfzr",
+          "name": "统计负责人"
+        },
+        {
+          "field": "tbr",
+          "name": "填表人"
+        },
+        {
+          "field": "lxdh",
+          "name": "联系电话"
+        },
+        {
+          "field": "dmlx",
+          "name": "代码类型"
+        },
+        {
+          "field": "tyshxydm",
+          "name": "统一社会信用代码"
+        },
+        {
+          "field": "cjsj",
+          "name": "创建时间"
+        },
+        {
+          "field": "jgbm",
+          "name": "机构编码"
+        },
+        {
+          "field": "rdhzgbm_qt",
+          "name": "储备库认定或主管部门-其他说明"
+        },
+        {
+          "field": "cbkdj_qtsm",
+          "name": "储备库等级-其他项说明"
+        },
+        {
+          "field": "cbklx_qtsm",
+          "name": "储备库类型-其他项说明"
+        },
+        {
+          "field": "fxpc_datai",
+          "name": "物理主键"
+        },
+        {
+          "field": "fxpc_dcdxb",
+          "name": "调查对象编码"
+        },
+        {
+          "field": "fxpc_xzqh1",
+          "name": "行政区划编码省"
+        },
+        {
+          "field": "fxpc_xzqh2",
+          "name": "行政区划编码市"
+        },
+        {
+          "field": "fxpc_xzqh3",
+          "name": "行政区划编码县"
+        },
+        {
+          "field": "fxpc_updat",
+          "name": "更新时间"
+        },
+        {
+          "field": "fxpc_creat",
+          "name": "写入时间"
+        },
+        {
+          "field": "fxpc_sjzt_",
+          "name": "数据状态"
+        },
+        {
+          "field": "fxpc_shlcz",
+          "name": "审核流程状态"
+        },
+        {
+          "field": "fxpc_shzt_",
+          "name": "审核状态"
+        },
+        {
+          "field": "fxpc_sshy_",
+          "name": "所属行业"
+        },
+        {
+          "field": "fxpc_rqfp_",
+          "name": "日期分片"
+        },
+        {
+          "field": "fxpc_pch_s",
+          "name": "批次号"
+        }
+      ],
+      "mapSplit": false,
+      "show": false,
+      "flyTo": true
+    },
+    {
+      "pid": 500,
+      "type": "wms",
+      "name": "社会组织减灾能力",
+      "layers": "anxi-emergency:SHZZJZNL",
+      "popup": [
+        {
+          "field": "id",
+          "name": "唯一标识"
+        },
+        {
+          "field": "dwmc",
+          "name": "组织名称"
+        },
+        {
+          "field": "jgbm",
+          "name": "统一社会信用代码/组织机构代码"
+        },
+        {
+          "field": "cjsj",
+          "name": "创建时间"
+        },
+        {
+          "field": "code",
+          "name": "行政区划代码"
+        },
+        {
+          "field": "dzsheng",
+          "name": "地址省"
+        },
+        {
+          "field": "dzshi",
+          "name": "地址市"
+        },
+        {
+          "field": "dzxian",
+          "name": "地址县"
+        },
+        {
+          "field": "dzxiang",
+          "name": "地址乡"
+        },
+        {
+          "field": "dzjh",
+          "name": "地址街号"
+        },
+        {
+          "field": "address",
+          "name": "机构地址"
+        },
+        {
+          "field": "dmlx",
+          "name": "代码类型"
+        },
+        {
+          "field": "dgeom",
+          "name": "空间点geojson"
+        },
+        {
+          "field": "dwfzr",
+          "name": "单位负责人"
+        },
+        {
+          "field": "tjfzr",
+          "name": "统计负责人"
+        },
+        {
+          "field": "tbr",
+          "name": "填表人"
+        },
+        {
+          "field": "lxdh",
+          "name": "联系电话"
+        },
+        {
+          "field": "tbrq",
+          "name": "报出日期"
+        },
+        {
+          "field": "cjrmc",
+          "name": "创建人名称"
+        },
+        {
+          "field": "dzcun",
+          "name": "地址村"
+        },
+        {
+          "field": "tyshxydm",
+          "name": "统一社会信用代码"
+        },
+        {
+          "field": "zcsj",
+          "name": "注册时间"
+        },
+        {
+          "field": "zcdz",
+          "name": "注册地址"
+        },
+        {
+          "field": "djjglx",
+          "name": "登记机关类型"
+        },
+        {
+          "field": "djjg",
+          "name": "登记机关"
+        },
+        {
+          "field": "ywzgbm",
+          "name": "业务主管部门"
+        },
+        {
+          "field": "zzryrs",
+          "name": "专职人员人数"
+        },
+        {
+          "field": "zczyzs",
+          "name": "注册志愿者数"
+        },
+        {
+          "field": "yjjyzyjsry",
+          "name": "应急救援专业技术人员数"
+        },
+        {
+          "field": "czszrs",
+          "name": "持证师资人数"
+        },
+        {
+          "field": "bgcsmj",
+          "name": "办公场所面积"
+        },
+        {
+          "field": "xlcdmj",
+          "name": "训练场地面积"
+        },
+        {
+          "field": "ckmj",
+          "name": "仓库面积"
+        },
+        {
+          "field": "yjjyzbwzzj",
+          "name": "应急救援装备/物资总价值"
+        },
+        {
+          "field": "cbshljzwzz",
+          "name": "储备生活类救灾物资总价值"
+        },
+        {
+          "field": "cbysljzwzz",
+          "name": "储备饮食类救灾物资总价值"
+        },
+        {
+          "field": "yjtyhzhzb",
+          "name": "应急通讯和指挥装备"
+        },
+        {
+          "field": "zykcsl",
+          "name": "自有客车数量"
+        },
+        {
+          "field": "zykchzzrs",
+          "name": "自有客车荷载总人数"
+        },
+        {
+          "field": "zyhyclsl",
+          "name": "自有货运车辆数量"
+        },
+        {
+          "field": "zyhyclhzzs",
+          "name": "自有货运车辆荷载总数量"
+        },
+        {
+          "field": "tzzycl",
+          "name": "特种作业车辆"
+        },
+        {
+          "field": "zyczsl",
+          "name": "自有船只数量"
+        },
+        {
+          "field": "zyczzzlzj",
+          "name": "自有船只载重量总计"
+        },
+        {
+          "field": "fdjts",
+          "name": "发电机台数"
+        },
+        {
+          "field": "fdjzgl",
+          "name": "发电机总功率"
+        },
+        {
+          "field": "smsszbsl",
+          "name": "生命搜索装备数量"
+        },
+        {
+          "field": "sjqsl",
+          "name": "搜救犬数量"
+        },
+        {
+          "field": "zyyjzbsl",
+          "name": "主要营救装备数量"
+        },
+        {
+          "field": "zyjjyljhzb",
+          "name": "主要紧急医疗救护装备数量"
+        },
+        {
+          "field": "gcqxyzyczz",
+          "name": "工程抢险与专业处置装备"
+        },
+        {
+          "field": "qtdxjyzb",
+          "name": "其他大型救援装备"
+        },
+        {
+          "field": "zphdfwsl",
+          "name": "帐篷/活动房屋数量"
+        },
+        {
+          "field": "zphdfwrnzr",
+          "name": "帐篷/活动房屋容纳总人数"
+        },
+        {
+          "field": "zyywfx",
+          "name": "主要业务方向"
+        },
+        {
+          "field": "zyjyjstc",
+          "name": "主要救援技术特长"
+        },
+        {
+          "field": "zyjzzzywt1",
+          "name": "主要救灾赈灾业务特长"
+        },
+        {
+          "field": "k72xslxcqz",
+          "name": "可72小时连续出勤最大人数"
+        },
+        {
+          "field": "syndpycs",
+          "name": "上一年度培训次数"
+        },
+        {
+          "field": "syndpyrc",
+          "name": "上一年度培训人次"
+        },
+        {
+          "field": "syndnbylcs",
+          "name": "上一年度内部演练次数"
+        },
+        {
+          "field": "syndclrc",
+          "name": "上一年度参练人次"
+        },
+        {
+          "field": "syndkpxjcs",
+          "name": "上一年度科普宣教次数"
+        },
+        {
+          "field": "syndkpxjhd",
+          "name": "上一年度科普宣教活动人次"
+        },
+        {
+          "field": "syndkpxjsz",
+          "name": "上一年度科普宣教受众人次"
+        },
+        {
+          "field": "syndjyjzx1",
+          "name": "上一年度救援救灾行动次数"
+        },
+        {
+          "field": "syndjyjzx2",
+          "name": "上一年度救援救灾行动出动人次"
+        },
+        {
+          "field": "syndzzjyjz",
+          "name": "上一年度组织救援救灾演练次数"
+        },
+        {
+          "field": "syndzsr",
+          "name": "上一年度总收入"
+        },
+        {
+          "field": "zfbt",
+          "name": "政府补贴"
+        },
+        {
+          "field": "shjz",
+          "name": "社会捐赠"
+        },
+        {
+          "field": "tgfwsr",
+          "name": "提供服务收入"
+        },
+        {
+          "field": "qtsr",
+          "name": "其他收入"
+        },
+        {
+          "field": "syndzzc",
+          "name": "上一年度总支出"
+        },
+        {
+          "field": "yrcbzc",
+          "name": "用人成本支出"
+        },
+        {
+          "field": "pyylzc",
+          "name": "培训演练支出"
+        },
+        {
+          "field": "zbcgzc",
+          "name": "装备采购支出"
+        },
+        {
+          "field": "qtzc",
+          "name": "其他支出"
+        },
+        {
+          "field": "jglx_qtsm",
+          "name": "机构类型-其他项说明-其他说明"
+        },
+        {
+          "field": "djjglx_qts",
+          "name": "登记机关类型-其他项说明"
+        },
+        {
+          "field": "zyywfx_qts",
+          "name": "主要业务方向-其他项说明"
+        },
+        {
+          "field": "zyjyjstc_q",
+          "name": "主要救援技术特长-其他项说明"
+        },
+        {
+          "field": "zyjzzzywt2",
+          "name": "主要救灾赈灾业务特长-其他项说明"
+        },
+        {
+          "field": "zzjb",
+          "name": "组织级别"
+        },
+        {
+          "field": "zzlx",
+          "name": "机构类型"
+        },
+        {
+          "field": "zzlx_qtsm",
+          "name": "机构类型-其他项说明"
+        },
+        {
+          "field": "zzjb_qtsm",
+          "name": "组织级别-其他项说明"
+        },
+        {
+          "field": "fxpc_datai",
+          "name": "物理主键"
+        },
+        {
+          "field": "fxpc_dcdxb",
+          "name": "调查对象编码"
+        },
+        {
+          "field": "fxpc_xzqh1",
+          "name": "行政区划编码省"
+        },
+        {
+          "field": "fxpc_xzqh2",
+          "name": "行政区划编码市"
+        },
+        {
+          "field": "fxpc_xzqh3",
+          "name": "行政区划编码县"
+        },
+        {
+          "field": "fxpc_updat",
+          "name": "更新时间"
+        },
+        {
+          "field": "fxpc_creat",
+          "name": "写入时间"
+        },
+        {
+          "field": "fxpc_sjzt_",
+          "name": "数据状态"
+        },
+        {
+          "field": "fxpc_shlcz",
+          "name": "审核流程状态"
+        },
+        {
+          "field": "fxpc_shzt_",
+          "name": "审核状态"
+        },
+        {
+          "field": "fxpc_sshy_",
+          "name": "所属行业"
+        },
+        {
+          "field": "fxpc_rqfp_",
+          "name": "日期分片"
+        },
+        {
+          "field": "fxpc_pch_s",
+          "name": "批次号"
+        }
+      ],
+      "mapSplit": false,
+      "show": false,
+      "flyTo": true
+    },
+    {
+      "pid": 500,
+      "type": "wms",
+      "name": "行政村减灾能力",
+      "layers": "anxi-emergency:XZCJZNL",
+      "popup": [
+        {
+          "field": "id",
+          "name": "唯一标识"
+        },
+        {
+          "field": "dwmc",
+          "name": "社区（行政村）名称"
+        },
+        {
+          "field": "address",
+          "name": "社区（行政村）地址"
+        },
+        {
+          "field": "codery",
+          "name": "行政区划代码"
+        },
+        {
+          "field": "zhs",
+          "name": "总户数"
+        },
+        {
+          "field": "nmczrksl",
+          "name": "常住人口数量"
+        },
+        {
+          "field": "zero_ss_sr",
+          "name": "其中：0-14岁人数"
+        },
+        {
+          "field": "lw_shysrs",
+          "name": "65岁（含）以上人数"
+        },
+        {
+          "field": "czryrs",
+          "name": "残障人员人数"
+        },
+        {
+          "field": "sqylwsfwzh",
+          "name": "社区医疗卫生服务站或村卫生室数量"
+        },
+        {
+          "field": "sfwqgzhjzs",
+          "name": "是否为全国综合减灾示范社区"
+        },
+        {
+          "field": "sfwsjzhjzs",
+          "name": "是否为省级综合减灾示范社区"
+        },
+        {
+          "field": "sfybxqdzzh",
+          "name": "是否有本辖区地质灾害等隐患点清单"
+        },
+        {
+          "field": "sfybxqrsr1",
+          "name": "是否有本辖区弱势人群清单"
+        },
+        {
+          "field": "sfysqxzcz1",
+          "name": "是否有社区（行政村）灾害类地图"
+        },
+        {
+          "field": "sfysqxzcy1",
+          "name": "是否有社区（行政村）应急预案"
+        },
+        {
+          "field": "syndfzjzjz",
+          "name": "上一年度防灾减灾救灾资金投入总金额"
+        },
+        {
+          "field": "zhxxyrs",
+          "name": "灾害信息员人数"
+        },
+        {
+          "field": "djzczyzrs",
+          "name": "登记注册志愿者人数"
+        },
+        {
+          "field": "mbybyrs",
+          "name": "民兵预备役人数"
+        },
+        {
+          "field": "zhyjbncssl",
+          "name": "本级灾害应急避难场所数量"
+        },
+        {
+          "field": "zhyjbncsrl",
+          "name": "本级灾害应急避难场所容量"
+        },
+        {
+          "field": "fzjzyjwzc1",
+          "name": "防灾减灾应急物资储备方式"
+        },
+        {
+          "field": "xycbwzzbzh",
+          "name": "现有储备物资、装备折合金额（实物储备时填写）"
+        },
+        {
+          "field": "zhyjxxjsf1",
+          "name": "灾害预警信息接收方式"
+        },
+        {
+          "field": "zhyjxxcdf1",
+          "name": "灾害预警信息传达方式"
+        },
+        {
+          "field": "zqxxsbfs",
+          "name": "灾情信息上报方式"
+        },
+        {
+          "field": "syndzzdfz1",
+          "name": "上一年度组织的防灾减灾培训活动次数"
+        },
+        {
+          "field": "pxrc",
+          "name": "上一年度防灾减灾培训活动培训人次"
+        },
+        {
+          "field": "syndzzdfz2",
+          "name": "上一年度组织的防灾减灾演练活动次数"
+        },
+        {
+          "field": "cyyldjmrc",
+          "name": "参与上一年度组织的防灾减灾演练活动的居民人次"
+        },
+        {
+          "field": "jgbm",
+          "name": "机构编码"
+        },
+        {
+          "field": "sfysqxzcy2",
+          "name": "是否有社区（行政村）应急预案-其他项说明"
+        },
+        {
+          "field": "dzjh",
+          "name": "地址街号"
+        },
+        {
+          "field": "code",
+          "name": "行政区划代码"
+        },
+        {
+          "field": "dzsheng",
+          "name": "地址省"
+        },
+        {
+          "field": "cjrmc",
+          "name": "创建人名称"
+        },
+        {
+          "field": "dzcun",
+          "name": "地址村"
+        },
+        {
+          "field": "tbrq",
+          "name": "报出日期"
+        },
+        {
+          "field": "dzxian",
+          "name": "地址县"
+        },
+        {
+          "field": "tjfzr",
+          "name": "统计负责人"
+        },
+        {
+          "field": "dzshi",
+          "name": "地址市"
+        },
+        {
+          "field": "dmlx",
+          "name": "代码类型"
+        },
+        {
+          "field": "tbr",
+          "name": "填表人"
+        },
+        {
+          "field": "dzxiang",
+          "name": "地址乡"
+        },
+        {
+          "field": "cjsj",
+          "name": "创建时间"
+        },
+        {
+          "field": "zhyjxxjsf2",
+          "name": "灾害预警信息接收方式-其他项说明"
+        },
+        {
+          "field": "zhyjxxcdf2",
+          "name": "灾害预警信息传达方式-他项说明"
+        },
+        {
+          "field": "dgeom",
+          "name": "空间点geojson"
+        },
+        {
+          "field": "tyshxydm",
+          "name": "统一社会信用代码"
+        },
+        {
+          "field": "dwfzr",
+          "name": "单位负责人"
+        },
+        {
+          "field": "lxdh",
+          "name": "联系电话"
+        },
+        {
+          "field": "zqxxsbfs_q",
+          "name": "灾情信息上报方式-其他项说明"
+        },
+        {
+          "field": "fzjzyjwzc2",
+          "name": "防灾减灾应急物资储备方式-其他项说明"
+        },
+        {
+          "field": "sfybxqrsr2",
+          "name": "是否有本辖区弱势人群清单-其他项说明"
+        },
+        {
+          "field": "sfysqxzcz2",
+          "name": "是否有社区（行政村）灾害类地图-其他项说明"
+        },
+        {
+          "field": "fxpc_datai",
+          "name": "物理主键"
+        },
+        {
+          "field": "fxpc_dcdxb",
+          "name": "调查对象编码"
+        },
+        {
+          "field": "fxpc_xzqh1",
+          "name": "行政区划编码省"
+        },
+        {
+          "field": "fxpc_xzqh2",
+          "name": "行政区划编码市"
+        },
+        {
+          "field": "fxpc_xzqh3",
+          "name": "行政区划编码县"
+        },
+        {
+          "field": "fxpc_updat",
+          "name": "更新时间"
+        },
+        {
+          "field": "fxpc_creat",
+          "name": "写入时间"
+        },
+        {
+          "field": "fxpc_sjzt_",
+          "name": "数据状态"
+        },
+        {
+          "field": "fxpc_shlcz",
+          "name": "审核流程状态"
+        },
+        {
+          "field": "fxpc_shzt_",
+          "name": "审核状态"
+        },
+        {
+          "field": "fxpc_sshy_",
+          "name": "所属行业"
+        },
+        {
+          "field": "fxpc_rqfp_",
+          "name": "日期分片"
+        },
+        {
+          "field": "fxpc_pch_s",
+          "name": "批次号"
+        }
+      ],
+      "mapSplit": false,
+      "show": false,
+      "flyTo": true
+    },
+    {
+      "pid": 500,
+      "type": "wms",
+      "name": "乡镇减灾能力",
+      "layers": "anxi-emergency:XZJZNL",
+      "popup": [
+        {
+          "field": "id",
+          "name": "唯一标识"
+        },
+        {
+          "field": "dwmc",
+          "name": "乡镇（街道）名称"
+        },
+        {
+          "field": "address",
+          "name": "乡镇（街道）地址"
+        },
+        {
+          "field": "jgdmry",
+          "name": "乡镇（街道）代码"
+        },
+        {
+          "field": "zhs",
+          "name": "年末总户数"
+        },
+        {
+          "field": "nmczrksl",
+          "name": "常住人口数量"
+        },
+        {
+          "field": "yxxzjddzy1",
+          "name": "影响乡镇（街道）的主要灾害类型"
+        },
+        {
+          "field": "bjzhglgzry",
+          "name": "本级灾害管理工作人员总数"
+        },
+        {
+          "field": "bjzhxxyrs",
+          "name": "本级灾害信息员人数"
+        },
+        {
+          "field": "sfkzxzjdz1",
+          "name": "是否开展乡镇（街道）灾害风险评估"
+        },
+        {
+          "field": "sfyxzjdzhl",
+          "name": "是否有乡镇（街道）灾害类地图"
+        },
+        {
+          "field": "zhyjxxjsf1",
+          "name": "灾害预警信息接收方式"
+        },
+        {
+          "field": "zhyjxxcdf1",
+          "name": "灾害预警信息传达方式"
+        },
+        {
+          "field": "zqxxsbfs",
+          "name": "灾情信息上报方式"
+        },
+        {
+          "field": "j3nbzhxdzr",
+          "name": "近3年编制或修订自然灾害应急预案数量"
+        },
+        {
+          "field": "j3nzdzrzhq",
+          "name": "近3年针对自然灾害启动应急响应次数"
+        },
+        {
+          "field": "syndzzdyj1",
+          "name": "上一年度组织的应急管理培训和演练次数"
+        },
+        {
+          "field": "syndzzdyj2",
+          "name": "上一年度组织的应急管理培训和演练参与人次"
+        },
+        {
+          "field": "xzjdzhjzg1",
+          "name": "乡镇（街道）综合减灾工作经费保障方式"
+        },
+        {
+          "field": "syndfzjzjz",
+          "name": "上一年度防灾减灾救灾资金投入总金额"
+        },
+        {
+          "field": "jzwzcbfs",
+          "name": "救灾物资储备方式"
+        },
+        {
+          "field": "xyjzwzzbcb",
+          "name": "本级救灾物资、装备储备点数量"
+        },
+        {
+          "field": "xyjzwzzbsl",
+          "name": "本级储备点救灾物资、装备数量"
+        },
+        {
+          "field": "yjdyhyjfds",
+          "name": "其中：应急电源或应急发电设备数量"
+        },
+        {
+          "field": "yjtxsbsl",
+          "name": "应急通信设备数量"
+        },
+        {
+          "field": "yjgssbsl",
+          "name": "应急供水设备数量"
+        },
+        {
+          "field": "yjylsbsl",
+          "name": "应急医疗设备数量"
+        },
+        {
+          "field": "xycbwzzbzh",
+          "name": "现有储备物资、装备折合金额"
+        },
+        {
+          "field": "bjzhyjbnc1",
+          "name": "本级灾害应急避难场所数量"
+        },
+        {
+          "field": "bjzhyjbnc2",
+          "name": "本级灾害应急避难场所容量"
+        },
+        {
+          "field": "zhyjxxjsf2",
+          "name": "灾害预警信息接收方式-其他项说明"
+        },
+        {
+          "field": "sfkzxzjdz2",
+          "name": "是否开展乡镇（街道）灾害风险评估-其他项说明"
+        },
+        {
+          "field": "code",
+          "name": "行政区划代码"
+        },
+        {
+          "field": "jgbm",
+          "name": "机构编码"
+        },
+        {
+          "field": "dzxiang",
+          "name": "地址乡"
+        },
+        {
+          "field": "dzjh",
+          "name": "地址街号"
+        },
+        {
+          "field": "cjrmc",
+          "name": "创建人名称"
+        },
+        {
+          "field": "dzcun",
+          "name": "地址村"
+        },
+        {
+          "field": "dzsheng",
+          "name": "地址省"
+        },
+        {
+          "field": "dzshi",
+          "name": "地址市"
+        },
+        {
+          "field": "tbr",
+          "name": "填表人"
+        },
+        {
+          "field": "dmlx",
+          "name": "代码类型"
+        },
+        {
+          "field": "zhyjxxcdf2",
+          "name": "灾害预警信息传达方式-其他项说明"
+        },
+        {
+          "field": "tyshxydm",
+          "name": "统一社会信用代码"
+        },
+        {
+          "field": "tjfzr",
+          "name": "统计负责人"
+        },
+        {
+          "field": "dzxian",
+          "name": "地址县"
+        },
+        {
+          "field": "lxdh",
+          "name": "联系电话"
+        },
+        {
+          "field": "tbrq",
+          "name": "报出日期"
+        },
+        {
+          "field": "cjsj",
+          "name": "创建时间"
+        },
+        {
+          "field": "dwfzr",
+          "name": "单位负责人"
+        },
+        {
+          "field": "dgeom",
+          "name": "空间点geojson"
+        },
+        {
+          "field": "yxxzjddzy2",
+          "name": "影响乡镇（街道）的主要灾害类型-其他项说明"
+        },
+        {
+          "field": "xzjdzhjzg2",
+          "name": "乡镇（街道）综合减灾工作经费保障方式-其他说明"
+        },
+        {
+          "field": "zqxxsbfs_q",
+          "name": "灾情信息上报方式-其他项说明"
+        },
+        {
+          "field": "fxpc_datai",
+          "name": "物理主键"
+        },
+        {
+          "field": "fxpc_dcdxb",
+          "name": "调查对象编码"
+        },
+        {
+          "field": "fxpc_xzqh1",
+          "name": "行政区划编码省"
+        },
+        {
+          "field": "fxpc_xzqh2",
+          "name": "行政区划编码市"
+        },
+        {
+          "field": "fxpc_xzqh3",
+          "name": "行政区划编码县"
+        },
+        {
+          "field": "fxpc_updat",
+          "name": "更新时间"
+        },
+        {
+          "field": "fxpc_creat",
+          "name": "写入时间"
+        },
+        {
+          "field": "fxpc_sjzt_",
+          "name": "数据状态"
+        },
+        {
+          "field": "fxpc_shlcz",
+          "name": "审核流程状态"
+        },
+        {
+          "field": "fxpc_shzt_",
+          "name": "审核状态"
+        },
+        {
+          "field": "fxpc_sshy_",
+          "name": "所属行业"
+        },
+        {
+          "field": "fxpc_rqfp_",
+          "name": "日期分片"
+        },
+        {
+          "field": "fxpc_pch_s",
+          "name": "批次号"
+        }
+      ],
+      "mapSplit": false,
+      "show": false,
+      "flyTo": true
+    },
+    {
+      "pid": 500,
+      "type": "wms",
+      "name": "应急避难所",
+      "layers": "anxi-emergency:YJBNS",
+      "popup": [
+        {
+          "field": "id",
+          "name": "唯一标识"
+        },
+        {
+          "field": "dwmc",
+          "name": "应急避难场所全称"
+        },
+        {
+          "field": "address",
+          "name": "应急避难场所地址"
+        },
+        {
+          "field": "zdzz",
+          "name": "应急避难种类"
+        },
+        {
+          "field": "bncslx",
+          "name": "应急避难场所建设类型"
+        },
+        {
+          "field": "yjbncsfj",
+          "name": "应急避难场所分级"
+        },
+        {
+          "field": "atfsjlxfl",
+          "name": "按突发事件类型分类"
+        },
+        {
+          "field": "aztgndwfl",
+          "name": "按总体功能定位分类"
+        },
+        {
+          "field": "bnsc",
+          "name": "按避难时长设计分类"
+        },
+        {
+          "field": "snswlx",
+          "name": "按空间类型分类"
+        },
+        {
+          "field": "bnszdzmj",
+          "name": "应急避难场所占地总面积"
+        },
+        {
+          "field": "yjbncssnmj",
+          "name": "应急避难场所室内面积"
+        },
+        {
+          "field": "bnsrnrs",
+          "name": "应急避难场所容纳人数"
+        },
+        {
+          "field": "bzbsgfx",
+          "name": "标志标识规范性"
+        },
+        {
+          "field": "wzcb",
+          "name": "物资储备情况"
+        },
+        {
+          "field": "yjss",
+          "name": "应急设施情况"
+        },
+        {
+          "field": "rcwhhglrys",
+          "name": "日常专职维护或管理人员数量"
+        },
+        {
+          "field": "zhyjbncs_s",
+          "name": "上一年度启用次数"
+        },
+        {
+          "field": "syndjnjjzy",
+          "name": "上一年度接纳紧急转移安置人次"
+        },
+        {
+          "field": "rdbm",
+          "name": "认定部门"
+        },
+        {
+          "field": "zgdw",
+          "name": "主管单位"
+        },
+        {
+          "field": "jsdw",
+          "name": "建设单位"
+        },
+        {
+          "field": "zhyjbncs_1",
+          "name": "建成（或挂牌）时间"
+        },
+        {
+          "field": "jsbz",
+          "name": "建设标准"
+        },
+        {
+          "field": "ghqk",
+          "name": "规划情况"
+        },
+        {
+          "field": "zhyjbncs_2",
+          "name": "建设总投资"
+        },
+        {
+          "field": "cqywdw",
+          "name": "产权/运维单位"
+        },
+        {
+          "field": "ywtr",
+          "name": "运维投入"
+        },
+        {
+          "field": "ywtrqd",
+          "name": "运维投入渠道"
+        },
+        {
+          "field": "rdbm_qtsm",
+          "name": "认定部门-其他说明"
+        },
+        {
+          "field": "cqywdw_qts",
+          "name": "产权/运维单位-其他说明"
+        },
+        {
+          "field": "jgbm",
+          "name": "机构编码"
+        },
+        {
+          "field": "cjrmc",
+          "name": "创建人名称"
+        },
+        {
+          "field": "cjsj",
+          "name": "创建时间"
+        },
+        {
+          "field": "dzxiang",
+          "name": "地址乡"
+        },
+        {
+          "field": "dzsheng",
+          "name": "地址省"
+        },
+        {
+          "field": "dzjh",
+          "name": "地址街号"
+        },
+        {
+          "field": "dzshi",
+          "name": "地址市"
+        },
+        {
+          "field": "zdzz_qtsm",
+          "name": "避灾种类-其他项说明（其他灾害）"
+        },
+        {
+          "field": "bncsdj_qts",
+          "name": "其他项说明2废弃"
+        },
+        {
+          "field": "tbr",
+          "name": "填表人"
+        },
+        {
+          "field": "dzcun",
+          "name": "地址村"
+        },
+        {
+          "field": "dzxian",
+          "name": "地址县"
+        },
+        {
+          "field": "tjfzr",
+          "name": "统计负责人"
+        },
+        {
+          "field": "tyshxydm",
+          "name": "统一社会信用代码"
+        },
+        {
+          "field": "tbrq",
+          "name": "报出日期"
+        },
+        {
+          "field": "code",
+          "name": "行政区划代码"
+        },
+        {
+          "field": "lxdh",
+          "name": "联系电话"
+        },
+        {
+          "field": "dwfzr",
+          "name": "单位负责人"
+        },
+        {
+          "field": "bncslx_qts",
+          "name": "应急避难场所建设类型-其他项说明"
+        },
+        {
+          "field": "dgeom",
+          "name": "空间点geojson"
+        },
+        {
+          "field": "zdzz_qtsm2",
+          "name": "避灾种类-其他项说明（其他突发事件）"
+        },
+        {
+          "field": "dmlx",
+          "name": "代码类型"
+        },
+        {
+          "field": "jsdw_qtsm",
+          "name": "建设单位-其他说明"
+        },
+        {
+          "field": "zgdw_qtsm",
+          "name": "主管单位-其他说明"
+        },
+        {
+          "field": "rdhzgbm_qt",
+          "name": "储备库认定或主管部门-其他说明2"
+        },
+        {
+          "field": "fxpc_datai",
+          "name": "物理主键"
+        },
+        {
+          "field": "fxpc_dcdxb",
+          "name": "调查对象编码"
+        },
+        {
+          "field": "fxpc_xzqh1",
+          "name": "行政区划编码省"
+        },
+        {
+          "field": "fxpc_xzqh2",
+          "name": "行政区划编码市"
+        },
+        {
+          "field": "fxpc_xzqh3",
+          "name": "行政区划编码县"
+        },
+        {
+          "field": "fxpc_updat",
+          "name": "更新时间"
+        },
+        {
+          "field": "fxpc_creat",
+          "name": "写入时间"
+        },
+        {
+          "field": "fxpc_sjzt_",
+          "name": "数据状态"
+        },
+        {
+          "field": "fxpc_shlcz",
+          "name": "审核流程状态"
+        },
+        {
+          "field": "fxpc_shzt_",
+          "name": "审核状态"
+        },
+        {
+          "field": "fxpc_sshy_",
+          "name": "所属行业"
+        },
+        {
+          "field": "fxpc_rqfp_",
+          "name": "日期分片"
+        },
+        {
+          "field": "fxpc_pch_s",
+          "name": "批次号"
+        }
+      ],
+      "mapSplit": false,
+      "show": false,
+      "flyTo": true
+    }
+  ]
+}
