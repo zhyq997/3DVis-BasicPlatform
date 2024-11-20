@@ -1,0 +1,1 @@
+import{e as t,D as s,j as u}from"./vue-D4H2Ux2Y.js";function f(n){const e=t("getMapInstance");s(()=>{if(n.onMounted){const o=e();n.onMounted(o)}}),u(()=>{n.onUnmounted&&n.onUnmounted()})}export{f as u};

@@ -1,0 +1,1 @@
+import"./entry/index-BNp4bmLj-1732066199007.js";function n(t){return/^-?((0|1?[0-7]?[0-9]?)(([.][0-9]*)?)|180(([.][0]*)?)),-?((0|[1-8]?[0-9]?)(([.][0-9]*)?)|90(([.][0]*)?))$/.test(t)}function o(t){return new URL(window.location.href).searchParams.get(t)}export{o as g,n as i};
